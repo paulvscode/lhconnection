@@ -6,11 +6,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class EventController extends AbstractController
+class QuestionsController extends AbstractController
 {
-    #[Route('/event', name: 'event_')]
+    #[Route('/questions', name: 'questions_')]
     public function index(): Response
     {
-        return $this->render('event/index.html.twig');
+        return $this->render('questions/index.html.twig');
     }
 }

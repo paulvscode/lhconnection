@@ -35,10 +35,10 @@
     </a>
     <ul class="nav nav-pills">
         <li class="nav-item"><a href="{{ path('homepage_') }}" class="nav-link {% if app.request.get('_route') == 'homepage_' %}active{% endif %}" aria-current="page">Accueil</a></li>
-        <li class="nav-item"><a href="{{ path('event') }}" class="nav-link {% if app.request.get('_route') == 'event' %}active{% endif %}">Évènement</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Projets</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Qui sommes-nous ?</a></li>
+        <li class="nav-item"><a href="{{ path('event_') }}" class="nav-link {% if app.request.get('_route') == 'event_' %}active{% endif %}">Évènements</a></li>
+        <li class="nav-item"><a href="{{ path('projects_') }}" class="nav-link {% if app.request.get('_route') == 'projects_' %}active{% endif %}">Projets</a></li>
+        <li class="nav-item"><a href="{{ path('questions_') }}" class="nav-link {% if app.request.get('_route') == 'questions_' %}active{% endif %}">FAQs</a></li>
+        <li class="nav-item"><a href="{{ path('who_') }}" class="nav-link {% if app.request.get('_route') == 'who_' %}active{% endif %}">Qui sommes-nous ?</a></li>
     </ul>
 </header>
 
