@@ -12,15 +12,16 @@
               crossorigin="anonymous">
         <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
     {% endblock %}
-
     {% block javascripts %}
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-                crossorigin="anonymous"></script>
         <script
                 src="https://code.jquery.com/jquery-3.6.0.min.js"
                 integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-                crossorigin="anonymous"></script>
+                crossorigin="anonymous">
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+                crossorigin="anonymous">
+        </script>
     {% endblock %}
 </head>
 <body>
@@ -34,11 +35,21 @@
         <span class="fs-4">LH Connexion</span>
     </a>
     <ul class="nav nav-pills">
-        <li class="nav-item"><a href="{{ path('homepage_') }}" class="nav-link {% if app.request.get('_route') == 'homepage_' %}active{% endif %}" aria-current="page">Accueil</a></li>
-        <li class="nav-item"><a href="{{ path('event_') }}" class="nav-link {% if app.request.get('_route') == 'event_' %}active{% endif %}">Évènements</a></li>
-        <li class="nav-item"><a href="{{ path('projects_') }}" class="nav-link {% if app.request.get('_route') == 'projects_' %}active{% endif %}">Projets</a></li>
-        <li class="nav-item"><a href="{{ path('questions_') }}" class="nav-link {% if app.request.get('_route') == 'questions_' %}active{% endif %}">FAQs</a></li>
-        <li class="nav-item"><a href="{{ path('who_') }}" class="nav-link {% if app.request.get('_route') == 'who_' %}active{% endif %}">Qui sommes-nous ?</a></li>
+        <li class="nav-item"><a href="{{ path('homepage_') }}"
+                                class="nav-link {% if app.request.get('_route') == 'homepage_' %}active{% endif %}"
+                                aria-current="page">Accueil</a></li>
+        <li class="nav-item"><a href="{{ path('event_') }}"
+                                class="nav-link {% if app.request.get('_route') == 'event_' %}active{% endif %}">Évènements</a>
+        </li>
+        <li class="nav-item"><a href="{{ path('projects_') }}"
+                                class="nav-link {% if app.request.get('_route') == 'projects_' %}active{% endif %}">Projets</a>
+        </li>
+        <li class="nav-item"><a href="{{ path('questions_') }}"
+                                class="nav-link {% if app.request.get('_route') == 'questions_' %}active{% endif %}">FAQs</a>
+        </li>
+        <li class="nav-item"><a href="{{ path('who_') }}"
+                                class="nav-link {% if app.request.get('_route') == 'who_' %}active{% endif %}">Qui
+                sommes-nous ?</a></li>
     </ul>
 </header>
 
@@ -72,7 +83,5 @@
             </a></li>
     </ul>
 </footer>
-
-
 </body>
 </html>
