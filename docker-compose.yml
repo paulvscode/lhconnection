@@ -20,7 +20,7 @@ services:
     ports:
       - "8080:80"
     environment:
-      PMA_HOST: app
+      PMA_HOST: database
       PMA_USER: root
       PMA_PASSWORD: root
 
