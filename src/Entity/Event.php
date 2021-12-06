@@ -40,7 +40,8 @@ class Event
     private $CreatedAt;
 
     /**
-     * @ORM\ManyToMany(targetEntity=EventCategory::class, inversedBy="events", nullable=false)
+     * @ORM\ManyToMany(targetEntity=EventCategory::class, inversedBy="events")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $EventCategories;
 

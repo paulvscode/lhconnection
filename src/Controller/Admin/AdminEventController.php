@@ -29,12 +29,12 @@ class AdminEventController extends AbstractController
     }
 
     #[Route('/edit/{id}', name: 'edit')]
-    public function edit(Event $event): Response
+    public function edit(Event $id): Response
     {
-        $form = $this->createForm(EventType::class, $event);
+        $form = $this->createForm(EventType::class, $id);
 
         return $this->render('admin/event/edit.html.twig', [
-            'event' => $event,
+            'event' => $id,
             'form' => $form->createView()
         ]);
     }
