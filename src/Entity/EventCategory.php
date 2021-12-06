@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\EventCategoryRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -18,18 +20,40 @@ class EventCategory
     private $id;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $Icon;
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $Label;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\ManyToMany(targetEntity=Event::class, mappedBy="EventCategories")
      */
-    private $Icon;
+    private $events;
+
+    public function __construct()
+    {
+        $this->events = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getIcon(): ?string
+    {
+        return $this->Icon;
+    }
+
+    public function setIcon(?string $Icon): self
+    {
+        $this->Icon = $Icon;
+
+        return $this;
     }
 
     public function getLabel(): ?string
@@ -44,14 +68,29 @@ class EventCategory
         return $this;
     }
 
-    public function getIcon(): ?string
+    /**
+     * @return Collection|Event[]
+     */
+    public function getEvents(): Collection
     {
-        return $this->Icon;
+        return $this->events;
     }
 
-    public function setIcon(?string $Icon): self
+    public function addEvent(Event $event): self
     {
-        $this->Icon = $Icon;
+        if (!$this->events->contains($event)) {
+            $this->events[] = $event;
+            $event->addEventCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEvent(Event $event): self
+    {
+        if ($this->events->removeElement($event)) {
+            $event->removeEventCategory($this);
+        }
 
         return $this;
     }

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\EventRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -36,6 +38,17 @@ class Event
      * @ORM\Column(type="datetime_immutable")
      */
     private $CreatedAt;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=EventCategory::class, inversedBy="events", nullable=false)
+     */
+    private $EventCategories;
+
+    public function __construct()
+    {
+        $this->EventCategories = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
@@ -86,6 +99,30 @@ class Event
     public function setCreatedAt(\DateTimeImmutable $CreatedAt): self
     {
         $this->CreatedAt = $CreatedAt;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|EventCategory[]
+     */
+    public function getEventCategories(): Collection
+    {
+        return $this->EventCategories;
+    }
+
+    public function addEventCategory(EventCategory $eventCategory): self
+    {
+        if (!$this->EventCategories->contains($eventCategory)) {
+            $this->EventCategories[] = $eventCategory;
+        }
+
+        return $this;
+    }
+
+    public function removeEventCategory(EventCategory $eventCategory): self
+    {
+        $this->EventCategories->removeElement($eventCategory);
 
         return $this;
     }
