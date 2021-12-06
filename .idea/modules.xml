@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/lhconnexion.iml" filepath="$PROJECT_DIR$/.idea/lhconnexion.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/lhconnection.iml" filepath="$PROJECT_DIR$/.idea/lhconnection.iml" />
     </modules>
   </component>
 </project>

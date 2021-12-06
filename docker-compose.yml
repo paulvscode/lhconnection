@@ -22,6 +22,15 @@ services:
     ports:
       - "8080:80"
 
+  php_symfony:
+    build:
+      context: .docker/php_symfony
+    restart: always
+    volumes:
+      - ./:/var/www
+    ports:
+      - "8000:8000"
+
 volumes:
 ###> doctrine/doctrine-bundle ###
   db-data:

@@ -17,12 +17,6 @@ class EventType extends AbstractType
             ->add('Title')
             ->add('Content')
             ->add('Image')
-            ->add('EventCategories', EntityType::class, [
-                'class' => EventCategory::class,
-                'label' => 'label',
-                'multiple' => true,
-                'expanded' => true,
-            ])
         ;
     }
 
