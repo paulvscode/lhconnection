@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Se connecter{% endblock %}
+
+{% block body %}
+
+    {% if error %}
+        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    <div class="container w-25 mx-auto">
+        <form action="{{ path('login') }}", method="post">
+            <div class="mb-3">
+                <label for="Username" class="form-label">Adresse email</label>
+                <input type="email" class="form-control" id="Username" aria-describedby="emailHelp" value="{{ lastUsername }}">
+                <div id="emailHelp" class="form-text">Vos données ne sont pas divulguées.</div>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Mot de passe</label>
+                <input type="password" class="form-control" id="password">
+            </div>
+            <button type="submit" class="btn btn-primary">Se connecter</button>
+        </form>
+    </div>
+
+{% endblock %}
+
+
