@@ -48,13 +48,13 @@
                 sommes-nous ?</a></li>
 
         {% if is_granted('ROLE_ADMIN') %}
-            <li class="nav-item"><a href="{{ path('admin_event_index') }}"
-                                    class="nav-link text text-danger">Administration</a></li>
+            <li class="nav-item"><a href="{{ path('admin') }}"
+                                    class="nav-link text-success">Administration</a></li>
         {% endif %}
 
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             <li class="nav-item"><a href="{{ path('app_logout') }}"
-                                    class="nav-link text text-danger">Se déconnecter</a></li>
+                                    class="nav-link text-danger">Se déconnecter</a></li>
         {% else %}
             <li class="nav-item"><a href="{{ path('login') }}"
                                     class="nav-link text text-success">Se connecter</a></li>

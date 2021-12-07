@@ -9,7 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/admin', name: 'admin_event_')]
+#[Route('/admin_event', name: 'admin_event_')]
 class AdminEventController extends AbstractController
 {
 
