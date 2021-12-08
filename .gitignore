@@ -20,4 +20,4 @@
 ###< phpunit/phpunit ###
 
 ### db ###
-/db/data/
+.docker/db/data/

@@ -40,19 +40,13 @@ class Project
     private $createdAt;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Project::class, inversedBy="projects")
+     * @ORM\ManyToMany(targetEntity=ProjectCategory::class, inversedBy="projects")
      */
-    private $ProjectCategory;
-
-    /**
-     * @ORM\ManyToMany(targetEntity=Project::class, mappedBy="ProjectCategory")
-     */
-    private $projects;
+    private $ProjectCategories;
 
     public function __construct()
     {
-        $this->ProjectCategory = new ArrayCollection();
-        $this->projects = new ArrayCollection();
+        $this->ProjectCategories = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -109,52 +103,25 @@ class Project
     }
 
     /**
-     * @return Collection|self[]
+     * @return Collection|ProjectCategory[]
      */
-    public function getProjectCategory(): Collection
+    public function getProjectCategories(): Collection
     {
-        return $this->ProjectCategory;
+        return $this->ProjectCategories;
     }
 
-    public function addProjectCategory(self $projectCategory): self
+    public function addProjectCategory(ProjectCategory $projectCategory): self
     {
-        if (!$this->ProjectCategory->contains($projectCategory)) {
-            $this->ProjectCategory[] = $projectCategory;
+        if (!$this->ProjectCategories->contains($projectCategory)) {
+            $this->ProjectCategories[] = $projectCategory;
         }
 
         return $this;
     }
 
-    public function removeProjectCategory(self $projectCategory): self
+    public function removeProjectCategory(ProjectCategory $projectCategory): self
     {
-        $this->ProjectCategory->removeElement($projectCategory);
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|self[]
-     */
-    public function getProjects(): Collection
-    {
-        return $this->projects;
-    }
-
-    public function addProject(self $project): self
-    {
-        if (!$this->projects->contains($project)) {
-            $this->projects[] = $project;
-            $project->addProjectCategory($this);
-        }
-
-        return $this;
-    }
-
-    public function removeProject(self $project): self
-    {
-        if ($this->projects->removeElement($project)) {
-            $project->removeProjectCategory($this);
-        }
+        $this->ProjectCategories->removeElement($projectCategory);
 
         return $this;
     }
