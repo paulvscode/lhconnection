@@ -40,19 +40,13 @@ class Article
     private $CreatedAt;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Article::class, inversedBy="articles")
+     * @ORM\ManyToMany(targetEntity=ArticleCategory::class, inversedBy="articles")
      */
     private $ArticleCategories;
-
-    /**
-     * @ORM\ManyToMany(targetEntity=Article::class, mappedBy="ArticleCategories")
-     */
-    private $articles;
 
     public function __construct()
     {
         $this->ArticleCategories = new ArrayCollection();
-        $this->articles = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -109,14 +103,14 @@ class Article
     }
 
     /**
-     * @return Collection|self[]
+     * @return Collection|ArticleCategory[]
      */
     public function getArticleCategories(): Collection
     {
         return $this->ArticleCategories;
     }
 
-    public function addArticleCategory(self $articleCategory): self
+    public function addArticleCategory(ArticleCategory $articleCategory): self
     {
         if (!$this->ArticleCategories->contains($articleCategory)) {
             $this->ArticleCategories[] = $articleCategory;
@@ -125,36 +119,9 @@ class Article
         return $this;
     }
 
-    public function removeArticleCategory(self $articleCategory): self
+    public function removeArticleCategory(ArticleCategory $articleCategory): self
     {
         $this->ArticleCategories->removeElement($articleCategory);
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|self[]
-     */
-    public function getArticles(): Collection
-    {
-        return $this->articles;
-    }
-
-    public function addArticle(self $article): self
-    {
-        if (!$this->articles->contains($article)) {
-            $this->articles[] = $article;
-            $article->addArticleCategory($this);
-        }
-
-        return $this;
-    }
-
-    public function removeArticle(self $article): self
-    {
-        if ($this->articles->removeElement($article)) {
-            $article->removeArticleCategory($this);
-        }
 
         return $this;
     }
