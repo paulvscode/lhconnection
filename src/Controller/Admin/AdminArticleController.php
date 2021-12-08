@@ -50,4 +50,26 @@ class AdminArticleController extends AbstractController
         ]);
     }
 
+    #[Route('/create', name: 'create')]
+    public function create(Request $request, ManagerRegistry $doctrine): Response
+    {
+        $entityManager = $doctrine->getManager();
+        $article = new Article();
+
+        $form = $this->createForm(ArticleType::class);
+        $form->handleRequest($request);
+
+        dd($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($article);
+            $entityManager->flush();
+            return $this->redirectToRoute('admin_article_index');
+        }
+
+        return $this->render('admin/article/create.html.twig', [
+            'article' => $article,
+            'form' => $form->createView()
+        ]);
+    }
 }
