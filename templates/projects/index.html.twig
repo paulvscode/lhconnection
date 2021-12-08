@@ -7,48 +7,17 @@
         <h2 class="p-4">La liste de nos projets en cours, à venir, etc</h2>
     </div>
     <div class="container d-flex px-4 my-4 flex-wrap justify-content-center">
-        <figure class="snip0015 m-2 shadow-lg">
-            <img src="{{ asset('assets/images/lehavre.jpg') }}" alt="sample38"/>
-            <figcaption>
-                <h2>Echange étudiants LH</h2>
-                <a href="#"></a>
-            </figcaption>
-        </figure>
-        <figure class="snip0015 m-2 shadow-lg">
-            <img src="{{ asset('assets/images/southampton.webp') }}" alt="sample39"/>
-            <figcaption>
-                <h2>Rencontre entre artistes</h2>
-                <a href="#"></a>
-            </figcaption>
-        </figure>
-        <figure class="snip0015 m-2 shadow-lg">
-            <img src="{{ asset('assets/images/tampa.webp') }}" alt="sample40"/>
-            <figcaption>
-                <h2>Skate contest</h2>
-                <a href="#"></a>
-            </figcaption>
-        </figure>
-        <figure class="snip0015 m-2 shadow-lg">
-            <img src="{{ asset('assets/images/tampa.webp') }}" alt="sample38"/>
-            <figcaption>
-                <h2>Fish meeting</h2>
-                <a href="#"></a>
-            </figcaption>
-        </figure>
-        <figure class="snip0015 m-2 shadow-lg">
-            <img src="{{ asset('assets/images/tampa.webp') }}" alt="sample39"/>
-            <figcaption>
-                <h2>etc etc etc</h2>
-                <a href="#"></a>
-            </figcaption>
-        </figure>
-        <figure class="snip0015 m-2 shadow-lg">
-            <img src="{{ asset('assets/images/lehavre.jpg') }}" alt="sample40"/>
-            <figcaption>
-                <h2>Et plus que ça</h2>
-                <a href="#"></a>
-            </figcaption>
-        </figure>
+
+        {% for project in projects %}
+            <figure class="snip0015 m-2 shadow-lg">
+                <img src="{{ asset('assets/images/lehavre.jpg') }}" alt="sample38"/>
+                <figcaption>
+                    <h2>{{ project.title }}</h2>
+                    <a href="#"></a>
+                </figcaption>
+            </figure>
+        {% endfor %}
+
     </div>
 {% endblock %}
 
