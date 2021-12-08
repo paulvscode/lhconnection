@@ -48,7 +48,7 @@
                 sommes-nous ?</a></li>
 
         {% if is_granted('ROLE_ADMIN') %}
-            <li class="nav-item"><a href="{{ path('admin') }}"
+            <li class="nav-item"><a href="{{ path('admin_index') }}"
                                     class="nav-link text-success">Administration</a></li>
         {% endif %}
 

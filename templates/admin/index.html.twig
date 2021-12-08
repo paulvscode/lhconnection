@@ -5,13 +5,10 @@
 {% block body %}
 
     <div class="container text-center pt-5 w-25 d-grid gap-3">
-
         <h2 class="border-bottom p-2">Administration</h2>
-
-        <button class="btn btn-primary">Évènements</button>
-        <button class="btn btn-primary">Projets</button>
-        <button class="btn btn-primary">Utilisateurs</button>
-
+        <a href="{{ path('admin_event_index') }}" class="btn btn-primary">Évènements</a>
+        <a href="{{ path('admin_project_index') }}" class="btn btn-primary">Projets</a>
+        <a class="btn btn-primary">Utilisateurs</a>
     </div>
 
 {% endblock %}

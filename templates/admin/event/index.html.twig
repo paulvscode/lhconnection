@@ -4,19 +4,19 @@
 
 {% block body %}
     <div class="container mt-4">
-        <h1>Gérer les Évènements </h1>
+        <h2 class="p-2">Gérer les Évènements </h2>
 
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>Title</th>
+                <th>Titre</th>
                 <th>Actions</th>
             </tr>
             </thead>
             <tbody>
             {% for event in events %}
                 <tr>
-                    <td>{{ event.title }}</td>
+                    <td class="align-middle">{{ event.title }}</td>
                     <td>
                         <a href="{{ path('admin_event_edit', {id: event.id}) }}"
                            class="btn btn-secondary">Editer</a>

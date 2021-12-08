@@ -2,15 +2,19 @@
 
 {% block body %}
     <div class="container mt-4">
-        <h2>Editer l'évènement</h2>
+        <h2 class="p-2">Editer l'évènement</h2>
         {{ form_start(form) }}
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-6">
                 {{ form_row(form.Title) }}
             </div>
         </div>
-            {{ form_widget(form) }}
-        <button class="btn btn-primary">Editer</button>
+        <div class="row">
+            <div class="col-md-6">
+                {{ form_widget(form) }}
+            </div>
+        </div>
+        <button class="btn btn-primary">Modifier</button>
         {{ form_end(form) }}
     </div>
 {% endblock %}
