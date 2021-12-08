@@ -12,8 +12,15 @@
         </div>
         <div class="overflow-hidden" style="max-height: 30vh;">
             <div class="container px-5">
-                <img src="{{ asset('assets/images/lehavre.jpg') }}" class="img-fluid border rounded-3 shadow-lg mb-4"
-                     alt="Example image" loading="lazy" width="700" height="500">
+                {% for article in articles %}
+                    <div class="card article-card-hover" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="bi bi-card-text"></i> {{ article.title }}</h5>
+                            <p class="card-text">{{ article.content|slice(0, 120) }}...</p>
+                            <a href="#" class="btn btn-primary">Voir l'article</a>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </div>

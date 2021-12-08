@@ -2,6 +2,11 @@ html, body {
     height: 100%;
 }
 
+.article-card-hover:hover {
+    background-color: #edf4fd;
+    transition: .2s ease-in-out;
+}
+
 /*custom cards projects css*/
 
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,200,300,800);
