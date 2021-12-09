@@ -20,6 +20,8 @@
                     <td>
                         <a href="{{ path('admin_event_edit', {id: event.id}) }}"
                            class="btn btn-secondary">Editer</a>
+                        <a href="{{ path('admin_event_delete', {id: event.id}) }}"
+                           class="btn btn-danger">Supprimer</a>
                     </td>
                 </tr>
             {% endfor %}

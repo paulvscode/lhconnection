@@ -11,9 +11,9 @@
             </div>
         </div>
         <div class="overflow-hidden" style="max-height: 30vh;">
-            <div class="container px-5">
+            <div class="d-flex container px-5">
                 {% for article in articles %}
-                    <div class="card article-card-hover" style="width: 18rem;">
+                    <div class="m-2 card article-card-hover" style="width: 18rem;">
                         <div class="card-body">
                             <h5 class="card-title"><i class="bi bi-card-text"></i> {{ article.title }}</h5>
                             <p class="card-text">{{ article.content|slice(0, 120) }}...</p>

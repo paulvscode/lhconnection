@@ -3,7 +3,6 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Event;
-use App\Form\ArticleType;
 use App\Form\EventType;
 use App\Repository\EventRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -70,5 +69,15 @@ class AdminEventController extends AbstractController
             'event' => $event,
             'form' => $form->createView()
         ]);
+    }
+
+    #[Route('/delete/{id}', name: 'delete')]
+    public function delete(Event $event, ManagerRegistry $doctrine): Response
+    {
+        $entityManager = $doctrine->getManager();
+        $entityManager->remove($event);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('admin_event_index');
     }
 }

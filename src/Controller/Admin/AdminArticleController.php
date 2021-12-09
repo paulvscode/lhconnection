@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/article', name: 'admin_article_')]
+#[Route('/admin_article', name: 'admin_article_')]
 class AdminArticleController extends AbstractController
 {
 
@@ -69,5 +69,15 @@ class AdminArticleController extends AbstractController
             'article' => $article,
             'form' => $form->createView()
         ]);
+    }
+
+    #[Route('/delete/{id}', name: 'delete')]
+    public function delete(Article $article, ManagerRegistry $doctrine): Response
+    {
+        $entityManager = $doctrine->getManager();
+        $entityManager->remove($article);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('admin_article_index');
     }
 }

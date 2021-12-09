@@ -2,9 +2,7 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Event;
 use App\Entity\Project;
-use App\Form\EventType;
 use App\Form\ProjectType;
 use App\Repository\ProjectRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -71,5 +69,15 @@ class AdminProjectController extends AbstractController
             'project' => $project,
             'form' => $form->createView()
         ]);
+    }
+
+    #[Route('/delete/{id}', name: 'delete')]
+    public function delete(Project $project, ManagerRegistry $doctrine): Response
+    {
+        $entityManager = $doctrine->getManager();
+        $entityManager->remove($project);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('admin_project_index');
     }
 }
