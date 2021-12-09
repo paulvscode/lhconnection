@@ -21,3 +21,6 @@
 
 ### db ###
 .docker/db/data/
+
+#idea
+.idea

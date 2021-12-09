@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Event;
+use App\Form\ArticleType;
 use App\Form\EventType;
 use App\Repository\EventRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -50,4 +51,24 @@ class AdminEventController extends AbstractController
         ]);
     }
 
+    #[Route('/create', name: 'create')]
+    public function create(Request $request, ManagerRegistry $doctrine): Response
+    {
+        $entityManager = $doctrine->getManager();
+        $event = new Event();
+
+        $form = $this->createForm(EventType::class, $event);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($event);
+            $entityManager->flush();
+            return $this->redirectToRoute('admin_event_index');
+        }
+
+        return $this->render('admin/event/create.html.twig', [
+            'event' => $event,
+            'form' => $form->createView()
+        ]);
+    }
 }

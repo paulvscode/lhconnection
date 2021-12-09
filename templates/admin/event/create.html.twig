@@ -1,19 +1,19 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Nouvel évènement{% endblock %}
+
 {% block body %}
     <div class="container mt-4">
-        <h2 class="p-2">Editer le projet</h2>
+        <h2 class="p-2">Ajouter un évènement</h2>
         {{ form_start(form) }}
         <div class="row">
             <div class="col-md-6">
                 {{ form_widget(form) }}
             </div>
         </div>
-        <a class="btn btn-primary" href="{{ path('admin_project_index') }}">Retour</a>
-        <button class="btn btn-warning">Modifier</button>
+        <a class="btn btn-primary" href="{{ path('admin_article_index') }}">Retour</a>
+        <button class="btn btn-primary">Ajouter</button>
         {{ form_end(form) }}
     </div>
 {% endblock %}
-
-
 

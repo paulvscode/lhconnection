@@ -6,16 +6,11 @@
         {{ form_start(form) }}
         <div class="row">
             <div class="col-md-6">
-                {{ form_row(form.Title) }}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
                 {{ form_widget(form) }}
             </div>
         </div>
         <a class="btn btn-primary" href="{{ path('admin_article_index') }}">Retour</a>
-        <button class="btn btn-primary">Modifier</button>
+        <button class="btn btn-warning">Modifier</button>
         {{ form_end(form) }}
     </div>
 {% endblock %}

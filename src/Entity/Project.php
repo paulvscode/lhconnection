@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=ProjectRepository::class)
+ * @ORM\HasLifecycleCallbacks()
  */
 class Project
 {
@@ -43,6 +44,17 @@ class Project
      * @ORM\ManyToMany(targetEntity=ProjectCategory::class, inversedBy="projects")
      */
     private $ProjectCategories;
+
+    /**
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
+     */
+    public function updatedTimestamps(): void
+    {
+        if ($this->getCreatedAt() === null) {
+            $this->setCreatedAt(new \DateTimeImmutable('now'));
+        }
+    }
 
     public function __construct()
     {

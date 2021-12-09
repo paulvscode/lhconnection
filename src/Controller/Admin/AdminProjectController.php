@@ -2,7 +2,9 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Event;
 use App\Entity\Project;
+use App\Form\EventType;
 use App\Form\ProjectType;
 use App\Repository\ProjectRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -50,4 +52,24 @@ class AdminProjectController extends AbstractController
         ]);
     }
 
+    #[Route('/create', name: 'create')]
+    public function create(Request $request, ManagerRegistry $doctrine): Response
+    {
+        $entityManager = $doctrine->getManager();
+        $project = new Project();
+
+        $form = $this->createForm(ProjectType::class, $project);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($project);
+            $entityManager->flush();
+            return $this->redirectToRoute('admin_project_index');
+        }
+
+        return $this->render('admin/project/create.html.twig', [
+            'project' => $project,
+            'form' => $form->createView()
+        ]);
+    }
 }
