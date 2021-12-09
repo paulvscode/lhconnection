@@ -59,9 +59,10 @@ class AdminArticleController extends AbstractController
         $form = $this->createForm(ArticleType::class);
         $form->handleRequest($request);
 
-        dd($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
+
+            dd($request);
+
             $entityManager->persist($article);
             $entityManager->flush();
             return $this->redirectToRoute('admin_article_index');
