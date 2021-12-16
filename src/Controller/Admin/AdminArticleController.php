@@ -7,9 +7,11 @@ use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 #[Route('/admin_article', name: 'admin_article_')]
 class AdminArticleController extends AbstractController
@@ -51,7 +53,7 @@ class AdminArticleController extends AbstractController
     }
 
     #[Route('/create', name: 'create')]
-    public function create(Request $request, ManagerRegistry $doctrine): Response
+    public function create(Request $request, ManagerRegistry $doctrine, SluggerInterface $slugger): Response
     {
         $entityManager = $doctrine->getManager();
         $article = new Article();
@@ -60,6 +62,27 @@ class AdminArticleController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $imageFile = $form->get('Image')->getData();
+
+            if ($imageFile) {
+                $originalFileName = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFileName = $slugger->slug($originalFileName);
+                $newFileName = $safeFileName.'-'.uniqid().'.'.$imageFile->guessExtension();
+
+                try {
+                    $imageFile->move(
+                        $this->getParameter('image_directory'),
+                        $newFileName
+                    );
+                } catch (FileException $e) {
+//                    Handle exception here
+                }
+
+                $article->setImage($newFileName);
+
+            }
+
             $entityManager->persist($article);
             $entityManager->flush();
             return $this->redirectToRoute('admin_article_index');
