@@ -18,19 +18,24 @@
                 integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
                 crossorigin="anonymous">
         </script>
+        <script
+                src="https://code.jquery.com/jquery-3.6.0.js"
+                integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+                crossorigin="anonymous">
+        </script>
     {% endblock %}
 </head>
 <body>
 
 {# header #}
 <header class="container d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+    <a href="/"
+       class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none responsive-href-nav">
         <svg class="bi me-2" width="40" height="32">
-            <use xlink:href="#bootstrap"></use>
         </svg>
-        <span class="fs-4">LH Connections</span>
+        <span class="fs-4 responsive-lh-connection-main-title">LH Connections</span>
     </a>
-    <ul class="nav nav-pills">
+    <ul class="nav nav-pills responsive-navbar-main">
         <li class="nav-item"><a href="{{ path('homepage_') }}"
                                 class="nav-link {% if app.request.get('_route') == 'homepage_' %}active{% endif %}"
                                 aria-current="page">Accueil</a></li>
@@ -59,9 +64,56 @@
             <li class="nav-item"><a href="{{ path('login') }}"
                                     class="nav-link text text-success">Se connecter</a></li>
         {% endif %}
-
-
     </ul>
+
+    <div class="container d-flex flex-wrap justify-content-center responsive-hamburger-menu">
+        <span class="fs-4 lh-connection-main-title-responsive p-2">LH Connections</span>
+        <i class="bi bi-list p-2" id="hamburger-mobile-menu"></i>
+    </div>
+
+    <div class="responsive-displayed-hamburger-menu">
+        <ul class="nav nav-pills responsive-displayed-hamburger-nav">
+            <li class="nav-item text-center"><a href="{{ path('homepage_') }}"
+                                    class="nav-link {% if app.request.get('_route') == 'homepage_' %}active{% endif %}"
+                                    aria-current="page">Accueil</a></li>
+            <li class="nav-item text-center"><a href="{{ path('event_') }}"
+                                    class="nav-link {% if app.request.get('_route') == 'event_' %}active{% endif %}">Évènements</a>
+            </li>
+            <li class="nav-item text-center"><a href="{{ path('projects_') }}"
+                                    class="nav-link {% if app.request.get('_route') == 'projects_' %}active{% endif %}">Projets</a>
+            </li>
+            <li class="nav-item text-center"><a href="{{ path('questions_') }}"
+                                    class="nav-link {% if app.request.get('_route') == 'questions_' %}active{% endif %}">FAQs</a>
+            </li>
+            <li class="nav-item text-center"><a href="{{ path('who_') }}"
+                                    class="nav-link {% if app.request.get('_route') == 'who_' %}active{% endif %}">Qui
+                    sommes-nous ?</a></li>
+
+            {% if is_granted('ROLE_ADMIN') %}
+                <li class="nav-item text-center"><a href="{{ path('admin_index') }}"
+                                        class="nav-link text-success">Administration</a></li>
+            {% endif %}
+
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <li class="nav-item text-center"><a href="{{ path('app_logout') }}"
+                                        class="nav-link text-danger">Se déconnecter</a></li>
+            {% else %}
+                <li class="nav-item text-center"><a href="{{ path('login') }}"
+                                        class="nav-link text text-success">Se connecter</a></li>
+            {% endif %}
+        </ul>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#hamburger-mobile-menu').click(function(e) {
+                e.preventDefault()
+                $('.responsive-displayed-hamburger-menu').toggle();
+            });
+        });
+    </script>
+
+
 </header>
 
 {% block body %}{% endblock %}
