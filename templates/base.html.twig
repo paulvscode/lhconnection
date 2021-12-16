@@ -29,14 +29,14 @@
 <body>
 
 {# header #}
-<header class="container d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+<header class="container d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom responsive-header">
     <a href="/"
        class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
         <svg class="bi me-2 responsive-svg-navbar" width="40" height="32">
         </svg>
         <span class="fs-4">LH Connections</span>
     </a>
-    <ul class="nav nav-pills">
+    <ul class="nav nav-pills responsive-ul-navbar">
         <li class="nav-item"><a href="{{ path('homepage_') }}"
                                 class="nav-link {% if app.request.get('_route') == 'homepage_' %}active{% endif %}"
                                 aria-current="page">Accueil</a></li>
