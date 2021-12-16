@@ -67,54 +67,6 @@
         {% endif %}
     </ul>
 
-{#    <div class="container d-flex flex-wrap justify-content-center responsive-hamburger-menu">#}
-{#        <span class="fs-4 lh-connection-main-title-responsive p-2">LH Connections</span>#}
-{#        <i class="bi bi-list p-2" id="hamburger-mobile-menu"></i>#}
-{#    </div>#}
-
-{#    <div class="responsive-displayed-hamburger-menu">#}
-{#        <ul class="nav nav-pills responsive-displayed-hamburger-nav">#}
-{#            <li class="nav-item text-center"><a href="{{ path('homepage_') }}"#}
-{#                                    class="nav-link {% if app.request.get('_route') == 'homepage_' %}active{% endif %}"#}
-{#                                    aria-current="page">Accueil</a></li>#}
-{#            <li class="nav-item text-center"><a href="{{ path('event_') }}"#}
-{#                                    class="nav-link {% if app.request.get('_route') == 'event_' %}active{% endif %}">Évènements</a>#}
-{#            </li>#}
-{#            <li class="nav-item text-center"><a href="{{ path('projects_') }}"#}
-{#                                    class="nav-link {% if app.request.get('_route') == 'projects_' %}active{% endif %}">Projets</a>#}
-{#            </li>#}
-{#            <li class="nav-item text-center"><a href="{{ path('questions_') }}"#}
-{#                                    class="nav-link {% if app.request.get('_route') == 'questions_' %}active{% endif %}">FAQs</a>#}
-{#            </li>#}
-{#            <li class="nav-item text-center"><a href="{{ path('who_') }}"#}
-{#                                    class="nav-link {% if app.request.get('_route') == 'who_' %}active{% endif %}">Qui#}
-{#                    sommes-nous ?</a></li>#}
-
-{#            {% if is_granted('ROLE_ADMIN') %}#}
-{#                <li class="nav-item text-center"><a href="{{ path('admin_index') }}"#}
-{#                                        class="nav-link text-success">Administration</a></li>#}
-{#            {% endif %}#}
-
-{#            {% if is_granted('IS_AUTHENTICATED_FULLY') %}#}
-{#                <li class="nav-item text-center"><a href="{{ path('app_logout') }}"#}
-{#                                        class="nav-link text-danger">Se déconnecter</a></li>#}
-{#            {% else %}#}
-{#                <li class="nav-item text-center"><a href="{{ path('login') }}"#}
-{#                                        class="nav-link text text-success">Se connecter</a></li>#}
-{#            {% endif %}#}
-{#        </ul>#}
-{#    </div>#}
-
-{#    <script>#}
-{#        $(document).ready(function () {#}
-{#            $('#hamburger-mobile-menu').click(function(e) {#}
-{#                e.preventDefault()#}
-{#                $('.responsive-displayed-hamburger-menu').toggle();#}
-{#            });#}
-{#        });#}
-{#    </script>#}
-
-
 </header>
 
 {% block body %}{% endblock %}
