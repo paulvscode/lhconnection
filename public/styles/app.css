@@ -2,6 +2,14 @@ html, body {
     height: 100%;
 }
 
+body {
+    min-height: 100vh;
+}
+
+footer {
+    margin-top: 10%;
+}
+
 .article-card-hover:hover {
     background-color: #edf4fd;
     transition: .2s ease-in-out;
@@ -217,7 +225,6 @@ figure.snip0015:hover figcaption::before {
 }
 
 /*ADMINISTRATION PAGE*/
-
 @media (max-width: 428px) {
     .responsive-administration-page {
         padding-top: 0 !important;
@@ -225,3 +232,20 @@ figure.snip0015:hover figcaption::before {
         width: 90% !important;
     }
 }
+
+/*WHO ARE WE*/
+@media (max-width: 428px) {
+    .responsive-who-container {
+        padding-top: 0 !important;
+        width: 90% !important;
+    }
+}
+
+/*FAQ*/
+@media (max-width: 428px) {
+    .responsive-faq-container {
+        padding-top: 0 !important;
+        width: 90% !important;
+    }
+}
+
