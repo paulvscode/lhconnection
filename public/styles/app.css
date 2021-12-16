@@ -138,6 +138,9 @@ figure.snip0015:hover figcaption::before {
     .responsive-ul-navbar {
         flex-direction: column;
     }
+    footer {
+        position: static !important;
+    }
 }
 
 @media (max-width: 600px) and (min-width: 400px)  {...}
