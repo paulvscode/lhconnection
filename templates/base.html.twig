@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"/>
     <title>{% block title %}LH Connections{% endblock %}</title>
     <link rel="icon"
           href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
@@ -31,12 +31,12 @@
 {# header #}
 <header class="container d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom responsive-header">
     <a href="/"
-       class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+       class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none responsive-wide-nav">
         <svg class="bi me-2 responsive-svg-navbar" width="40" height="32">
         </svg>
         <span class="fs-4">LH Connections</span>
     </a>
-    <ul class="nav nav-pills responsive-ul-navbar">
+    <ul class="nav nav-pills responsive-ul-navbar responsive-wide-nav-ul">
         <li class="nav-item"><a href="{{ path('homepage_') }}"
                                 class="nav-link {% if app.request.get('_route') == 'homepage_' %}active{% endif %}"
                                 aria-current="page">Accueil</a></li>
@@ -66,6 +66,52 @@
                                     class="nav-link text text-success">Se connecter</a></li>
         {% endif %}
     </ul>
+
+    {# small nav for responsive #}
+
+    <div class="d-flex justify-content-center align-content-center">
+        <span class="fs-4 m-1">LH Connections</span>
+        <i class="bi bi-list m-1 responsive-hamburger"></i>
+    </div>
+
+    <ul class="nav nav-pills responsive-ul-navbar responsive-small-nav-ul">
+        <li class="nav-item"><a href="{{ path('homepage_') }}"
+                                class="nav-link {% if app.request.get('_route') == 'homepage_' %}active{% endif %}"
+                                aria-current="page">Accueil</a></li>
+        <li class="nav-item"><a href="{{ path('event_') }}"
+                                class="nav-link {% if app.request.get('_route') == 'event_' %}active{% endif %}">Évènements</a>
+        </li>
+        <li class="nav-item"><a href="{{ path('projects_') }}"
+                                class="nav-link {% if app.request.get('_route') == 'projects_' %}active{% endif %}">Projets</a>
+        </li>
+        <li class="nav-item"><a href="{{ path('questions_') }}"
+                                class="nav-link {% if app.request.get('_route') == 'questions_' %}active{% endif %}">FAQs</a>
+        </li>
+        <li class="nav-item"><a href="{{ path('who_') }}"
+                                class="nav-link {% if app.request.get('_route') == 'who_' %}active{% endif %}">Qui
+                sommes-nous ?</a></li>
+
+        {% if is_granted('ROLE_ADMIN') %}
+            <li class="nav-item"><a href="{{ path('admin_index') }}"
+                                    class="nav-link text-success">Administration</a></li>
+        {% endif %}
+
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <li class="nav-item"><a href="{{ path('app_logout') }}"
+                                    class="nav-link text-danger">Se déconnecter</a></li>
+        {% else %}
+            <li class="nav-item"><a href="{{ path('login') }}"
+                                    class="nav-link text text-success">Se connecter</a></li>
+        {% endif %}
+    </ul>
+
+    <script>
+        $(document).ready(function () {
+            $('.responsive-hamburger').on('click', function () {
+                $('.responsive-small-nav-ul').toggle();
+            })
+        });
+    </script>
 
 </header>
 

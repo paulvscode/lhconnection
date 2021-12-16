@@ -126,7 +126,13 @@ figure.snip0015:hover figcaption::before {
     transition-delay: 0s;
 }
 
-/*media queries*/
+/*media queries and responsive*/
+
+.bi-list {
+    font-size: 1.5em;
+    display: none;
+}
+
 /*less or equal to 428px*/
 @media (max-width: 428px) {
     .responsive-svg-navbar {
@@ -141,7 +147,24 @@ figure.snip0015:hover figcaption::before {
     footer {
         position: static !important;
     }
+
+    /*hiding regular nav on small screens*/
+    .responsive-wide-nav {
+        display: none !important;
+    }
+
+    .responsive-wide-nav-ul {
+        display: none !important;
+    }
+
+    /*initial small nav display*/
+    .responsive-small-nav-ul {
+        display: none;
+    }
+
+    .bi-list {
+        font-size: 1.5em;
+        display: inline-block;
+        cursor: pointer;
+    }
 }
-
-@media (max-width: 600px) and (min-width: 400px)  {...}
-
