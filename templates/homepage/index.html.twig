@@ -1,15 +1,16 @@
 {% extends 'base.html.twig' %}
 {% block title %}Accueil{% endblock %}
 {% block body %}
-    <div class="px-4 pt-5 my-5 text-center">
+    <div class="px-4 pt-5 my-5 text-center responsive-homepage-introduction">
         <h1 class="display-4 fw-bold">Notre belle introduction</h1>
         <div class="col-lg-6 mx-auto">
             <p class="lead mb-4">Du blabla pour qui nous sommes, ce que nous faisons, etc etc on a de la place.</p>
-            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5 responsive-homepage-buttons">
                 <button type="button" class="btn btn-primary btn-lg px-4 me-sm-3">Un lien vers quelque chose</button>
                 <button type="button" class="btn btn-outline-secondary btn-lg px-4">Quelque chose d'autre ?</button>
             </div>
         </div>
+        <p class="lead">Derniers articles : </p>
         <div class="overflow-hidden">
             <div class="d-flex container px-5 justify-content-center responsive-container-card-articles">
                 {% for article in articles %}

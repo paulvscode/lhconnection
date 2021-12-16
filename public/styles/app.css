@@ -140,12 +140,15 @@ figure.snip0015:hover figcaption::before {
     .responsive-svg-navbar {
         display: none;
     }
+
     .responsive-header {
         flex-direction: column;
     }
+
     .responsive-ul-navbar {
         flex-direction: column;
     }
+
     footer {
         position: static !important;
     }
@@ -175,22 +178,50 @@ figure.snip0015:hover figcaption::before {
     .responsive-title-small {
         display: none !important;
     }
+
     .responsive-hamburger {
         display: none !important;
     }
+
     .responsive-small-nav-ul {
         display: none !important;
     }
 }
 
 /*HOMEPAGE*/
-
-
-
 @media (max-width: 428px) {
     .responsive-container-card-articles {
         padding-right: 0 !important;
         padding-left: 0 !important;
         max-height: 100% !important;
+    }
+}
+
+@media (max-width: 428px) {
+    .responsive-homepage-introduction {
+        padding-top: 0 !important;
+        margin-top: 0 !important;
+    }
+
+    .responsive-homepage-buttons {
+        margin-bottom: 1rem !important;
+    }
+}
+
+
+/*LOGIN*/
+@media (max-width: 428px) {
+    .responsive-container-login {
+        width: 90% !important;
+    }
+}
+
+/*ADMINISTRATION PAGE*/
+
+@media (max-width: 428px) {
+    .responsive-administration-page {
+        padding-top: 0 !important;
+        gap: .5rem;
+        width: 90% !important;
     }
 }
