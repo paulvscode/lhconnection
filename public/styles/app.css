@@ -128,4 +128,8 @@ figure.snip0015:hover figcaption::before {
 
 /*media queries*/
 
-
+@media (min-width: 428px) {
+    .responsive-svg-navbar {
+        display: none;
+    }
+}
