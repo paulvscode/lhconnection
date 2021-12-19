@@ -206,7 +206,7 @@ figure.snip0015:hover figcaption::before {
         padding-right: 0 !important;
         padding-left: 0 !important;
         max-height: 100% !important;
-        flex-direction: column;
+        flex-direction: column !important;
     }
 }
 
