@@ -7,9 +7,11 @@ use App\Form\EventType;
 use App\Repository\EventRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 #[Route('/admin_event', name: 'admin_event_')]
 class AdminEventController extends AbstractController
@@ -40,6 +42,7 @@ class AdminEventController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             $entityManager->flush();
             return $this->redirectToRoute('admin_event_index');
         }
@@ -51,7 +54,7 @@ class AdminEventController extends AbstractController
     }
 
     #[Route('/create', name: 'create')]
-    public function create(Request $request, ManagerRegistry $doctrine): Response
+    public function create(Request $request, ManagerRegistry $doctrine, SluggerInterface $slugger): Response
     {
         $entityManager = $doctrine->getManager();
         $event = new Event();
@@ -60,6 +63,26 @@ class AdminEventController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $imageFile = $form->get('Image')->getData();
+
+            if ($imageFile) {
+                $originalFileName = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFileName = $slugger->slug($originalFileName);
+                $newFileName = $safeFileName . '-' . uniqid() . '.' . $imageFile->guessExtension();
+
+                try {
+                    $imageFile->move(
+                        $this->getParameter('image_directory'),
+                        $newFileName
+                    );
+                } catch (FileException $e) {
+//                    Handle exception here
+                }
+
+                $event->setImage($newFileName);
+
+            }
             $entityManager->persist($event);
             $entityManager->flush();
             return $this->redirectToRoute('admin_event_index');
@@ -69,9 +92,11 @@ class AdminEventController extends AbstractController
             'event' => $event,
             'form' => $form->createView()
         ]);
+
     }
 
-    #[Route('/delete/{id}', name: 'delete')]
+    #[
+        Route('/delete/{id}', name: 'delete')]
     public function delete(Event $event, ManagerRegistry $doctrine): Response
     {
         $entityManager = $doctrine->getManager();

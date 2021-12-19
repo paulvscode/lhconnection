@@ -15,6 +15,10 @@ footer {
     transition: .2s ease-in-out;
 }
 
+.card-img-top {
+    min-width: 100%;
+}
+
 /*custom cards projects css*/
 
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,200,300,800);
@@ -202,6 +206,7 @@ figure.snip0015:hover figcaption::before {
         padding-right: 0 !important;
         padding-left: 0 !important;
         max-height: 100% !important;
+        flex-direction: column;
     }
 }
 
