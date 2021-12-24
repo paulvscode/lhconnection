@@ -6,10 +6,15 @@ use App\Repository\ArticleRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\PrePersist;
+use Monolog\DateTimeImmutable;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=ArticleRepository::class)
  * @ORM\HasLifecycleCallbacks()
+ * @Vich\Uploadable
  */
 class Article
 {
@@ -36,6 +41,12 @@ class Article
     private $Image;
 
     /**
+     * @Vich\UploadableField(mapping="article_image", fileNameProperty="image")
+     * @var File
+     */
+    private $imageFile;
+
+    /**
      * @ORM\Column(type="datetime_immutable")
      */
     private $CreatedAt;
@@ -51,14 +62,11 @@ class Article
     }
 
     /**
-     * @ORM\PrePersist
-     * @ORM\PreUpdate
+     *  @PrePersist
      */
-    public function updatedTimestamps(): void
+    public function setCreatedAtOnPrePersist()
     {
-        if ($this->getCreatedAt() === null) {
-            $this->setCreatedAt(new \DateTimeImmutable('now'));
-        }
+        $this->CreatedAt = new DateTimeImmutable('now');
     }
 
     public function getId(): ?int
@@ -136,5 +144,23 @@ class Article
         $this->ArticleCategories->removeElement($articleCategory);
 
         return $this;
+    }
+
+    public function setImageFile(File $image = null)
+    {
+        $this->imageFile = $image;
+
+        // VERY IMPORTANT:
+        // It is required that at least one field changes if you are using Doctrine,
+        // otherwise the event listeners won't be called and the file is lost
+        if ($image) {
+            // if 'updatedAt' is not defined in your entity, use another property
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    public function getImageFile()
+    {
+        return $this->imageFile;
     }
 }

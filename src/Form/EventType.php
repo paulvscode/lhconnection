@@ -18,21 +18,7 @@ class EventType extends AbstractType
         $builder
             ->add('Title')
             ->add('Content')
-            ->add('Image', FileType::class, [
-                'label' => 'Image (jpg, png)',
-                'mapped' => false,
-                'required' => false,
-                'constraints' => [
-                    new File([
-                        'maxSize' => '1024k',
-                        'mimeTypes' => [
-                            'image/jpeg',
-                            'image/png',
-                        ],
-                        'mimeTypesMessage' => 'Veuillez importer une image dans le bon format.',
-                    ])
-                ],
-            ])
+            ->add('Image')
             ->add('EventCategories', EntityType::class, [
                 'class' => EventCategory::class,
                 'choice_label' => 'label',

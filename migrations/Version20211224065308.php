@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20211209102548 extends AbstractMigration
+final class Version20211224065308 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -26,6 +26,7 @@ final class Version20211209102548 extends AbstractMigration
         $this->addSql('CREATE SEQUENCE event_category_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE SEQUENCE project_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE SEQUENCE project_category_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
+        $this->addSql('CREATE SEQUENCE test_vich_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE SEQUENCE "user_id_seq" INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE TABLE article (id INT NOT NULL, title VARCHAR(255) NOT NULL, content TEXT DEFAULT NULL, image VARCHAR(255) DEFAULT NULL, created_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, PRIMARY KEY(id))');
         $this->addSql('COMMENT ON COLUMN article.created_at IS \'(DC2Type:datetime_immutable)\'');
@@ -45,6 +46,7 @@ final class Version20211209102548 extends AbstractMigration
         $this->addSql('CREATE INDEX IDX_86875173166D1F9C ON project_project_category (project_id)');
         $this->addSql('CREATE INDEX IDX_86875173DA896A19 ON project_project_category (project_category_id)');
         $this->addSql('CREATE TABLE project_category (id INT NOT NULL, label VARCHAR(255) NOT NULL, icon VARCHAR(255) DEFAULT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE test_vich (id INT NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE TABLE "user" (id INT NOT NULL, email VARCHAR(180) NOT NULL, roles JSON NOT NULL, password VARCHAR(255) NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_8D93D649E7927C74 ON "user" (email)');
         $this->addSql('ALTER TABLE article_article_category ADD CONSTRAINT FK_44F096D97294869C FOREIGN KEY (article_id) REFERENCES article (id) ON DELETE CASCADE NOT DEFERRABLE INITIALLY IMMEDIATE');
@@ -71,6 +73,7 @@ final class Version20211209102548 extends AbstractMigration
         $this->addSql('DROP SEQUENCE event_category_id_seq CASCADE');
         $this->addSql('DROP SEQUENCE project_id_seq CASCADE');
         $this->addSql('DROP SEQUENCE project_category_id_seq CASCADE');
+        $this->addSql('DROP SEQUENCE test_vich_id_seq CASCADE');
         $this->addSql('DROP SEQUENCE "user_id_seq" CASCADE');
         $this->addSql('DROP TABLE article');
         $this->addSql('DROP TABLE article_article_category');
@@ -81,6 +84,7 @@ final class Version20211209102548 extends AbstractMigration
         $this->addSql('DROP TABLE project');
         $this->addSql('DROP TABLE project_project_category');
         $this->addSql('DROP TABLE project_category');
+        $this->addSql('DROP TABLE test_vich');
         $this->addSql('DROP TABLE "user"');
     }
 }

@@ -9,6 +9,7 @@ use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker;
+use PhpParser\Node\Expr\Array_;
 
 class AppFixtures extends Fixture
 {

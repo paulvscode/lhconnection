@@ -54,7 +54,7 @@ class AdminEventController extends AbstractController
     }
 
     #[Route('/create', name: 'create')]
-    public function create(Request $request, ManagerRegistry $doctrine, SluggerInterface $slugger): Response
+    public function create(Request $request, ManagerRegistry $doctrine): Response
     {
         $entityManager = $doctrine->getManager();
         $event = new Event();
@@ -64,25 +64,6 @@ class AdminEventController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $imageFile = $form->get('Image')->getData();
-
-            if ($imageFile) {
-                $originalFileName = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
-                $safeFileName = $slugger->slug($originalFileName);
-                $newFileName = $safeFileName . '-' . uniqid() . '.' . $imageFile->guessExtension();
-
-                try {
-                    $imageFile->move(
-                        $this->getParameter('image_directory'),
-                        $newFileName
-                    );
-                } catch (FileException $e) {
-//                    Handle exception here
-                }
-
-                $event->setImage($newFileName);
-
-            }
             $entityManager->persist($event);
             $entityManager->flush();
             return $this->redirectToRoute('admin_event_index');
