@@ -286,4 +286,37 @@
     aos_init();
   });
 
+  /** Ohdé **/
+
+  const ohdeCode = {
+    'o': 'KeyO',
+    'h': 'KeyH',
+    'd': 'KeyD',
+    'e': 'KeyE'
+  };
+
+  let userPos = 0;
+
+  document.addEventListener('keydown', function(event) {
+    setTimeout(() => { cancelohde() }, 2000);
+    let requiredKey = Object.keys(ohdeCode)[userPos];
+
+    if (event.key === requiredKey) {
+      userPos++;
+    }
+
+    if (userPos === Object.keys(ohdeCode).length) {
+      alertOhde();
+    }
+  });
+
+  function alertOhde() {
+    window.location.href = "https://ohde-fanzine.com";
+  }
+
+  function cancelohde() {
+    userPos = 0;
+  }
+
 })();
+
