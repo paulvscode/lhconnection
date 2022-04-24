@@ -2108,3 +2108,32 @@ section {
     flex-direction: column;
   }
 }
+
+/* Administration */
+
+.responsive-container-login {
+  margin-top: 12rem;
+  border: 1px solid #d0d0d0;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.responsive-administration-page {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  text-align: left;
+  width: 50%;
+  margin: 12rem auto 0 auto;
+  border: 1px solid #d0d0d0;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.admin-description-title {
+  border: 1px solid #68C17D;
+  padding: 5px;
+  border-radius: 2px;
+}
+
