@@ -1,149 +1,1216 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"/>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>{% block title %}LH Connections{% endblock %}</title>
-    <link rel="icon"
-          href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-    {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+    <meta content="" name="description"/>
+    <meta content="" name="keywords"/>
+
     {% block stylesheets %}
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-              integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-              crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
-        <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
-    {% endblock %}
-    {% block javascripts %}
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-                crossorigin="anonymous">
-        </script>
-        <script
-                src="https://code.jquery.com/jquery-3.6.0.js"
-                integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-                crossorigin="anonymous">
-        </script>
+        {# Favicons #}
+        <link href="{{ asset('second_ver_assets/assets/img/favilh.png') }}" rel="icon"/>
+        <link href="{{ asset('second_ver_assets/assets/img/favilh.png') }}" rel="apple-touch-icon"/>
+
+        {# Google Fonts #}
+        <link
+                href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+                rel="stylesheet"
+        />
+
+        <!-- Vendor CSS Files -->
+        <link href="{{ asset('second_ver_assets/assets/vendor/aos/aos.css') }}" rel="stylesheet"/>
+        <link
+                href="{{ asset('second_ver_assets/assets/vendor/bootstrap/css/bootstrap.min.css') }}"
+                rel="stylesheet"
+        />
+
+        <link
+                href="{{ asset('second_ver_assets/assets/vendor/bootstrap-icons/bootstrap-icons.css') }}"
+                rel="stylesheet"
+        />
+
+        <link
+                href="{{ asset('second_ver_assets/assets/vendor/glightbox/css/glightbox.min.css') }}"
+                rel="stylesheet"
+        />
+        <link href="{{ asset('second_ver_assets/assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet"/>
+        <link href="{{ asset('second_ver_assets/assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet"/>
+
+        <!-- Template Main CSS File -->
+        <link href="{{ asset('second_ver_assets/assets/css/style.css') }}" rel="stylesheet"/>
     {% endblock %}
 </head>
 <body>
 
-{# header #}
-<header class="container d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom responsive-header">
-    <a href="/"
-       class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none responsive-wide-nav">
-        <svg class="bi me-2 responsive-svg-navbar" width="40" height="32">
-        </svg>
-        <span class="fs-4">LH Connections</span>
-    </a>
-    <ul class="nav nav-pills responsive-ul-navbar responsive-wide-nav-ul">
-        <li class="nav-item"><a href="{{ path('homepage_') }}"
-                                class="nav-link {% if app.request.get('_route') == 'homepage_' %}active{% endif %}"
-                                aria-current="page">Accueil</a></li>
-        <li class="nav-item"><a href="{{ path('event_') }}"
-                                class="nav-link {% if app.request.get('_route') == 'event_' %}active{% endif %}">Évènements</a>
-        </li>
-        <li class="nav-item"><a href="{{ path('projects_') }}"
-                                class="nav-link {% if app.request.get('_route') == 'projects_' %}active{% endif %}">Projets</a>
-        </li>
-        <li class="nav-item"><a href="{{ path('questions_') }}"
-                                class="nav-link {% if app.request.get('_route') == 'questions_' %}active{% endif %}">FAQs</a>
-        </li>
-        <li class="nav-item"><a href="{{ path('who_') }}"
-                                class="nav-link {% if app.request.get('_route') == 'who_' %}active{% endif %}">Qui
-                sommes-nous ?</a></li>
-
-        {% if is_granted('ROLE_ADMIN') %}
-            <li class="nav-item"><a href="{{ path('admin_index') }}"
-                                    class="nav-link text-success">Administration</a></li>
-        {% endif %}
-
-        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-            <li class="nav-item"><a href="{{ path('app_logout') }}"
-                                    class="nav-link text-danger">Se déconnecter</a></li>
-        {% else %}
-            <li class="nav-item"><a href="{{ path('login') }}"
-                                    class="nav-link text text-success">Se connecter</a></li>
-        {% endif %}
-    </ul>
-
-    {# small nav for responsive #}
-
-    <div class="d-flex justify-content-center align-content-center">
-        <span class="fs-4 m-1 responsive-title-small">LH Connections</span>
-        <i class="bi bi-list m-1 responsive-hamburger"></i>
-    </div>
-
-    <ul class="nav nav-pills responsive-ul-navbar responsive-small-nav-ul">
-        <li class="nav-item"><a href="{{ path('homepage_') }}"
-                                class="nav-link {% if app.request.get('_route') == 'homepage_' %}active{% endif %}"
-                                aria-current="page">Accueil</a></li>
-        <li class="nav-item"><a href="{{ path('event_') }}"
-                                class="nav-link {% if app.request.get('_route') == 'event_' %}active{% endif %}">Évènements</a>
-        </li>
-        <li class="nav-item"><a href="{{ path('projects_') }}"
-                                class="nav-link {% if app.request.get('_route') == 'projects_' %}active{% endif %}">Projets</a>
-        </li>
-        <li class="nav-item"><a href="{{ path('questions_') }}"
-                                class="nav-link {% if app.request.get('_route') == 'questions_' %}active{% endif %}">FAQs</a>
-        </li>
-        <li class="nav-item"><a href="{{ path('who_') }}"
-                                class="nav-link {% if app.request.get('_route') == 'who_' %}active{% endif %}">Qui
-                sommes-nous ?</a></li>
-
-        {% if is_granted('ROLE_ADMIN') %}
-            <li class="nav-item"><a href="{{ path('admin_index') }}"
-                                    class="nav-link text-success">Administration</a></li>
-        {% endif %}
-
-        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-            <li class="nav-item"><a href="{{ path('app_logout') }}"
-                                    class="nav-link text-danger">Se déconnecter</a></li>
-        {% else %}
-            <li class="nav-item"><a href="{{ path('login') }}"
-                                    class="nav-link text text-success">Se connecter</a></li>
-        {% endif %}
-    </ul>
-
-    <script>
-        $(document).ready(function () {
-            $('.responsive-hamburger').on('click', function () {
-                $('.responsive-small-nav-ul').toggle();
-            })
-        });
-    </script>
-
-</header>
-
-{% block body %}{% endblock %}
-
-{# footer #}
-<footer class="container d-flex flex-wrap justify-content-between align-items-center py-3 border-top">
-    <div class="col-md-4 d-flex align-items-center">
-        <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
-            <svg class="bi" width="30" height="24">
-                <use xlink:href="#bootstrap"></use>
-            </svg>
+<body>
+<!-- ======= Header ======= -->
+<header id="header" class="header fixed-top">
+    <div
+            class="container-fluid container-xl d-flex align-items-center justify-content-between"
+    >
+        <a href="index.html" class="logo d-flex align-items-center">
+            <img src="second_ver_assets/assets/img/logolh.png" alt=""/>
         </a>
-        <span class="text-muted">© {{ "now"|date("Y") }} LH Connexion</span>
+
+        <nav id="navbar" class="navbar">
+            <ul>
+                <li>
+                    <a class="nav-link scrollto active" href="#hero">Accueil</a>
+                </li>
+                <li><a class="nav-link scrollto" href="#about">A propos</a></li>
+                <li>
+                    <a class="nav-link scrollto" href="#services">Événements</a>
+                </li>
+                <li><a class="nav-link scrollto" href="#portfolio">Projets</a></li>
+                <li><a class="nav-link scrollto" href="#team">Notre équipe</a></li>
+                <li class="dropdown">
+                    <a href="#"
+                    ><span>Ressources</span> <i class="bi bi-chevron-down"></i
+                        ></a>
+                    <ul>
+                        <li><a href="#">Le blog de Anna</a></li>
+                        <li class="dropdown">
+                            <a href="#"
+                            ><span>Guides de nos locaux</span>
+                                <i class="bi bi-chevron-right"></i
+                                ></a>
+                            <ul>
+                                <li><a href="#">Un guide</a></li>
+                                <li><a href="#">Un autre guide</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Instagram KvScope</a></li>
+                        <li><a href="#">Musée du Muma</a></li>
+                    </ul>
+                </li>
+                <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+                <li class="dropdown dropdown-list-language">
+                    <a href="#"
+                    ><span>Langue</span><i class="bi bi-chevron-down"></i
+                        ></a>
+                    <ul class="language-ul-home">
+                        <a href="">Français</a>
+                        <a href="">English</a>
+                    </ul>
+                </li>
+                <li class="dropdown dropdown-language-home-mobile">
+                    <a href="#"
+                    ><span>Langue</span><i class="bi bi-chevron-down"></i
+                        ></a>
+                    <ul class="language-ul-home-mobile">
+                        <a href="">Français</a>
+                        <a href="">English</a>
+                    </ul>
+                </li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+        <!-- .navbar -->
     </div>
-    <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-        <li class="ms-3"><a class="text-muted" href="#">
-                <svg class="bi" width="24" height="24">
-                    <use xlink:href="#twitter"></use>
-                </svg>
-            </a></li>
-        <li class="ms-3"><a class="text-muted" href="#">
-                <svg class="bi" width="24" height="24">
-                    <use xlink:href="#instagram"></use>
-                </svg>
-            </a></li>
-        <li class="ms-3"><a class="text-muted" href="#">
-                <svg class="bi" width="24" height="24">
-                    <use xlink:href="#facebook"></use>
-                </svg>
-            </a></li>
-    </ul>
+</header>
+<!-- End Header -->
+
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="hero d-flex align-items-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 d-flex flex-column justify-content-center">
+                <h1 data-aos="fade-up">At the
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                         class="bi bi-heart-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                              d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                    </svg>
+                    of sharing.
+                </h1>
+                <h2 data-aos="fade-up" data-aos-delay="400">
+                    <p><b>LH Connections</b>, créé par un collectif d’amis et de passionnés, a pour vocation de
+                        favoriser et
+                        de développer des liens entre les habitants des villes anglophones jumelées avec Le Havre.
+                    </p></h2>
+                <div data-aos="fade-up" data-aos-delay="600">
+                    <div class="text-center text-lg-start">
+                        <a
+                                href="#about"
+                                class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center"
+                        >
+                            <span>Que faisons-nous ?</span>
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div
+                    class="col-lg-6 hero-img"
+                    data-aos="zoom-out"
+                    data-aos-delay="200"
+            >
+                <img
+                        src="second_ver_assets/assets/img/lhconcrete.jpg"
+                        class="img-fluid image-lh-concrete"
+                        alt=""
+                />
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Hero -->
+
+<main id="main">
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+        <div class="container" data-aos="fade-up">
+            <div class="row gx-0">
+                <div
+                        class="col-lg-6 d-flex flex-column justify-content-center"
+                        data-aos="fade-up"
+                        data-aos-delay="200"
+                >
+                    <div class="content">
+                        <h3>A propos</h3>
+                        <!--                <h2>-->
+                        <!--                  Expedita voluptas omnis cupiditate totam eveniet nobis sint-->
+                        <!--                  iste. Dolores est repellat corrupti reprehenderit.-->
+                        <!--                </h2>-->
+                        <p>
+                            Nous nous proposons également de faciliter l'intégration des personnes et familles ayant
+                            vécu à l'étranger et souhaitant s'implanter dans la région havraise. A ce titre, il s’agira
+                            d’organiser des rencontres au cours d'évènements, mais aussi de sensibiliser les Havrais à
+                            la culture anglophone.
+                            LH Connections a également pour objectif de promouvoir les langues anglaises et françaises.
+                            Un moyen de contribuer à la valorisation internationale de la ville du Havre et de sa
+                            région.
+                        </p>
+                        <div class="text-center text-lg-start">
+                            <a
+                                    href="#"
+                                    class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center"
+                            >
+                                <span>En savoir plus</span>
+                                <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                        class="col-lg-6 d-flex align-items-center"
+                        data-aos="zoom-out"
+                        data-aos-delay="200"
+                >
+                    <img src="second_ver_assets/assets/img/about.jpg" class="img-fluid" alt=""/>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End About Section -->
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+        <div class="container" data-aos="fade-up">
+            <header class="section-header">
+                <h2>Social events</h2>
+                <p>Upcoming, current and past events for LH Connections</p>
+            </header>
+
+            <div class="row gy-4">
+                <div
+                        class="col-lg-4 col-md-6"
+                        data-aos="fade-up"
+                        data-aos-delay="200"
+                >
+                    <div class="service-box blue">
+                        <i class="ri-discuss-line icon"></i>
+                        <h3>LH Connections - launching party</h3>
+                        <p>
+                            Provident nihil minus qui consequatur non omnis maiores. Eos
+                            accusantium minus dolores iure perferendis tempore et
+                            consequatur.
+                            <a href="">See event on Facebook</a>
+                        </p>
+                        <a href="#" class="read-more"
+                        ><span>Read More</span> <i class="bi bi-arrow-right"></i
+                            ></a>
+                    </div>
+                </div>
+
+                <div
+                        class="col-lg-4 col-md-6"
+                        data-aos="fade-up"
+                        data-aos-delay="300"
+                >
+                    <div class="service-box orange">
+                        <i class="ri-discuss-line icon"></i>
+                        <h3>Back to work brunch</h3>
+                        <p>
+                            Ut autem aut autem non a. Sint sint sit facilis nam iusto
+                            sint. Libero corrupti neque eum hic non ut nesciunt dolorem.
+                        </p>
+                        <a href="#" class="read-more"
+                        ><span>Read More</span> <i class="bi bi-arrow-right"></i
+                            ></a>
+                    </div>
+                </div>
+
+                <div
+                        class="col-lg-4 col-md-6"
+                        data-aos="fade-up"
+                        data-aos-delay="400"
+                >
+                    <div class="service-box green">
+                        <i class="ri-discuss-line icon"></i>
+                        <h3>Titre d'événement</h3>
+                        <p>
+                            Ut excepturi voluptatem nisi sed. Quidem fuga consequatur.
+                            Minus ea aut. Vel qui id voluptas adipisci eos earum corrupti.
+                        </p>
+                        <a href="#" class="read-more"
+                        ><span>Read More</span> <i class="bi bi-arrow-right"></i
+                            ></a>
+                    </div>
+                </div>
+
+                <div
+                        class="col-lg-4 col-md-6"
+                        data-aos="fade-up"
+                        data-aos-delay="500"
+                >
+                    <div class="service-box red">
+                        <i class="ri-discuss-line icon"></i>
+                        <h3>Asperiores Commodi</h3>
+                        <p>
+                            Non et temporibus minus omnis sed dolor esse consequatur.
+                            Cupiditate sed error ea fuga sit provident adipisci neque.
+                        </p>
+                        <a href="#" class="read-more"
+                        ><span>Read More</span> <i class="bi bi-arrow-right"></i
+                            ></a>
+                    </div>
+                </div>
+
+                <div
+                        class="col-lg-4 col-md-6"
+                        data-aos="fade-up"
+                        data-aos-delay="600"
+                >
+                    <div class="service-box purple">
+                        <i class="ri-discuss-line icon"></i>
+                        <h3>Velit Doloremque.</h3>
+                        <p>
+                            Cumque et suscipit saepe. Est maiores autem enim facilis ut
+                            aut ipsam corporis aut. Sed animi at autem alias eius labore.
+                        </p>
+                        <a href="#" class="read-more"
+                        ><span>Read More</span> <i class="bi bi-arrow-right"></i
+                            ></a>
+                    </div>
+                </div>
+
+                <div
+                        class="col-lg-4 col-md-6"
+                        data-aos="fade-up"
+                        data-aos-delay="700"
+                >
+                    <div class="service-box pink">
+                        <i class="ri-discuss-line icon"></i>
+                        <h3>Dolori Architecto</h3>
+                        <p>
+                            Hic molestias ea quibusdam eos. Fugiat enim doloremque aut
+                            neque non et debitis iure. Corrupti recusandae ducimus enim.
+                        </p>
+                        <a href="#" class="read-more"
+                        ><span>Read More</span> <i class="bi bi-arrow-right"></i
+                            ></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Services Section -->
+
+    <!-- ======= Project Section ======= -->
+    <section id="portfolio" class="portfolio">
+        <div class="container" data-aos="fade-up">
+            <header class="section-header">
+                <h2>Projects</h2>
+                <p>Upcoming projects</p>
+            </header>
+
+            <div class="row" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-lg-12 d-flex justify-content-center">
+                    <ul id="portfolio-flters">
+                        <li data-filter="*" class="filter-active">Tout</li>
+                        <li data-filter=".filter-app">Le Havre</li>
+                        <li data-filter=".filter-card">Tampa</li>
+                        <li data-filter=".filter-web">Southampton</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div
+                    class="row gy-4 portfolio-container"
+                    data-aos="fade-up"
+                    data-aos-delay="200"
+            >
+                <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                    <div class="portfolio-wrap">
+                        <img
+                                src="second_ver_assets/assets/img/portfolio/lhpark.jpeg"
+                                class="img-fluid"
+                                alt=""
+                        />
+                        <div class="portfolio-info">
+                            <h4>Skateboard Contest</h4>
+                            <p>Skateboard Contest</p>
+                            <div class="portfolio-links">
+                                <a
+                                        href="second_ver_assets/assets/img/portfolio/portfolio-1.jpg"
+                                        data-gallery="portfolioGallery"
+                                        class="portfokio-lightbox"
+                                        title="App 1"
+                                ><i class="bi bi-plus"></i
+                                    ></a>
+                                <a href="portfolio-details.html" title="More Details"
+                                ><i class="bi bi-link"></i
+                                    ></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+                    <div class="portfolio-wrap">
+                        <img
+                                src="second_ver_assets/assets/img/portfolio/portfolio-2.jpg"
+                                class="img-fluid"
+                                alt=""
+                        />
+                        <div class="portfolio-info">
+                            <h4>Sailors of Southampton handshake</h4>
+                            <p>Sailors of Southampton handshake</p>
+                            <div class="portfolio-links">
+                                <a
+                                        href="second_ver_assets/assets/img/portfolio/portfolio-2.jpg"
+                                        data-gallery="portfolioGallery"
+                                        class="portfokio-lightbox"
+                                        title="Web 3"
+                                ><i class="bi bi-plus"></i
+                                    ></a>
+                                <a href="portfolio-details.html" title="More Details"
+                                ><i class="bi bi-link"></i
+                                    ></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                    <div class="portfolio-wrap">
+                        <img
+                                src="second_ver_assets/assets/img/portfolio/portfolio-3.jpg"
+                                class="img-fluid"
+                                alt=""
+                        />
+                        <div class="portfolio-info">
+                            <h4>App 2</h4>
+                            <p>App</p>
+                            <div class="portfolio-links">
+                                <a
+                                        href="second_ver_assets/assets/img/portfolio/portfolio-3.jpg"
+                                        data-gallery="portfolioGallery"
+                                        class="portfokio-lightbox"
+                                        title="App 2"
+                                ><i class="bi bi-plus"></i
+                                    ></a>
+                                <a href="portfolio-details.html" title="More Details"
+                                ><i class="bi bi-link"></i
+                                    ></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+                    <div class="portfolio-wrap">
+                        <img
+                                src="second_ver_assets/assets/img/portfolio/portfolio-4.jpg"
+                                class="img-fluid"
+                                alt=""
+                        />
+                        <div class="portfolio-info">
+                            <h4>Card 2</h4>
+                            <p>Card</p>
+                            <div class="portfolio-links">
+                                <a
+                                        href="second_ver_assets/assets/img/portfolio/portfolio-4.jpg"
+                                        data-gallery="portfolioGallery"
+                                        class="portfokio-lightbox"
+                                        title="Card 2"
+                                ><i class="bi bi-plus"></i
+                                    ></a>
+                                <a href="portfolio-details.html" title="More Details"
+                                ><i class="bi bi-link"></i
+                                    ></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+                    <div class="portfolio-wrap">
+                        <img
+                                src="second_ver_assets/assets/img/portfolio/portfolio-5.jpg"
+                                class="img-fluid"
+                                alt=""
+                        />
+                        <div class="portfolio-info">
+                            <h4>Web 2</h4>
+                            <p>Web</p>
+                            <div class="portfolio-links">
+                                <a
+                                        href="second_ver_assets/assets/img/portfolio/portfolio-5.jpg"
+                                        data-gallery="portfolioGallery"
+                                        class="portfokio-lightbox"
+                                        title="Web 2"
+                                ><i class="bi bi-plus"></i
+                                    ></a>
+                                <a href="portfolio-details.html" title="More Details"
+                                ><i class="bi bi-link"></i
+                                    ></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                    <div class="portfolio-wrap">
+                        <img
+                                src="second_ver_assets/assets/img/portfolio/portfolio-6.jpg"
+                                class="img-fluid"
+                                alt=""
+                        />
+                        <div class="portfolio-info">
+                            <h4>App 3</h4>
+                            <p>App</p>
+                            <div class="portfolio-links">
+                                <a
+                                        href="second_ver_assets/assets/img/portfolio/portfolio-6.jpg"
+                                        data-gallery="portfolioGallery"
+                                        class="portfokio-lightbox"
+                                        title="App 3"
+                                ><i class="bi bi-plus"></i
+                                    ></a>
+                                <a href="portfolio-details.html" title="More Details"
+                                ><i class="bi bi-link"></i
+                                    ></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+                    <div class="portfolio-wrap">
+                        <img
+                                src="second_ver_assets/assets/img/portfolio/portfolio-7.jpg"
+                                class="img-fluid"
+                                alt=""
+                        />
+                        <div class="portfolio-info">
+                            <h4>Card 1</h4>
+                            <p>Card</p>
+                            <div class="portfolio-links">
+                                <a
+                                        href="second_ver_assets/assets/img/portfolio/portfolio-7.jpg"
+                                        data-gallery="portfolioGallery"
+                                        class="portfokio-lightbox"
+                                        title="Card 1"
+                                ><i class="bi bi-plus"></i
+                                    ></a>
+                                <a href="portfolio-details.html" title="More Details"
+                                ><i class="bi bi-link"></i
+                                    ></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+                    <div class="portfolio-wrap">
+                        <img
+                                src="second_ver_assets/assets/img/portfolio/portfolio-8.jpg"
+                                class="img-fluid"
+                                alt=""
+                        />
+                        <div class="portfolio-info">
+                            <h4>Card 3</h4>
+                            <p>Card</p>
+                            <div class="portfolio-links">
+                                <a
+                                        href="second_ver_assets/assets/img/portfolio/portfolio-8.jpg"
+                                        data-gallery="portfolioGallery"
+                                        class="portfokio-lightbox"
+                                        title="Card 3"
+                                ><i class="bi bi-plus"></i
+                                    ></a>
+                                <a href="portfolio-details.html" title="More Details"
+                                ><i class="bi bi-link"></i
+                                    ></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+                    <div class="portfolio-wrap">
+                        <img
+                                src="second_ver_assets/assets/img/portfolio/portfolio-9.jpg"
+                                class="img-fluid"
+                                alt=""
+                        />
+                        <div class="portfolio-info">
+                            <h4>Web 3</h4>
+                            <p>Web</p>
+                            <div class="portfolio-links">
+                                <a
+                                        href="second_ver_assets/assets/img/portfolio/portfolio-9.jpg"
+                                        data-gallery="portfolioGallery"
+                                        class="portfokio-lightbox"
+                                        title="Web 3"
+                                ><i class="bi bi-plus"></i
+                                    ></a>
+                                <a href="portfolio-details.html" title="More Details"
+                                ><i class="bi bi-link"></i
+                                    ></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Portfolio Section -->
+
+    <!-- ======= Team Section ======= -->
+    <section id="team" class="team">
+        <div class="container" data-aos="fade-up">
+            <header class="section-header">
+                <h2>Notre équipe</h2>
+                <p>N'avons nous pas l'air d'être motivés ?</p>
+            </header>
+
+            <div class="row gy-4">
+                <div
+                        class="col-lg-3 col-md-6 d-flex align-items-stretch"
+                        data-aos="fade-up"
+                        data-aos-delay="100"
+                >
+                    <div class="member">
+                        <div class="member-img">
+                            <img
+                                    src="second_ver_assets/assets/img/team/team-1.jpg"
+                                    class="img-fluid"
+                                    alt=""
+                            />
+                            <div class="social">
+                                <a href=""><i class="bi bi-twitter"></i></a>
+                                <a href=""><i class="bi bi-facebook"></i></a>
+                                <a href=""><i class="bi bi-instagram"></i></a>
+                                <a href=""><i class="bi bi-linkedin"></i></a>
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h4>Walter White</h4>
+                            <span>Chief Executive Officer</span>
+                            <p>
+                                Velit aut quia fugit et et. Dolorum ea voluptate vel tempore
+                                tenetur ipsa quae aut. Ipsum exercitationem iure minima enim
+                                corporis et voluptate.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                        class="col-lg-3 col-md-6 d-flex align-items-stretch"
+                        data-aos="fade-up"
+                        data-aos-delay="200"
+                >
+                    <div class="member">
+                        <div class="member-img">
+                            <img
+                                    src="second_ver_assets/assets/img/team/team-2.jpg"
+                                    class="img-fluid"
+                                    alt=""
+                            />
+                            <div class="social">
+                                <a href=""><i class="bi bi-twitter"></i></a>
+                                <a href=""><i class="bi bi-facebook"></i></a>
+                                <a href=""><i class="bi bi-instagram"></i></a>
+                                <a href=""><i class="bi bi-linkedin"></i></a>
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h4>Sarah Jhonson</h4>
+                            <span>Product Manager</span>
+                            <p>
+                                Quo esse repellendus quia id. Est eum et accusantium
+                                pariatur fugit nihil minima suscipit corporis. Voluptate sed
+                                quas reiciendis animi neque sapiente.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                        class="col-lg-3 col-md-6 d-flex align-items-stretch"
+                        data-aos="fade-up"
+                        data-aos-delay="300"
+                >
+                    <div class="member">
+                        <div class="member-img">
+                            <img
+                                    src="second_ver_assets/assets/img/team/team-3.jpg"
+                                    class="img-fluid"
+                                    alt=""
+                            />
+                            <div class="social">
+                                <a href=""><i class="bi bi-twitter"></i></a>
+                                <a href=""><i class="bi bi-facebook"></i></a>
+                                <a href=""><i class="bi bi-instagram"></i></a>
+                                <a href=""><i class="bi bi-linkedin"></i></a>
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h4>William Anderson</h4>
+                            <span>CTO</span>
+                            <p>
+                                Vero omnis enim consequatur. Voluptas consectetur unde qui
+                                molestiae deserunt. Voluptates enim aut architecto porro
+                                aspernatur molestiae modi.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                        class="col-lg-3 col-md-6 d-flex align-items-stretch"
+                        data-aos="fade-up"
+                        data-aos-delay="400"
+                >
+                    <div class="member">
+                        <div class="member-img">
+                            <img
+                                    src="second_ver_assets/assets/img/team/team-4.jpg"
+                                    class="img-fluid"
+                                    alt=""
+                            />
+                            <div class="social">
+                                <a href=""><i class="bi bi-twitter"></i></a>
+                                <a href=""><i class="bi bi-facebook"></i></a>
+                                <a href=""><i class="bi bi-instagram"></i></a>
+                                <a href=""><i class="bi bi-linkedin"></i></a>
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h4>Amanda Jepson</h4>
+                            <span>Accountant</span>
+                            <p>
+                                Rerum voluptate non adipisci animi distinctio et deserunt
+                                amet voluptas. Quia aut aliquid doloremque ut possimus ipsum
+                                officia.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Team Section -->
+
+    <!-- ======= Clients Section ======= -->
+    <section id="clients" class="clients">
+        <div class="container" data-aos="fade-up">
+            <header class="section-header">
+                <h2>Nos partenariats</h2>
+                <p>Temporibus omnis officia</p>
+            </header>
+
+            <div class="clients-slider swiper">
+                <div class="swiper-wrapper align-items-center">
+                    <div class="swiper-slide">
+                        <img
+                                src="second_ver_assets/assets/img/clients/client-1.png"
+                                class="img-fluid"
+                                alt=""
+                        />
+                    </div>
+                    <div class="swiper-slide">
+                        <img
+                                src="second_ver_assets/assets/img/clients/client-2.png"
+                                class="img-fluid"
+                                alt=""
+                        />
+                    </div>
+                    <div class="swiper-slide">
+                        <img
+                                src="second_ver_assets/assets/img/clients/client-3.png"
+                                class="img-fluid"
+                                alt=""
+                        />
+                    </div>
+                    <div class="swiper-slide">
+                        <img
+                                src="second_ver_assets/assets/img/clients/client-4.png"
+                                class="img-fluid"
+                                alt=""
+                        />
+                    </div>
+                    <div class="swiper-slide">
+                        <img
+                                src="second_ver_assets/assets/img/clients/client-5.png"
+                                class="img-fluid"
+                                alt=""
+                        />
+                    </div>
+                    <div class="swiper-slide">
+                        <img
+                                src="second_ver_assets/assets/img/clients/client-6.png"
+                                class="img-fluid"
+                                alt=""
+                        />
+                    </div>
+                    <div class="swiper-slide">
+                        <img
+                                src="second_ver_assets/assets/img/clients/client-7.png"
+                                class="img-fluid"
+                                alt=""
+                        />
+                    </div>
+                    <div class="swiper-slide">
+                        <img
+                                src="second_ver_assets/assets/img/clients/client-8.png"
+                                class="img-fluid"
+                                alt=""
+                        />
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+    <!-- End Clients Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+        <div class="container" data-aos="fade-up">
+            <header class="section-header">
+                <h2>Contact</h2>
+                <p>Contactez-nous</p>
+            </header>
+
+            <div class="row gy-4">
+                <div class="col-lg-6">
+                    <div class="row gy-4">
+                        <div class="col-md-6">
+                            <div class="info-box">
+                                <i class="bi bi-geo-alt"></i>
+                                <h3>Adresse</h3>
+                                <p>A108 Adam Street,<br/>New York, NY 535022</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-box">
+                                <i class="bi bi-telephone"></i>
+                                <h3>Appelez-nous</h3>
+                                <p>+1 5589 55488 55<br/>+1 6678 254445 41</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-box">
+                                <i class="bi bi-envelope"></i>
+                                <h3>Envoyez-nous un email</h3>
+                                <p>info@example.com<br/>contact@example.com</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-box">
+                                <i class="bi bi-clock"></i>
+                                <h3>Horaires d'ouverture</h3>
+                                <p>Monday - Friday<br/>9:00AM - 05:00PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <form
+                            action="forms/contact.php"
+                            method="post"
+                            class="php-email-form"
+                    >
+                        <div class="row gy-4">
+                            <div class="col-md-6">
+                                <input
+                                        type="text"
+                                        name="name"
+                                        class="form-control"
+                                        placeholder="Your Name"
+                                        required
+                                />
+                            </div>
+
+                            <div class="col-md-6">
+                                <input
+                                        type="email"
+                                        class="form-control"
+                                        name="email"
+                                        placeholder="Your Email"
+                                        required
+                                />
+                            </div>
+
+                            <div class="col-md-12">
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        name="subject"
+                                        placeholder="Subject"
+                                        required
+                                />
+                            </div>
+
+                            <div class="col-md-12">
+                    <textarea
+                            class="form-control"
+                            name="message"
+                            rows="6"
+                            placeholder="Message"
+                            required
+                    ></textarea>
+                            </div>
+
+                            <div class="col-md-12 text-center">
+                                <div class="loading">Loading</div>
+                                <div class="error-message"></div>
+                                <div class="sent-message">
+                                    Your message has been sent. Thank you!
+                                </div>
+
+                                <button type="submit">Send Message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Contact Section -->
+</main>
+<!-- End #main -->
+
+<!-- ======= F.A.Q Section ======= -->
+<section id="faq" class="faq">
+    <div class="container" data-aos="fade-up">
+        <header class="section-header">
+            <h2>F.A.Q</h2>
+            <p>Questions posées fréquemment</p>
+        </header>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <!-- F.A.Q List 1-->
+                <div class="accordion accordion-flush" id="faqlist1">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button
+                                    class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#faq-content-1"
+                            >
+                                Non consectetur a erat nam at lectus urna duis?
+                            </button>
+                        </h2>
+                        <div
+                                id="faq-content-1"
+                                class="accordion-collapse collapse"
+                                data-bs-parent="#faqlist1"
+                        >
+                            <div class="accordion-body">
+                                Feugiat pretium nibh ipsum consequat. Tempus iaculis urna
+                                id volutpat lacus laoreet non curabitur gravida. Venenatis
+                                lectus magna fringilla urna porttitor rhoncus dolor purus
+                                non.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button
+                                    class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#faq-content-2"
+                            >
+                                Feugiat scelerisque varius morbi enim nunc faucibus a
+                                pellentesque?
+                            </button>
+                        </h2>
+                        <div
+                                id="faq-content-2"
+                                class="accordion-collapse collapse"
+                                data-bs-parent="#faqlist1"
+                        >
+                            <div class="accordion-body">
+                                Dolor sit amet consectetur adipiscing elit pellentesque
+                                habitant morbi. Id interdum velit laoreet id donec
+                                ultrices. Fringilla phasellus faucibus scelerisque
+                                eleifend donec pretium. Est pellentesque elit ullamcorper
+                                dignissim. Mauris ultrices eros in cursus turpis massa
+                                tincidunt dui.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button
+                                    class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#faq-content-3"
+                            >
+                                Dolor sit amet consectetur adipiscing elit pellentesque
+                                habitant morbi?
+                            </button>
+                        </h2>
+                        <div
+                                id="faq-content-3"
+                                class="accordion-collapse collapse"
+                                data-bs-parent="#faqlist1"
+                        >
+                            <div class="accordion-body">
+                                Eleifend mi in nulla posuere sollicitudin aliquam ultrices
+                                sagittis orci. Faucibus pulvinar elementum integer enim.
+                                Sem nulla pharetra diam sit amet nisl suscipit. Rutrum
+                                tellus pellentesque eu tincidunt. Lectus urna duis
+                                convallis convallis tellus. Urna molestie at elementum eu
+                                facilisis sed odio morbi quis
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <!-- F.A.Q List 2-->
+                <div class="accordion accordion-flush" id="faqlist2">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button
+                                    class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#faq2-content-1"
+                            >
+                                Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla?
+                            </button>
+                        </h2>
+                        <div
+                                id="faq2-content-1"
+                                class="accordion-collapse collapse"
+                                data-bs-parent="#faqlist2"
+                        >
+                            <div class="accordion-body">
+                                Dolor sit amet consectetur adipiscing elit pellentesque
+                                habitant morbi. Id interdum velit laoreet id donec
+                                ultrices. Fringilla phasellus faucibus scelerisque
+                                eleifend donec pretium. Est pellentesque elit ullamcorper
+                                dignissim. Mauris ultrices eros in cursus turpis massa
+                                tincidunt dui.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button
+                                    class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#faq2-content-2"
+                            >
+                                Tempus quam pellentesque nec nam aliquam sem et tortor
+                                consequat?
+                            </button>
+                        </h2>
+                        <div
+                                id="faq2-content-2"
+                                class="accordion-collapse collapse"
+                                data-bs-parent="#faqlist2"
+                        >
+                            <div class="accordion-body">
+                                Molestie a iaculis at erat pellentesque adipiscing
+                                commodo. Dignissim suspendisse in est ante in. Nunc vel
+                                risus commodo viverra maecenas accumsan. Sit amet nisl
+                                suscipit adipiscing bibendum est. Purus gravida quis
+                                blandit turpis cursus in
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button
+                                    class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#faq2-content-3"
+                            >
+                                Varius vel pharetra vel turpis nunc eget lorem dolor?
+                            </button>
+                        </h2>
+                        <div
+                                id="faq2-content-3"
+                                class="accordion-collapse collapse"
+                                data-bs-parent="#faqlist2"
+                        >
+                            <div class="accordion-body">
+                                Laoreet sit amet cursus sit amet dictum sit amet justo.
+                                Mauris vitae ultricies leo integer malesuada nunc vel.
+                                Tincidunt eget nullam non nisi est sit amet. Turpis nunc
+                                eget lorem dolor sed. Ut venenatis tellus in metus
+                                vulputate eu scelerisque. Pellentesque diam volutpat
+                                commodo sed egestas egestas fringilla phasellus faucibus.
+                                Nibh tellus molestie nunc non blandit massa enim nec.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End F.A.Q Section -->
+
+<!-- ======= Footer ======= -->
+<footer id="footer" class="footer">
+    </div>
+
+    <div class="footer-top">
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-lg-5 col-md-12 footer-info">
+                    <a href="index.html" class="logo d-flex align-items-center">
+                        <img src="second_ver_assets/assets/img/logolh.png" alt=""/>
+                    </a>
+                    <p>
+                        Cras fermentum odio eu feugiat lide par naso tierra. Justo eget
+                        nada terra videa magna derita valies darta donna mare fermentum
+                        iaculis eu non diam phasellus.
+                    </p>
+                    <div class="social-links mt-3">
+                        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="instagram"
+                        ><i class="bi bi-instagram"></i
+                            ></a>
+                        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-6 footer-links">
+                    <h4>Useful Links</h4>
+                    <ul>
+                        <li>
+                            <i class="bi bi-chevron-right"></i> <a href="#">Accueil</a>
+                        </li>
+                        <li>
+                            <i class="bi bi-chevron-right"></i> <a href="#">A propos</a>
+                        </li>
+                        <li>
+                            <i class="bi bi-chevron-right"></i> <a href="#">Événements</a>
+                        </li>
+                        <li>
+                            <i class="bi bi-chevron-right"></i>
+                            <a href="#">Terms of service</a>
+                        </li>
+                        <li>
+                            <i class="bi bi-chevron-right"></i>
+                            <a href="#">Privacy policy</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2 col-6 footer-links">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li>
+                            <i class="bi bi-chevron-right"></i> <a href="#">Web Design</a>
+                        </li>
+                        <li>
+                            <i class="bi bi-chevron-right"></i>
+                            <a href="#">Web Development</a>
+                        </li>
+                        <li>
+                            <i class="bi bi-chevron-right"></i>
+                            <a href="#">Product Management</a>
+                        </li>
+                        <li>
+                            <i class="bi bi-chevron-right"></i> <a href="#">Marketing</a>
+                        </li>
+                        <li>
+                            <i class="bi bi-chevron-right"></i>
+                            <a href="#">Graphic Design</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div
+                        class="col-lg-3 col-md-12 footer-contact text-center text-md-start"
+                >
+                    <h4>Contact Us</h4>
+                    <p>
+                        A108 Adam Street <br/>
+                        New York, NY 535022<br/>
+                        United States <br/><br/>
+                        <strong>Phone:</strong> +1 5589 55488 55<br/>
+                        <strong>Email:</strong> info@example.com<br/>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="copyright">
+            &copy; Copyright <strong><span>LH Connexions</span></strong
+            >. Tous droits réservés
+        </div>
+        <div class="credits">
+        </div>
+    </div>
 </footer>
+<!-- End Footer -->
+
+<a
+        href="#"
+        class="back-to-top d-flex align-items-center justify-content-center"
+><i class="bi bi-arrow-up-short"></i
+    ></a>
+
+<!-- Vendor JS Files -->
+<script src="{{ asset('second_ver_assets/assets/vendor/purecounter/purecounter.js') }}"></script>
+<script src="{{ asset('second_ver_assets/assets/vendor/aos/aos.js') }}"></script>
+<script src="{{ asset('second_ver_assets/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('second_ver_assets/assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
+<script src="{{ asset('second_ver_assets/assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+<script src="{{ asset('second_ver_assets/assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
+<script src="{{ asset('second_ver_assets/assets/vendor/php-email-form/validate.js') }}"></script>
+
+<!-- Template Main JS File -->
+<script src="{{ asset('second_ver_assets/assets/js/main.js') }}"></script>
 </body>
 </html>
