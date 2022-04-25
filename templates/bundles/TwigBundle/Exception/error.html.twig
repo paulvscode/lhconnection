@@ -1,0 +1,45 @@
+{# templates/bundles/TwigBundle/Exception/error404.html.twig #}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <title>404</title>
+    {# Favicons #}
+    <link href="{{ asset('second_ver_assets/assets/img/favilh.png') }}" rel="icon"/>
+    <link href="{{ asset('second_ver_assets/assets/img/favilh.png') }}" rel="apple-touch-icon"/>
+    <!-- Custom style -->
+    <link type="text/css" rel="stylesheet" href="{{ asset('second_ver_assets/404assets/css/style.css') }}" />
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+{% block body %}
+<body>
+
+<div id="notfound">
+    <div class="notfound">
+        <div class="notfound-404">
+            <h1>Oops!</h1>
+        </div>
+        <h2>404 - Page non trouvée !</h2>
+        <p>La page que vous recherchez n'existe pas, où ne se trouve plus à cet endroit.</p>
+        <a href="{{ path('homepage_') }}">Accueil</a>
+    </div>
+</div>
+
+</body>
+{% endblock %}
+
+</html>
