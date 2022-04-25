@@ -1,50 +1,27 @@
 <?php
-
+// src/DataFixtures/AppFixtures.php
 namespace App\DataFixtures;
 
-use App\Entity\Article;
-use App\Entity\Event;
-use App\Entity\Project;
-use App\Entity\User;
+use joshtronic\LoremIpsum;
+use App\Entity\SocialEvent;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
-use Faker;
-use PhpParser\Node\Expr\Array_;
 
 class AppFixtures extends Fixture
 {
-    public function load(ObjectManager $manager): void
+    public function load(ObjectManager $manager)
     {
-        $faker = Faker\Factory::create('fr_FR');
+        $lipsum = new LoremIpsum();
 
-        $articles = Array();
-        for ($i = 0; $i < 5; $i++) {
-            $articles[$i] = new Article();
-            $articles[$i]->setTitle($faker->word);
-            $articles[$i]->setContent($faker->sentence(30, true));
-            $articles[$i]->setCreatedAt(new \DateTimeImmutable('now'));
-
-            $manager->persist($articles[$i]);
-        }
-
-        $events = Array();
-        for ($i = 0; $i < 5; $i++) {
-            $events[$i] = new Event();
-            $events[$i]->setTitle($faker->word);
-            $events[$i]->setContent($faker->sentence(30, true));
-            $events[$i]->setCreatedAt(new \DateTimeImmutable('now'));
-
-            $manager->persist($events[$i]);
-        }
-
-        $project = Array();
-        for ($i = 0; $i < 5; $i++) {
-            $project[$i] = new Project();
-            $project[$i]->setTitle($faker->word);
-            $project[$i]->setContent($faker->sentence(40, true));
-            $project[$i]->setCreatedAt(new \DateTimeImmutable('now'));
-
-            $manager->persist($project[$i]);
+        // 6 Events
+        for ($i = 0; $i < 6; $i++) {
+            $socialEvent = new SocialEvent();
+            $socialEvent->setTitle($lipsum->word());
+            $socialEvent->setDescription($lipsum->sentence(2));
+            $socialEvent->setImage('https://picsum.photos/200');
+            $socialEvent->setIcon('https://picsum.photos/20');
+            $socialEvent->setLink('https://www.facebook.com/');
+            $manager->persist($socialEvent);
         }
 
         $manager->flush();

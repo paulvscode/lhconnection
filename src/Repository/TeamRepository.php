@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\TestVich;
+use App\Entity\Team;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method TestVich|null find($id, $lockMode = null, $lockVersion = null)
- * @method TestVich|null findOneBy(array $criteria, array $orderBy = null)
- * @method TestVich[]    findAll()
- * @method TestVich[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Team|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Team|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Team[]    findAll()
+ * @method Team[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class TestVichRepository extends ServiceEntityRepository
+class TeamRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, TestVich::class);
+        parent::__construct($registry, Team::class);
     }
 
     // /**
-    //  * @return TestVich[] Returns an array of TestVich objects
+    //  * @return Team[] Returns an array of Team objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class TestVichRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?TestVich
+    public function findOneBySomeField($value): ?Team
     {
         return $this->createQueryBuilder('t')
             ->andWhere('t.exampleField = :val')

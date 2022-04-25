@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\ProjectRepository;
+use App\Repository\SocialEventRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=ProjectRepository::class)
+ * @ORM\Entity(repositoryClass=SocialEventRepository::class)
  */
-class Project
+class SocialEvent
 {
     /**
      * @ORM\Id
@@ -28,24 +28,19 @@ class Project
     private $description;
 
     /**
-     * @ORM\Column(type="text")
-     */
-    private $longDescription;
-
-    /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $image;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $link;
 
     /**
-     * @ORM\Column(type="datetime_immutable")
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $createdAt;
+    private $icon;
 
     public function getId(): ?int
     {
@@ -76,24 +71,12 @@ class Project
         return $this;
     }
 
-    public function getLongDescription(): ?string
-    {
-        return $this->longDescription;
-    }
-
-    public function setLongDescription(string $longDescription): self
-    {
-        $this->longDescription = $longDescription;
-
-        return $this;
-    }
-
     public function getImage(): ?string
     {
         return $this->image;
     }
 
-    public function setImage(string $image): self
+    public function setImage(?string $image): self
     {
         $this->image = $image;
 
@@ -105,21 +88,21 @@ class Project
         return $this->link;
     }
 
-    public function setLink(string $link): self
+    public function setLink(?string $link): self
     {
         $this->link = $link;
 
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeImmutable
+    public function getIcon(): ?string
     {
-        return $this->createdAt;
+        return $this->icon;
     }
 
-    public function setCreatedAt(\DateTimeImmutable $createdAt): self
+    public function setIcon(?string $icon): self
     {
-        $this->createdAt = $createdAt;
+        $this->icon = $icon;
 
         return $this;
     }

@@ -2111,6 +2111,11 @@ section {
 
 /* Administration */
 
+.admin-space {
+  margin-top: 12rem;
+  padding: 1rem;
+}
+
 .responsive-container-login {
   margin-top: 12rem;
   border: 1px solid #d0d0d0;
