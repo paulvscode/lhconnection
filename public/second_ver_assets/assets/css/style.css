@@ -2068,6 +2068,8 @@ section {
   color: #012970;
 }
 
+/* Language in nav */
+
 .image-lh-concrete {
   border-radius: 10px;
   opacity: 70%;
@@ -2107,6 +2109,14 @@ section {
     display: flex;
     flex-direction: column;
   }
+}
+
+/* Social Events custom */
+
+.social-event-facebook-link {
+  padding: 0.5rem;
+  border-radius: 4px;
+  background-color: #fff;
 }
 
 /* Administration */
