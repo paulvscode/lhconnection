@@ -47,6 +47,16 @@ class Project
      */
     private $createdAt;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $sortTitle;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $filterSortTitle;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -120,6 +130,30 @@ class Project
     public function setCreatedAt(\DateTimeImmutable $createdAt): self
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getSortTitle(): ?string
+    {
+        return $this->sortTitle;
+    }
+
+    public function setSortTitle(string $sortTitle): self
+    {
+        $this->sortTitle = $sortTitle;
+
+        return $this;
+    }
+
+    public function getFilterSortTitle(): ?string
+    {
+        return $this->filterSortTitle;
+    }
+
+    public function setFilterSortTitle(string $filterSortTitle): self
+    {
+        $this->filterSortTitle = $filterSortTitle;
 
         return $this;
     }
