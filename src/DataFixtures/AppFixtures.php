@@ -58,8 +58,6 @@ class AppFixtures extends Fixture
         $arrayTitlesSort = ['App ', 'Card ', 'Web '];
         $filterTitle = '';
 
-
-
         for ($i = 0; $i < 9; $i++) {
             $sortSystem = $arrayTitlesSort[array_rand($arrayTitlesSort)];
             if ($sortSystem === 'App ') {
