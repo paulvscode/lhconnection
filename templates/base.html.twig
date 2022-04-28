@@ -41,8 +41,8 @@
         <link href="{{ asset('second_ver_assets/assets/css/style.css') }}" rel="stylesheet"/>
     {% endblock %}
 </head>
-<body>
 
+{% block body %}
 <body>
 <!-- ======= Header ======= -->
 <header id="header" class="header fixed-top">
@@ -110,8 +110,6 @@
     </div>
 </header>
 <!-- End Header -->
-
-{% block body %}{% endblock %}
 
 <!-- ======= Hero Section ======= -->
 <section id="hero" class="hero d-flex align-items-center">
@@ -823,4 +821,5 @@
 <!-- Template Main JS File -->
 <script src="{{ asset('second_ver_assets/assets/js/main.js') }}"></script>
 </body>
+{% endblock %}
 </html>

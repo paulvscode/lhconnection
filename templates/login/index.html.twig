@@ -1,14 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Se connecter{% endblock %}
-
 {% block body %}
 
-    {% if error %}
-        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+{% if error %}
+    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
 
-    <div class="container w-25 mx-auto responsive-container-login">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between logo-register-container">
+        <a href="{{ path('homepage_') }}" class="logo d-flex align-items-center">
+            <img class="logo-register-page" src="{{ asset('second_ver_assets/assets/img/logolh.png') }}" alt=""/>
+        </a>
+    </div>
+
+    <div class="registration-form">
         <h4 class="m-4 text-center">Se connecter</h4>
         <form action="{{ path('login') }}" method="post">
             <label class="form-label" for="username">Email:</label>
@@ -17,11 +21,7 @@
             <label class="form-label" for="password">Password:</label>
             <input class="form-control" type="password" id="password" name="_password"/>
 
-            {# If you want to control the URL the user is redirected to on success
-              <input type="hidden" name="_target_path" value="/account"/> #}
-
             <button type="submit" class="btn btn-primary mt-2">login</button>
         </form>
     </div>
-
 {% endblock %}

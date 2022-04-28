@@ -12,12 +12,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HomePageController extends AbstractController
 {
-//    #[Route('/check', name: 'wip')]
-//    public function wip(): Response
-//    {
-//        return $this->render('base.html.twig', []);
-//    }
-
     #[Route('/', name: 'homepage_')]
     public function index(ManagerRegistry $doctrine): Response
     {
@@ -33,4 +27,6 @@ class HomePageController extends AbstractController
             'projects' => $projects
         ]);
     }
+
+
 }

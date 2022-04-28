@@ -2121,34 +2121,32 @@ section {
 
 /* Administration */
 
-.admin-space {
-  margin-top: 12rem;
-  padding: 1rem;
-}
-
-.responsive-container-login {
-  margin-top: 12rem;
-  border: 1px solid #d0d0d0;
-  border-radius: 10px;
-  padding: 1rem;
-}
-
-.responsive-administration-page {
-  display: flex;
+.logo-register-container {
   flex-direction: column;
   align-content: center;
-  justify-content: center;
-  text-align: left;
-  width: 50%;
-  margin: 12rem auto 0 auto;
-  border: 1px solid #d0d0d0;
-  border-radius: 10px;
-  padding: 1rem;
+  margin-top: 2rem;
 }
 
-.admin-description-title {
-  border: 1px solid #68C17D;
-  padding: 5px;
-  border-radius: 2px;
+.logo-register-page {
+  max-height: 40px;
 }
 
+.registration-form {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  margin: 5rem auto;
+}
+
+.registration-form h1 {
+  text-align: center;
+}
+
+@media (max-width: 413px){
+  .registration-form {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 5rem auto;
+  }
+}
