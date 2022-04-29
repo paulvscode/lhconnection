@@ -55,18 +55,11 @@ class AppFixtures extends Fixture
         // 9 Projects
         // Sort generation
 
-        $arrayTitlesSort = ['App ', 'Card ', 'Web '];
         $filterTitle = '';
+        $arraySortTitles = ['filter-app','filter-card','filter-web'];
 
         for ($i = 0; $i < 9; $i++) {
-            $sortSystem = $arrayTitlesSort[array_rand($arrayTitlesSort)];
-            if ($sortSystem === 'App ') {
-                $filterTitle = 'filter-app';
-            } elseif ($sortSystem === 'Card ') {
-                $filterTitle = 'filter-card';
-            } else {
-                $filterTitle = 'filter-web';
-            }
+            $sortSystem = $arraySortTitles[array_rand($arraySortTitles)];
             $project = new Project();
             $project->setTitle($lipsum->word());
             $project->setDescription($lipsum->word(5));
@@ -74,8 +67,8 @@ class AppFixtures extends Fixture
             $project->setImage('https://picsum.photos/800/600');
             $project->setLink('#');
             $project->setCreatedAt($date);
-            $project->setSortTitle($sortSystem. rand(1, 3));
-            $project->setFilterSortTitle($filterTitle);
+            $project->setSortTitle($lipsum->word());
+            $project->setFilterSortTitle($sortSystem);
             $manager->persist(($project));
         }
 
