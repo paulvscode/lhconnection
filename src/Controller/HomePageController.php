@@ -15,17 +15,19 @@ class HomePageController extends AbstractController
     #[Route('/', name: 'homepage_')]
     public function index(ManagerRegistry $doctrine): Response
     {
-        $colorsClass = ['blue', 'orange', 'green', 'red', 'purple', 'pink'];
-        $socialEvents = $doctrine->getRepository(SocialEvent::class)->findAll();
-        $teamMembers = $doctrine->getRepository(Team::class)->findAll();
-        $projects = $doctrine->getRepository(Project::class)->findAll();
+//        $colorsClass = ['blue', 'orange', 'green', 'red', 'purple', 'pink'];
+//        $socialEvents = $doctrine->getRepository(SocialEvent::class)->findAll();
+//        $teamMembers = $doctrine->getRepository(Team::class)->findAll();
+//        $projects = $doctrine->getRepository(Project::class)->findAll();
+//
+//        return $this->render('base.html.twig', [
+//            'teamMembers' => $teamMembers,
+//            'socialEvents' => $socialEvents,
+//            'colors' => $colorsClass,
+//            'projects' => $projects
+//        ]);
 
-        return $this->render('base.html.twig', [
-            'teamMembers' => $teamMembers,
-            'socialEvents' => $socialEvents,
-            'colors' => $colorsClass,
-            'projects' => $projects
-        ]);
+        return $this->render('wip.html.twig');
     }
 
 

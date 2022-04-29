@@ -24,7 +24,7 @@ class DashboardController extends AbstractDashboardController
     {
         return Dashboard::new()
             // the name visible to end users
-            ->setTitle('Administration LH Connections')
+            ->setTitle('Administration')
 
             // the path defined in this method is passed to the Twig asset() function
             ->setFaviconPath('logolh.png')
