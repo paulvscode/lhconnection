@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Project;
+use App\Entity\User;
 use DateTimeImmutable;
 use joshtronic\LoremIpsum;
 use App\Entity\SocialEvent;
@@ -71,6 +72,14 @@ class AppFixtures extends Fixture
             $project->setFilterSortTitle($sortSystem);
             $manager->persist(($project));
         }
+
+        // Users
+
+        $user = new User();
+        $user->setEmail('paulbdelagerie@gmail.com');
+        $user->setRoles(["ROLE_ADMIN"]);
+        $user->setPassword("$2y$10\$tON9gTYh9TY.QFiB2cA.4Ovmh6K5PBUf37q/1OScpFWwBva8SNcYi");
+        $manager->persist($user);
 
         $manager->flush();
     }
