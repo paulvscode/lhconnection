@@ -14,16 +14,25 @@ class MailerController extends AbstractController
     #[Route('/email', name: 'email')]
     public function sendEmail(MailerInterface $mailer, Request $request): Response
     {
-
+        $nameR = $request->get('name');
+        $emailR = $request->get('email');
+        $subjectR = $request->get('subject');
+        $messageR = $request->get('message');
 
         $email = (new TemplatedEmail())
-            ->from('contact@lhconnections.com')
+            ->from($emailR)
             ->to('contact@lhconnections.com')
-            ->subject('Time for Symfony Mailer!')
-            ->text('Sending emails is fun again!')
-            ->htmlTemplate('emails/model.html.twig', [
-
+            ->subject($subjectR)
+            ->text($messageR)
+            ->htmlTemplate('emails/model.html.twig')
+            ->context([
+                'name' => $nameR,
+                'emailSender' => $emailR,
+                'subject' => $subjectR,
+                'message' => $messageR,
             ]);
+
+
 
         try {
             $mailer->send($email);
