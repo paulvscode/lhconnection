@@ -19,8 +19,10 @@ class MailerController extends AbstractController
         $subjectR = $request->get('subject');
         $messageR = $request->get('message');
 
+
+
         $email = (new TemplatedEmail())
-            ->from($emailR)
+            ->from('contact@lhconnections.com')
             ->to('contact@lhconnections.com')
             ->subject($subjectR)
             ->text($messageR)
