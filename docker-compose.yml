@@ -34,7 +34,23 @@ services:
     ports:
       - "8000:8000"
 
+###< email ###
+
+  mailtrap:
+      container_name: mailtrap
+      image: eaudeweb/mailtrap:latest
+      restart: always
+      ports:
+        - "8125:80"
+        - "2525:25"
+      environment:
+        - MT_USER=mailtrap
+        - MT_PASSWD=mailtrap
+        - MT_MAILBOX_LIMIT=512000001
+        - MT_MESSAGE_LIMIT=102400001
+
 volumes:
 ###> doctrine/doctrine-bundle ###
   db-data:
 ###< doctrine/doctrine-bundle ###
+
