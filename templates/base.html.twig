@@ -53,7 +53,7 @@
                 <img src="{{ asset('second_ver_assets/assets/img/logolh.png') }}" alt=""/>
             </a>
 
-            <nav id="navbar" class="navbar" >
+            <nav id="navbar" class="navbar">
                 <ul>
                     <li>
                         <a class="nav-link scrollto active" href="#hero">Accueil</a>
@@ -134,9 +134,11 @@
                         of sharing.
                     </h1>
                     <h2 data-aos="fade-up" data-aos-delay="400">
-                        <p><b>LH Connections</b>, créé par un collectif d’amis et de passionnés, a pour vocation de
-                            favoriser et
-                            de développer des liens entre les habitants des villes anglophones jumelées avec Le Havre.
+                        <p>Pour les membres de LH Connections, tout est une question de partage. Notre association
+                            favorise et développe les liens entre les habitants des villes anglophones jumelées avec le
+                            Havre : établissements scolaires, culture, événements sportifs ou encore activités
+                            professionnelles…
+                            Tous les liens sont permis !
                         </p></h2>
                     <div data-aos="fade-up" data-aos-delay="600">
                         <div class="text-center text-lg-start">
@@ -170,6 +172,22 @@
         <!-- ======= About Section ======= -->
         <section id="about" class="about">
             <div class="container" data-aos="fade-up">
+               <div class="row gx-0 president-verbatim-container">
+                   <div class="col-lg-4 d-flex flex-column justify-content-center president-verbatim-image-container">
+                       <img class="president-verbatim-image" src="{{ asset('second_ver_assets/assets/img/Peggy-Labat-English-n-Stuff-portrait-0.png') }}" alt="">
+                   </div>
+                   <div class="col-lg-8 d-flex flex-column justify-content-center">
+                       <p>
+                           <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-quote" viewBox="0 0 16 16">
+                               <path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 9 7.558V11a1 1 0 0 0 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 3 7.558V11a1 1 0 0 0 1 1h2Z"/>
+                           </svg><br>L’objectif que nous avions en tête quand nous avons créé LH Connections : renforcer des liens qui existent déjà… et en créer de nouveaux ! Et je pense que nous avons tous quelque chose à partager, que nous soyons professeur, avocat, artiste, pro de la glisse… ou juste curieux de découvrir un peu mieux la culture anglophone.
+                           <h3>Peggy Labat</h3>
+                            Présidente de l’association
+                       </p>
+                   </div>
+               </div>
+
+
                 <div class="row gx-0">
                     <div
                             class="col-lg-6 d-flex flex-column justify-content-center"
@@ -177,32 +195,20 @@
                             data-aos-delay="200"
                     >
                         <div class="content">
-                            <h3>A propos</h3>
+                            <h3>Nos objectifs : </h3>
                             <!--                <h2>-->
                             <!--                  Expedita voluptas omnis cupiditate totam eveniet nobis sint-->
                             <!--                  iste. Dolores est repellat corrupti reprehenderit.-->
                             <!--                </h2>-->
                             <p>
-                                Nous nous proposons également de faciliter l'intégration des personnes et familles ayant
-                                vécu à l'étranger et souhaitant s'implanter dans la région havraise. A ce titre, il
-                                s’agira
-                                d’organiser des rencontres au cours d'évènements, mais aussi de sensibiliser les Havrais
-                                à
-                                la culture anglophone.
-                                LH Connections a également pour objectif de promouvoir les langues anglaises et
-                                françaises.
-                                Un moyen de contribuer à la valorisation internationale de la ville du Havre et de sa
-                                région.
+                            <ul>
+                                <li>Développer les liens et les partenariats dans les différents domaines.</li>
+                                <li>Accueillir et faciliter l’intégration des familles ayant vécu à l’étranger.</li>
+                                <li>Organiser des rencontres entre anglophones et havrais.</li>
+                                <li>Sensibiliser les havrais à la culture anglophone.</li>
+                                <li>Valoriser la ville du Havre et sa région à l’échelle internationale.</li>
+                            </ul>
                             </p>
-                            <div class="text-center text-lg-start">
-                                <a
-                                        href="#"
-                                        class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center"
-                                >
-                                    <span>En savoir plus</span>
-                                    <i class="bi bi-arrow-right"></i>
-                                </a>
-                            </div>
                         </div>
                     </div>
 
@@ -211,7 +217,7 @@
                             data-aos="zoom-out"
                             data-aos-delay="200"
                     >
-                        <img src="second_ver_assets/assets/img/about.jpg" class="img-fluid" alt=""/>
+                        <img src="{{ asset('second_ver_assets/assets/img/Temporary-Pict.jpg') }}" class="img-fluid" alt=""/>
                     </div>
                 </div>
             </div>
@@ -222,8 +228,8 @@
         <section id="services" class="services">
             <div class="container" data-aos="fade-up">
                 <header class="section-header">
-                    <h2>Social events</h2>
-                    <p>Upcoming, current and past events for LH Connections</p>
+                    <h2>Événements</h2>
+                    <p>C’est ici que ça se passe</p>
                 </header>
 
                 <div class="row gy-4">
@@ -359,11 +365,11 @@
                 <div class="clients-slider swiper">
                     <div class="swiper-wrapper align-items-center">
                         <div class="swiper-slide">
-{#                            <img#}
-{#                                    src="second_ver_assets/assets/img/clients/client-1.png"#}
-{#                                    class="img-fluid"#}
-{#                                    alt=""#}
-{#                            />#}
+                            {# <img #}
+                            {# src="second_ver_assets/assets/img/clients/client-1.png" #}
+                            {# class="img-fluid" #}
+                            {# alt="" #}
+                            {# /> #}
                         </div>
                     </div>
                     <div class="swiper-pagination"></div>
@@ -390,8 +396,8 @@
                                 class="php-email-form form-box-shadow"
                         >
                             <div class="row gy-4">
-{#                                <input type="hidden" name="_captcha" value="false">#}
-{#                                <input type="hidden" name="_next" value="https://lhconnections.com">#}
+                                {# <input type="hidden" name="_captcha" value="false"> #}
+                                {# <input type="hidden" name="_next" value="https://lhconnections.com"> #}
                                 <div class="col-md-6">
                                     <input
                                             type="text"
