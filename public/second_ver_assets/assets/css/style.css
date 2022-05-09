@@ -2183,3 +2183,27 @@ section {
     align-items: center;
   }
 }
+
+.partners-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.partners-container img {
+  max-height: 100px;
+  width: 100px;
+  margin: 1rem;
+}
+
+.partners-container-main {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+
+.ul-bullets-objectives {
+  list-style-type: square;
+}
