@@ -29,4 +29,10 @@ class HomePageController extends AbstractController
 
 //        return $this->render('wip.html.twig');
     }
+
+    #[Route('/confidentialite', name: 'confidentialite')]
+    public function rgpd(): Response
+    {
+        return $this->render('confidentialite.html.twig');
+    }
 }
