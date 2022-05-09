@@ -2184,6 +2184,16 @@ section {
   }
 }
 
+@media only screen and (min-width : 768px) and (max-width : 991px) {
+  .president-verbatim-image {
+    position: static;
+  }
+
+  .president-verbatim-image-container {
+    align-items: center;
+  }
+}
+
 .partners-container {
   display: flex;
   flex-direction: row;
@@ -2206,4 +2216,8 @@ section {
 
 .ul-bullets-objectives {
   list-style-type: square;
+}
+
+.surcharge-team-description {
+  font-size: 18px !important;
 }
