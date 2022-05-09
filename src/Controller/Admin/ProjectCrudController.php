@@ -24,7 +24,7 @@ class ProjectCrudController extends AbstractCrudController
             TextEditorField::new('description', 'Description'),
             TextEditorField::new('longDescription', 'Description longue'),
             TextField::new('image', 'Lien image'),
-            TextField::new('link','Redirection'),
+            TextField::new('link', 'Redirection'),
             DateField::new('createdAt', 'Date de création'),
             ChoiceField::new('filterSortTitle', 'Filtre')->setChoices([
                 'Southampton' => 'filter-web',
@@ -33,5 +33,4 @@ class ProjectCrudController extends AbstractCrudController
                 ])
             ];
     }
-
 }

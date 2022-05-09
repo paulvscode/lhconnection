@@ -1,4 +1,5 @@
 <?php
+
 // src/DataFixtures/AppFixtures.php
 namespace App\DataFixtures;
 
@@ -13,7 +14,7 @@ use Doctrine\Persistence\ObjectManager;
 
 class AppFixtures extends Fixture
 {
-    public function load(ObjectManager $manager)
+    public function load(ObjectManager $manager): void
     {
         $lipsum = new LoremIpsum();
         $date = new DateTimeImmutable('2000-01-01');
@@ -38,10 +39,11 @@ class AppFixtures extends Fixture
         // Social events
         $socialEvent = new SocialEvent();
         $socialEvent->setTitle("Le Havre-Tampa School Challenge – 17-22 octobre 2022");
-        $socialEvent->setDescription("Dans le cadre de l’anniversaire des 30 ans du jumelage entre les villes du Havre et de
-Tampa, différentes actions seront menées pour sensibiliser les jeunes français et
-américains au jumelage.
-");
+        $socialEvent->setDescription("Dans le cadre de l’anniversaire des 30 ans du 
+        jumelage entre les villes du Havre et de
+        Tampa, différentes actions seront menées pour sensibiliser les jeunes français et
+        américains au jumelage.
+        ");
         $socialEvent->setImage('https://picsum.photos/200');
         $socialEvent->setIcon('https://picsum.photos/20');
         $socialEvent->setLink('https://www.facebook.com/');
@@ -49,8 +51,9 @@ américains au jumelage.
 
         $socialEvent = new SocialEvent();
         $socialEvent->setTitle("Soirée d’inauguration -11 mai 2022");
-        $socialEvent->setDescription("Le 11 mai, c’est la soirée d’inauguration de LH Connections. Un moment qui réunira plus de 200 personnes, des quatre coins du Havre, et plus encore ! 
-");
+        $socialEvent->setDescription("Le 11 mai, c’est la soirée d’inauguration de LH Connections. 
+        Un moment qui réunira plus de 200 personnes, des quatre coins du Havre, et plus encore !    
+        ");
         $socialEvent->setImage('https://picsum.photos/200');
         $socialEvent->setIcon('https://picsum.photos/20');
         $socialEvent->setLink('https://www.facebook.com/events/512116053722896');

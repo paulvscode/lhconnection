@@ -15,36 +15,43 @@ class SocialEvent
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private int $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $title;
+    private string $title;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $description;
+    private string $description;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $image;
+    private string $image;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $link;
+    private string $link;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $icon;
+    private string $icon;
 
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function setId(int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     public function getTitle(): ?string
@@ -76,7 +83,7 @@ class SocialEvent
         return $this->image;
     }
 
-    public function setImage(?string $image): self
+    public function setImage(string $image): self
     {
         $this->image = $image;
 
@@ -88,7 +95,7 @@ class SocialEvent
         return $this->link;
     }
 
-    public function setLink(?string $link): self
+    public function setLink(string $link): self
     {
         $this->link = $link;
 
@@ -100,7 +107,7 @@ class SocialEvent
         return $this->icon;
     }
 
-    public function setIcon(?string $icon): self
+    public function setIcon(string $icon): self
     {
         $this->icon = $icon;
 

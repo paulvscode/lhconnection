@@ -42,7 +42,5 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Social Events', 'fas fa-list', SocialEvent::class);
         yield MenuItem::linkToCrud('Team', 'fas fa-list', Team::class);
         yield MenuItem::linkToCrud('User', 'fas fa-list', User::class);
-
-
     }
 }

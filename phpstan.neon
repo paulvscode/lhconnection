@@ -1,0 +1,8 @@
+parameters:
+    checkGenericClassInNonGenericObjectType: false
+    reportUnmatchedIgnoredErrors: false
+    checkMissingIterableValueType: false
+    excludes_analyse:
+        # Test dependencies
+        - 'tests/Application/app/**.php'
+        - 'tests/Application/src/**.php'

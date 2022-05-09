@@ -149,6 +149,9 @@
     "phpstan/phpdoc-parser": {
         "version": "1.4.5"
     },
+    "phpstan/phpstan": {
+        "version": "1.6.7"
+    },
     "phpunit/php-code-coverage": {
         "version": "9.2.15"
     },
@@ -251,6 +254,18 @@
         },
         "files": [
             "config/packages/sensio_framework_extra.yaml"
+        ]
+    },
+    "squizlabs/php_codesniffer": {
+        "version": "3.6",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "3.6",
+            "ref": "1019e5c08d4821cb9b77f4891f8e9c31ff20ac6f"
+        },
+        "files": [
+            "phpcs.xml.dist"
         ]
     },
     "symfony/asset": {

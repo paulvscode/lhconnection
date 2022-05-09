@@ -30,5 +30,4 @@ class SocialEventCrudController extends AbstractCrudController
             ])
         ];
     }
-
 }

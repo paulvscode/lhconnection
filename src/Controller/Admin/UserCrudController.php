@@ -24,5 +24,4 @@ class UserCrudController extends AbstractCrudController
             TextField::new('password')->setFormType(PasswordType::class)
         ];
     }
-
 }
