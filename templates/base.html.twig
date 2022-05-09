@@ -249,7 +249,7 @@
                                 <p>
                                     {{ socialEvent.description | raw }}
                                 </p>
-                                <a class="social-event-facebook-link" href="#">See event on <i
+                                <a class="social-event-facebook-link" href="{{ socialEvent.link }}">See event on <i
                                             class="bi bi-facebook"></i></a>
                             </div>
                         </div>
@@ -696,7 +696,6 @@
     <script src="{{ asset('second_ver_assets/assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
     <script src="{{ asset('second_ver_assets/assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
     <script src="{{ asset('second_ver_assets/assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
-    <script src="{{ asset('second_ver_assets/assets/vendor/php-email-form/validate.js') }}"></script>
 
     <!-- Template Main JS File -->
     <script src="{{ asset('second_ver_assets/assets/js/main.js') }}"></script>
