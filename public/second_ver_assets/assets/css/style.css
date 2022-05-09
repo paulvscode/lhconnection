@@ -2218,6 +2218,6 @@ section {
   list-style-type: square;
 }
 
-.surcharge-team-description {
+#surcharge-team-description {
   font-size: 18px !important;
 }
