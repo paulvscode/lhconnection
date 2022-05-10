@@ -289,6 +289,19 @@
     aos_init();
   });
 
+  /** Adhésion **/
+
+  const adhesionBtn = document.getElementById('adhesion-btn');
+  const formIdSubject = document.getElementById('form-subject-id');
+  const formIdMessage = document.getElementById('form-message-id');
+
+  console.log(adhesionBtn);
+  adhesionBtn.addEventListener('click', function(e) {
+    formIdSubject.value = "Adhésion : je souhaite rejoindre LH Connections !";
+    formIdMessage.value = "Bonjour, je suis intéressé(e) par votre projet et souhaiterais rejoindre l'association ! " +
+        "Voici mes coordonnées, n'hésitez pas à me contacter afin que nous fassions connaissance. "
+  });
+
   /** Ohdé **/
 
   const ohdeCode = {
