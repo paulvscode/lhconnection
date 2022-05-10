@@ -2580,3 +2580,14 @@ section {
 .text-intro {
     font-size: 1.4rem !important;
 }
+
+/*adhésion*/
+
+.adhesion-button {
+    transition: .2s ease-in-out;
+}
+
+.adhesion-button:hover {
+    color: #21bb74 !important;
+    transition: .2s ease-in-out;
+}
