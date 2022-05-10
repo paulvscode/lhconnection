@@ -23,9 +23,9 @@ class SocialEventCrudController extends AbstractCrudController
             TextField::new('image', 'Lien image'),
             TextField::new('link', 'Redirection'),
             ChoiceField::new('icon', 'Icon')->setChoices([
-                'Lunettes' => 'bi-eyeglasses',
-                'Livre' => 'bi-book-fill',
-                'Peinture' => 'bi-brush-fill',
+                'Lunettes' => 'ri-eyeglasses',
+                'Livre' => 'ri-book-fill',
+                'Peinture' => 'ri-brush-fill',
                 'Tchat' => 'ri-discuss-line'
             ])
         ];
