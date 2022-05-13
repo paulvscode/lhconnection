@@ -2591,3 +2591,8 @@ section {
     color: #21bb74 !important;
     transition: .2s ease-in-out;
 }
+
+.inscription-topic {
+    padding-bottom: 1rem;
+    font-weight: 600;
+}
