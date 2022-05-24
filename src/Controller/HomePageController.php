@@ -7,14 +7,18 @@ use App\Entity\SocialEvent;
 use App\Entity\Team;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\Routing\Annotation\Route;
 
 class HomePageController extends AbstractController
 {
     #[Route('/', name: 'homepage_')]
-    public function index(ManagerRegistry $doctrine): Response
+    public function index(ManagerRegistry $doctrine, Request $request): Response
     {
+        $locale = $request->getLocale();
+
         $colorsClass = ['blue', 'orange', 'green', 'red', 'purple', 'pink'];
         $socialEvents = $doctrine->getRepository(SocialEvent::class)->findAll();
         $teamMembers = $doctrine->getRepository(Team::class)->findAll();
@@ -24,7 +28,8 @@ class HomePageController extends AbstractController
             'teamMembers' => $teamMembers,
             'socialEvents' => $socialEvents,
             'colors' => $colorsClass,
-            'projects' => $projects
+            'projects' => $projects,
+            'locale' => $locale
         ]);
 
 //        return $this->render('wip.html.twig');
@@ -34,5 +39,14 @@ class HomePageController extends AbstractController
     public function rgpd(): Response
     {
         return $this->render('confidentialite.html.twig');
+    }
+
+    #[Route('/to_english', name: 'english')]
+    public function onKernelRequest(RequestEvent $event)
+    {
+        $request = $event->getRequest();
+
+        // some logic to determine the $locale
+        $request->setLocale('en');
     }
 }
