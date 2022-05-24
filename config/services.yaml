@@ -10,7 +10,7 @@ parameters:
 services:
     App\EventListener\RequestListener:
         tags:
-            - { name: kernel.event_listener, event: kernel.request }
+            - { name: kernel.event_listener,method: onKernelRequest, event: kernel.request }
 
     # default configuration for services in *this* file
     _defaults:
