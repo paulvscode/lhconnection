@@ -1,5 +1,7 @@
 <?php
 
+namespace App\EventListener;
+
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 
 class RequestListener
