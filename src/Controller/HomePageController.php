@@ -40,13 +40,4 @@ class HomePageController extends AbstractController
     {
         return $this->render('confidentialite.html.twig');
     }
-
-    #[Route('/to_english', name: 'english')]
-    public function onKernelRequest(RequestEvent $event)
-    {
-        $request = $event->getRequest();
-
-        // some logic to determine the $locale
-        $request->setLocale('en');
-    }
 }
