@@ -6,12 +6,13 @@ use Symfony\Component\HttpKernel\Event\RequestEvent;
 
 class RequestListener
 {
-    public function __construct() {
-        dd('toto');
-    }
-
     public function onKernelRequest(RequestEvent $event)
     {
-        dd('titi');
+        $request = $event->getRequest();
+        $locale = $request->attributes->get('_locale');
+
+        if (null !== $locale) {
+            $request->setLocale($locale);
+        }
     }
 }

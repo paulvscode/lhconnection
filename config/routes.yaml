@@ -1,7 +1,19 @@
-controllers:
-    resource: ../src/Controller/
-    type: annotation
+email:
+    path: /email
+    controller: App\Controller\MailerController::sendEmail
 
-kernel:
-    resource: ../src/Kernel.php
-    type: annotation
+confidentialite:
+    path: /confidentialite
+    controller: App\Controller\HomePageController::rgpd
+
+login:
+    path: /login
+    controller: App\Controller\LoginController::index
+
+logout:
+    path: /logout
+    controller: App\Controller\LoginController::logout
+
+homepage:
+    path: /{_locale}
+    controller: App\Controller\HomePageController::index
