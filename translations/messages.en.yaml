@@ -1,3 +1,61 @@
 lhconnection:
     homepage:
-        title: My test
+        title: Homepage
+        event: Events
+        project: Projects
+        team: Our team
+        resources: Resources
+        contact: Contact
+        membership: Membership
+        language: Language
+    hero:
+        title: At the
+        second-title:
+        first: For members of LH Connections, it's all about sharing. Our association promotes and develops links between the inhabitants of English-speaking towns twinned with Le Havre
+        second: schools, culture, sporting events or professional activities...
+        third:  All links are allowed!
+        title-link: Our Objectives
+    president:
+        goal-main-first: The goal we had in mind when we created LH Connections
+        goal-main-second: to strengthen existing links… and create new ones! And I think we all have something to share, whether we're a teacher, a lawyer, an artist, a snow sports pro... or just curious to discover English culture a little better.
+        role: President of Association
+    goals:
+        title: Our Objectives
+        first-title: Develop
+        first: links and partnerships in the various fields.
+        second-title: Welcome
+        second: Welcome and facilitate the integration of families who have lived abroad.
+        third-title: Organize
+        third: Organize meetings between English speakers and Le Havre locals.
+        fourth-title: Raise
+        fourth: Raise awareness of English-speaking cultures to Le Havre locals.
+        fifth-title: Promote
+        fifth: Promote the city of Le Havre and its region internationally.
+    events:
+        title: Events
+        description: What’s happening
+    projects:
+        title: Projects
+        description: Upcoming projects
+        category-all: All
+    team:
+        title: LH Connections Founders
+        description: They are not all from Le Havre. They come from a variety of professional backgrounds. They are not all same in age... But they are united by a common desire
+        description-second: to make LH Connections live with passion and motivation! A brief overview of our team.
+    partners:
+        title: OUR PARTNERS
+        description: They talk about us...we talk about them
+    contact:
+        title: Contact
+        description: Contact us
+        fees: Our membership fee is 20€ per year.
+    form:
+        submit: Submit
+    faq:
+        title: F.A.Q
+        description: We have an answer to (almost) everything
+    networks:
+        description: Find us online
+    copyright:
+        rights: All Rights Reserved
+        privacy: Privacy

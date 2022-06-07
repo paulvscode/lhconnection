@@ -56,16 +56,16 @@
             <nav id="navbar" class="navbar">
                 <ul>
                     <li>
-                        <a class="nav-link scrollto active" href="#hero">Accueil</a>
+                        <a class="nav-link scrollto active" href="#hero">{{ 'lhconnection.homepage.title' | trans }}</a>
                     </li>
                     <li>
-                        <a class="nav-link scrollto" href="#services">Événements</a>
+                        <a class="nav-link scrollto" href="#services">{{ 'lhconnection.homepage.event' | trans }}</a>
                     </li>
-                    <li><a class="nav-link scrollto" href="#portfolio">Projets</a></li>
-                    <li><a class="nav-link scrollto" href="#team">Notre équipe</a></li>
+                    <li><a class="nav-link scrollto" href="#portfolio">{{ 'lhconnection.homepage.project' | trans }}</a></li>
+                    <li><a class="nav-link scrollto" href="#team">{{ 'lhconnection.homepage.team' | trans }}</a></li>
                     <li class="dropdown">
                         <a href="#"
-                        ><span>Ressources</span> <i class="bi bi-chevron-down"></i
+                        ><span>{{ 'lhconnection.homepage.resources' | trans }}</span> <i class="bi bi-chevron-down"></i
                             ></a>
                         <ul>
                             <li><a href="https://www.facebook.com/labellevieinnormandy">La belle vie in Normandy</a>
@@ -85,12 +85,12 @@
                             </li>
                         </ul>
                     </li>
-                    <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-                    <li><a id="adhesion-btn" class="nav-link scrollto text-success adhesion-button" href="#contact">Adhésion</a>
+                    <li><a class="nav-link scrollto" href="#contact">{{ 'lhconnection.homepage.contact' | trans }}</a></li>
+                    <li><a id="adhesion-btn" class="nav-link scrollto text-success adhesion-button" href="#contact">{{ 'lhconnection.homepage.membership' | trans }}</a>
                     </li>
                     <li class="dropdown dropdown-list-language">
                         <a href="#"
-                        ><span>Langue : {{ locale }}</span><i class="bi bi-chevron-down"></i
+                        ><span>{{ 'lhconnection.homepage.language' | trans }} : {{ locale }}</span><i class="bi bi-chevron-down"></i
                             ></a>
                         <ul class="language-ul-home">
                             {% set current_path = app.request.get('_route') %}
@@ -130,21 +130,18 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 d-flex flex-column justify-content-center">
-                    <h1 data-aos="fade-up">At the
+                    <h1 data-aos="fade-up">{{ 'lhconnection.hero.title' | trans }}
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                              class="bi bi-heart-fill" viewBox="0 0 16 16">
                             <path fill-rule="evenodd"
                                   d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
                         </svg>
-                        of sharing.
+                        {{ 'lhconnection.hero.title-second' | trans }}
                     </h1>
                     <h2 data-aos="fade-up" data-aos-delay="400">
-                        <p class="text-intro">Pour les membres de LH Connections, tout est une question de partage.
-                            Notre association
-                            favorise et développe les liens entre les habitants des villes anglophones jumelées avec le
-                            Havre : établissements scolaires, culture, événements sportifs ou encore activités
-                            professionnelles… <br>
-                            <br>Tous les liens sont permis !
+                        <p class="text-intro">{{ 'lhconnection.hero.first' | trans }} : {{ 'lhconnection.hero.second' | trans }}
+                            <br>
+                            <br>{{ 'lhconnection.hero.third' | trans }}
                         </p></h2>
                     <div data-aos="fade-up" data-aos-delay="600">
                         <div class="text-center text-lg-start">
@@ -152,7 +149,7 @@
                                     href="#about"
                                     class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center"
                             >
-                                <span>Nos objectifs</span>
+                                <span>{{ 'lhconnection.hero.title-link' | trans }}</span>
                                 <i class="bi bi-arrow-right"></i>
                             </a>
                         </div>
@@ -190,12 +187,9 @@
                                  class="bi bi-quote" viewBox="0 0 16 16">
                                 <path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 9 7.558V11a1 1 0 0 0 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 3 7.558V11a1 1 0 0 0 1 1h2Z"/>
                             </svg>
-                            <br>L’objectif que nous avions en tête quand nous avons créé LH Connections : renforcer des
-                            liens qui existent déjà… et en créer de nouveaux ! Et je pense que nous avons tous quelque
-                            chose à partager, que nous soyons professeur, avocat, artiste, pro de la glisse… ou juste
-                            curieux de découvrir un peu mieux la culture anglophone.
+                            <br>{{ 'lhconnection.president.goal-main-first' | trans }} : {{ 'lhconnection.president.goal-main-second' | trans }}
                         <h3>Peggy Labat</h3>
-                        Présidente de l’association
+                        {{ 'lhconnection.president.role' | trans }}
                         </p>
                     </div>
                 </div>
@@ -208,19 +202,19 @@
                             data-aos-delay="200"
                     >
                         <div class="content">
-                            <h3>Nos objectifs : </h3>
+                            <h3>{{ 'lhconnection.goals.title' | trans }} : </h3>
                             <!--                <h2>-->
                             <!--                  Expedita voluptas omnis cupiditate totam eveniet nobis sint-->
                             <!--                  iste. Dolores est repellat corrupti reprehenderit.-->
                             <!--                </h2>-->
                             <p>
                             <ul class="ul-bullets-objectives">
-                                <li><b>Développer</b> les liens et les partenariats dans les différents domaines.</li>
-                                <li><b>Accueillir</b> et faciliter l’intégration des familles ayant vécu à l’étranger.
+                                <li><b>{{ 'lhconnection.goals.first-title' | trans }}</b> {{ 'lhconnection.goals.first' | trans }}</li>
+                                <li><b>{{ 'lhconnection.goals.second-title' | trans }}</b> {{ 'lhconnection.goals.second' | trans }}
                                 </li>
-                                <li><b>Organiser</b> des rencontres entre anglophones et havrais.</li>
-                                <li><b>Sensibiliser</b> les havrais à la culture anglophone.</li>
-                                <li><b>Valoriser</b> la ville du Havre et sa région à l’échelle internationale.</li>
+                                <li><b>{{ 'lhconnection.goals.third-title' | trans }}</b> {{ 'lhconnection.goals.third' | trans }}</li>
+                                <li><b>{{ 'lhconnection.goals.fourth-title' | trans }}</b> {{ 'lhconnection.goals.fourth' | trans }}</li>
+                                <li><b>{{ 'lhconnection.goals.fifth-title' | trans }}</b> {{ 'lhconnection.goals.fifth' | trans }}</li>
                             </ul>
                             </p>
                         </div>
@@ -243,8 +237,8 @@
         <section id="services" class="services">
             <div class="container" data-aos="fade-up">
                 <header class="section-header">
-                    <h2>Événements</h2>
-                    <p>C’est ici que ça se passe</p>
+                    <h2>{{ 'lhconnection.events.title' | trans }}</h2>
+                    <p>{{ 'lhconnection.events.description' | trans }}</p>
                 </header>
 
                 <div class="row gy-4">
@@ -279,14 +273,14 @@
         <section id="portfolio" class="portfolio">
             <div class="container" data-aos="fade-up">
                 <header class="section-header">
-                    <h2>Projects</h2>
-                    <p>Upcoming projects</p>
+                    <h2>{{ 'lhconnection.projects.title' | trans }}</h2>
+                    <p>{{ 'lhconnection.projects.description' | trans }}</p>
                 </header>
 
                 <div class="row" data-aos="fade-up" data-aos-delay="100">
                     <div class="col-lg-12 d-flex justify-content-center">
                         <ul id="portfolio-flters">
-                            <li data-filter="*" class="filter-active">Tout</li>
+                            <li data-filter="*" class="filter-active">{{ 'lhconnection.projects.category-all' | trans }}</li>
                             <li data-filter=".filter-app">Le Havre</li>
                             <li data-filter=".filter-card">Tampa</li>
                             <li data-filter=".filter-web">Southampton</li>
@@ -335,11 +329,10 @@
         <section id="team" class="team">
             <div class="container" data-aos="fade-up">
                 <header class="section-header">
-                    <h2>Ceux qui font LH Connections</h2>
+                    <h2>{{ 'lhconnection.team.title' | trans }}</h2>
                     <p id="surcharge-team-description">
-                        Ils viennent du Havre, ou non. Ils sont issus de milieux professionnels variés.
-                        Ils n’ont pas le même âge… Mais ils sont unis par une volonté commune :
-                        faire vivre LH Connections avec passion et motivation ! Petit tour d’horizon de notre équipe.
+                        {{ 'lhconnection.team.description' | trans }} :
+                        {{ 'lhconnection.team.description-second' | trans }}
                     </p>
                 </header>
 
@@ -379,8 +372,8 @@
             <div class="container" data-aos="fade-up">
 
                 <header class="section-header">
-                    <h2>Nos partenaires</h2>
-                    <p>Ils parlent de nous…nous parlons d’eux </p>
+                    <h2>{{ 'lhconnection.partners.title' | trans }}</h2>
+                    <p>{{ 'lhconnection.partners.description' | trans }}</p>
                 </header>
 
                 <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="200">
@@ -408,8 +401,8 @@
         <section id="contact" class="contact">
             <div class="container" data-aos="fade-up">
                 <header class="section-header">
-                    <h2>Contact</h2>
-                    <p>Contactez-nous</p>
+                    <h2>{{ 'lhconnection.contact.title' | trans }}</h2>
+                    <p>{{ 'lhconnection.contact.description' | trans }}</p>
                 </header>
 
                 <div class="row gy-4">
@@ -482,8 +475,8 @@
                                     <div class="inscription-topic"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
                                             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                                             <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
-                                        </svg> Nos frais d'adhésion sont de 20€ / an.</div>
-                                    <button id="form-button-id" type="submit">Envoyer</button>
+                                        </svg> {{ 'lhconnection.contact.fees' | trans }}</div>
+                                    <button id="form-button-id" type="submit">{{ 'lhconnection.form.submit' | trans }}</button>
                                 </div>
                             </div>
                         </form>
@@ -501,7 +494,7 @@
         <div class="container" data-aos="fade-up">
             <header class="section-header">
                 <h2>F.A.Q</h2>
-                <p>On a réponse à (presque) tout</p>
+                <p>{{ 'lhconnection.faq.description' | trans }}</p>
             </header>
 
             <div class="row">
@@ -679,7 +672,7 @@
                             <img src="{{ asset('second_ver_assets/assets/img/logolh.png') }}" alt=""/>
                         </a>
                         <p>
-                            Retrouvez-nous sur les réseaux sociaux :
+                            {{ 'lhconnection.networks.description' | trans }} :
                         </p>
                         <div class="social-links mt-3 text-center">
                             <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
@@ -697,8 +690,8 @@
         <div class="container">
             <div class="copyright">
                 &copy; Copyright <strong><span>LH Connections</span></strong
-                >. Tous droits réservés
-                - <a target="_blank" href="{{ path('confidentialite') }}">Confidentialité</a>
+                >. {{ 'lhconnection.copyright.rights' | trans }}
+                - <a target="_blank" href="{{ path('confidentialite') }}">{{ 'lhconnection.copyright.privacy' | trans }}</a>
             </div>
             <div class="credits">
             </div>
