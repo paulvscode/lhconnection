@@ -17,3 +17,10 @@ logout:
 homepage:
     path: /{_locale}
     controller: App\Controller\HomePageController::index
+
+homepageredirection:
+    path: /
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
+    defaults:
+        path: /fr
+        permanent: true

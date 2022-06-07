@@ -456,6 +456,11 @@
                                     />
                                 </div>
 
+                                <label class="comment">Comment</label>
+                                <input id="imabot" name="comment"
+                                       pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                                       placeholder="votre commentaire">
+
                                 <div class="col-md-12">
                     <textarea
                             class="form-control"
@@ -478,12 +483,6 @@
                                             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                                             <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
                                         </svg> Nos frais d'adhésion sont de 20€ / an.</div>
-
-                                    <button class="g-recaptcha"
-                                            data-sitekey="6LdU0jkgAAAAAD2QxkbPjG53xHKLgQI0ky4p2FY8"
-                                            data-callback='onSubmit'
-                                            data-action='submit'>Submit</button>
-
                                     <button id="form-button-id" type="submit">Envoyer</button>
                                 </div>
                             </div>
@@ -721,12 +720,6 @@
     <script src="{{ asset('second_ver_assets/assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
     <script src="{{ asset('second_ver_assets/assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
     <script src="https://www.google.com/recaptcha/api.js"></script>
-
-    <script>
-        function onSubmit(token) {
-            document.getElementById("demo-form").submit();
-        }
-    </script>
 
     <!-- Template Main JS File -->
     <script src="{{ asset('second_ver_assets/assets/js/main.js') }}"></script>

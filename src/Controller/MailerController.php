@@ -20,7 +20,10 @@ class MailerController extends AbstractController
         $subjectR = $request->get('subject');
         $messageR = $request->get('message');
 
-
+        if ($_POST['comment'] != "")
+        {
+            die('oops');
+        }
 
         $email = (new TemplatedEmail())
             ->from('contact@lhconnections.com')
@@ -44,6 +47,6 @@ class MailerController extends AbstractController
         }
 
         $this->addFlash('success', 'Email bien envoyé');
-        return $this->redirectToRoute('homepage_');
+        return $this->redirectToRoute('homepage');
     }
 }

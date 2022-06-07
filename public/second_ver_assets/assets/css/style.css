@@ -2596,3 +2596,13 @@ section {
     padding-bottom: 1rem;
     font-weight: 600;
 }
+
+/*bot check*/
+
+#imabot {
+    display: none;
+}
+
+.comment {
+    display: none;
+}
