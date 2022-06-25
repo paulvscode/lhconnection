@@ -8,6 +8,7 @@ lhconnection:
         contact: Contact
         membership: Adhésion
         language: Langue
+        login: Espace membre
     hero:
         title: At the
         second-title: of sharing.
