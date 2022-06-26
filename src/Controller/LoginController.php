@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Controller\User\UserDashboardController;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
@@ -18,6 +19,19 @@ class LoginController extends AbstractController
             'last_username' => $lastUsername,
             'error' => $error
         ]);
+    }
+
+    public function postLoginRedirectAction() : Response
+    {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $user = $this->getUser();
+
+        if (in_array('ROLE_ADMIN', $user->getRoles())) {
+            return $this->forward('App\Controller\Admin\DashboardController::index');
+        }else {
+            return $this->forward('App\Controller\User\UserDashboardController::index');
+        }
+
     }
 
     public function logout(): void

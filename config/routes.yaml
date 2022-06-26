@@ -10,6 +10,10 @@ login:
     path: /login
     controller: App\Controller\LoginController::index
 
+loginsuccess:
+    path: /loginsuccess
+    controller: App\Controller\LoginController::postLoginRedirectAction
+
 admin:
     path: /admin
     controller: App\Controller\Admin\DashboardController::index

@@ -26,14 +26,21 @@ class AppFixtures extends Fixture
         // Users admin
         $user = new User();
         $user->setEmail('paulbdelagerie@gmail.com');
-        $user->setRoles(["ROLE_ADMIN"]);
+        $user->setRoles(["ROLE_USER", "ROLE_ADMIN"]);
         $user->setPassword("$2y$10\$tON9gTYh9TY.QFiB2cA.4Ovmh6K5PBUf37q/1OScpFWwBva8SNcYi");
         $manager->persist($user);
 
         $user = new User();
         $user->setEmail('peggylabat@gmail.com');
-        $user->setRoles(["ROLE_ADMIN"]);
+        $user->setRoles(["ROLE_USER", "ROLE_ADMIN"]);
         $user->setPassword("$2y$10\$HcTMdMNk6QW9OETk8QuklukiUpzjt.5P7pT565yqa.f7ze0xrIg3C");
+        $manager->persist($user);
+
+        // Users not admin
+        $user = new User();
+        $user->setEmail('johndoe@john.fr');
+        $user->setRoles(["ROLE_USER"]);
+        $user->setPassword("$2y$10\$wSeE7WRqAKsPsF9/6i8DLOozHc1LUCHlyqYqT66ZZdH0xMu83JqWm");
         $manager->persist($user);
 
         // Social events
