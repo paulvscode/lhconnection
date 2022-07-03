@@ -18,6 +18,10 @@ admin:
     path: /admin
     controller: App\Controller\Admin\DashboardController::index
 
+userdashboard:
+    path: /userdashboard
+    controller: App\Controller\User\UserDashboardController::index
+
 logout:
     path: /logout
     controller: App\Controller\LoginController::logout

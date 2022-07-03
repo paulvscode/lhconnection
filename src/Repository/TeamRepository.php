@@ -36,15 +36,14 @@ class TeamRepository extends ServiceEntityRepository
     }
     */
 
-    /*
-    public function findOneBySomeField($value): ?Team
+    public function findOneBySomeField($value)
     {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
+        $qb =  $this->createQueryBuilder('t')
+            ->andWhere('t.name LIKE :name')
+            ->setParameter('name', '%'. $value . '%')
         ;
+        $query = $qb->getQuery();
+
+        return $query->execute();
     }
-    */
 }

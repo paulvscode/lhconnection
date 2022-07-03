@@ -69,16 +69,16 @@ class AppFixtures extends Fixture
         // Team + Roles
 
         $teamMembers = [
-            'Peggy Labat' => 'Présidente',
-            'Lise-Lotte Kirkegaard Dusbosc' => 'Vice-Présidente',
-            'Hannah Gallais' => 'Vice-Présidente',
-            'Alice Dinh Viet' => 'Secrétaire',
-            'André Labat' => 'Trésorier',
-            'Paul Barraud de Lagerie' => 'Responsable du site internet',
-            'Tom Smith' => 'Coordinateur des projets UK',
-            'Louise Jeanne' => 'Responsable partenaires',
-            'Marion Hébert' => 'Coordinatrice des événements',
-            'Marie Amélie-Laroze' => 'Responsable communication'
+            'peggy labat' => 'présidente',
+            'lise-lotte kirkegaard dusbosc' => 'vice-présidente',
+            'hannah gallais' => 'vice-présidente',
+            'alice dinh viet' => 'secrétaire',
+            'andré labat' => 'trésorier',
+            'paul barraud de lagerie' => 'responsable du site internet',
+            'tom smith' => 'coordinateur des projets uk',
+            'louise jeanne' => 'responsable partenaires',
+            'marion hébert' => 'coordinatrice des événements',
+            'marie amélie-laroze' => 'responsable communication'
         ];
 
         foreach ($teamMembers as $name => $role) {
