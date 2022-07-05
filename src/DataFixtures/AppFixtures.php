@@ -66,6 +66,19 @@ class AppFixtures extends Fixture
         $socialEvent->setLink('https://www.facebook.com/events/512116053722896');
         $manager->persist($socialEvent);
 
+        // projects
+        $project = new Project();
+        $project->setImage('https://picsum.photos/200');
+        $project->setResponsible(['Project responsible']);
+        $project->setTitle('Project Title');
+        $project->setDescription('Description du projet');
+        $project->setLongDescription('Description longue du projet');
+        $project->setLink('Lien vers le slack');
+        $project->setCreatedAt($date);
+        $project->setSortTitle('Titre de classement');
+        $project->setFilterSortTitle('filtre de classement');
+        $manager->persist($project);
+
         // Team + Roles
 
         $teamMembers = [

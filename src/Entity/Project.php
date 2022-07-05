@@ -58,6 +58,11 @@ class Project
      */
     private string $filterSortTitle;
 
+    /**
+     * @ORM\Column(type="array")
+     */
+    private $responsible = [];
+
     public function getId(): ?int
     {
         return $this->id;
@@ -162,6 +167,18 @@ class Project
     public function setFilterSortTitle(string $filterSortTitle): self
     {
         $this->filterSortTitle = $filterSortTitle;
+
+        return $this;
+    }
+
+    public function getResponsible(): ?array
+    {
+        return $this->responsible;
+    }
+
+    public function setResponsible(array $responsible): self
+    {
+        $this->responsible = $responsible;
 
         return $this;
     }
