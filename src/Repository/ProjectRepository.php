@@ -19,6 +19,17 @@ class ProjectRepository extends ServiceEntityRepository
         parent::__construct($registry, Project::class);
     }
 
+    public function findOneBySomeField($value)
+    {
+        $qb =  $this->createQueryBuilder('t')
+            ->andWhere('t.title LIKE :title')
+            ->setParameter('title', '%'. $value . '%')
+        ;
+        $query = $qb->getQuery();
+
+        return $query->execute();
+    }
+
     // /**
     //  * @return Project[] Returns an array of Project objects
     //  */

@@ -22,6 +22,14 @@ userdashboard:
     path: /userdashboard
     controller: App\Controller\User\UserDashboardController::index
 
+userproject:
+    path: /projects
+    controller: App\Controller\User\UserDashboardController::index
+
+userraccount:
+    path: /account
+    controller: App\Controller\User\UserDashboardController::account
+
 logout:
     path: /logout
     controller: App\Controller\LoginController::logout

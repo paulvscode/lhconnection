@@ -119,75 +119,22 @@
             }
         }
 
-        /*Directory*/
-        .projects-container-userdashboard {
+        .user-account-informations {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 70%;
+            margin: 0 auto;
+        }
+
+        .user-account-container {
             width: 70%;
             margin: 2rem auto;
             display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
             justify-content: center;
-        }
-
-        /*search bar*/
-        .user-dashboard-form {
-            width: 40%;
-            margin: 0 auto;
-
-        }
-
-        .form-control-borderless {
-            border: none;
-        }
-
-        .form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
-            border: none;
-            outline: none;
-            box-shadow: none;
-        }
-
-        /* project card */
-        .user-dashboard-card-project-links {
-            display: flex;
             align-items: center;
-            justify-content: space-around;
-        }
-
-        .card-dashboard-image {
-            max-width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        /* modale */
-        .userdash-container-image-description {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .long-description-modal {
-            margin-left: 1rem;
-            margin-top: 1rem;
-            margin-bottom: 0;
-        }
-
-        .userdash-container-contact {
-            margin-top: 1rem;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .userdash-ownedby {
             text-align: center;
-            margin-bottom: 1rem;
         }
-
-        .modal-image {
-            max-width: 100%;
-        }
-
-
     </style>
 {% endblock %}
 {% block body %}
@@ -218,13 +165,13 @@
                         Projets</a>
                 </li>
                 <li>
-                    <a href="{{ path('userraccount') }}">
+                    <a href="#">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                              class="bi bi-person-square" viewBox="0 0 16 16">
                             <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
                             <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z"/>
                         </svg>
-                        Mon compte</a>
+                        Mon Compte</a>
                 </li>
                 <li class="connected-as-user">
                     Connecté : <span class="username-user-dashboard">{{ username }}</span>
@@ -241,68 +188,16 @@
         </nav>
     </div>
 
-    <form class="card card-sm user-dashboard-form" action="{{ path('userdashboard') }}">
-        <div class="card-body row no-gutters align-items-center">
-            <div class="col-auto">
-                <i class="fas fa-search h4 text-body"></i>
-            </div>
-            <!--end of col-->
-            <div class="col">
-                <input class="form-control form-control-lg form-control-borderless" type="search" name="projectsort"
-                       placeholder="Rechercher un projet par titre">
-            </div>
-            <!--end of col-->
-            <div class="col-auto">
-                <button class="btn btn-lg btn-danger" type="submit">Réinitialiser</button>
-                <button class="btn btn-lg btn-primary" type="submit">Valider</button>
-            </div>
-            <!--end of col-->
+    <div class="user-account-container">
+        <div class="user-account-informations">
+            <h1>Informations sur la personne connectée</h1>
+            <h2>Connecté via le compte: Nom d'utilisateur</h2>
+            <h2>Ancienneté</h2>
+            <h2>Projets rejoints: 5</h2>
         </div>
-    </form>
-
-    <div class="projects-container-userdashboard">
-        {% for project in projects %}
-            <div class="card" style="width: 20rem; margin: 1rem;">
-                <img class="card-img-top card-dashboard-image" src="{{ project.image }}" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title text-center">{{ project.title }}</h5>
-                    <p class="card-text">{{ project.description }}</p>
-                    <p class="card-text">Responsable(s) : {{ project.responsible[0] }}</p>
-                    <div class="user-dashboard-card-project-links">
-                        <button type="button" class="btn btn-primary button-specified-target" data-desc="{{ project.id }}" data-long-desc="{{ project.longDescription }}" data-owner="{{ project.responsible[0] }}" data-title="{{ project.title }}" data-image="{{ project.image }}">View project</button>
-                        <a href="#" class="btn btn-success">Participer</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Modal -->
-            <div class="modal fade" id="userdash-modal" role="dialog">
-                <div class="modal-dialog">
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">{{ project.title }}</h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="userdash-container-image-description">
-                                <img class="modal-image" src="{{ project.image }}" alt="">
-                                <p class="long-description-modal">{{ project.longDescription }}</p>
-                            </div>
-                            <div class="userdash-container-contact">
-                                <div class="userdash-ownedby"><span style="font-weight: bold">Responsable(s) : </span>{{ project.responsible[0] }}</div>
-                                <a href="#" class="btn btn-success">Participer</a>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        {% endfor %}
-
     </div>
+
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
             crossorigin="anonymous"></script>
@@ -313,25 +208,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous">
-    </script>
-
-    <script>
-        $('.button-specified-target').on('click', function() {
-            let desc = $(this).data('desc');
-            let longdesc = $(this).data('long-desc');
-            let owner = 'Owned by ' + $(this).data('owner');
-            let title = $(this).data('title');
-            let image = $(this).data('image');
-
-            $('.long-description-modal').html(longdesc);
-            $('.userdash-ownedby').html(owner);
-            $('.modal-title').html(title);
-            $('.modal-image').attr('src', image);
-
-            $('#userdash-modal').css({"top": "50%", "left": "50%", "transform": "translate(-50%, -50%)"});
-
-            $('#userdash-modal').modal();
-        });
     </script>
 
 {% endblock %}
