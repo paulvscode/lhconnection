@@ -30,6 +30,8 @@
             border-right: 1px solid #efefef;
             box-shadow: 0px 0px 10px 0px rgba(204, 204, 204, 0.5);
             padding-right: 2rem;
+            background: rgb(117,139,127);
+            background: linear-gradient(0deg, rgba(117,139,127,0) 20%, rgba(117,119,139,0.04523816362482491) 80%);
         }
 
 
@@ -122,6 +124,17 @@
             flex-direction: row;
             flex-wrap: wrap;
             justify-content: center;
+        }
+
+        .full-card-shadow {
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            transition-duration: .1s;
+        }
+
+        .full-card-shadow:hover {
+            box-shadow: rgba(0, 0, 0, 0.50) 0px 5px 15px;
+            transition: ease-in-out;
+            transition-duration: .1s;
         }
 
         /*search bar*/
@@ -263,7 +276,7 @@
 
     <div class="projects-container-userdashboard">
         {% for project in projects %}
-            <div class="card" style="width: 20rem; margin: 1rem;">
+            <div class="card full-card-shadow" style="width: 20rem; margin: 1rem;">
                 <img class="card-img-top card-dashboard-image" src="{{ project.image }}" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title text-center">{{ project.title }}</h5>
