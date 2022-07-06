@@ -278,16 +278,16 @@
                     <p>{{ 'lhconnection.projects.description' | trans }}</p>
                 </header>
 
-                <div class="row" data-aos="fade-up" data-aos-delay="100">
-                    <div class="col-lg-12 d-flex justify-content-center">
-                        <ul id="portfolio-flters">
-                            <li data-filter="*" class="filter-active">{{ 'lhconnection.projects.category-all' | trans }}</li>
-                            <li data-filter=".filter-app">Le Havre</li>
-                            <li data-filter=".filter-card">Tampa</li>
-                            <li data-filter=".filter-web">Southampton</li>
-                        </ul>
-                    </div>
-                </div>
+{#                <div class="row" data-aos="fade-up" data-aos-delay="100">#}
+{#                    <div class="col-lg-12 d-flex justify-content-center">#}
+{#                        <ul id="portfolio-flters">#}
+{#                            <li data-filter="*" class="filter-active">{{ 'lhconnection.projects.category-all' | trans }}</li>#}
+{#                            <li data-filter=".filter-app">Le Havre</li>#}
+{#                            <li data-filter=".filter-card">Tampa</li>#}
+{#                            <li data-filter=".filter-web">Southampton</li>#}
+{#                        </ul>#}
+{#                    </div>#}
+{#                </div>#}
 
                 <div
                         class="row gy-4 portfolio-container"
@@ -307,14 +307,11 @@
                                     <p>{{ project.longDescription | raw }}</p>
                                     <div class="portfolio-links">
                                         <a
-                                                href="{{ asset('second_ver_assets/assets/img/portfolio/portfolio-1.jpg') }}"
+                                                href="{{ asset('second_ver_assets/assets/img/lhlogo.jpg') }}"
                                                 data-gallery="portfolioGallery"
                                                 class="portfokio-lightbox"
                                                 title="{{ project.sortTitle }}"
                                         ><i class="bi bi-plus"></i
-                                            ></a>
-                                        <a href="{{ project.link }}" title="More Details"
-                                        ><i class="bi bi-link"></i
                                             ></a>
                                     </div>
                                 </div>

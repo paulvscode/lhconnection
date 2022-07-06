@@ -16,24 +16,29 @@
             padding: 0;
             margin: 0;
             font-family: "Nunito", sans-serif;
+            width: 100vw;
+            height: 100vh;
         }
 
         .user-dashboard-container {
-            width: 70%;
             margin: 0 auto;
             display: flex;
             align-items: center;
+            position: fixed;
+            flex-direction: column;
+            height: 100%;
+            border-right: 1px solid #efefef;
+            box-shadow: 0px 0px 10px 0px rgba(204, 204, 204, 0.5);
+            padding-right: 2rem;
         }
 
+
         .user-dashboard-logo-container {
-            flex: 1 1 auto;
-            padding: 1rem;
-            text-align: center;
+            margin: 1rem 0;
         }
 
         .user-dashboard-nav {
-            flex: 4 1 auto;
-            padding: 1rem;
+
         }
 
         .user-dashboard-logo {
@@ -44,53 +49,43 @@
 
         /*Nav*/
         .url-user-dashboard {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
+            padding-left: 0px;
+            margin-left: 1rem;
         }
 
         .url-user-dashboard > li {
             list-style: none;
+            margin: 1rem 0;
         }
 
         .url-user-dashboard > li > a {
-            text-decoration: none;
-            color: #013289;
-            margin: 0 1rem;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
+            font-size: 1.4rem;
         }
 
         .url-user-dashboard > li > a > svg {
-            margin-right: 5px;
+
         }
 
         .url-user-dashboard > li > a:hover {
-            color: #4154f1;
-            transition: ease-in-out;
+            text-decoration: none;
         }
 
         /*Connected as*/
         .connected-as-user {
-            color: #013289;
+            padding: 1rem;
+        }
+
+        .connected-as-user-logout {
+            margin-left: 1rem;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            position: absolute;
+            bottom: 18px;
+            left: 46px;
         }
 
         .username-user-dashboard {
             color: #51B868;
-        }
-
-        .disconnect-user-dashboard {
-            border-radius: 12px;
-            color: #DC3545;
-        }
-
-        .disconnect-user-dashboard:hover {
-            background: #DC3545;
-            border-radius: 12px;
-            color: white;
-            transition: ease-in-out;
         }
 
         @media (max-width: 1421px) {
@@ -129,7 +124,7 @@
 
         .user-account-container {
             width: 70%;
-            margin: 2rem auto;
+            margin: 0 auto;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -171,20 +166,16 @@
                             <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
                             <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z"/>
                         </svg>
-                        Mon Compte</a>
-                </li>
-                <li class="connected-as-user">
-                    Connecté : <span class="username-user-dashboard">{{ username }}</span>
-                </li>
-                <li>
-                    <a href="{{ path('logout') }}">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                             class="bi bi-x-lg disconnect-user-dashboard" viewBox="0 0 16 16">
-                            <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
-                        </svg>
-                    </a>
+                        Mon compte</a>
                 </li>
             </ul>
+
+            <div class="connected-as-user">
+                Connecté : <span class="username-user-dashboard">{{ username }}</span>
+            </div>
+            <a class="btn btn-lg btn-danger connected-as-user-logout" href="{{ path('logout') }}">
+                Se déconnecter
+            </a>
         </nav>
     </div>
 
