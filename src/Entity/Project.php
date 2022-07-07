@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=ProjectRepository::class)
+ * @ORM\HasLifecycleCallbacks()
  */
 class Project
 {
@@ -46,7 +47,7 @@ class Project
     /**
      * @ORM\Column(type="datetime_immutable")
      */
-    private DateTimeImmutable $createdAt;
+    private ?DateTimeImmutable $createdAt = NULL;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -62,6 +63,11 @@ class Project
      * @ORM\Column(type="array")
      */
     private $responsible = [];
+
+    /**
+     * @ORM\Column(type="datetime_immutable")
+     */
+    private $updatedAt;
 
     public function getId(): ?int
     {
@@ -135,6 +141,18 @@ class Project
         return $this;
     }
 
+    public function getUpdatedAt(): ?\DateTimeImmutable
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(\DateTimeImmutable $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
     public function getCreatedAt(): ?\DateTimeImmutable
     {
         return $this->createdAt;
@@ -145,6 +163,18 @@ class Project
         $this->createdAt = $createdAt;
 
         return $this;
+    }
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function updatedTimeStamps(): void
+    {
+        $this->setUpdatedAt(new \DateTimeImmutable('now'));
+        if ($this->getCreatedAt() === null) {
+            $this->setCreatedAt(new DateTimeImmutable('now'));
+        }
     }
 
     public function getSortTitle(): ?string
@@ -182,4 +212,6 @@ class Project
 
         return $this;
     }
+
+
 }

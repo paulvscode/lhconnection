@@ -280,7 +280,7 @@
                 <img class="card-img-top card-dashboard-image" src="{{ project.image }}" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title text-center">{{ project.title }}</h5>
-                    <p class="card-text">{{ project.description }}</p>
+                    <p class="card-text">{{ project.description | raw }}</p>
                     <p class="card-text">Responsable(s) : {{ project.responsible[0] }}</p>
                     <div class="user-dashboard-card-project-links">
                         <button type="button" class="btn btn-primary button-specified-target"

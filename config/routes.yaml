@@ -18,6 +18,18 @@ admin:
     path: /admin
     controller: App\Controller\Admin\DashboardController::index
 
+adminself:
+    path: /dashboardtest
+    controller: App\Controller\AdminSelf\BackEndProjectController::index
+
+adminnew:
+    path: /dashboardtest/create
+    controller: App\Controller\AdminSelf\BackEndProjectController::new
+
+adminedit:
+    path: /dashboardtest/{id}
+    controller: App\Controller\AdminSelf\BackEndProjectController::edit
+
 userdashboard:
     path: /userdashboard
     controller: App\Controller\User\UserDashboardController::index
