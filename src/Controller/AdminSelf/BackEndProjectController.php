@@ -48,7 +48,7 @@ class BackEndProjectController extends AbstractController
 
             $this->em->persist($project);
             $this->em->flush();
-            return $this->redirectToRoute('adminself');
+            return $this->redirectToRoute('user_admin');
         }
 
         return $this->render('adminSelf/create.html.twig', [
@@ -64,15 +64,16 @@ class BackEndProjectController extends AbstractController
         // $user = $this->getUser();
         // $username = $user->getUsername();
 
-        $username = 'John Le temporaire';
+        dd('Edition');
 
+        $username = 'John Le temporaire';
 
         $form = $this->createForm(ProjectType::class, $project);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $this->em->flush();
-            return $this->redirectToRoute('adminself');
+            return $this->redirectToRoute('user_admin');
         }
 
         return $this->render('adminSelf/edit.html.twig', [
@@ -80,5 +81,14 @@ class BackEndProjectController extends AbstractController
             'form' => $form->createView(),
             'username' => $username
         ]);
+    }
+
+    public function delete(Project $project)
+    {
+        dd('Suppression');
+        $this->em->remove($project);
+        $this->em->flush();
+
+        return $this->redirectToRoute('user_admin');
     }
 }

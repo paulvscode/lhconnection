@@ -23,7 +23,7 @@ class UserDashboardController extends AbstractController
             $sortedProject = $entityManager->getRepository(Project::class)->findAll();
         }
 
-        return $this->render('user/user_dashboard/index.html.twig', [
+        return $this->render('adminSelf/index.html.twig', [
             'username' => $username,
             'projects' => $sortedProject
         ]);

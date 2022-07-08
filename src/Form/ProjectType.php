@@ -17,10 +17,10 @@ class ProjectType extends AbstractType
         $builder
             ->add('title')
             ->add('description')
-            ->add('longDescription', null, ['label' => 'Complete description'])
+            ->add('longDescription', null, ['label' => 'Description complète'])
             ->add('image')
             ->add('link')
-            ->add('filterSortTitle')
+            ->add('filterSortTitle', null, ['label' => 'Mots clés'])
             ->add('sortTitle', ChoiceType::class, [
                 'choices' => [
                     'Private' => true,
