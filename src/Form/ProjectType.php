@@ -3,7 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Project;
-use App\Entity\Team;
+use App\Entity\Responsible;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -20,20 +20,21 @@ class ProjectType extends AbstractType
             ->add('longDescription', null, ['label' => 'Complete description'])
             ->add('image')
             ->add('link')
+            ->add('filterSortTitle')
             ->add('sortTitle', ChoiceType::class, [
                 'choices' => [
                     'Private' => true,
                     'Public' => false,
                 ],
             ])
-            ->add('responsible', EntityType::class, [
-                'class' => Team::class,
+            ->add('responsibles', EntityType::class, [
+                'class' => Responsible::class,
                 'mapped' => true,
                 'choice_label' => 'name',
                 'multiple' => true,
                 'expanded' => true
-            ])
-        ;
+            ]
+        );
     }
 
     public function configureOptions(OptionsResolver $resolver): void

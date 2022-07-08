@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Project;
 use App\Entity\SocialEvent;
-use App\Entity\Team;
+use App\Entity\Responsible;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,11 +18,11 @@ class HomePageController extends AbstractController
 
         $colorsClass = ['blue', 'orange', 'green', 'red', 'purple', 'pink'];
         $socialEvents = $doctrine->getRepository(SocialEvent::class)->findAll();
-        $teamMembers = $doctrine->getRepository(Team::class)->findAll();
+        $responsibles = $doctrine->getRepository(Responsible::class)->findAll();
         $projects = $doctrine->getRepository(Project::class)->findAll();
 
         return $this->render('base.html.twig', [
-            'teamMembers' => $teamMembers,
+            'responsibles' => $responsibles,
             'socialEvents' => $socialEvents,
             'colors' => $colorsClass,
             'projects' => $projects,

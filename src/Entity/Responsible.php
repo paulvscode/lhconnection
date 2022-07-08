@@ -2,13 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\TeamRepository;
+use App\Repository\ResponsibleRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=TeamRepository::class)
+ * @ORM\Entity(repositoryClass=ResponsibleRepository::class)
  */
-class Team
+class Responsible
 {
     /**
      * @ORM\Id
@@ -36,6 +38,16 @@ class Team
      * @ORM\Column(type="string", length=255)
      */
     private string $image;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Project::class, mappedBy="responsibles")
+     */
+    private $projects;
+
+    public function __construct()
+    {
+        $this->projects = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -93,6 +105,33 @@ class Team
     public function setImage(string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Project>
+     */
+    public function getProjects(): Collection
+    {
+        return $this->projects;
+    }
+
+    public function addProject(Project $project): self
+    {
+        if (!$this->projects->contains($project)) {
+            $this->projects[] = $project;
+            $project->addResponsible($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProject(Project $project): self
+    {
+        if ($this->projects->removeElement($project)) {
+            $project->removeResponsible($this);
+        }
 
         return $this;
     }

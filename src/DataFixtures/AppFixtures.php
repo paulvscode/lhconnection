@@ -8,7 +8,7 @@ use App\Entity\User;
 use DateTimeImmutable;
 use joshtronic\LoremIpsum;
 use App\Entity\SocialEvent;
-use App\Entity\Team;
+use App\Entity\Responsible;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
@@ -69,7 +69,7 @@ class AppFixtures extends Fixture
         // projects
         $project = new Project();
         $project->setImage('https://picsum.photos/200');
-        $project->setResponsible(['Project responsible']);
+        //$project->setResponsible(['Project responsible']);
         $project->setTitle('Project Title');
         $project->setDescription('Description du projet');
         $project->setLongDescription('Description longue du projet');
@@ -79,9 +79,9 @@ class AppFixtures extends Fixture
         $project->setFilterSortTitle('filtre de classement');
         $manager->persist($project);
 
-        // Team + Roles
+        // Responsible + Roles
 
-        $teamMembers = [
+        $responsibleMembers = [
             'peggy labat' => 'présidente',
             'lise-lotte kirkegaard dusbosc' => 'vice-présidente',
             'hannah gallais' => 'vice-présidente',
@@ -94,13 +94,13 @@ class AppFixtures extends Fixture
             'marie amélie-laroze' => 'responsable communication'
         ];
 
-        foreach ($teamMembers as $name => $role) {
-            $teamMember = new Team();
-            $teamMember->setName($name);
-            $teamMember->setImage("https://i.imgur.com/lod8x1d.jpg");
-            $teamMember->setDescription("La future description");
-            $teamMember->setTitle($role);
-            $manager->persist($teamMember);
+        foreach ($responsibleMembers as $name => $role) {
+            $responsibleMember = new Responsible();
+            $responsibleMember->setName($name);
+            $responsibleMember->setImage("https://i.imgur.com/lod8x1d.jpg");
+            $responsibleMember->setDescription("La future description");
+            $responsibleMember->setTitle($role);
+            $manager->persist($responsibleMember);
         }
 
         // 6 Events
@@ -128,14 +128,14 @@ class AppFixtures extends Fixture
 //            "Founder"
 //        ];
 //
-//        // 4 members teams
+//        // 4 members responsibles
 //        for ($i = 0; $i < 4; $i++) {
-//            $teamMember = new Team();
-//            $teamMember->setName($firstNameCollection[$i]);
-//            $teamMember->setImage('https://picsum.photos/600/600');
-//            $teamMember->setDescription($lipsum->sentence(1));
-//            $teamMember->setTitle($titlesArray[$i]);
-//            $manager->persist($teamMember);
+//            $responsibleMember = new Responsible();
+//            $responsibleMember->setName($firstNameCollection[$i]);
+//            $responsibleMember->setImage('https://picsum.photos/600/600');
+//            $responsibleMember->setDescription($lipsum->sentence(1));
+//            $responsibleMember->setTitle($titlesArray[$i]);
+//            $manager->persist($responsibleMember);
 //        }
 
         // 9 Projects

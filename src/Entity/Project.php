@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\ProjectRepository;
 use DateTimeImmutable;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -60,14 +62,19 @@ class Project
     private string $filterSortTitle;
 
     /**
-     * @ORM\Column(type="array")
-     */
-    private $responsible = [];
-
-    /**
      * @ORM\Column(type="datetime_immutable")
      */
     private $updatedAt;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Responsible::class, inversedBy="projects")
+     */
+    private $responsibles;
+
+    public function __construct()
+    {
+        $this->responsibles = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -201,14 +208,26 @@ class Project
         return $this;
     }
 
-    public function getResponsible(): ?array
+    /**
+     * @return Collection<int, Responsible>
+     */
+    public function getResponsibles(): Collection
     {
-        return $this->responsible;
+        return $this->responsibles;
     }
 
-    public function setResponsible(array $responsible): self
+    public function addResponsible(Responsible $responsible): self
     {
-        $this->responsible = $responsible;
+        if (!$this->responsibles->contains($responsible)) {
+            $this->responsibles[] = $responsible;
+        }
+
+        return $this;
+    }
+
+    public function removeResponsible(Responsible $responsible): self
+    {
+        $this->responsibles->removeElement($responsible);
 
         return $this;
     }

@@ -335,7 +335,7 @@
                 </header>
 
                 <div class="row gy-4">
-                    {% for teammate in teamMembers %}
+                    {% for responsible in responsibles %}
                         <div
                                 class="col-lg-3 col-md-6 d-flex align-items-stretch"
                                 data-aos="fade-up"
@@ -344,16 +344,16 @@
                             <div class="member">
                                 <div class="member-img">
                                     <img
-                                            src="{{ asset('second_ver_assets/assets/img/team/' ~ teammate.image ) }}"
+                                            src="{{ asset('second_ver_assets/assets/img/team/' ~ responsible.image ) }}"
                                             class="img-fluid"
                                             alt=""
                                     />
                                 </div>
                                 <div class="member-info">
-                                    <h4 class="text-capitalize">{{ teammate.name }}</h4>
-                                    <span>{{ teammate.title }}</span>
+                                    <h4 class="text-capitalize">{{ responsible.name }}</h4>
+                                    <span>{{ responsible.title }}</span>
                                     <p>
-                                        {{ teammate.description | raw }}
+                                        {{ responsible.description | raw }}
                                     </p>
                                 </div>
                             </div>
