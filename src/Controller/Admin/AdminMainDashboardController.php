@@ -4,13 +4,23 @@ namespace App\Controller\Admin;
 
 use App\Entity\Project;
 use App\Entity\SocialEvent;
+use App\Repository\ProjectRepository;
+use App\Repository\SocialEventRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 
 class AdminMainDashboardController extends AbstractController
 {
-    public function index(ManagerRegistry $doctrine): Response
+    public function __construct(
+        private ProjectRepository $projectRepository,
+        private SocialEventRepository $socialEventRepository,
+        private EntityManagerInterface $em
+    )
+    { }
+
+    public function index(): Response
     {
         //  $user = $this->getUser();
         //  $username = $user->getUserIdentifier();
@@ -18,13 +28,14 @@ class AdminMainDashboardController extends AbstractController
         // Username
         $username = "Example John";
         // Projects
-        $projects = $doctrine->getRepository(Project::class)->findAll();
+        $projects = $this->projectRepository->findAll();
         // Social Events
-        $events = $doctrine->getRepository(SocialEvent::class)->findAll();
+        $events = $this->socialEventRepository->findAll();
 
         return $this->render('admin/index.html.twig', [
             'username' => $username,
-            'projects' => $projects
+            'projects' => $projects,
+            'events' => $events
         ]);
     }
 }

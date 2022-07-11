@@ -172,7 +172,9 @@
                                         {{ project.description }}
                                     </td>
                                     <td>
-                                        {{ project.responsibles }}
+                                        {% for responsible in project.responsibles %}
+                                            - {{ responsible.id }}
+                                        {% endfor %}
                                     </td>
                                     <td>
 
@@ -187,8 +189,61 @@
                             {% endfor %}
                             </tbody>
                         </table>
-                        <div class="subpane-right-dashboard col-6"></div>
+                    </div>
+                    <div class="subpane-right-dashboard col-6">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th scope="col">
+                                    #
+                                </th>
+                                <th scope="col">
+                                    Titre
+                                </th>
+                                <th scope="col">
+                                    Description
+                                </th>
+                                <th scope="col">
+                                    Responsable
+                                </th>
+                                <th scope="col">
+                                    Editer
+                                </th>
+                                <th scope="col">
+                                    Supprimer
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for project in projects %}
+                                <tr>
+                                    <th>
+                                        {{ project.id }}
+                                    </th>
+                                    <td>
+                                        {{ project.title }}
+                                    </td>
+                                    <td>
+                                        {{ project.description }}
+                                    </td>
+                                    <td>
+                                        {% for responsible in project.responsibles %}
+                                            - {{ responsible.id }}
+                                        {% endfor %}
+                                    </td>
+                                    <td>
 
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
