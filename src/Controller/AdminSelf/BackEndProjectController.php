@@ -14,8 +14,10 @@ class BackEndProjectController extends AbstractController
     private ProjectRepository $repository;
     private EntityManagerInterface $em;
 
-    public function __construct(ProjectRepository $repository, EntityManagerInterface $em)
-    {
+    public function __construct(
+        ProjectRepository $repository,
+        EntityManagerInterface $em
+    ) {
         $this->repository = $repository;
         $this->em = $em;
     }
@@ -25,27 +27,27 @@ class BackEndProjectController extends AbstractController
         // $user = $this->getUser();
         // $username = $user->getUsername();
 
-        $username = 'John Le temporaire';
+        $user = $this->getUser();
+        $username = $user->getUserIdentifier();
 
         $allProjects = $this->repository->findAll();
         return $this->render('adminSelf/index.html.twig', [
             'projects' => $allProjects,
-            'username' => $username
+            'username' => $username,
         ]);
     }
 
     public function new(Request $request)
     {
-        $username = 'John Le temporaire';
+        $user = $this->getUser();
+        $username = $user->getUserIdentifier();
 
         $project = new Project();
-
 
         $form = $this->createForm(ProjectType::class, $project);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-
             $this->em->persist($project);
             $this->em->flush();
             return $this->redirectToRoute('user_admin');
@@ -54,19 +56,14 @@ class BackEndProjectController extends AbstractController
         return $this->render('adminSelf/create.html.twig', [
             'project' => $project,
             'form' => $form->createView(),
-            'username' => $username
+            'username' => $username,
         ]);
     }
 
     public function edit(Project $project, Request $request)
     {
-
-        // $user = $this->getUser();
-        // $username = $user->getUsername();
-
-        dd('Edition');
-
-        $username = 'John Le temporaire';
+        $user = $this->getUser();
+        $username = $user->getUserIdentifier();
 
         $form = $this->createForm(ProjectType::class, $project);
 
@@ -79,13 +76,12 @@ class BackEndProjectController extends AbstractController
         return $this->render('adminSelf/edit.html.twig', [
             'project' => $project,
             'form' => $form->createView(),
-            'username' => $username
+            'username' => $username,
         ]);
     }
 
     public function delete(Project $project)
     {
-        dd('Suppression');
         $this->em->remove($project);
         $this->em->flush();
 

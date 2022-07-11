@@ -14,6 +14,10 @@ loginsuccess:
     path: /loginsuccess
     controller: App\Controller\LoginController::postLoginRedirectAction
 
+futur_dashboard:
+    path: /futuredashboard
+    controller: App\Controller\Admin\AdminMainDashboardController::index
+
 user_admin:
     path: /user-admin
     controller: App\Controller\AdminSelf\BackEndProjectController::index
