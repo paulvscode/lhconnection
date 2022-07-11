@@ -13,22 +13,22 @@ class BackEndProjectController extends AbstractController
 {
     private ProjectRepository $repository;
     private EntityManagerInterface $em;
-
     public function __construct(
-        ProjectRepository $repository,
+        ProjectRepository      $repository,
         EntityManagerInterface $em
-    ) {
+    )
+    {
         $this->repository = $repository;
         $this->em = $em;
     }
 
+
     public function index()
     {
-        // $user = $this->getUser();
-        // $username = $user->getUsername();
+        //   $user = $this->getUser();
+        //   $username = $user->getUserIdentifier();
 
-        $user = $this->getUser();
-        $username = $user->getUserIdentifier();
+        $username = "Example John";
 
         $allProjects = $this->repository->findAll();
         return $this->render('adminSelf/index.html.twig', [
@@ -39,8 +39,10 @@ class BackEndProjectController extends AbstractController
 
     public function new(Request $request)
     {
-        $user = $this->getUser();
-        $username = $user->getUserIdentifier();
+//        $user = $this->getUser();
+//        $username = $user->getUserIdentifier();
+
+        $username = "Example John";
 
         $project = new Project();
 
@@ -62,8 +64,10 @@ class BackEndProjectController extends AbstractController
 
     public function edit(Project $project, Request $request)
     {
-        $user = $this->getUser();
-        $username = $user->getUserIdentifier();
+//        $user = $this->getUser();
+//        $username = $user->getUserIdentifier();
+
+        $username = "Example John";
 
         $form = $this->createForm(ProjectType::class, $project);
 
