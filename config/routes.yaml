@@ -45,6 +45,14 @@ delete_event:
     path: /futuredashboard/event/{id}/delete
     controller: App\Controller\Admin\AdminMainDashboardController::eventDelete
 
+archive_event:
+    path: /futuredashboard/event/{id}/archive
+    controller: App\Controller\Admin\AdminMainDashboardController::eventArchived
+
+unarchive_event:
+    path: /futuredashboard/event/{id}/unarchive
+    controller: App\Controller\Admin\AdminMainDashboardController::eventUnarchived
+
 #old dashboard
 user_admin:
     path: /user-admin

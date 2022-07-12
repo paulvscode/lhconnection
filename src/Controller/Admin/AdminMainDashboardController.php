@@ -141,4 +141,14 @@ class AdminMainDashboardController extends AbstractController
 
         return $this->redirectToRoute('futur_dashboard');
     }
+
+    public function eventArchived(Request $request, SocialEvent $event): Response
+    {
+
+    }
+
+    public function eventUnarchived(SocialEvent $event)
+    {
+
+    }
 }
