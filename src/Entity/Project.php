@@ -71,6 +71,11 @@ class Project
      */
     private $responsibles;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $archived;
+
     public function __construct()
     {
         $this->responsibles = new ArrayCollection();
@@ -228,6 +233,18 @@ class Project
     public function removeResponsible(Responsible $responsible): self
     {
         $this->responsibles->removeElement($responsible);
+
+        return $this;
+    }
+
+    public function isArchived(): ?bool
+    {
+        return $this->archived;
+    }
+
+    public function setArchived(bool $archived): self
+    {
+        $this->archived = $archived;
 
         return $this;
     }

@@ -14,10 +14,38 @@ loginsuccess:
     path: /loginsuccess
     controller: App\Controller\LoginController::postLoginRedirectAction
 
+#new version of dashboard
 futur_dashboard:
     path: /futuredashboard
     controller: App\Controller\Admin\AdminMainDashboardController::index
 
+#projects
+edit_project:
+    path: /futuredashboard/project/{id}/edit
+    controller: App\Controller\Admin\AdminMainDashboardController::projectEdit
+
+new_project:
+    path: /futuredashboard/project/create
+    controller: App\Controller\Admin\AdminMainDashboardController::projectNew
+
+delete_project:
+    path: /futuredashboard/project/{id}/delete
+    controller: App\Controller\Admin\AdminMainDashboardController::projectDelete
+
+#events
+edit_event:
+    path: /futuredashboard/event/{id}/edit
+    controller: App\Controller\Admin\AdminMainDashboardController::eventEdit
+
+new_event:
+    path: /futuredashboard/event/create
+    controller: App\Controller\Admin\AdminMainDashboardController::eventNew
+
+delete_event:
+    path: /futuredashboard/event/{id}/delete
+    controller: App\Controller\Admin\AdminMainDashboardController::eventDelete
+
+#old dashboard
 user_admin:
     path: /user-admin
     controller: App\Controller\AdminSelf\BackEndProjectController::index

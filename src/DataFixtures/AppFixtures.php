@@ -64,6 +64,7 @@ class AppFixtures extends Fixture
         $socialEvent->setImage('https://picsum.photos/200');
         $socialEvent->setIcon('https://picsum.photos/20');
         $socialEvent->setLink('https://www.facebook.com/events/512116053722896');
+        $socialEvent->setArchived(false);
         $manager->persist($socialEvent);
 
         // projects
@@ -77,6 +78,7 @@ class AppFixtures extends Fixture
         $project->setCreatedAt($date);
         $project->setSortTitle('Titre de classement');
         $project->setFilterSortTitle('filtre de classement');
+        $project->setArchived(false);
         $manager->persist($project);
 
         // Responsible + Roles

@@ -9,17 +9,13 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
           crossorigin="anonymous"/>
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+
     <style>
         body {
             padding: 0;
             margin: 0;
             font-family: "Nunito", sans-serif;
-            width: 100vw;
-            height: 100vh;
-        }
-
-        .fill {
-            height: 100vh;;
         }
 
         .pane-left {
@@ -86,15 +82,7 @@
         /*Connected as*/
         .connected-as-user {
             padding: 1rem;
-        }
-
-        .connected-as-user-logout {
-            margin-left: 1rem;
-            font-size: 0.9rem;
-            margin-top: 1rem;
-            position: absolute;
-            bottom: 18px;
-            left: 46px;
+            margin-top: 2rem;
         }
 
         .username-user-dashboard {
@@ -115,26 +103,98 @@
         }
 
         {# Content #}
+        .up-subpane-left-dashboard {
+            height: fit-content;
+        }
+
+        .up-subpane-right-dashboard {
+            height: fit-content;
+        }
+
         .subpane-left-dashboard {
-            background-color: #fcfcd4;
-            height: auto;
+            height: fit-content;
+            background-color: #eefcf0;
         }
 
         .subpane-right-dashboard {
-            background-color: #f3f37a;
-            height: auto;
+            height: fit-content;
+            background-color: #eef9fc;
+        }
+
+        .botpane-left-dashboard {
+
+        }
+        .botpane-right-dashboard {
+
+        }
+
+        .ongoing-stat .done-stats {
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+        }
+
+        .statistics {
+            text-align: center;
+        }
+
+        #scroll-top-button {
+            border-radius: 20px;
+            background-color: white;
+            position: fixed;
+            bottom: 15px;
+            right: 15px;
+            font-size: 1.3rem;
+            cursor: pointer;
+        }
+
+        #scroll-top-button:hover {
+            background-color: #d9d9d9;
         }
     </style>
 {% endblock %}
 
 {% block body %}
     <div class="container-fluid">
-        <div class="row fill">
+        <div class="row fill" style="margin: 0">
             <div class="pane-left col-2">
                 {% include 'adminSelf/leftpane.html.twig' %}
             </div>
             <div class="pane-right col-10">
-                <div class="row fill">
+                <div class="row fill" style="margin: 0">
+                    <div class="up-subpane-left-dashboard col-6">
+                        <div class="statistics">
+                            <div class="ongoing-stats">
+                                <div>Projets en cours</div>
+                                <h2>{{ projects |length }}</h2>
+                            </div>
+                            <div class="done-stats">
+                                <div>Projets terminés</div>
+                                <h2>{{ projects |length }}</h2>
+                            </div>
+                            <a style="padding: .5rem; margin: .5rem;" class="btn btn-primary"
+                               href="{{ path('new_project') }}">Nouveau projet</a>
+                            <a style="padding: .5rem; margin: .5rem;" class="btn btn-warning" href="#archived-projects">Projets archivés</a>
+                        </div>
+                    </div>
+                    <div class="up-subpane-right-dashboard col-6">
+                        <div class="statistics">
+                            <div class="ongoing-stats">
+                                <div>Events en cours</div>
+                                <h2>{{ events |length }}</h2>
+                            </div>
+                            <div class="done-stats">
+                                <div>Events terminés</div>
+                                <h2>{{ events |length }}</h2>
+                            </div>
+                            <a style="padding: .5rem; margin: .5rem;" class="btn btn-primary"
+                               href="{{ path('new_event') }}">Nouvel event</a>
+                            <a style="padding: .5rem; margin: .5rem;" class="btn btn-warning" href="#archived-events">Events archivés</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row fill" style="margin: 2rem 0 0 0;">
                     <div class="subpane-left-dashboard col-6">
                         <table class="table table-striped">
                             <thead>
@@ -157,10 +217,14 @@
                                 <th scope="col">
                                     Supprimer
                                 </th>
+                                <th scope="col">
+                                    Archiver
+                                </th>
                             </tr>
                             </thead>
                             <tbody>
                             {% for project in projects %}
+                                {% if project.archived is same as (false) %}
                                 <tr>
                                     <th>
                                         {{ project.id }}
@@ -177,15 +241,19 @@
                                         {% endfor %}
                                     </td>
                                     <td>
-
+                                        <a href="{{ path('edit_project', {id: project.id}) }}"><i
+                                                    class="bi bi-pencil"></i></a>
                                     </td>
                                     <td>
-
+                                        <a onclick="return confirm('Confirmer la suppression ?')"
+                                           href="{{ path('delete_project', {id: project.id}) }}"><i class="bi bi-x-lg"
+                                                                                                    style="color: #DC3545;"></i></a>
                                     </td>
                                     <td>
-
+                                        <a onclick="return confirm('Confirmer l'archivage ?')" href="#"><i class="bi bi-archive" style="color: #28A745;"></i></a>
                                     </td>
                                 </tr>
+                                {% endif %}
                             {% endfor %}
                             </tbody>
                         </table>
@@ -212,10 +280,85 @@
                                 <th scope="col">
                                     Supprimer
                                 </th>
+                                <th scope="col">
+                                    Archiver
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for event in events %}
+                                {% if event.archived is same as (false) %}
+                                <tr>
+                                    <th>
+                                        {% if event.icon is same as 'Livre' %}
+                                            <i class="bi bi-book"></i>
+                                        {% elseif event.icon is same as 'Ballon' %}
+                                            <i class="bi bi-balloon"></i>
+                                        {% elseif event.icon is same as 'Ballon' %}
+                                            <i class="bi bi-bell"></i>
+                                        {% else %}
+                                            <i class="bi bi-app"></i>
+                                        {% endif %}
+                                    </th>
+                                    <td>
+                                        {{ event.title }}
+                                    </td>
+                                    <td>
+                                        {{ event.description }}
+                                    </td>
+                                    <td>
+                                        {{ event.link }}
+                                    </td>
+                                    <td>
+                                        <a href="{{ path('edit_event', {id: event.id}) }}"><i class="bi bi-pencil"></i></a>
+                                    </td>
+                                    <td>
+                                        <a onclick="return confirm('Confirmer la suppression ?')"
+                                           href="{{ path('delete_event', {id: event.id}) }}"><i class="bi bi-x-lg"
+                                                                                                style="color: #DC3545;"></i></a>
+                                    </td>
+                                    <td>
+                                        <a onclick="return confirm('Confirmer l'archivage ?')" href="#"><i class="bi bi-archive" style="color: #28A745;"></i></a>
+                                    </td>
+                                </tr>
+                                {% endif %}
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="row fill" style="margin: 2rem 0 0 0;">
+                    <div class="botpane-left-dashboard col-6">
+                        <table id="archived-projects" class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th scope="col">
+                                    #
+                                </th>
+                                <th scope="col">
+                                    Titre
+                                </th>
+                                <th scope="col">
+                                    Description
+                                </th>
+                                <th scope="col">
+                                    Responsable
+                                </th>
+                                <th scope="col">
+                                    Editer
+                                </th>
+                                <th scope="col">
+                                    Supprimer
+                                </th>
+                                <th scope="col">
+                                    Remettre en ligne
+                                </th>
                             </tr>
                             </thead>
                             <tbody>
                             {% for project in projects %}
+                                {% if project.archived is same as (true) %}
                                 <tr>
                                     <th>
                                         {{ project.id }}
@@ -232,15 +375,87 @@
                                         {% endfor %}
                                     </td>
                                     <td>
-
+                                        <a href="{{ path('edit_project', {id: project.id}) }}"><i
+                                                    class="bi bi-pencil"></i></a>
                                     </td>
                                     <td>
-
+                                        <a onclick="return confirm('Confirmer la suppression ?')"
+                                           href="{{ path('delete_project', {id: project.id}) }}"><i class="bi bi-x-lg"
+                                                                                                    style="color: #DC3545;"></i></a>
                                     </td>
                                     <td>
-
+                                        <a onclick="return confirm('Confirmer remise en ligne ?')" href="#"><i style="color: #28A745;" class="bi bi-arrow-down-up"></i></a>
                                     </td>
                                 </tr>
+                                {% endif %}
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="botpane-right-dashboard col-6">
+                        <table id="archived-events" class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th scope="col">
+                                    #
+                                </th>
+                                <th scope="col">
+                                    Titre
+                                </th>
+                                <th scope="col">
+                                    Description
+                                </th>
+                                <th scope="col">
+                                    Responsable
+                                </th>
+                                <th scope="col">
+                                    Editer
+                                </th>
+                                <th scope="col">
+                                    Supprimer
+                                </th>
+                                <th scope="col">
+                                    Remettre en ligne
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for event in events %}
+                                {% if event.archived is same as (true) %}
+                                <tr>
+                                    <th>
+                                        {% if event.icon is same as 'Livre' %}
+                                            <i class="bi bi-book"></i>
+                                        {% elseif event.icon is same as 'Ballon' %}
+                                            <i class="bi bi-balloon"></i>
+                                        {% elseif event.icon is same as 'Ballon' %}
+                                            <i class="bi bi-bell"></i>
+                                        {% else %}
+                                            <i class="bi bi-app"></i>
+                                        {% endif %}
+                                    </th>
+                                    <td>
+                                        {{ event.title }}
+                                    </td>
+                                    <td>
+                                        {{ event.description }}
+                                    </td>
+                                    <td>
+                                        {{ event.link }}
+                                    </td>
+                                    <td>
+                                        <a href="{{ path('edit_event', {id: event.id}) }}"><i class="bi bi-pencil"></i></a>
+                                    </td>
+                                    <td>
+                                        <a onclick="return confirm('Confirmer la suppression ?')"
+                                           href="{{ path('delete_event', {id: event.id}) }}"><i class="bi bi-x-lg"
+                                                                                                style="color: #DC3545;"></i></a>
+                                    </td>
+                                    <td>
+                                        <a onclick="return confirm('Confirmer remise en ligne ?')" href="#"><i style="color: #28A745;" class="bi bi-arrow-down-up"></i></a>
+                                    </td>
+                                </tr>
+                                {% endif %}
                             {% endfor %}
                             </tbody>
                         </table>
@@ -249,4 +464,26 @@
             </div>
         </div>
     </div>
+
+    <button onclick="topFunction()" id="scroll-top-button" title="Go to top"><i class="bi bi-arrow-up"></i></button>
+
+
+    <script>
+    mybutton = document.getElementById("scroll-top-button");
+
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+
+    function topFunction() {
+      document.body.scrollTop = 0; // For Safari
+      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    }
+</script>
 {% endblock %}

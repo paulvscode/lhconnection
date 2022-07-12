@@ -33,8 +33,13 @@ class ProjectType extends AbstractType
                 'choice_label' => 'name',
                 'multiple' => true,
                 'expanded' => true
-            ]
-        );
+            ])
+            ->add('archived', ChoiceType::class, [
+                    'choices' => [
+                        'Archivé' => true,
+                        'Non-archivé' => false
+                    ]]
+            );
     }
 
     public function configureOptions(OptionsResolver $resolver): void
