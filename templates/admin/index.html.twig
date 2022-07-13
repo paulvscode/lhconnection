@@ -223,8 +223,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            {% for project in projects %}
-                                {% if project.archived is same as (false) %}
+                            {% for project in onlineProjects %}
                                 <tr>
                                     <th>
                                         {{ project.id }}
@@ -237,7 +236,7 @@
                                     </td>
                                     <td>
                                         {% for responsible in project.responsibles %}
-                                            - {{ responsible.id }}
+                                            - {{ responsible.name }}
                                         {% endfor %}
                                     </td>
                                     <td>
@@ -250,10 +249,9 @@
                                                                                                     style="color: #DC3545;"></i></a>
                                     </td>
                                     <td>
-                                        <a onclick="return confirm('Confirmer l'archivage ?')" href="#"><i class="bi bi-archive" style="color: #28A745;"></i></a>
+                                        <a onclick="return confirm('Confirmer l'archivage ?')" href="{{ path('archive_project', {id: project.id}) }}"><i class="bi bi-archive" style="color: #28A745;"></i></a>
                                     </td>
                                 </tr>
-                                {% endif %}
                             {% endfor %}
                             </tbody>
                         </table>
@@ -286,8 +284,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            {% for event in events %}
-                                {% if event.archived is same as (false) %}
+                            {% for event in onlineEvents %}
                                 <tr>
                                     <th>
                                         {% if event.icon is same as 'Livre' %}
@@ -318,10 +315,9 @@
                                                                                                 style="color: #DC3545;"></i></a>
                                     </td>
                                     <td>
-                                        <a onclick="return confirm('Confirmer l'archivage ?')" href="#"><i class="bi bi-archive" style="color: #28A745;"></i></a>
+                                        <a onclick="return confirm('Confirmer l'archivage ?')" href="{{ path('archive_event', {id: event.id}) }}"><i class="bi bi-archive" style="color: #28A745;"></i></a>
                                     </td>
                                 </tr>
-                                {% endif %}
                             {% endfor %}
                             </tbody>
                         </table>
@@ -357,8 +353,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            {% for project in projects %}
-                                {% if project.archived is same as (true) %}
+                            {% for project in archivedProjects %}
                                 <tr>
                                     <th>
                                         {{ project.id }}
@@ -384,10 +379,9 @@
                                                                                                     style="color: #DC3545;"></i></a>
                                     </td>
                                     <td>
-                                        <a onclick="return confirm('Confirmer remise en ligne ?')" href="#"><i style="color: #28A745;" class="bi bi-arrow-down-up"></i></a>
+                                        <a onclick="return confirm('Confirmer l'archivage ?')" href="{{ path('unarchive_project', {id: project.id}) }}"><i class="bi bi-archive" style="color: #28A745;"></i></a>
                                     </td>
                                 </tr>
-                                {% endif %}
                             {% endfor %}
                             </tbody>
                         </table>
@@ -420,8 +414,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            {% for event in events %}
-                                {% if event.archived is same as (true) %}
+                            {% for event in archivedEvents %}
                                 <tr>
                                     <th>
                                         {% if event.icon is same as 'Livre' %}
@@ -452,10 +445,9 @@
                                                                                                 style="color: #DC3545;"></i></a>
                                     </td>
                                     <td>
-                                        <a onclick="return confirm('Confirmer remise en ligne ?')" href="#"><i style="color: #28A745;" class="bi bi-arrow-down-up"></i></a>
+                                        <a onclick="return confirm('Confirmer remise en ligne ?')" href="{{ path('unarchive_event', {id: event.id}) }}"><i style="color: #28A745;" class="bi bi-arrow-down-up"></i></a>
                                     </td>
                                 </tr>
-                                {% endif %}
                             {% endfor %}
                             </tbody>
                         </table>

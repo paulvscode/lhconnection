@@ -53,6 +53,14 @@ unarchive_event:
     path: /futuredashboard/event/{id}/unarchive
     controller: App\Controller\Admin\AdminMainDashboardController::eventUnarchived
 
+archive_project:
+    path: /futuredashboard/project/{id}/archive
+    controller: App\Controller\Admin\AdminMainDashboardController::projectArchived
+
+unarchive_project:
+    path: /futuredashboard/project/{id}/unarchive
+    controller: App\Controller\Admin\AdminMainDashboardController::projectUnarchived
+
 #old dashboard
 user_admin:
     path: /user-admin

@@ -30,15 +30,18 @@ class AdminMainDashboardController extends AbstractController
 
         // Username
         $username = "Example John";
-        // Projects
-        $projects = $this->projectRepository->findAll();
-        // Social Events
-        $events = $this->socialEventRepository->findAll();
+
+        $archivedProjects = $this->projectRepository->findBy(['archived' => true]);
+        $archivedEvents = $this->socialEventRepository->findBy(['archived' => true]);
+        $onlineProjects = $this->projectRepository->findBy(['archived' => false]);
+        $onlineEvents = $this->socialEventRepository->findBy(['archived' => false]);
 
         return $this->render('admin/index.html.twig', [
             'username' => $username,
-            'projects' => $projects,
-            'events' => $events
+            'archivedProjects' => $archivedProjects,
+            'archivedEvents' => $archivedEvents,
+            'onlineProjects' => $onlineProjects,
+            'onlineEvents' => $onlineEvents
         ]);
     }
 
@@ -92,6 +95,28 @@ class AdminMainDashboardController extends AbstractController
         return $this->redirectToRoute('futur_dashboard');
     }
 
+    public function projectArchived(Request $request): Response
+    {
+        $currId = $request->get('id');
+        $currProject = $this->projectRepository->findOneBy(['id' => $currId]);
+        $currProject->setArchived(true);
+
+        $this->em->persist($currProject);
+        $this->em->flush();
+        return $this->redirectToRoute('futur_dashboard');
+    }
+
+    public function projectUnarchived(Request $request): Response
+    {
+        $currId = $request->get('id');
+        $currProject = $this->projectRepository->findOneBy(['id' => $currId]);
+        $currProject->setArchived(false);
+
+        $this->em->persist($currProject);
+        $this->em->flush();
+        return $this->redirectToRoute('futur_dashboard');
+    }
+
     // events
     public function eventEdit(Request $request, SocialEvent $event): Response
     {
@@ -142,13 +167,25 @@ class AdminMainDashboardController extends AbstractController
         return $this->redirectToRoute('futur_dashboard');
     }
 
-    public function eventArchived(Request $request, SocialEvent $event): Response
+    public function eventArchived(Request $request): Response
     {
+        $currId = $request->get('id');
+        $currEvent = $this->socialEventRepository->findOneBy(['id' => $currId]);
+        $currEvent->setArchived(true);
 
+        $this->em->persist($currEvent);
+        $this->em->flush();
+        return $this->redirectToRoute('futur_dashboard');
     }
 
-    public function eventUnarchived(SocialEvent $event)
+    public function eventUnarchived(Request $request): Response
     {
+        $currId = $request->get('id');
+        $currEvent = $this->socialEventRepository->findOneBy(['id' => $currId]);
+        $currEvent->setArchived(false);
 
+        $this->em->persist($currEvent);
+        $this->em->flush();
+        return $this->redirectToRoute('futur_dashboard');
     }
 }
