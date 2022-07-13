@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Project;
 use App\Entity\SocialEvent;
+use App\Entity\User;
 use App\Form\EventType;
 use App\Form\ProjectType;
 use App\Repository\ProjectRepository;
@@ -25,8 +26,9 @@ class AdminMainDashboardController extends AbstractController
 
     public function index(): Response
     {
+        /** @var User $user */
         $user = $this->getUser();
-        $username = $user->getUserIdentifier();
+        $username = $user->getEmail();
 
         $archivedProjects = $this->projectRepository->findBy(['archived' => true]);
         $archivedEvents = $this->socialEventRepository->findBy(['archived' => true]);
@@ -45,7 +47,9 @@ class AdminMainDashboardController extends AbstractController
     // projects
     public function projectEdit(Request $request, Project $project): Response
     {
-        $username = "Example John";
+        /** @var User $user */
+        $user = $this->getUser();
+        $username = $user->getEmail();
 
         $form = $this->createForm(ProjectType::class, $project);
 
@@ -64,7 +68,9 @@ class AdminMainDashboardController extends AbstractController
 
     public function projectNew(Request $request)
     {
-        $username = "Example John";
+        /** @var User $user */
+        $user = $this->getUser();
+        $username = $user->getEmail();
 
         $project = new Project();
 
@@ -117,7 +123,9 @@ class AdminMainDashboardController extends AbstractController
     // events
     public function eventEdit(Request $request, SocialEvent $event): Response
     {
-        $username = "Example John";
+        /** @var User $user */
+        $user = $this->getUser();
+        $username = $user->getEmail();
 
         $form = $this->createForm(EventType::class, $event);
 
@@ -136,7 +144,9 @@ class AdminMainDashboardController extends AbstractController
 
     public function eventNew(Request $request)
     {
-        $username = "Example John";
+        /** @var User $user */
+        $user = $this->getUser();
+        $username = $user->getEmail();
 
         $event = new SocialEvent();
 
