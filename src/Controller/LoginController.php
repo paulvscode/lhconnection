@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Controller\User\UserDashboardController;
+use App\Controller\Admin\AdminMainDashboardController;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
@@ -27,8 +27,9 @@ class LoginController extends AbstractController
         $user = $this->getUser();
 
         if (in_array('ROLE_ADMIN', $user->getRoles())) {
-            return $this->forward('App\Controller\Admin\DashboardController::index');
+            return $this->forward('App\Controller\Admin\AdminMainDashboardController::index');
         }else {
+            dd('just a member');
             return $this->forward('App\Controller\User\UserDashboardController::index');
         }
 

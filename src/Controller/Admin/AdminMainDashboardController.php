@@ -9,7 +9,6 @@ use App\Form\ProjectType;
 use App\Repository\ProjectRepository;
 use App\Repository\SocialEventRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,19 +16,17 @@ use Symfony\Component\HttpFoundation\Response;
 class AdminMainDashboardController extends AbstractController
 {
     public function __construct(
-        private ProjectRepository $projectRepository,
-        private SocialEventRepository $socialEventRepository,
+        private ProjectRepository      $projectRepository,
+        private SocialEventRepository  $socialEventRepository,
         private EntityManagerInterface $em
     )
-    { }
+    {
+    }
 
     public function index(): Response
     {
-        //  $user = $this->getUser();
-        //  $username = $user->getUserIdentifier();
-
-        // Username
-        $username = "Example John";
+        $user = $this->getUser();
+        $username = $user->getUserIdentifier();
 
         $archivedProjects = $this->projectRepository->findBy(['archived' => true]);
         $archivedEvents = $this->socialEventRepository->findBy(['archived' => true]);
@@ -55,7 +52,7 @@ class AdminMainDashboardController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $this->em->flush();
-            return $this->redirectToRoute('futur_dashboard');
+            return $this->redirectToRoute('admin_dashboard');
         }
 
         return $this->render('admin/project.edit.html.twig', [
@@ -77,7 +74,7 @@ class AdminMainDashboardController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->em->persist($project);
             $this->em->flush();
-            return $this->redirectToRoute('futur_dashboard');
+            return $this->redirectToRoute('admin_dashboard');
         }
 
         return $this->render('admin/project.new.html.twig', [
@@ -92,7 +89,7 @@ class AdminMainDashboardController extends AbstractController
         $this->em->remove($project);
         $this->em->flush();
 
-        return $this->redirectToRoute('futur_dashboard');
+        return $this->redirectToRoute('admin_dashboard');
     }
 
     public function projectArchived(Request $request): Response
@@ -103,7 +100,7 @@ class AdminMainDashboardController extends AbstractController
 
         $this->em->persist($currProject);
         $this->em->flush();
-        return $this->redirectToRoute('futur_dashboard');
+        return $this->redirectToRoute('admin_dashboard');
     }
 
     public function projectUnarchived(Request $request): Response
@@ -114,7 +111,7 @@ class AdminMainDashboardController extends AbstractController
 
         $this->em->persist($currProject);
         $this->em->flush();
-        return $this->redirectToRoute('futur_dashboard');
+        return $this->redirectToRoute('admin_dashboard');
     }
 
     // events
@@ -127,7 +124,7 @@ class AdminMainDashboardController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $this->em->flush();
-            return $this->redirectToRoute('futur_dashboard');
+            return $this->redirectToRoute('admin_dashboard');
         }
 
         return $this->render('admin/event.edit.html.twig', [
@@ -149,7 +146,7 @@ class AdminMainDashboardController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->em->persist($event);
             $this->em->flush();
-            return $this->redirectToRoute('futur_dashboard');
+            return $this->redirectToRoute('admin_dashboard');
         }
 
         return $this->render('admin/event.new.html.twig', [
@@ -164,7 +161,7 @@ class AdminMainDashboardController extends AbstractController
         $this->em->remove($event);
         $this->em->flush();
 
-        return $this->redirectToRoute('futur_dashboard');
+        return $this->redirectToRoute('admin_dashboard');
     }
 
     public function eventArchived(Request $request): Response
@@ -175,7 +172,7 @@ class AdminMainDashboardController extends AbstractController
 
         $this->em->persist($currEvent);
         $this->em->flush();
-        return $this->redirectToRoute('futur_dashboard');
+        return $this->redirectToRoute('admin_dashboard');
     }
 
     public function eventUnarchived(Request $request): Response
@@ -186,6 +183,6 @@ class AdminMainDashboardController extends AbstractController
 
         $this->em->persist($currEvent);
         $this->em->flush();
-        return $this->redirectToRoute('futur_dashboard');
+        return $this->redirectToRoute('admin_dashboard');
     }
 }

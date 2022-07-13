@@ -158,7 +158,7 @@
     <div class="container-fluid">
         <div class="row fill" style="margin: 0">
             <div class="pane-left col-2">
-                {% include 'adminSelf/leftpane.html.twig' %}
+                {% include 'admin/components/leftpane.html.twig' %}
             </div>
             <div class="pane-right col-10">
                 <div class="row fill" style="margin: 0">
@@ -166,11 +166,11 @@
                         <div class="statistics">
                             <div class="ongoing-stats">
                                 <div>Projets en cours</div>
-                                <h2>{{ projects |length }}</h2>
+                                <h2>{{ onlineProjects |length }}</h2>
                             </div>
                             <div class="done-stats">
-                                <div>Projets terminés</div>
-                                <h2>{{ projects |length }}</h2>
+                                <div>Projets archivés</div>
+                                <h2>{{ archivedProjects |length }}</h2>
                             </div>
                             <a style="padding: .5rem; margin: .5rem;" class="btn btn-primary"
                                href="{{ path('new_project') }}">Nouveau projet</a>
@@ -181,11 +181,11 @@
                         <div class="statistics">
                             <div class="ongoing-stats">
                                 <div>Events en cours</div>
-                                <h2>{{ events |length }}</h2>
+                                <h2>{{ onlineEvents |length }}</h2>
                             </div>
                             <div class="done-stats">
-                                <div>Events terminés</div>
-                                <h2>{{ events |length }}</h2>
+                                <div>Events archivés</div>
+                                <h2>{{ archivedEvents |length }}</h2>
                             </div>
                             <a style="padding: .5rem; margin: .5rem;" class="btn btn-primary"
                                href="{{ path('new_event') }}">Nouvel event</a>
