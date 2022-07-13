@@ -151,14 +151,14 @@
     <div class="container-fluid">
         <div class="row fill" style="margin: 0">
             <div class="pane-left col-2" style="height: 100vh">
-                {% include 'adminSelf/leftpane.html.twig' %}
+                {% include 'admin/components/leftpane.html.twig' %}
             </div>
             <div class="pane-right col-10">
                 <h2>Editer le projet : {{ project.title }}</h2>
                 {{ form_start(form) }}
                 {{ form_widget(form) }}
                 <button class="btn btn-primary">Editer</button>
-                <a class="btn btn-danger" href="{{ path('futur_dashboard') }}">Retour</a>
+                <a class="btn btn-danger" href="{{ path('admin_dashboard') }}">Retour</a>
                 {{ form_end(form) }}
             </div>
         </div>
