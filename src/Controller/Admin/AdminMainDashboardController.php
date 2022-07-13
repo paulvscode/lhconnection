@@ -98,24 +98,24 @@ class AdminMainDashboardController extends AbstractController
         return $this->redirectToRoute('admin_dashboard');
     }
 
-    public function projectArchived(Request $request): Response
+    public function projectArchived(Project $project): Response
     {
-        $currId = $request->get('id');
-        $currProject = $this->projectRepository->findOneBy(['id' => $currId]);
-        $currProject->setArchived(true);
+        // $currId = $request->get('id');
+        // $currProject = $this->projectRepository->findOneBy(['id' => $currId]);
+        $project->setArchived(true);
 
-        $this->em->persist($currProject);
+        $this->em->persist($project);
         $this->em->flush();
         return $this->redirectToRoute('admin_dashboard');
     }
 
-    public function projectUnarchived(Request $request): Response
+    public function projectUnarchived(Project $project): Response
     {
-        $currId = $request->get('id');
-        $currProject = $this->projectRepository->findOneBy(['id' => $currId]);
-        $currProject->setArchived(false);
+        // $currId = $request->get('id');
+        // $currProject = $this->projectRepository->findOneBy(['id' => $currId]);
+        $project->setArchived(false);
 
-        $this->em->persist($currProject);
+        $this->em->persist($project);
         $this->em->flush();
         return $this->redirectToRoute('admin_dashboard');
     }
@@ -174,24 +174,24 @@ class AdminMainDashboardController extends AbstractController
         return $this->redirectToRoute('admin_dashboard');
     }
 
-    public function eventArchived(Request $request): Response
+    public function eventArchived(SocialEvent $event): Response
     {
-        $currId = $request->get('id');
-        $currEvent = $this->socialEventRepository->findOneBy(['id' => $currId]);
-        $currEvent->setArchived(true);
+        // $currId = $request->get('id');
+        // $currEvent = $this->socialEventRepository->findOneBy(['id' => $currId]);
+        $event->setArchived(true);
 
-        $this->em->persist($currEvent);
+        $this->em->persist($event);
         $this->em->flush();
         return $this->redirectToRoute('admin_dashboard');
     }
 
-    public function eventUnarchived(Request $request): Response
+    public function eventUnarchived(SocialEvent $event): Response
     {
-        $currId = $request->get('id');
-        $currEvent = $this->socialEventRepository->findOneBy(['id' => $currId]);
-        $currEvent->setArchived(false);
+        // $currId = $request->get('id');
+        // $currEvent = $this->socialEventRepository->findOneBy(['id' => $currId]);
+        $event->setArchived(false);
 
-        $this->em->persist($currEvent);
+        $this->em->persist($event);
         $this->em->flush();
         return $this->redirectToRoute('admin_dashboard');
     }
