@@ -29,10 +29,12 @@ class LoginController extends AbstractController
         if (in_array('ROLE_ADMIN', $user->getRoles())) {
             return $this->forward('App\Controller\Admin\AdminMainDashboardController::index');
         }else {
-            dd('just a member');
-            return $this->forward('');
+            if (in_array('ROLE_USER', $user->getRoles())) {
+                return $this->forward('App\Controller\User\UserMainDashboardController::index');
+            }
         }
 
+        return $this->render('homepage/index.html.twig');
     }
 
     public function logout(): void
