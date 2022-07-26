@@ -11,13 +11,17 @@
     <a href="{{ path('new_event') }}" class="btn btn-success">
       Nouvel événément
     </a>
+
+    <a class="btn btn-primary" href="{{ path('admin_dashboard') }}">
+      <li>Menu administration</li>
+    </a>
     <a class="btn btn-primary" href="#">
       <li>Mon compte</li>
     </a>
-    <a class="btn btn-primary" href="#">
+    <a class="btn btn-primary" href="{{ path('homepage') }}">
       <li>Retour sur le site</li>
     </a>
-    <a class="btn btn-danger" href="#">
+    <a class="btn btn-danger" href="{{ path('logout') }}">
       <li>Déconnexion</li>
     </a>
   </ul>
