@@ -100,8 +100,6 @@ class AdminMainDashboardController extends AbstractController
 
     public function projectArchived(Project $project): Response
     {
-        // $currId = $request->get('id');
-        // $currProject = $this->projectRepository->findOneBy(['id' => $currId]);
         $project->setArchived(true);
 
         $this->em->persist($project);
@@ -111,8 +109,6 @@ class AdminMainDashboardController extends AbstractController
 
     public function projectUnarchived(Project $project): Response
     {
-        // $currId = $request->get('id');
-        // $currProject = $this->projectRepository->findOneBy(['id' => $currId]);
         $project->setArchived(false);
 
         $this->em->persist($project);
@@ -176,8 +172,6 @@ class AdminMainDashboardController extends AbstractController
 
     public function eventArchived(SocialEvent $event): Response
     {
-        // $currId = $request->get('id');
-        // $currEvent = $this->socialEventRepository->findOneBy(['id' => $currId]);
         $event->setArchived(true);
 
         $this->em->persist($event);
@@ -187,8 +181,6 @@ class AdminMainDashboardController extends AbstractController
 
     public function eventUnarchived(SocialEvent $event): Response
     {
-        // $currId = $request->get('id');
-        // $currEvent = $this->socialEventRepository->findOneBy(['id' => $currId]);
         $event->setArchived(false);
 
         $this->em->persist($event);

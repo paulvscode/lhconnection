@@ -19,7 +19,7 @@ admin_dashboard:
     path: /admin/dashboard
     controller: App\Controller\Admin\AdminMainDashboardController::index
 
-#projects
+#admin projects
 edit_project:
     path: /admin/dashboard/project/{id}/edit
     controller: App\Controller\Admin\AdminMainDashboardController::projectEdit
@@ -32,7 +32,7 @@ delete_project:
     path: /admin/dashboard/project/{id}/delete
     controller: App\Controller\Admin\AdminMainDashboardController::projectDelete
 
-#events
+#admin events
 edit_event:
     path: /admin/dashboard/event/{id}/edit
     controller: App\Controller\Admin\AdminMainDashboardController::eventEdit
@@ -60,6 +60,11 @@ archive_project:
 unarchive_project:
     path: /admin/dashboard/project/{id}/unarchive
     controller: App\Controller\Admin\AdminMainDashboardController::projectUnarchived
+
+#user dashboard
+user_dashboard:
+    path: /user/dashboard
+    controller: App\Controller\User\UserMainDashboardController::index
 
 #logout
 logout:

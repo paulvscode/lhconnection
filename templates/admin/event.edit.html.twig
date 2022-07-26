@@ -12,156 +12,199 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 
     <style>
-        body {
+        #scroll-top-button {
+            border-radius: 20px;
+            background-color: white;
+            position: fixed;
+            bottom: 15px;
+            right: 15px;
+            font-size: 1.3rem;
+            cursor: pointer;
+        }
+
+        #scroll-top-button:hover {
+            background-color: #d9d9d9;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
             padding: 0;
             margin: 0;
-            font-family: "Nunito", sans-serif;
-            width: 100vw;
+            min-height: 100vh;
+        }
+
+        /*main layout*/
+        .admin-main-container {
+            display: flex;
             height: 100vh;
         }
 
-        .fill {
-            height: 25%;
+        .user-dashboard-logo {
+            max-width: 100%;
+            height: 35px;
+            object-fit: cover;
         }
 
-        .pane-left {
-            background: rgb(117, 139, 127);
-            background: linear-gradient(0deg, rgba(117, 139, 127, 0) 20%, rgba(117, 119, 139,
-            0.04523816362482491) 80%);
-            border-right: 1px solid #efefef;
-            box-shadow: 0px 0px 10px 0px rgba(204, 204, 204, 0.5);
+        .admin-side-panel-container {
+            flex-basis: 20%;
+            height: 100%;
+            /*box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;*/
         }
 
-        .pane-right {
-            padding-left: 2rem;
+        .admin-content-container {
+            flex-basis: 60%;
+            height: 100%;
+
+            display: flex;
+            flex-direction: column;
+            margin: 2rem auto;
+        }
+
+        /*left panel layout*/
+        .admin-side-panel-sub-container {
+            height: 100%;
+        }
+
+        .admin-side-panel-logo {
+            height: 10%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .admin-side-panel-menu {
+            height: 90%;
             padding-top: 1rem;
-        }
-
-        .user-dashboard-logo {
-            max-width: 100%;
-            height: 35px;
-            object-fit: cover;
-        }
-
-        .user-dashboard-logo-container {
-            margin: 1rem 0;
-        }
-
-        .user-dashboard-logo {
-            max-width: 100%;
-            height: 35px;
-            object-fit: cover;
-        }
-
-        .container-edition {
-            width: 90%;
+            width: 80%;
             margin: 0 auto;
+            text-align: center;
         }
 
-        /*Nav*/
-        .user-dashboard-nav {
-            margin-top: 2rem;
-        }
+        .admin-side-panel-menu-account {
+            display: flex;
+            flex-direction: column;
 
-        .url-user-dashboard {
-            padding-left: 0px;
-            margin-left: 1rem;
-        }
-
-        .url-user-dashboard > li {
             list-style: none;
-            margin: 1rem 0;
+            padding: 0;
         }
 
-        .url-user-dashboard > li > a {
-            font-size: 1.4rem;
+        .admin-side-panel-menu-account > a {
+            margin: .5rem;
         }
 
-        .url-user-dashboard > li > a > svg {
-            margin-right: 1rem;
+        .admin-side-panel-menu-account > a > li {
+            margin: .5rem;
         }
 
-        .url-user-dashboard > li > a:hover {
-            text-decoration: none;
+        /*content*/
+        .admin-content-container-project-div {
+            height: 100%;
+            flex-basis: 50%;
         }
 
-        /*Connected as*/
-        .connected-as-user {
-            padding: 1rem;
+        .admin-content-container-projects {
+            padding-right: .5rem;
+            padding-left: .5rem;
         }
 
-        .connected-as-user-logout {
-            margin-left: 1rem;
-            font-size: 0.9rem;
-            margin-top: 1rem;
-            position: absolute;
-            bottom: 18px;
-            left: 46px;
+        .admin-content-container-event-div {
+            padding-left: .5rem;
+            padding-right: .5rem;
         }
 
-        .username-user-dashboard {
-            color: #51B868;
+        .admin-content-container-event-div {
+            height: 100%;
+            flex-basis: 50%;
         }
 
-        .new-project-link {
+        /*content projects*/
+        .admin-content-container-project-div > h2 {
+            text-align: center;
+            padding: 0.5rem;
+        }
+
+        .admin-content-container-stats {
             display: flex;
             flex-direction: row;
             justify-content: space-around;
             align-items: center;
-            width: 180px;
         }
 
-        .icon-spec {
-            position: relative;
-            top: 3px;
-        }
-
-        {# Content #}
-        .up-subpane-left-dashboard {
-            height: fit-content;
-        }
-
-        .up-subpane-right-dashboard {
-            height: fit-content;
-        }
-
-        .subpane-left-dashboard {
-            height: fit-content;
-            background-color: #eefcf0;
-        }
-
-        .subpane-right-dashboard {
-            height: fit-content;
-            background-color: #eef9fc;
-        }
-
-        .ongoing-stat .done-stats {
-            display: flex;
-            justify-content: center;
-            flex-direction: row;
-        }
-
-        .statistics {
+        /*content events*/
+        .admin-content-container-event-div > h2 {
             text-align: center;
+            padding: 0.5rem;
+        }
+
+        /*media queries*/
+        @media only screen and (min-device-width: 1025px ) and (max-device-width: 1281px) {
+            .admin-main-container {
+                display: block;
+            }
+
+            .admin-side-panel-menu {
+                width: 25%;
+            }
+
+            .admin-side-panel-container {
+                height: auto;
+            }
+
+            .admin-side-panel-logo {
+                margin-top: 1rem;
+            }
+        }
+
+        @media only screen and (max-device-width: 1026px) {
+            .admin-main-container {
+                display: block;
+            }
+
+            .admin-side-panel-menu {
+                width: 100%;
+            }
+
+            .admin-side-panel-container {
+                height: auto;
+            }
+
+            .admin-side-panel-logo {
+                margin-top: 1rem;
+            }
+
+            .admin-content-container {
+                display: block;
+            }
+
+            .online-project-description, .online-project-creation-time {
+                display: none;
+            }
+
+            .admin-content-container-stats {
+                display: block;
+                text-align: center;
+            }
         }
     </style>
 {% endblock %}
 
 {% block body %}
-    <div class="container-fluid">
-        <div class="row fill" style="margin: 0">
-            <div class="pane-left col-2" style="height: 100vh">
+    <div class="admin-main-container">
+        <div class="admin-side-panel-container">
+            <div class="admin-side-panel-sub-container">
                 {% include 'admin/components/leftpane.html.twig' %}
             </div>
-            <div class="pane-right col-10">
-                <h2>Editer le projet : {{ event.title }}</h2>
-                {{ form_start(form) }}
-                {{ form_widget(form) }}
-                <button class="btn btn-primary">Editer</button>
-                <a class="btn btn-danger" href="{{ path('admin_dashboard') }}">Retour</a>
-                {{ form_end(form) }}
-            </div>
         </div>
-    </div>
+        <div class="admin-content-container">
+            <h2>Editer le projet : {{ event.title }}</h2>
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <button class="btn btn-primary">Editer</button>
+            <a class="btn btn-danger" href="{{ path('admin_dashboard') }}">Retour</a>
+            {{ form_end(form) }}
+        </div>
     </div>
 {% endblock %}

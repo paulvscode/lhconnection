@@ -30,7 +30,7 @@ class LoginController extends AbstractController
             return $this->forward('App\Controller\Admin\AdminMainDashboardController::index');
         }else {
             dd('just a member');
-            return $this->forward('App\Controller\User\UserDashboardController::index');
+            return $this->forward('');
         }
 
     }
