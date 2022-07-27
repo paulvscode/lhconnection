@@ -54,6 +54,7 @@ class AppFixtures extends Fixture
         $socialEvent->setImage('https://picsum.photos/200');
         $socialEvent->setIcon('https://picsum.photos/20');
         $socialEvent->setLink('https://www.facebook.com/');
+        $socialEvent->setArchived(false);
         $manager->persist($socialEvent);
 
         $socialEvent = new SocialEvent();
