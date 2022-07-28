@@ -248,7 +248,7 @@ class AdminMainDashboardController extends AbstractController
             return $this->redirectToRoute('manage_users');
         }
 
-        return $this->render('admin/useredit.html.twig', [
+        return $this->render('admin/responsibleedit.html.twig', [
             'user' => $responsible,
             'form' => $form->createView(),
             'username' => $username
