@@ -66,6 +66,10 @@ user_dashboard:
     path: /user/dashboard
     controller: App\Controller\User\UserMainDashboardController::index
 
+info_project:
+    path: /user/project/{id}/info
+    controller: App\Controller\User\UserMainDashboardController::viewProject
+
 #logout
 logout:
     path: /logout

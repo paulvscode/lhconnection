@@ -1,0 +1,223 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+          rel="stylesheet"/>
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous"/>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+
+    <style>
+        #scroll-top-button {
+            border-radius: 20px;
+            background-color: white;
+            position: fixed;
+            bottom: 15px;
+            right: 15px;
+            font-size: 1.3rem;
+            cursor: pointer;
+        }
+
+        #scroll-top-button:hover {
+            background-color: #d9d9d9;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            padding: 0;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        /*main layout*/
+        .admin-main-container {
+            display: flex;
+            height: 100vh;
+        }
+
+        .user-dashboard-logo {
+            max-width: 100%;
+            height: 35px;
+            object-fit: cover;
+        }
+
+        .admin-side-panel-container {
+            flex-basis: 20%;
+            height: 100%;
+            /*box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;*/
+        }
+
+        .admin-content-container {
+            flex-basis: 80%;
+            height: 100%;
+
+            display: flex;
+            flex-direction: row;
+        }
+
+        /*left panel layout*/
+        .admin-side-panel-sub-container {
+            height: 100%;
+        }
+
+        .admin-side-panel-logo {
+            height: 10%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .admin-side-panel-menu {
+            height: 90%;
+            padding-top: 1rem;
+            width: 80%;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .admin-side-panel-menu-account {
+            display: flex;
+            flex-direction: column;
+
+            list-style: none;
+            padding: 0;
+        }
+
+        .admin-side-panel-menu-account > a {
+            margin: .5rem;
+        }
+
+        .admin-side-panel-menu-account > a > li {
+            margin: .5rem;
+        }
+
+        .view-project-info-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /*media queries*/
+        @media only screen and (min-device-width: 1025px ) and (max-device-width: 1281px) {
+            .admin-main-container {
+                display: block;
+            }
+
+            .admin-side-panel-menu {
+                width: 25%;
+            }
+
+            .admin-side-panel-container {
+                height: auto;
+            }
+
+            .admin-side-panel-logo {
+                margin-top: 1rem;
+            }
+        }
+
+        @media only screen and (max-device-width: 1026px) {
+            .admin-main-container {
+                display: block;
+            }
+
+            .admin-side-panel-menu {
+                width: 100%;
+            }
+
+            .admin-side-panel-container {
+                height: auto;
+            }
+
+            .admin-side-panel-logo {
+                margin-top: 1rem;
+            }
+
+            .admin-content-container {
+                display: block;
+            }
+
+            .online-project-description, .online-project-creation-time {
+                display: none;
+            }
+
+            .admin-content-container-stats {
+                display: block;
+                text-align: center;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="admin-main-container">
+        <div class="admin-side-panel-container">
+            <div class="admin-side-panel-sub-container">
+                {% include 'user/components/leftpane.html.twig' %}
+            </div>
+        </div>
+        <div class="admin-content-container">
+            <div class="view-project-info-container">
+                <div class="card" style="width: 40%; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
+                    <img class="card-img-top project-info-image-hover"
+                         style="width: 70%; margin: .5rem auto; box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px; border-radius: 10px;"
+                         src="{{ project.image }}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ project.title }}</h5>
+                        <p class="card-text">{{ project.description }}</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">{{ project.longDescription }}</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            Responsables :
+                            {% for responsible in responsibles %}
+                                <span style="background-color: #d7ffc0">{{ responsible.name | capitalize }}</span>
+                            {% endfor %}
+                        </p>
+                    </div>
+                    <div class="card-body" style="display: flex; flex-direction: row;">
+                        <a href="{{ project.link }}" target="_blank" class="btn btn-success" style="margin-right: .5rem;">Rejoindre</a>
+                        <a href="#" class="btn btn-danger">Quitter</a>
+                        <a href="{{ path('user_dashboard') }}" class="btn btn-warning" style="margin-left: auto;">Liste
+                            des projets</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button onclick="topFunction()" id="scroll-top-button" title="Go to top"><i class="bi bi-arrow-up"></i></button>
+
+
+    <script>
+    mybutton = document.getElementById("scroll-top-button");
+
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+
+    function topFunction() {
+      document.body.scrollTop = 0; // For Safari
+      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    }
+
+
+    </script>
+{% endblock %}

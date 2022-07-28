@@ -216,7 +216,10 @@
                                     <td>{{ project.title }}</td>
                                     <td class="online-project-description">{{ project.description }}</td>
                                     <td class="online-project-creation-time"> {{ project.createdAt | date('d/m/Y') }}</td>
-                                    <td><a href="#"><i class="bi bi-hand-index-thumb"></i></a>
+                                    <td>
+                                        <a href="{{ path('info_project', {id: project.id}) }}"><i class="bi bi-info-circle"></i></a>
+                                        <a href="#"><i class="bi bi-hand-index-thumb"></i></a>
+                                    </td>
                                 </tr>
                             {% endfor %}
                             </tbody>
@@ -243,6 +246,7 @@
                                     <td>{{ project.title }}</td>
                                     <td class="online-project-description">{{ project.description }}</td>
                                     <td class="online-project-creation-time">{{ project.createdAt | date('d/m/Y') }}</td>
+                                    <td><a href="#"><i class="bi bi-info-circle"></i></a></td>
                                 </tr>
                             {% endfor %}
                             </tbody>
@@ -267,7 +271,6 @@
                                 <th scope="col">id</th>
                                 <th scope="col">Titre</th>
                                 <th class="online-event-description" scope="col">Description</th>
-                                <th scope="col">Actions</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -277,8 +280,6 @@
                                     <td>{{ event.id }}</td>
                                     <td>{{ event.title }}</td>
                                     <td class="online-event-description">{{ event.description }}</td>
-                                    <td><a href="#"><i class="bi bi-hand-index-thumb"></i></a>
-                                    </td>
                                 </tr>
                             {% endfor %}
                             </tbody>
@@ -293,7 +294,6 @@
                                 <th scope="col">id</th>
                                 <th scope="col">Titre</th>
                                 <th class="online-event-description" scope="col">Description</th>
-                                <th scope="col">Actions</th>
                             </tr>
                             </thead>
                             <tbody>

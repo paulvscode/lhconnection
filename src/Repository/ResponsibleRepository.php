@@ -36,14 +36,18 @@ class ResponsibleRepository extends ServiceEntityRepository
     }
     */
 
-    public function findOneBySomeField($value)
-    {
-        $qb =  $this->createQueryBuilder('t')
-            ->andWhere('t.name LIKE :name')
-            ->setParameter('name', '%'. $value . '%')
-        ;
-        $query = $qb->getQuery();
-
-        return $query->execute();
-    }
+//    public function findResponsibleByProjectId()
+//    {
+//        $entityManager = $this->getEntityManager();
+//        $queryBuilder = $entityManager->createQueryBuilder();
+//
+//        $query = $queryBuilder
+//            ->select('r.name')
+//            ->from(Responsible::class, 'r')
+//            ->join('r.projects', 'rp')
+//            ->getQuery();
+//        ;
+//
+//        return $query->execute();
+//    }
 }
