@@ -206,7 +206,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ responsible.name }}</h5>
                             <p class="card-text">{{ responsible.description }}</p>
-                            <a href="#" class="btn btn-primary">Editer</a>
+                            <a href="{{ path('edit_responsibles', {id: responsible.id}) }}" class="btn btn-primary">Editer</a>
                             <a href="#" class="btn btn-danger">Supprimer</a>
                         </div>
                     </div>

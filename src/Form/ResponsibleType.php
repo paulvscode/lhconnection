@@ -16,7 +16,6 @@ class ResponsibleType extends AbstractType
             ->add('title')
             ->add('description')
             ->add('image')
-            ->add('projects')
         ;
     }
 
