@@ -55,12 +55,11 @@
         }
 
         .admin-content-container {
-            flex-basis: 60%;
+            flex-basis: 80%;
             height: 100%;
 
             display: flex;
-            flex-direction: column;
-            margin: 2rem auto;
+            flex-direction: row;
         }
 
         /*left panel layout*/
@@ -99,44 +98,26 @@
             margin: .5rem;
         }
 
-        /*content*/
-        .admin-content-container-project-div {
-            height: 100%;
-            flex-basis: 50%;
+        .admin-content-container {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            width: 70%;
+            margin: 0 auto;
         }
 
-        .admin-content-container-projects {
-            padding-right: .5rem;
-            padding-left: .5rem;
-        }
-
-        .admin-content-container-event-div {
-            padding-left: .5rem;
-            padding-right: .5rem;
-        }
-
-        .admin-content-container-event-div {
-            height: 100%;
-            flex-basis: 50%;
-        }
-
-        /*content projects*/
-        .admin-content-container-project-div > h2 {
-            text-align: center;
-            padding: 0.5rem;
-        }
-
-        .admin-content-container-stats {
+        .admin-content-container-users-cards {
             display: flex;
             flex-direction: row;
-            justify-content: space-around;
-            align-items: center;
+            justify-content: center;
+            align-items: flex-start;
+            height: 30%;
+            margin: 5rem 0 0 0;
+            flex-wrap: wrap;
         }
 
-        /*content events*/
-        .admin-content-container-event-div > h2 {
-            text-align: center;
-            padding: 0.5rem;
+        .admin-content-container-users-cards > .card {
+            margin: .5rem;
         }
 
         .specific-centering-user-connected {
@@ -205,12 +186,55 @@
             </div>
         </div>
         <div class="admin-content-container">
-            <h2>Nouvel événément</h2>
-            {{ form_start(form) }}
-            {{ form_widget(form) }}
-            <button class="btn btn-primary">Créer</button>
-            <a class="btn btn-danger" href="{{ path('admin_dashboard') }}">Retour</a>
-            {{ form_end(form) }}
+            <h3 style="margin-top: 2rem; text-align: center; border-radius: 5px;" class="bg bg-light">Utilisateurs et rôles</h3>
+            <div class="admin-content-container-users-cards">
+                {% for user in users %}
+                    <div class="card" style="width: 18rem; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ user.username }}</h5>
+                            <p class="card-text">{{ user.roles[0] }}</p>
+                            <a href="{{ path('edit_user', {id: user.id}) }}" class="btn btn-primary">Editer</a>
+                            <a href="#" class="btn btn-danger">Supprimer</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <h3 style="margin-top: 2rem; text-align: center; border-radius: 5px;" class="bg bg-light">Affichage utilisateurs</h3>
+            <div class="admin-content-container-users-cards">
+                {% for responsible in responsibles %}
+                    <div class="card" style="width: 18rem; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ responsible.name }}</h5>
+                            <p class="card-text">{{ responsible.description }}</p>
+                            <a href="#" class="btn btn-primary">Editer</a>
+                            <a href="#" class="btn btn-danger">Supprimer</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
+
+    <button onclick="topFunction()" id="scroll-top-button" title="Go to top"><i class="bi bi-arrow-up"></i></button>
+
+
+    <script>
+    mybutton = document.getElementById("scroll-top-button");
+
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+
+    function topFunction() {
+      document.body.scrollTop = 0; // For Safari
+      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    }
+
+    </script>
 {% endblock %}

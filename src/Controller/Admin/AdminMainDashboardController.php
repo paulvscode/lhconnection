@@ -3,12 +3,17 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Project;
+use App\Entity\Responsible;
 use App\Entity\SocialEvent;
 use App\Entity\User;
 use App\Form\EventType;
 use App\Form\ProjectType;
+use App\Form\ResponsibleType;
+use App\Form\UserType;
 use App\Repository\ProjectRepository;
+use App\Repository\ResponsibleRepository;
 use App\Repository\SocialEventRepository;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,6 +24,8 @@ class AdminMainDashboardController extends AbstractController
     public function __construct(
         private ProjectRepository      $projectRepository,
         private SocialEventRepository  $socialEventRepository,
+        private UserRepository         $userRepository,
+        private ResponsibleRepository $responsibleRepository,
         private EntityManagerInterface $em
     )
     {
@@ -186,5 +193,65 @@ class AdminMainDashboardController extends AbstractController
         $this->em->persist($event);
         $this->em->flush();
         return $this->redirectToRoute('admin_dashboard');
+    }
+
+//    Users
+
+    public function manageUsers(): Response
+    {
+        /** @var User $user */
+        $user = $this->getUser();
+        $username = $user->getEmail();
+
+        $users = $this->userRepository->findAll();
+        $responsibles = $this->responsibleRepository->findAll();
+
+        return $this->render('admin/usersmanaging.html.twig', [
+            'username' => $username,
+            'users' => $users,
+            'responsibles' => $responsibles
+        ]);
+    }
+
+    public function userEdit(Request $request, User $websiteUser): Response
+    {
+        /** @var User $user */
+        $user = $this->getUser();
+        $username = $user->getEmail();
+
+        $form = $this->createForm(UserType::class, $websiteUser);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->em->flush();
+            return $this->redirectToRoute('manage_users');
+        }
+
+        return $this->render('admin/useredit.html.twig', [
+            'user' => $websiteUser,
+            'form' => $form->createView(),
+            'username' => $username
+        ]);
+    }
+
+    public function responsibleEdit(Request $request, Responsible $responsible): Response
+    {
+        /** @var User $user */
+        $user = $this->getUser();
+        $username = $user->getEmail();
+
+        $form = $this->createForm(ResponsibleType::class, $responsible);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->em->flush();
+            return $this->redirectToRoute('manage_users');
+        }
+
+        return $this->render('admin/useredit.html.twig', [
+            'user' => $responsible,
+            'form' => $form->createView(),
+            'username' => $username
+        ]);
     }
 }

@@ -61,6 +61,18 @@ unarchive_project:
     path: /admin/dashboard/project/{id}/unarchive
     controller: App\Controller\Admin\AdminMainDashboardController::projectUnarchived
 
+manage_users:
+    path: /admin/dashboard/users
+    controller: App\Controller\Admin\AdminMainDashboardController::manageUsers
+
+edit_user:
+    path: /admin/dashboard/users/{id}/edit
+    controller: App\Controller\Admin\AdminMainDashboardController::userEdit
+
+edit_responsibles:
+    path: /admin/dashboard/responsibles/{id}/edit
+    controller: App\Controller\Admin\AdminMainDashboardController::responsibleEdit
+
 #user dashboard
 user_dashboard:
     path: /user/dashboard

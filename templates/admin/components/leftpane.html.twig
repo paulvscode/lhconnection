@@ -12,6 +12,9 @@
       Nouvel événément
     </a>
 
+    <a href="{{ path('manage_users') }}" class="btn btn-primary">
+      <li>Utilisateurs</li>
+    </a>
     <a class="btn btn-primary" href="{{ path('admin_dashboard') }}">
       <li>Menu administration</li>
     </a>
@@ -23,7 +26,7 @@
     </a>
     <a class="btn btn-danger" href="{{ path('logout') }}">
       <li>Déconnexion</li>
-      <li>( {{ username }} )</li>
+      <li class="specific-centering-user-connected">( {{ username }} )</li>
     </a>
   </ul>
 </div>

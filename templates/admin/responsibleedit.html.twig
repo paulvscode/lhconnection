@@ -99,46 +99,6 @@
             margin: .5rem;
         }
 
-        /*content*/
-        .admin-content-container-project-div {
-            height: 100%;
-            flex-basis: 50%;
-        }
-
-        .admin-content-container-projects {
-            padding-right: .5rem;
-            padding-left: .5rem;
-        }
-
-        .admin-content-container-event-div {
-            padding-left: .5rem;
-            padding-right: .5rem;
-        }
-
-        .admin-content-container-event-div {
-            height: 100%;
-            flex-basis: 50%;
-        }
-
-        /*content projects*/
-        .admin-content-container-project-div > h2 {
-            text-align: center;
-            padding: 0.5rem;
-        }
-
-        .admin-content-container-stats {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            align-items: center;
-        }
-
-        /*content events*/
-        .admin-content-container-event-div > h2 {
-            text-align: center;
-            padding: 0.5rem;
-        }
-
         .specific-centering-user-connected {
             display: flex;
             justify-content: center;
@@ -205,11 +165,10 @@
             </div>
         </div>
         <div class="admin-content-container">
-            <h2>Nouvel événément</h2>
             {{ form_start(form) }}
             {{ form_widget(form) }}
-            <button class="btn btn-primary">Créer</button>
-            <a class="btn btn-danger" href="{{ path('admin_dashboard') }}">Retour</a>
+            <button onclick="return confirm('Attention, vérifiez bien les modifications avant de valider !')" class="btn btn-primary">Editer</button>
+            <a class="btn btn-danger" href="{{ path('manage_users') }}">Retour</a>
             {{ form_end(form) }}
         </div>
     </div>
