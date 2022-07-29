@@ -61,11 +61,15 @@
                     <li>
                         <a class="nav-link scrollto" href="#services">{{ 'lhconnection.homepage.event' | trans }}</a>
                     </li>
-                    <li><a class="nav-link scrollto" href="#portfolio">{{ 'lhconnection.homepage.project' | trans }}</a></li>
+                    <li><a class="nav-link scrollto" href="#portfolio">{{ 'lhconnection.homepage.project' | trans }}</a>
+                    </li>
                     <li><a class="nav-link scrollto" href="#team">{{ 'lhconnection.homepage.team' | trans }}</a></li>
-                    <li><a class="nav-link scrollto" href="#contact">{{ 'lhconnection.homepage.contact' | trans }}</a></li>
-                    <li><a class="nav-link scrollto" href="{{ path('login') }}">{{ 'lhconnection.homepage.login' | trans }}</a></li>
-                    <li><a id="adhesion-btn" class="nav-link scrollto text-success adhesion-button" href="#contact">{{ 'lhconnection.homepage.membership' | trans }}</a>
+                    <li><a class="nav-link scrollto" href="#contact">{{ 'lhconnection.homepage.contact' | trans }}</a>
+                    </li>
+                    <li><a class="nav-link scrollto"
+                           href="{{ path('login') }}">{{ 'lhconnection.homepage.login' | trans }}</a></li>
+                    <li><a id="adhesion-btn" class="nav-link scrollto text-success adhesion-button"
+                           href="#contact">{{ 'lhconnection.homepage.membership' | trans }}</a>
                     </li>
                     <li class="dropdown">
                         <a href="#"
@@ -104,7 +108,7 @@
                         ><span>{{ locale }}</span><i class="bi bi-chevron-down"></i
                             ></a>
                         <ul class="language-ul-home-mobile">
-                        {% set current_path = app.request.get('_route') %}
+                            {% set current_path = app.request.get('_route') %}
                             <a href="{{ path(current_path, {'_locale': 'fr'}) }}">Français</a>
                             <a href="{{ path(current_path, {'_locale': 'en'}) }}">English</a>
                         </ul>
@@ -140,7 +144,8 @@
                         {{ 'lhconnection.hero.second-title' | trans }}
                     </h1>
                     <h2 data-aos="fade-up" data-aos-delay="400">
-                        <p class="text-intro">{{ 'lhconnection.hero.first' | trans }} : {{ 'lhconnection.hero.second' | trans }}
+                        <p class="text-intro">{{ 'lhconnection.hero.first' | trans }}
+                            : {{ 'lhconnection.hero.second' | trans }}
                             <br>
                             <br>{{ 'lhconnection.hero.third' | trans }}
                         </p></h2>
@@ -188,7 +193,8 @@
                                  class="bi bi-quote" viewBox="0 0 16 16">
                                 <path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 9 7.558V11a1 1 0 0 0 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 3 7.558V11a1 1 0 0 0 1 1h2Z"/>
                             </svg>
-                            <br>{{ 'lhconnection.president.goal-main-first' | trans }} : {{ 'lhconnection.president.goal-main-second' | trans }}
+                            <br>{{ 'lhconnection.president.goal-main-first' | trans }}
+                            : {{ 'lhconnection.president.goal-main-second' | trans }}
                         <h3>Peggy Labat</h3>
                         {{ 'lhconnection.president.role' | trans }}
                         </p>
@@ -210,12 +216,21 @@
                             <!--                </h2>-->
                             <p>
                             <ul class="ul-bullets-objectives">
-                                <li><b>{{ 'lhconnection.goals.first-title' | trans }}</b> {{ 'lhconnection.goals.first' | trans }}</li>
-                                <li><b>{{ 'lhconnection.goals.second-title' | trans }}</b> {{ 'lhconnection.goals.second' | trans }}
+                                <li>
+                                    <b>{{ 'lhconnection.goals.first-title' | trans }}</b> {{ 'lhconnection.goals.first' | trans }}
                                 </li>
-                                <li><b>{{ 'lhconnection.goals.third-title' | trans }}</b> {{ 'lhconnection.goals.third' | trans }}</li>
-                                <li><b>{{ 'lhconnection.goals.fourth-title' | trans }}</b> {{ 'lhconnection.goals.fourth' | trans }}</li>
-                                <li><b>{{ 'lhconnection.goals.fifth-title' | trans }}</b> {{ 'lhconnection.goals.fifth' | trans }}</li>
+                                <li>
+                                    <b>{{ 'lhconnection.goals.second-title' | trans }}</b> {{ 'lhconnection.goals.second' | trans }}
+                                </li>
+                                <li>
+                                    <b>{{ 'lhconnection.goals.third-title' | trans }}</b> {{ 'lhconnection.goals.third' | trans }}
+                                </li>
+                                <li>
+                                    <b>{{ 'lhconnection.goals.fourth-title' | trans }}</b> {{ 'lhconnection.goals.fourth' | trans }}
+                                </li>
+                                <li>
+                                    <b>{{ 'lhconnection.goals.fifth-title' | trans }}</b> {{ 'lhconnection.goals.fifth' | trans }}
+                                </li>
                             </ul>
                             </p>
                         </div>
@@ -277,16 +292,16 @@
                     <p>{{ 'lhconnection.projects.description' | trans }}</p>
                 </header>
 
-{#                <div class="row" data-aos="fade-up" data-aos-delay="100">#}
-{#                    <div class="col-lg-12 d-flex justify-content-center">#}
-{#                        <ul id="portfolio-flters">#}
-{#                            <li data-filter="*" class="filter-active">{{ 'lhconnection.projects.category-all' | trans }}</li>#}
-{#                            <li data-filter=".filter-app">Le Havre</li>#}
-{#                            <li data-filter=".filter-card">Tampa</li>#}
-{#                            <li data-filter=".filter-web">Southampton</li>#}
-{#                        </ul>#}
-{#                    </div>#}
-{#                </div>#}
+                {# <div class="row" data-aos="fade-up" data-aos-delay="100"> #}
+                {# <div class="col-lg-12 d-flex justify-content-center"> #}
+                {# <ul id="portfolio-flters"> #}
+                {# <li data-filter="*" class="filter-active">{{ 'lhconnection.projects.category-all' | trans }}</li> #}
+                {# <li data-filter=".filter-app">Le Havre</li> #}
+                {# <li data-filter=".filter-card">Tampa</li> #}
+                {# <li data-filter=".filter-web">Southampton</li> #}
+                {# </ul> #}
+                {# </div> #}
+                {# </div> #}
 
                 <div
                         class="row gy-4 portfolio-container"
@@ -296,11 +311,9 @@
                     {% for project in projects %}
                         <div class="col-lg-4 col-md-6 portfolio-item {{ project.filterSortTitle }}">
                             <div class="portfolio-wrap">
-                                <img
-                                        src="{{ project.image }}"
-                                        class="img-fluid"
-                                        alt=""
-                                />
+                                <img src="{{ asset('second_ver_assets/assets/img/' ~ project.imageName) }}"
+                                     class="img-fluid"
+                                     alt=""/>
                                 <div class="portfolio-info">
                                     <h4>{{ project.description | raw }}</h4>
                                     <p>{{ project.longDescription | raw }}</p>
@@ -469,11 +482,14 @@
                                         Your message has been sent. Thank you!
                                     </div>
 
-                                    <div class="inscription-topic"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                    <div class="inscription-topic">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                             fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
                                             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                                             <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
                                         </svg> {{ 'lhconnection.contact.fees' | trans }}</div>
-                                    <button id="form-button-id" type="submit">{{ 'lhconnection.form.submit' | trans }}</button>
+                                    <button id="form-button-id"
+                                            type="submit">{{ 'lhconnection.form.submit' | trans }}</button>
                                 </div>
                             </div>
                         </form>
@@ -613,7 +629,7 @@
                                         data-bs-toggle="collapse"
                                         data-bs-target="#faq2-content-2"
                                 >
-                                   Proposez-vous des stages ?
+                                    Proposez-vous des stages ?
                                 </button>
                             </h2>
                             <div
@@ -635,7 +651,8 @@
                                         data-bs-toggle="collapse"
                                         data-bs-target="#faq2-content-3"
                                 >
-                                    Nous cherchons un établissement scolaire pour nos enfants, avez-vous des suggestions pour faciliter nos recherches ?
+                                    Nous cherchons un établissement scolaire pour nos enfants, avez-vous des suggestions
+                                    pour faciliter nos recherches ?
                                 </button>
                             </h2>
                             <div
@@ -644,9 +661,12 @@
                                     data-bs-parent="#faqlist2"
                             >
                                 <div class="accordion-body">
-                                    Bien sur ! <br><a href="https://www.lehavre.fr/pratique/ecoles-et-periscolaire">Sur le site de la ville du Havre</a><br>
-                                    <a href="https://www.ac-normandie.fr/annuaire-des-etablissements-121766">Sur l'annuaire des établissements</a><br>
-                                    <a href="https://www.enseignementcatholiquelehavre.com/etablissements">Sur le site de l'enseignement catholique</a><br>
+                                    Bien sur ! <br><a href="https://www.lehavre.fr/pratique/ecoles-et-periscolaire">Sur
+                                        le site de la ville du Havre</a><br>
+                                    <a href="https://www.ac-normandie.fr/annuaire-des-etablissements-121766">Sur
+                                        l'annuaire des établissements</a><br>
+                                    <a href="https://www.enseignementcatholiquelehavre.com/etablissements">Sur le site
+                                        de l'enseignement catholique</a><br>
                                 </div>
                             </div>
                         </div>
@@ -688,7 +708,8 @@
             <div class="copyright">
                 &copy; Copyright <strong><span>LH Connections</span></strong
                 >. {{ 'lhconnection.copyright.rights' | trans }}
-                - <a target="_blank" href="{{ path('confidentialite') }}">{{ 'lhconnection.copyright.privacy' | trans }}</a>
+                - <a target="_blank"
+                     href="{{ path('confidentialite') }}">{{ 'lhconnection.copyright.privacy' | trans }}</a>
             </div>
             <div class="credits">
             </div>

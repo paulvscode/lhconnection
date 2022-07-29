@@ -32,6 +32,14 @@ delete_project:
     path: /admin/dashboard/project/{id}/delete
     controller: App\Controller\Admin\AdminMainDashboardController::projectDelete
 
+archive_project:
+    path: /admin/dashboard/project/{id}/archive
+    controller: App\Controller\Admin\AdminMainDashboardController::projectArchived
+
+unarchive_project:
+    path: /admin/dashboard/project/{id}/unarchive
+    controller: App\Controller\Admin\AdminMainDashboardController::projectUnarchived
+
 #admin events
 edit_event:
     path: /admin/dashboard/event/{id}/edit
@@ -53,14 +61,7 @@ unarchive_event:
     path: /admin/dashboard/event/{id}/unarchive
     controller: App\Controller\Admin\AdminMainDashboardController::eventUnarchived
 
-archive_project:
-    path: /admin/dashboard/project/{id}/archive
-    controller: App\Controller\Admin\AdminMainDashboardController::projectArchived
-
-unarchive_project:
-    path: /admin/dashboard/project/{id}/unarchive
-    controller: App\Controller\Admin\AdminMainDashboardController::projectUnarchived
-
+#user management
 manage_users:
     path: /admin/dashboard/users
     controller: App\Controller\Admin\AdminMainDashboardController::manageUsers

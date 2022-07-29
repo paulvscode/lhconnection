@@ -9,6 +9,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class ProjectType extends AbstractType
 {
@@ -18,7 +19,7 @@ class ProjectType extends AbstractType
             ->add('title')
             ->add('description')
             ->add('longDescription', null, ['label' => 'Description complète'])
-            ->add('image')
+            ->add('imageFile', VichImageType::class)
             ->add('link')
             ->add('filterSortTitle', null, ['label' => 'Mots clés'])
             ->add('sortTitle', ChoiceType::class, [
