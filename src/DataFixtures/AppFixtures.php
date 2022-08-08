@@ -80,6 +80,7 @@ class AppFixtures extends Fixture
         $project->setSortTitle('Titre de classement');
         $project->setFilterSortTitle('filtre de classement');
         $project->setArchived(false);
+        $project->setImageSize('20');
         $manager->persist($project);
 
         // Responsible + Roles
