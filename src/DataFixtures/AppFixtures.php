@@ -70,7 +70,7 @@ class AppFixtures extends Fixture
 
         // projects
         $project = new Project();
-        $project->setImage('https://picsum.photos/200');
+        $project->setImageName('temporary');
         //$project->setResponsible(['Project responsible']);
         $project->setTitle('Project Title');
         $project->setDescription('Description du projet');
