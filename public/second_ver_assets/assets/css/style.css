@@ -2584,12 +2584,11 @@ section {
 /*adhésion*/
 
 .adhesion-button {
-    transition: .2s ease-in-out;
-}
-
-.adhesion-button:hover {
-    color: #21bb74 !important;
-    transition: .2s ease-in-out;
+    background: #4154f1;
+    border: 0;
+    padding: 10px 30px;
+    color: #fff;
+    border-radius: 4px;
 }
 
 .inscription-topic {

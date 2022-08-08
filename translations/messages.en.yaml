@@ -50,6 +50,10 @@ lhconnection:
         title: Contact
         description: Contact us
         fees: Our membership fee is 20€ per year.
+    membership:
+        title: Become a member of LH Connections.
+        description: Download our membership application form.
+        btn: Download
     form:
         submit: Submit
     faq:

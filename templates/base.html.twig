@@ -69,7 +69,7 @@
                     <li><a class="nav-link scrollto"
                            href="{{ path('login') }}">{{ 'lhconnection.homepage.login' | trans }}</a></li>
                     <li><a id="adhesion-btn" class="nav-link scrollto text-success adhesion-button"
-                           href="#contact">{{ 'lhconnection.homepage.membership' | trans }}</a>
+                           href="#membership">{{ 'lhconnection.homepage.membership' | trans }}</a>
                     </li>
                     <li class="dropdown">
                         <a href="#"
@@ -317,15 +317,6 @@
                                 <div class="portfolio-info">
                                     <h4>{{ project.description | raw }}</h4>
                                     <p>{{ project.longDescription | raw }}</p>
-                                    <div class="portfolio-links">
-                                        <a
-                                                href="{{ asset('second_ver_assets/assets/img/lhlogo.jpg') }}"
-                                                data-gallery="portfolioGallery"
-                                                class="portfokio-lightbox"
-                                                title="{{ project.sortTitle }}"
-                                        ><i class="bi bi-plus"></i
-                                            ></a>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -482,12 +473,12 @@
                                         Your message has been sent. Thank you!
                                     </div>
 
-                                    <div class="inscription-topic">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                             fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
-                                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                                            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
-                                        </svg> {{ 'lhconnection.contact.fees' | trans }}</div>
+                                    {# <div class="inscription-topic"> #}
+                                    {# <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" #}
+                                    {# fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16"> #}
+                                    {# <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/> #}
+                                    {# <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/> #}
+                                    {# </svg> {{ 'lhconnection.contact.fees' | trans }}</div> #}
                                     <button id="form-button-id"
                                             type="submit">{{ 'lhconnection.form.submit' | trans }}</button>
                                 </div>
@@ -499,6 +490,20 @@
             </div>
         </section>
         <!-- End Contact Section -->
+
+        <!-- ======= Membership Section ======= -->
+        <section id="membership" class="contact">
+            <div class="container" data-aos="fade-up">
+                <header class="section-header">
+                    <h2>{{ 'lhconnection.membership.title' | trans }}</h2>
+                    <p>{{ 'lhconnection.membership.description' | trans }}</p>
+                </header>
+                <div class="text-center">
+                    <a href="{{ asset('/second_ver_assets/assets/adhesion-lh.docx') }}" style="background: #4154f1;border: 0; padding: 10px 30px;color: #fff;border-radius: 4px;">{{ 'lhconnection.membership.btn' | trans }}</a>
+                </div>
+            </div>
+        </section>
+        <!-- End Membership Section -->
     </main>
     <!-- End #main -->
 

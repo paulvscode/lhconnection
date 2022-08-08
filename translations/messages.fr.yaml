@@ -50,6 +50,10 @@ lhconnection:
         title: Contact
         description: Contactez-nous
         fees: Nos frais d'adhésion sont de 20€ / an.
+    membership:
+        title: Rejoignez LH Connections.
+        description: Téléchargez notre formulaire d'inscription.
+        btn: Téléchargement
     form:
         submit: Envoyer
     faq:
