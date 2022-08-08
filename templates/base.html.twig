@@ -259,7 +259,7 @@
 
                 <div class="row gy-4">
                     {% set counter = 0 %}
-                    {% for socialEvent in socialEvents %}
+                    {% for socialEvent in onlineEvents %}
                         {% if colors[loop.index0] is not defined %}
                             {% set counter = 0 %}
                         {% endif %}
@@ -308,7 +308,7 @@
                         data-aos="fade-up"
                         data-aos-delay="200"
                 >
-                    {% for project in projects %}
+                    {% for project in onlineProjects %}
                         <div class="col-lg-4 col-md-6 portfolio-item {{ project.filterSortTitle }}">
                             <div class="portfolio-wrap">
                                 <img src="{{ asset('second_ver_assets/assets/img/' ~ project.imageName) }}"

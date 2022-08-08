@@ -21,12 +21,22 @@ class HomePageController extends AbstractController
         $responsibles = $doctrine->getRepository(Responsible::class)->findAll();
         $projects = $doctrine->getRepository(Project::class)->findAll();
 
+        $onlineProjects = $doctrine->getRepository(Project::class)->findBy(['archived' => false]);
+        $archivedProjects = $doctrine->getRepository(Project::class)->findBy(['archived' => true]);
+
+        $onlineEvents = $doctrine->getRepository(SocialEvent::class)->findBy(['archived' => false]);
+        $archivedEvents = $doctrine->getRepository(SocialEvent::class)->findBy(['archived' => true]);
+
         return $this->render('base.html.twig', [
             'responsibles' => $responsibles,
             'socialEvents' => $socialEvents,
             'colors' => $colorsClass,
             'projects' => $projects,
-            'locale' => $locale
+            'locale' => $locale,
+            'onlineProjects' => $onlineProjects,
+            'archivedProjects' => $archivedProjects,
+            'onlineEvents' => $onlineEvents,
+            'archivedEvents' => $archivedEvents
         ]);
 
 //        return $this->render('wip.html.twig');
