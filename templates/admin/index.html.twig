@@ -43,191 +43,189 @@
     <!-- Template Main CSS File -->
     <link href="{{ asset('second_ver_assets/assets/css/style.css') }}" rel="stylesheet"/>
 
-{% endblock %}
-
-<style>
-    #scroll-top-button {
-        border-radius: 20px;
-        background-color: white;
-        position: fixed;
-        bottom: 15px;
-        right: 15px;
-        font-size: 1.3rem;
-        cursor: pointer;
-    }
-
-    #scroll-top-button:hover {
-        background-color: #d9d9d9;
-    }
-
-    * {
-        box-sizing: border-box;
-    }
-
-    html, body {
-        padding: 0;
-        margin: 0;
-        min-height: 100vh;
-    }
-
-    /*main layout*/
-    .admin-main-container {
-        display: flex;
-        height: 100vh;
-    }
-
-    .user-dashboard-logo {
-        max-width: 100%;
-        height: 35px;
-        object-fit: cover;
-    }
-
-    .admin-side-panel-container {
-        flex-basis: 20%;
-        height: 100%;
-        /*box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;*/
-    }
-
-    .admin-content-container {
-        flex-basis: 80%;
-        height: 100%;
-
-        display: flex;
-        flex-direction: row;
-    }
-
-    /*left panel layout*/
-    .admin-side-panel-sub-container {
-        height: 100%;
-    }
-
-    .admin-side-panel-logo {
-        height: 10%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .admin-side-panel-menu {
-        height: 90%;
-        padding-top: 1rem;
-        width: 80%;
-        margin: 0 auto;
-        text-align: center;
-    }
-
-    .admin-side-panel-menu-account {
-        display: flex;
-        flex-direction: column;
-
-        list-style: none;
-        padding: 0;
-    }
-
-    .admin-side-panel-menu-account > a {
-        margin: .5rem;
-    }
-
-    .admin-side-panel-menu-account > a > li {
-        margin: .5rem;
-    }
-
-    /*content*/
-    .admin-content-container-project-div {
-        height: 100%;
-        flex-basis: 50%;
-    }
-
-    .admin-content-container-projects {
-        padding-right: .5rem;
-        padding-left: .5rem;
-    }
-
-    .admin-content-container-event-div {
-        padding-left: .5rem;
-        padding-right: .5rem;
-    }
-
-    .admin-content-container-event-div {
-        height: 100%;
-        flex-basis: 50%;
-    }
-
-    /*content projects*/
-    .admin-content-container-project-div > h2 {
-        text-align: center;
-        padding: 0.5rem;
-    }
-
-    .admin-content-container-stats {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
-    }
-
-    /*content events*/
-    .admin-content-container-event-div > h2 {
-        text-align: center;
-        padding: 0.5rem;
-    }
-
-    .specific-centering-user-connected {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    /*media queries*/
-    @media only screen and (min-device-width: 1025px ) and (max-device-width: 1281px) {
-        .admin-main-container {
-            display: block;
+    <style>
+        #scroll-top-button {
+            border-radius: 20px;
+            background-color: white;
+            position: fixed;
+            bottom: 15px;
+            right: 15px;
+            font-size: 1.3rem;
+            cursor: pointer;
         }
 
-        .admin-side-panel-menu {
-            width: 25%;
+        #scroll-top-button:hover {
+            background-color: #d9d9d9;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            padding: 0;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        /*main layout*/
+        .admin-main-container {
+            display: flex;
+            height: 100vh;
+        }
+
+        .user-dashboard-logo {
+            max-width: 100%;
+            height: 35px;
+            object-fit: cover;
         }
 
         .admin-side-panel-container {
-            height: auto;
-        }
-
-        .admin-side-panel-logo {
-            margin-top: 1rem;
-        }
-    }
-
-    @media only screen and (max-device-width: 1026px) {
-        .admin-main-container {
-            display: block;
-        }
-
-        .admin-side-panel-menu {
-            width: 100%;
-        }
-
-        .admin-side-panel-container {
-            height: auto;
-        }
-
-        .admin-side-panel-logo {
-            margin-top: 1rem;
+            flex-basis: 20%;
+            height: 100%;
+            /*box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;*/
         }
 
         .admin-content-container {
-            display: block;
+            flex-basis: 80%;
+            height: 100%;
+
+            display: flex;
+            flex-direction: row;
         }
 
-        .online-project-description, .online-project-creation-time {
-            display: none;
+        /*left panel layout*/
+        .admin-side-panel-sub-container {
+            height: 100%;
+        }
+
+        .admin-side-panel-logo {
+            height: 10%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .admin-side-panel-menu {
+            height: 90%;
+            padding-top: 1rem;
+            width: 80%;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .admin-side-panel-menu-account {
+            display: flex;
+            flex-direction: column;
+
+            list-style: none;
+            padding: 0;
+        }
+
+        .admin-side-panel-menu-account > a {
+            margin: .5rem;
+        }
+
+        .admin-side-panel-menu-account > a > li {
+            margin: .5rem;
+        }
+
+        /*content*/
+        .admin-content-container-project-div {
+            height: 100%;
+            flex-basis: 50%;
+        }
+
+        .admin-content-container-projects {
+            padding-right: .5rem;
+            padding-left: .5rem;
+        }
+
+        .admin-content-container-event-div {
+            padding-left: .5rem;
+            padding-right: .5rem;
+        }
+
+        .admin-content-container-event-div {
+            height: 100%;
+            flex-basis: 50%;
+        }
+
+        /*content projects*/
+        .admin-content-container-project-div > h2 {
+            text-align: center;
+            padding: 0.5rem;
         }
 
         .admin-content-container-stats {
-            display: block;
-            text-align: center;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
         }
-    }
-</style>
+
+        /*content events*/
+        .admin-content-container-event-div > h2 {
+            text-align: center;
+            padding: 0.5rem;
+        }
+
+        .specific-centering-user-connected {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /*media queries*/
+        @media only screen and (min-device-width: 1025px ) and (max-device-width: 1281px) {
+            .admin-main-container {
+                display: block;
+            }
+
+            .admin-side-panel-menu {
+                width: 25%;
+            }
+
+            .admin-side-panel-container {
+                height: auto;
+            }
+
+            .admin-side-panel-logo {
+                margin-top: 1rem;
+            }
+        }
+
+        @media only screen and (max-device-width: 1026px) {
+            .admin-main-container {
+                display: block;
+            }
+
+            .admin-side-panel-menu {
+                width: 100%;
+            }
+
+            .admin-side-panel-container {
+                height: auto;
+            }
+
+            .admin-side-panel-logo {
+                margin-top: 1rem;
+            }
+
+            .admin-content-container {
+                display: block;
+            }
+
+            .online-project-description, .online-project-creation-time {
+                display: none;
+            }
+
+            .admin-content-container-stats {
+                display: block;
+                text-align: center;
+            }
+        }
+    </style>
 {% endblock %}
 
 {% block body %}
@@ -412,6 +410,7 @@
       document.body.scrollTop = 0; // For Safari
       document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     }
+
 
 
 
