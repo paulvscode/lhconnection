@@ -2581,7 +2581,7 @@ section {
     font-size: 1.4rem !important;
 }
 
-/*adhésion*/
+/*adhesion*/
 
 .adhesion-button {
     background: #4154f1;
@@ -2614,10 +2614,6 @@ section {
     align-items: center;
     transition: 0.4s;
     text-align: center;
-}
-
-.calendar-event-date-display:hover {
-    color: white;
 }
 
 /* COMMENT */
