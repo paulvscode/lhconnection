@@ -2588,6 +2588,7 @@ section {
     border: 0;
     padding: 10px 30px;
     color: #fff;
+    transition: 0.4s;
     border-radius: 4px;
 }
 
@@ -2605,3 +2606,17 @@ section {
 .comment {
     display: none;
 }
+
+.calendar-event-date-display {
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s;
+}
+
+.calendar-event-date-display:hover {
+    color: white;
+}
+
+/* COMMENT */

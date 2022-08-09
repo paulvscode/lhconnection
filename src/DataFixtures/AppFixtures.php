@@ -101,7 +101,7 @@ class AppFixtures extends Fixture
         foreach ($responsibleMembers as $name => $role) {
             $responsibleMember = new Responsible();
             $responsibleMember->setName($name);
-            $responsibleMember->setImage("https://i.imgur.com/lod8x1d.jpg");
+            $responsibleMember->setImage("resp.jpg");
             $responsibleMember->setDescription("La future description");
             $responsibleMember->setTitle($role);
             $manager->persist($responsibleMember);

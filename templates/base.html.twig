@@ -39,6 +39,7 @@
 
         <!-- Template Main CSS File -->
         <link href="{{ asset('second_ver_assets/assets/css/style.css') }}" rel="stylesheet"/>
+
     {% endblock %}
 </head>
 
@@ -68,7 +69,7 @@
                     </li>
                     <li><a class="nav-link scrollto"
                            href="{{ path('login') }}">{{ 'lhconnection.homepage.login' | trans }}</a></li>
-                    <li><a id="adhesion-btn" class="nav-link scrollto text-success adhesion-button"
+                    <li><a id="adhesion-btn" class="nav-link scrollto text-success"
                            href="#membership">{{ 'lhconnection.homepage.membership' | trans }}</a>
                     </li>
                     <li class="dropdown">
@@ -258,6 +259,7 @@
                 </header>
 
                 <div class="row gy-4">
+
                     {% set counter = 0 %}
                     {% for socialEvent in onlineEvents %}
                         {% if colors[loop.index0] is not defined %}
@@ -268,6 +270,7 @@
                                 data-aos="fade-up"
                                 data-aos-delay="200"
                         >
+                            <div class="calendar-event-date-display" style="margin-bottom: 1rem;"><i class="bi bi-calendar-event" style="margin-right: .5rem;"></i> {{ socialEvent.icon }}</div>
                             <div class="service-box {{ colors[counter] }}">
                                 <h3>{{ socialEvent.title }}</h3>
                                 <p>
@@ -499,7 +502,7 @@
                     <p>{{ 'lhconnection.membership.description' | trans }}</p>
                 </header>
                 <div class="text-center">
-                    <a href="{{ asset('/second_ver_assets/assets/adhesion-lh.docx') }}" style="background: #4154f1;border: 0; padding: 10px 30px;color: #fff;border-radius: 4px;">{{ 'lhconnection.membership.btn' | trans }}</a>
+                    <a href="{{ asset('/second_ver_assets/assets/adhesion-lh.docx') }}" class="adhesion-button">{{ 'lhconnection.membership.btn' | trans }}</a>
                 </div>
             </div>
         </section>

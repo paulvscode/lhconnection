@@ -18,13 +18,7 @@ class EventType extends AbstractType
             ->add('description')
             ->add('image')
             ->add('link')
-            ->add('icon', ChoiceType::class, [
-                'choices' => [
-                    'Livre' => 'Livre',
-                    'Ballon' => 'Ballon',
-                    'Cloche' => 'Cloche',
-                ]
-            ])
+            ->add('icon')
             ->add('archived', ChoiceType::class, [
                 'choices' => [
                     'Non-archivé' => true,
