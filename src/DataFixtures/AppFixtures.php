@@ -70,7 +70,7 @@ class AppFixtures extends Fixture
 
         // projects
         $project = new Project();
-        $project->setImageName('temporary');
+        $project->setImageName('temporary.jpg');
         //$project->setResponsible(['Project responsible']);
         $project->setTitle('Project Title');
         $project->setDescription('Description du projet');
