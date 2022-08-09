@@ -2613,6 +2613,7 @@ section {
     justify-content: center;
     align-items: center;
     transition: 0.4s;
+    text-align: center;
 }
 
 .calendar-event-date-display:hover {
