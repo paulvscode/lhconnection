@@ -63,7 +63,7 @@ WORKDIR /var/www
 
 RUN apk add bash
 
-RUN wget https://get.symfony.com/cli/installer -O - | bash && mv /root/.symfony/bin/symfony /usr/local/bin/symfony
+RUN wget https://get.symfony.com/cli/installer -O - | bash && mv /root/.symfony5/bin/symfony /usr/local/bin/symfony
 
 RUN php -m && echo "============================================="
 

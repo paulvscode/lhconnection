@@ -57,9 +57,10 @@
         .admin-content-container {
             flex-basis: 80%;
             height: 100%;
-
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
+            text-align: center;
+            margin: 5rem 0 0 0;
         }
 
         /*left panel layout*/
@@ -98,44 +99,26 @@
             margin: .5rem;
         }
 
-        /*content*/
-        .admin-content-container-project-div {
-            height: 100%;
-            flex-basis: 50%;
-        }
-
-        .admin-content-container-projects {
-            padding-right: .5rem;
-            padding-left: .5rem;
-        }
-
-        .admin-content-container-event-div {
-            padding-left: .5rem;
-            padding-right: .5rem;
-        }
-
-        .admin-content-container-event-div {
-            height: 100%;
-            flex-basis: 50%;
-        }
-
-        /*content projects*/
-        .admin-content-container-project-div > h2 {
-            text-align: center;
-            padding: 0.5rem;
-        }
-
-        .admin-content-container-stats {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            align-items: center;
-        }
-
         /*content events*/
         .admin-content-container-event-div > h2 {
             text-align: center;
             padding: 0.5rem;
+        }
+
+        /* clubs */
+        .clubs-container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .clubs-container > div {
+            height: 300px;
+            width: 200px;
+            margin: 1rem;
+            background-color: #0dcaf0;
         }
 
         /*media queries*/
@@ -172,10 +155,6 @@
             .online-project-description, .online-project-creation-time {
                 display: none;
             }
-            .admin-content-container-stats {
-                display: block;
-                text-align: center;
-            }
         }
     </style>
 {% endblock %}
@@ -188,127 +167,16 @@
             </div>
         </div>
         <div class="admin-content-container">
-            <div class="admin-content-container-project-div">
-                <h2>Projets</h2>
-                <div class="admin-content-container-stats">
-                    <h4>Projects en cours: {{ onlineProjects |length }}</h4>
-                    <h4>Projects archivés: {{ archivedProjects |length }}</h4>
-                </div>
-                <div class="admin-content-container-projects">
-                    <div class="admin-content-container-online-projects">
-                        <h6 class="bg-success text-white">En ligne</h6>
-                        <table class="table">
-                            <thead class="thead-light">
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">id</th>
-                                <th scope="col">Titre</th>
-                                <th class="online-project-description" scope="col">Description</th>
-                                <th class="online-project-creation-time" scope="col">Création le</th>
-                                <th scope="col">Actions</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {% for project in onlineProjects %}
-                                <tr>
-                                    <th scope="row">{{ loop.index }}</th>
-                                    <td>{{ project.id }}</td>
-                                    <td>{{ project.title }}</td>
-                                    <td class="online-project-description">{{ project.description }}</td>
-                                    <td class="online-project-creation-time"> {{ project.createdAt | date('d/m/Y') }}</td>
-                                    <td>
-                                        <a href="{{ path('info_project', {id: project.id}) }}"><i class="bi bi-info-circle"></i></a>
-                                        <a href="#"><i class="bi bi-hand-index-thumb"></i></a>
-                                    </td>
-                                </tr>
-                            {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="admin-content-container-archived-projects">
-                        <h6 class="bg-danger text-white">Archivés</h6>
-                        <table class="table">
-                            <thead class="thead-light">
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">id</th>
-                                <th scope="col">Titre</th>
-                                <th class="online-project-description" scope="col">Description</th>
-                                <th class="online-project-creation-time" scope="col">Création le</th>
-                                <th scope="col">Actions</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {% for project in archivedProjects %}
-                                <tr>
-                                    <th scope="row">{{ loop.index }}</th>
-                                    <td>{{ project.id }}</td>
-                                    <td>{{ project.title }}</td>
-                                    <td class="online-project-description">{{ project.description }}</td>
-                                    <td class="online-project-creation-time">{{ project.createdAt | date('d/m/Y') }}</td>
-                                    <td><a href="#"><i class="bi bi-info-circle"></i></a></td>
-                                </tr>
-                            {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            {# Evénements #}
-            <div class="admin-content-container-event-div">
-                <h2>Evénéments</h2>
-                <div class="admin-content-container-stats">
-                    <h4>Evénéments en cours: {{ onlineEvents |length }}</h4>
-                    <h4>Evénéments archivés: {{ archivedEvents |length }}</h4>
-                </div>
-                <div class="admin-content-container-events">
-                    <div class="admin-content-container-online-events">
-                        <h6 class="bg-success text-white">En ligne</h6>
-                        <table class="table">
-                            <thead class="thead-light">
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">id</th>
-                                <th scope="col">Titre</th>
-                                <th class="online-event-description" scope="col">Description</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {% for event in onlineEvents %}
-                                <tr>
-                                    <th scope="row">{{ loop.index }}</th>
-                                    <td>{{ event.id }}</td>
-                                    <td>{{ event.title }}</td>
-                                    <td class="online-event-description">{{ event.description }}</td>
-                                </tr>
-                            {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="admin-content-container-archived-events">
-                        <h6 class="bg-danger text-white">Archivés</h6>
-                        <table class="table">
-                            <thead class="thead-light">
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">id</th>
-                                <th scope="col">Titre</th>
-                                <th class="online-event-description" scope="col">Description</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {% for event in archivedEvents %}
-                                <tr>
-                                    <th scope="row">{{ loop.index }}</th>
-                                    <td>{{ event.id }}</td>
-                                    <td>{{ event.title }}</td>
-                                    <td class="online-event-description">{{ event.description }}</td>
-                                </tr>
-                            {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+           <h3>Clubs</h3>
+            <div class="clubs-container">
+            {#    {% for club in clubs %}#}
+                    <div>club</div>
+                    <div>club</div>
+                    <div>club</div>
+                    <div>club</div>
+                    <div>club</div>
+                    <div>club</div>
+               {# {% endfor %}#}
             </div>
         </div>
 
