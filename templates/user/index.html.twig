@@ -52,6 +52,11 @@
             align-items: stretch;
         }
 
+        .admin-side-panel-sub-container:hover {
+            box-shadow: rgba(100, 100, 111, 0.4) 0px 7px 29px 0px;
+            transition: .1s ease-in-out;
+        }
+
         .admin-side-panel-sub-container > img {
             max-width: 100%;
             padding: 1rem;
@@ -74,7 +79,7 @@
             padding: 1rem;
             box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
             width: 100%;
-            margin: 2rem;
+            margin: 2rem 2rem 2rem 0;
         }
 
         .clubs-full-container > h3 {
@@ -119,11 +124,10 @@
         <div class="admin-side-panel-container">
             <div class="admin-side-panel-sub-container">
                 <img src="{{ asset('second_ver_assets/assets/img/logolh.png') }}" alt="">
-                <div class="btn-outline-primary text-center mt-2 mb-2">Menu</div>
-                <a class="btn btn-primary" href="#">Clubs</a>
-                <a class="btn btn-primary" href="#">Retour sur le site</a>
+                <div class="text-center mt-2 mb-2">Member Space</div>
+                <a class="btn btn-primary" href="{{ path('homepageredirection') }}">Retour sur le site</a>
                 <a class="btn btn-success" href="#">Mon compte</a>
-                <a class="btn btn-danger" href="#">Déconnexion</a>
+                <a class="btn btn-danger" href="{{ path('logout') }}">Déconnexion</a>
             </div>
         </div>
         <div class="admin-content-container">
@@ -131,7 +135,7 @@
                 <h3>Clubs</h3>
                 <div class="clubs-container">
                      {% for club in clubs %}
-                    <div class="card" style="width: 18rem;">
+                    <div class="card" style="width: 14rem;">
                         <img class="card-img-top" src="{{ club.image }}" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">{{ club.name }}</h5>
@@ -143,7 +147,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 
     <button onclick="topFunction()" id="scroll-top-button" title="Go to top"><i class="bi bi-arrow-up"></i></button>
