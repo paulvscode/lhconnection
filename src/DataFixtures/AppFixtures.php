@@ -3,6 +3,7 @@
 // src/DataFixtures/AppFixtures.php
 namespace App\DataFixtures;
 
+use App\Entity\Club;
 use App\Entity\Project;
 use App\Entity\User;
 use DateTimeImmutable;
@@ -105,6 +106,18 @@ class AppFixtures extends Fixture
             $responsibleMember->setDescription("La future description");
             $responsibleMember->setTitle($role);
             $manager->persist($responsibleMember);
+        }
+
+        // clubs
+
+        for ($i = 1; $i < 5; $i++) {
+            $club = new Club();
+            $club->setName('Let\'s swim');
+            $club->setDescription('Nous nageons dans la mer chaque jour de l\'année');
+            $club->setLongDescription('Une plus grande description que la description précédente à des fins de tests');
+            $club->setImage('https://i.imgur.com/guBBWW6.jpeg');
+            $club->setSlackLink('linktoslack.com');
+            $manager->persist($club);
         }
 
         // 6 Events

@@ -30,132 +30,87 @@
             box-sizing: border-box;
         }
 
-        html, body {
-            padding: 0;
-            margin: 0;
-            min-height: 100vh;
-        }
-
-        /*main layout*/
         .admin-main-container {
             display: flex;
-            height: 100vh;
-        }
-
-        .user-dashboard-logo {
-            max-width: 100%;
-            height: 35px;
-            object-fit: cover;
+            flex-direction: row;
         }
 
         .admin-side-panel-container {
+            display: flex;
             flex-basis: 20%;
-            height: 100%;
-            /*box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;*/
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .admin-side-panel-sub-container {
+            padding: 1rem;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            margin: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: stretch;
+        }
+
+        .admin-side-panel-sub-container > img {
+            max-width: 100%;
+            padding: 1rem;
+            border-bottom: 1px solid #364C64;
+        }
+
+        .admin-side-panel-sub-container > a {
+            margin: .3rem;
+            padding: .5rem;
         }
 
         .admin-content-container {
             flex-basis: 80%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            text-align: center;
-            margin: 5rem 0 0 0;
-        }
-
-        /*left panel layout*/
-        .admin-side-panel-sub-container {
-            height: 100%;
-        }
-
-        .admin-side-panel-logo {
-            height: 10%;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        .admin-side-panel-menu {
-            height: 90%;
-            padding-top: 1rem;
-            width: 80%;
-            margin: 0 auto;
+        .clubs-full-container {
+            padding: 1rem;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            width: 100%;
+            margin: 2rem;
+        }
+
+        .clubs-full-container > h3 {
             text-align: center;
+            font-size: 3rem;
         }
 
-        .admin-side-panel-menu-account {
-            display: flex;
-            flex-direction: column;
-
-            list-style: none;
-            padding: 0;
-        }
-
-        .admin-side-panel-menu-account > a {
-            margin: .5rem;
-        }
-
-        .admin-side-panel-menu-account > a > li {
-            margin: .5rem;
-        }
-
-        /*content events*/
-        .admin-content-container-event-div > h2 {
-            text-align: center;
-            padding: 0.5rem;
-        }
-
-        /* clubs */
         .clubs-container {
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
-            justify-content: center;
+            justify-content: space-evenly;
             align-items: flex-start;
         }
 
-        .clubs-container > div {
-            height: 300px;
-            width: 200px;
-            margin: 1rem;
-            background-color: #0dcaf0;
+        .card {
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            transition: .1s ease-in-out;
         }
 
-        /*media queries*/
-        @media only screen and (min-device-width: 1025px ) and (max-device-width : 1281px) {
-            .admin-main-container {
-                display: block;
-            }
-            .admin-side-panel-menu {
-                width: 25%;
-            }
-            .admin-side-panel-container {
-                height: auto;
-            }
-            .admin-side-panel-logo {
-                margin-top: 1rem;
-            }
+        .card:hover {
+            box-shadow: rgba(100, 100, 111, 0.4) 0px 7px 29px 0px;
+            transition: .1s ease-in-out;
         }
-        @media only screen and (max-device-width : 1026px) {
-            .admin-main-container {
-                display: block;
-            }
-            .admin-side-panel-menu {
-                width: 100%;
-            }
-            .admin-side-panel-container {
-                height: auto;
-            }
-            .admin-side-panel-logo {
-                margin-top: 1rem;
-            }
-            .admin-content-container {
-                display: block;
-            }
-            .online-project-description, .online-project-creation-time {
-                display: none;
-            }
+
+        .card > img {
+            max-width: 100%;
         }
+
+        .clubs-container > div {
+            height: auto;
+            width: 200px;
+            margin: 1rem;
+        }
+
+
     </style>
 {% endblock %}
 
@@ -163,20 +118,29 @@
     <div class="admin-main-container">
         <div class="admin-side-panel-container">
             <div class="admin-side-panel-sub-container">
-                {% include 'user/components/leftpane.html.twig' %}
+                <img src="{{ asset('second_ver_assets/assets/img/logolh.png') }}" alt="">
+                <div class="btn-outline-primary text-center mt-2 mb-2">Menu</div>
+                <a class="btn btn-primary" href="#">Clubs</a>
+                <a class="btn btn-primary" href="#">Retour sur le site</a>
+                <a class="btn btn-success" href="#">Mon compte</a>
+                <a class="btn btn-danger" href="#">Déconnexion</a>
             </div>
         </div>
         <div class="admin-content-container">
-           <h3>Clubs</h3>
-            <div class="clubs-container">
-            {#    {% for club in clubs %}#}
-                    <div>club</div>
-                    <div>club</div>
-                    <div>club</div>
-                    <div>club</div>
-                    <div>club</div>
-                    <div>club</div>
-               {# {% endfor %}#}
+            <div class="clubs-full-container">
+                <h3>Clubs</h3>
+                <div class="clubs-container">
+                     {% for club in clubs %}
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="{{ club.image }}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ club.name }}</h5>
+                            <p class="card-text">{{ club.description }}</p>
+                            <a href="#" class="btn btn-primary">{{ club.slackLink }}</a>
+                        </div>
+                    </div>
+                     {% endfor %}
+                </div>
             </div>
         </div>
 
@@ -202,5 +166,6 @@
       document.body.scrollTop = 0; // For Safari
       document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     }
+
     </script>
 {% endblock %}
