@@ -29,6 +29,7 @@
         * {
             box-sizing: border-box;
         }
+
         .admin-main-container {
             display: flex;
             flex-direction: row;
@@ -72,6 +73,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
         }
 
         .admin-full-container {
@@ -84,15 +86,70 @@
         .admin-full-container > h3 {
             text-align: center;
             font-size: 3rem;
+            margin-bottom: 2rem;
         }
 
-        .clubs-container {
+        .statistiques-container {
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
             justify-content: space-evenly;
             align-items: flex-start;
         }
+
+        .editing-container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            align-items: flex-start;
+        }
+
+        .events-sub-edition, .projects-sub-edition, .clubs-sub-edition {
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            width: 25%;
+            height: auto;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-direction: column;
+            padding: 1rem;
+        }
+
+        .events-sub-edition > h5 {
+            background-color: #2188381f;
+            padding: 1rem;
+            width: 100%;
+            text-align: center;
+        }
+
+        .projects-sub-edition > h5 {
+            background-color: #2188381f;
+            padding: 1rem;
+            width: 100%;
+            text-align: center;
+        }
+
+        .clubs-sub-edition > h5  {
+            background-color: #2188381f;
+            padding: 1rem;
+            width: 100%;
+            text-align: center;
+        }
+
+        .container-list-of-events, .container-list-of-projects, .container-list-of-clubs {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            padding: 1rem;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .container-list-of-events, .container-list-of-projects, .container-list-of-clubs > i {
+            margin-left: 1rem;
+        }
+
     </style>
 {% endblock %}
 
@@ -100,28 +157,57 @@
     <div class="admin-main-container">
         <div class="admin-side-panel-container">
             <div class="admin-side-panel-sub-container">
-                <img src="{{ asset('second_ver_assets/assets/img/logolh.png') }}" alt="">
-                <div class="text-center mt-2 mb-2">Admin Space</div>
-                <a class="btn btn-success" href="#">Nouvel événement</a>
-                <a class="btn btn-success" href="#">Nouveau projet</a>
-                <a class="btn btn-success" href="#">Nouveau club</a>
-                <a class="btn btn-primary" href="{{ path('homepageredirection') }}">Retour sur le site</a>
-                <a class="btn btn-danger" href="{{ path('logout') }}">Déconnexion</a>
+                {% include 'admin/components/leftpane.html.twig' %}
             </div>
         </div>
         <div class="admin-content-container">
             <div class="admin-full-container">
                 <h3>Statistiques</h3>
-                <div class="clubs-container">
-
+                <div class="statistiques-container">
+                    <div>
+                        <canvas id="myChart"></canvas>
+                    </div>
                 </div>
+            </div>
 
+            <div class="admin-full-container">
+                <h3>Édition</h3>
+                <div class="editing-container">
+                    <div class="events-sub-edition">
+                        <h5>Events</h5>
+                        {% for onlineEvent in onlineEvents %}
+                            <div class="container-list-of-events">
+                                <div>{{ onlineEvent.title }}</div>
+                                <i class="bi bi-pencil-square"></i>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="projects-sub-edition">
+                        <h5>Projects</h5>
+                        {% for onlineProject in onlineProjects %}
+                            <div class="container-list-of-projects">
+                                <div>{{ onlineProject.title }}</div>
+                                <i class="bi bi-pencil-square"></i>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="clubs-sub-edition">
+                        <h5>Clubs</h5>
+                   {#     {% for onlineProject in onlineProjects %}#}
+                            <div class="container-list-of-clubs">
+                                <div></div>
+                                <i class="bi bi-pencil-square"></i>
+                            </div>
+                        {#{% endfor %}#}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <button onclick="topFunction()" id="scroll-top-button" title="Go to top"><i class="bi bi-arrow-up"></i></button>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
     mybutton = document.getElementById("scroll-top-button");
@@ -140,5 +226,44 @@
       document.body.scrollTop = 0; // For Safari
       document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     }
+
+
+
+    </script>
+    <script>
+    const labels = [
+        'Projets',
+        'Événements',
+        'Clubs',
+    ];
+    const data = {
+      labels: [
+        'Projets',
+        'Événements',
+        'Clubs'
+      ],
+      datasets: [{
+        label: 'Lh Statistics',
+        data: [5, 6, 10],
+        backgroundColor: [
+          '#28A745',
+          '#FFC107',
+          '#17A2B8'
+        ],
+        hoverOffset: 4
+      }]
+    };
+
+    const config = {
+        type: 'doughnut',
+        data: data,
+        options: {}
+    };
+
+    const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
+
     </script>
 {% endblock %}

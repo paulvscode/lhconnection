@@ -10,6 +10,7 @@ use App\Form\EventType;
 use App\Form\ProjectType;
 use App\Form\ResponsibleType;
 use App\Form\UserType;
+use App\Repository\ClubRepository;
 use App\Repository\ProjectRepository;
 use App\Repository\ResponsibleRepository;
 use App\Repository\SocialEventRepository;
@@ -26,6 +27,7 @@ class AdminMainDashboardController extends AbstractController
         private SocialEventRepository  $socialEventRepository,
         private UserRepository         $userRepository,
         private ResponsibleRepository $responsibleRepository,
+        private ClubRepository $clubRepository,
         private EntityManagerInterface $em
     )
     {
@@ -41,6 +43,7 @@ class AdminMainDashboardController extends AbstractController
         $archivedEvents = $this->socialEventRepository->findBy(['archived' => true]);
         $onlineProjects = $this->projectRepository->findBy(['archived' => false]);
         $onlineEvents = $this->socialEventRepository->findBy(['archived' => false]);
+        $onlineClubs = $this->clubRepository->findBy(['archived' => false]);
 
         return $this->render('admin/index.html.twig', [
             'username' => $username,

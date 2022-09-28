@@ -14,11 +14,11 @@ class EventType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('title')
-            ->add('description')
-            ->add('image')
-            ->add('link')
-            ->add('icon')
+            ->add('title', null, ['label' => 'Titre'])
+            ->add('description', null, ['label' => 'Description'])
+            ->add('image', null, ['label' => 'Image'])
+            ->add('link', null, ['label' => 'Lien'])
+            ->add('icon', null, ['label' => 'Dates | format: 15 Septembre - 10 Novembre'])
             ->add('archived', ChoiceType::class, [
                 'choices' => [
                     'Non-archivé' => true,

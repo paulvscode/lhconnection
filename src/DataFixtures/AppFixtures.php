@@ -46,25 +46,25 @@ class AppFixtures extends Fixture
 
         // Social events
         $socialEvent = new SocialEvent();
-        $socialEvent->setTitle("Le Havre-Tampa School Challenge – 17-22 octobre 2022");
+        $socialEvent->setTitle("Le Havre-Tampa School Challenge");
         $socialEvent->setDescription("Dans le cadre de l’anniversaire des 30 ans du 
         jumelage entre les villes du Havre et de
         Tampa, différentes actions seront menées pour sensibiliser les jeunes français et
         américains au jumelage.
         ");
         $socialEvent->setImage('https://picsum.photos/200');
-        $socialEvent->setIcon('https://picsum.photos/20');
+        $socialEvent->setIcon('14 Mars - 8 Septembre');
         $socialEvent->setLink('https://www.facebook.com/');
         $socialEvent->setArchived(false);
         $manager->persist($socialEvent);
 
         $socialEvent = new SocialEvent();
-        $socialEvent->setTitle("Soirée d’inauguration -11 mai 2022");
+        $socialEvent->setTitle("Soirée d’inauguration");
         $socialEvent->setDescription("Le 11 mai, c’est la soirée d’inauguration de LH Connections. 
         Un moment qui réunira plus de 200 personnes, des quatre coins du Havre, et plus encore !    
         ");
         $socialEvent->setImage('https://picsum.photos/200');
-        $socialEvent->setIcon('https://picsum.photos/20');
+        $socialEvent->setIcon('17-22 octobre 2022');
         $socialEvent->setLink('https://www.facebook.com/events/512116053722896');
         $socialEvent->setArchived(false);
         $manager->persist($socialEvent);
@@ -117,6 +117,7 @@ class AppFixtures extends Fixture
             $club->setLongDescription('Une plus grande description que la description précédente à des fins de tests');
             $club->setImage('https://i.imgur.com/guBBWW6.jpeg');
             $club->setSlackLink('linktoslack.com');
+            $club->setArchived(false);
             $manager->persist($club);
         }
 

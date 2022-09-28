@@ -1,32 +1,8 @@
-<div class="admin-side-panel-logo">
-  <img class="user-dashboard-logo"
-       src="{{ asset('second_ver_assets/assets/img/logolh.png') }}"
-       alt=""/>
-</div>
-<div class="admin-side-panel-menu">
-  <ul class="admin-side-panel-menu-account">
-    <a href="{{ path('new_project') }}" class="btn btn-success">
-      Nouveau projet
-    </a>
-    <a href="{{ path('new_event') }}" class="btn btn-success">
-      Nouvel événément
-    </a>
-
-    <a href="{{ path('manage_users') }}" class="btn btn-primary">
-      <li>Utilisateurs</li>
-    </a>
-    <a class="btn btn-primary" href="{{ path('admin_dashboard') }}">
-      <li>Menu administration</li>
-    </a>
-    <a class="btn btn-primary" href="#">
-      <li>Mon compte</li>
-    </a>
-    <a class="btn btn-primary" href="{{ path('homepage') }}">
-      <li>Retour sur le site</li>
-    </a>
-    <a class="btn btn-danger" href="{{ path('logout') }}">
-      <li>Déconnexion</li>
-      <li class="specific-centering-user-connected">( {{ username }} )</li>
-    </a>
-  </ul>
-</div>
+<img src="{{ asset('second_ver_assets/assets/img/logolh.png') }}" alt="">
+<div class="text-center mt-2 mb-2">Admin Space</div>
+<a class="btn btn-success" href="{{ path('new_event') }}">Nouvel événement</a>
+<a class="btn btn-success" href="{{ path('new_project') }}">Nouveau projet</a>
+<a class="btn btn-success" href="#">Nouveau club</a>
+<a class="btn btn-primary" href="{{ path('admin_dashboard') }}">Administration</a>
+<a class="btn btn-primary" href="{{ path('homepageredirection') }}">Retour sur le site</a>
+<a class="btn btn-danger" href="{{ path('logout') }}">Déconnexion</a>

@@ -42,6 +42,11 @@ class Club
      */
     private $slackLink;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $archived;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -103,6 +108,18 @@ class Club
     public function setSlackLink(string $slackLink): self
     {
         $this->slackLink = $slackLink;
+
+        return $this;
+    }
+
+    public function isArchived(): ?bool
+    {
+        return $this->archived;
+    }
+
+    public function setArchived(bool $archived): self
+    {
+        $this->archived = $archived;
 
         return $this;
     }
