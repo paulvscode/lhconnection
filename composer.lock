@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "82d04590855b19367f072c72c33475c3",
+    "content-hash": "ef724bbb7193c7fd646d4291c2e1404e",
     "packages": [
         {
             "name": "composer/package-versions-deprecated",
@@ -7992,19 +7992,20 @@
         },
         {
             "name": "vich/uploader-bundle",
-            "version": "1.20.0",
+            "version": "1.21.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dustin10/VichUploaderBundle.git",
-                "reference": "6b8ac89b54ee8340e3fc108927b2c20226118436"
+                "reference": "6b428642694cbfeb1be6e956ba59382d89ae1ee6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/6b8ac89b54ee8340e3fc108927b2c20226118436",
-                "reference": "6b8ac89b54ee8340e3fc108927b2c20226118436",
+                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/6b428642694cbfeb1be6e956ba59382d89ae1ee6",
+                "reference": "6b428642694cbfeb1be6e956ba59382d89ae1ee6",
                 "shasum": ""
             },
             "require": {
+                "doctrine/persistence": "^1.3 || ^2 || ^3",
                 "ext-simplexml": "*",
                 "jms/metadata": "^1.7 || ^2.4",
                 "php": "^7.3 || ^8.0",
@@ -8032,7 +8033,7 @@
                 "league/flysystem-bundle": "^2.0",
                 "league/flysystem-memory": "^2.0",
                 "matthiasnoback/symfony-dependency-injection-test": "^4.1",
-                "mikey179/vfsstream": "^1.6",
+                "mikey179/vfsstream": "^1.6.8",
                 "phpunit/phpunit": "^9.5",
                 "symfony/asset": "^4.4 || ^5.0 || ^6.0",
                 "symfony/browser-kit": "^4.4 || ^5.0 || ^6.0",
@@ -8093,9 +8094,9 @@
             ],
             "support": {
                 "issues": "https://github.com/dustin10/VichUploaderBundle/issues",
-                "source": "https://github.com/dustin10/VichUploaderBundle/tree/1.20.0"
+                "source": "https://github.com/dustin10/VichUploaderBundle/tree/1.21.1"
             },
-            "time": "2022-06-29T16:43:34+00:00"
+            "time": "2022-08-12T07:38:44+00:00"
         },
         {
             "name": "webmozart/assert",

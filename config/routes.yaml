@@ -61,6 +61,12 @@ unarchive_event:
     path: /admin/dashboard/event/{id}/unarchive
     controller: App\Controller\Admin\AdminMainDashboardController::eventUnarchived
 
+#admin clubs
+
+new_club:
+    path: /admin/dashboard/club/create
+    controller: App\Controller\Admin\AdminMainDashboardController::clubNew
+
 #user management
 manage_users:
     path: /admin/dashboard/users

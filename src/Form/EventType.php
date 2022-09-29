@@ -21,8 +21,8 @@ class EventType extends AbstractType
             ->add('icon', null, ['label' => 'Dates | format: 15 Septembre - 10 Novembre'])
             ->add('archived', ChoiceType::class, [
                 'choices' => [
-                    'Non-archivé' => true,
-                    'Archivé' => false
+                    'Non-archivé' => false,
+                    'Archivé' => true
             ],
     ]);
     }

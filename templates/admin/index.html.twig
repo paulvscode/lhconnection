@@ -193,12 +193,12 @@
                     </div>
                     <div class="clubs-sub-edition">
                         <h5>Clubs</h5>
-                   {#     {% for onlineProject in onlineProjects %}#}
+                        {% for onlineClub in onlineClubs %}
                             <div class="container-list-of-clubs">
-                                <div></div>
+                                <div>{{ onlineClub.name }}</div>
                                 <i class="bi bi-pencil-square"></i>
                             </div>
-                        {#{% endfor %}#}
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -231,6 +231,10 @@
 
     </script>
     <script>
+    let projectsC = '{{ countProjects }}';
+    let eventsC = '{{ countEvents }}';
+    let clubsC = '{{ countClubs }}';
+
     const labels = [
         'Projets',
         'Événements',
@@ -244,7 +248,7 @@
       ],
       datasets: [{
         label: 'Lh Statistics',
-        data: [5, 6, 10],
+        data: [projectsC, eventsC, clubsC],
         backgroundColor: [
           '#28A745',
           '#FFC107',

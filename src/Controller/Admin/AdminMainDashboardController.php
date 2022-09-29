@@ -2,10 +2,12 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Club;
 use App\Entity\Project;
 use App\Entity\Responsible;
 use App\Entity\SocialEvent;
 use App\Entity\User;
+use App\Form\ClubType;
 use App\Form\EventType;
 use App\Form\ProjectType;
 use App\Form\ResponsibleType;
@@ -41,16 +43,26 @@ class AdminMainDashboardController extends AbstractController
 
         $archivedProjects = $this->projectRepository->findBy(['archived' => true]);
         $archivedEvents = $this->socialEventRepository->findBy(['archived' => true]);
+        $archivedClubs = $this->clubRepository->findBy(['archived' => true]);
         $onlineProjects = $this->projectRepository->findBy(['archived' => false]);
         $onlineEvents = $this->socialEventRepository->findBy(['archived' => false]);
         $onlineClubs = $this->clubRepository->findBy(['archived' => false]);
 
+        $totalEvents = count($onlineEvents);
+        $totalProjects = count($onlineProjects);
+        $totalClubs = count($onlineClubs);
+
         return $this->render('admin/index.html.twig', [
             'username' => $username,
             'archivedProjects' => $archivedProjects,
+            'archivedClubs' => $archivedClubs,
             'archivedEvents' => $archivedEvents,
             'onlineProjects' => $onlineProjects,
-            'onlineEvents' => $onlineEvents
+            'onlineEvents' => $onlineEvents,
+            'onlineClubs' => $onlineClubs,
+            'countEvents' => $totalEvents,
+            'countProjects' => $totalProjects,
+            'countClubs' => $totalClubs
         ]);
     }
 
@@ -196,6 +208,31 @@ class AdminMainDashboardController extends AbstractController
         $this->em->persist($event);
         $this->em->flush();
         return $this->redirectToRoute('admin_dashboard');
+    }
+
+    // clubs
+    public function clubNew(Request $request)
+    {
+        /** @var User $user */
+        $user = $this->getUser();
+        $username = $user->getEmail();
+
+        $club = new Club();
+
+        $form = $this->createForm(ClubType::class, $club);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->em->persist($club);
+            $this->em->flush();
+            return $this->redirectToRoute('admin_dashboard');
+        }
+
+        return $this->render('admin/club.new.html.twig', [
+            'club' => $club,
+            'form' => $form->createView(),
+            'username' => $username,
+        ]);
     }
 
 //    Users

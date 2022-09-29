@@ -37,8 +37,8 @@ class ProjectType extends AbstractType
             ])
             ->add('archived', ChoiceType::class, [
                     'choices' => [
-                        'Non-archivé' => true,
-                        'Archivé' => false
+                        'Non-archivé' => false,
+                        'Archivé' => true
                     ]]
             );
     }
