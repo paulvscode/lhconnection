@@ -38,16 +38,6 @@ class Club
     private $longDescription;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $image;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $slackLink;
-
-    /**
      * @ORM\Column(type="datetime_immutable")
      */
     private ?DateTimeImmutable $createdAt = NULL;
@@ -136,18 +126,6 @@ class Club
     public function setImage(string $image): self
     {
         $this->image = $image;
-
-        return $this;
-    }
-
-    public function getSlackLink(): ?string
-    {
-        return $this->slackLink;
-    }
-
-    public function setSlackLink(string $slackLink): self
-    {
-        $this->slackLink = $slackLink;
 
         return $this;
     }

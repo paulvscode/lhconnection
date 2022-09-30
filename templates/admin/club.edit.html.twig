@@ -87,7 +87,7 @@
             font-size: 3rem;
         }
 
-        .event-container {
+        .club-container {
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
@@ -110,11 +110,11 @@
         </div>
         <div class="admin-content-container">
             <div class="admin-full-container">
-                <h3>Nouvel événement</h3>
-                <div class="event-container">
+                <h3>Éditer le Club</h3>
+                <div class="club-container">
                     {{ form_start(form, { 'attr' : { 'class': 'form-styling' } }) }}
                     {{ form_widget(form) }}
-                    <button class="btn btn-primary">Créer</button>
+                    <button class="btn btn-primary">Modifier</button>
                     <a class="btn btn-danger" href="{{ path('admin_dashboard') }}">Retour</a>
                     {{ form_end(form) }}
                 </div>

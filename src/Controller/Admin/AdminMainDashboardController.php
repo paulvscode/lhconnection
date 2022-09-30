@@ -211,6 +211,27 @@ class AdminMainDashboardController extends AbstractController
     }
 
     // clubs
+    public function clubEdit(Request $request, Club $club): Response
+    {
+        /** @var User $user */
+        $user = $this->getUser();
+        $username = $user->getEmail();
+
+        $form = $this->createForm(ClubType::class, $club);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->em->flush();
+            return $this->redirectToRoute('admin_dashboard');
+        }
+
+        return $this->render('admin/event.edit.html.twig', [
+            'club' => $club,
+            'form' => $form->createView(),
+            'username' => $username,
+        ]);
+    }
+
     public function clubNew(Request $request)
     {
         /** @var User $user */
@@ -233,6 +254,14 @@ class AdminMainDashboardController extends AbstractController
             'form' => $form->createView(),
             'username' => $username,
         ]);
+    }
+
+    public function clubDelete(Club $club)
+    {
+        $this->em->remove($club);
+        $this->em->flush();
+
+        return $this->redirectToRoute('admin_dashboard');
     }
 
 //    Users

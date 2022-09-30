@@ -142,12 +142,31 @@
             flex-direction: row;
             flex-wrap: nowrap;
             padding: 1rem;
-            justify-content: space-between;
             width: 100%;
         }
 
-        .container-list-of-events, .container-list-of-projects, .container-list-of-clubs > i {
+        .container-list-of-events > a {
             margin-left: 1rem;
+        }
+
+        .container-list-of-projects > a {
+            margin-left: 1rem;
+        }
+
+        .container-list-of-clubs > a {
+            margin-left: 1rem;
+        }
+
+        .container-list-of-events > div  {
+            margin-right: auto;
+        }
+
+        .container-list-of-projects > div {
+            margin-right: auto;
+        }
+
+        .container-list-of-clubs > div {
+            margin-right: auto;
         }
 
     </style>
@@ -178,7 +197,8 @@
                         {% for onlineEvent in onlineEvents %}
                             <div class="container-list-of-events">
                                 <div>{{ onlineEvent.title }}</div>
-                                <i class="bi bi-pencil-square"></i>
+                                <a href="{{ path('edit_event', { id: onlineEvent.id}) }}"><i class="bi bi-pencil-square"></i></a>
+                                <a onclick="return confirm('Are you sure to delete?')" style="color: red;" href="{{ path('delete_event', { id: onlineEvent.id}) }}"><i class="bi bi-x-square"></i></a>
                             </div>
                         {% endfor %}
                     </div>
@@ -187,7 +207,8 @@
                         {% for onlineProject in onlineProjects %}
                             <div class="container-list-of-projects">
                                 <div>{{ onlineProject.title }}</div>
-                                <i class="bi bi-pencil-square"></i>
+                                <a href="{{ path('edit_project', { id: onlineProject.id}) }}"><i class="bi bi-pencil-square"></i></a>
+                                <a onclick="return confirm('Are you sure to delete?')" style="color: red;" href="{{ path('delete_project', { id: onlineProject.id}) }}"><i class="bi bi-x-square"></i></a>
                             </div>
                         {% endfor %}
                     </div>
@@ -196,7 +217,8 @@
                         {% for onlineClub in onlineClubs %}
                             <div class="container-list-of-clubs">
                                 <div>{{ onlineClub.name }}</div>
-                                <i class="bi bi-pencil-square"></i>
+                                <a href="{{ path('edit_club', { id: onlineClub.id}) }}"><i class="bi bi-pencil-square"></i></a>
+                                <a onclick="return confirm('Are you sure to delete?')" style="color: red;" href="{{ path('delete_club', { id: onlineClub.id}) }}"><i class="bi bi-x-square"></i></a>
                             </div>
                         {% endfor %}
                     </div>

@@ -63,9 +63,17 @@ unarchive_event:
 
 #admin clubs
 
+edit_club:
+    path: /admin/dashboard/club/{id}/edit
+    controller: App\Controller\Admin\AdminMainDashboardController::clubEdit
+
 new_club:
     path: /admin/dashboard/club/create
     controller: App\Controller\Admin\AdminMainDashboardController::clubNew
+
+delete_club:
+    path: /admin/dashboard/club/{id}/delete
+    controller: App\Controller\Admin\AdminMainDashboardController::clubDelete
 
 #user management
 manage_users:

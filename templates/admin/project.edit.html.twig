@@ -30,169 +30,73 @@
             box-sizing: border-box;
         }
 
-        html, body {
-            padding: 0;
-            margin: 0;
-            min-height: 100vh;
-        }
-
-        /*main layout*/
         .admin-main-container {
             display: flex;
-            height: 100vh;
-        }
-
-        .user-dashboard-logo {
-            max-width: 100%;
-            height: 35px;
-            object-fit: cover;
+            flex-direction: row;
         }
 
         .admin-side-panel-container {
+            display: flex;
             flex-basis: 20%;
-            height: 100%;
-            /*box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;*/
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .admin-side-panel-sub-container {
+            padding: 1rem;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            margin: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: stretch;
+        }
+
+        .admin-side-panel-sub-container:hover {
+            box-shadow: rgba(100, 100, 111, 0.4) 0px 7px 29px 0px;
+            transition: .1s ease-in-out;
+        }
+
+        .admin-side-panel-sub-container > img {
+            max-width: 100%;
+            padding: 1rem;
+            border-bottom: 1px solid #364C64;
+        }
+
+        .admin-side-panel-sub-container > a {
+            margin: .3rem;
+            padding: .5rem;
         }
 
         .admin-content-container {
-            flex-basis: 60%;
-            height: 100%;
-
-            display: flex;
-            flex-direction: column;
-            margin: 2rem auto;
-        }
-
-        /*left panel layout*/
-        .admin-side-panel-sub-container {
-            height: 100%;
-        }
-
-        .admin-side-panel-logo {
-            height: 10%;
+            flex-basis: 80%;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        .admin-side-panel-menu {
-            height: 90%;
-            padding-top: 1rem;
-            width: 80%;
-            margin: 0 auto;
+        .admin-full-container {
+            padding: 1rem;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            width: 100%;
+            margin: 2rem 2rem 2rem 0;
+        }
+
+        .admin-full-container > h3 {
             text-align: center;
+            font-size: 3rem;
         }
 
-        .admin-side-panel-menu-account {
-            display: flex;
-            flex-direction: column;
-
-            list-style: none;
-            padding: 0;
-        }
-
-        .admin-side-panel-menu-account > a {
-            margin: .5rem;
-        }
-
-        .admin-side-panel-menu-account > a > li {
-            margin: .5rem;
-        }
-
-        /*content*/
-        .admin-content-container-project-div {
-            height: 100%;
-            flex-basis: 50%;
-        }
-
-        .admin-content-container-projects {
-            padding-right: .5rem;
-            padding-left: .5rem;
-        }
-
-        .admin-content-container-event-div {
-            padding-left: .5rem;
-            padding-right: .5rem;
-        }
-
-        .admin-content-container-event-div {
-            height: 100%;
-            flex-basis: 50%;
-        }
-
-        /*content projects*/
-        .admin-content-container-project-div > h2 {
-            text-align: center;
-            padding: 0.5rem;
-        }
-
-        .admin-content-container-stats {
+        .project-container {
             display: flex;
             flex-direction: row;
-            justify-content: space-around;
-            align-items: center;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            align-items: flex-start;
         }
 
-        /*content events*/
-        .admin-content-container-event-div > h2 {
-            text-align: center;
-            padding: 0.5rem;
-        }
-
-        .specific-centering-user-connected {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /*media queries*/
-        @media only screen and (min-device-width: 1025px ) and (max-device-width: 1281px) {
-            .admin-main-container {
-                display: block;
-            }
-
-            .admin-side-panel-menu {
-                width: 25%;
-            }
-
-            .admin-side-panel-container {
-                height: auto;
-            }
-
-            .admin-side-panel-logo {
-                margin-top: 1rem;
-            }
-        }
-
-        @media only screen and (max-device-width: 1026px) {
-            .admin-main-container {
-                display: block;
-            }
-
-            .admin-side-panel-menu {
-                width: 100%;
-            }
-
-            .admin-side-panel-container {
-                height: auto;
-            }
-
-            .admin-side-panel-logo {
-                margin-top: 1rem;
-            }
-
-            .admin-content-container {
-                display: block;
-            }
-
-            .online-project-description, .online-project-creation-time {
-                display: none;
-            }
-
-            .admin-content-container-stats {
-                display: block;
-                text-align: center;
-            }
+        .form-styling {
+            width: 60%;
         }
     </style>
 {% endblock %}
@@ -205,12 +109,39 @@
             </div>
         </div>
         <div class="admin-content-container">
-            <h2>Editer le projet : {{ project.title }}</h2>
-            {{ form_start(form) }}
-            {{ form_widget(form) }}
-            <button class="btn btn-primary">Editer</button>
-            <a class="btn btn-danger" href="{{ path('admin_dashboard') }}">Retour</a>
-            {{ form_end(form) }}
+            <div class="admin-full-container">
+                <h3>Éditer le projet</h3>
+                <div class="project-container">
+                    {{ form_start(form, { 'attr' : { 'class': 'form-styling' } }) }}
+                    {{ form_widget(form) }}
+                    <button class="btn btn-primary">Modifier</button>
+                    <a class="btn btn-danger" href="{{ path('admin_dashboard') }}">Retour</a>
+                    {{ form_end(form) }}
+                </div>
+
+            </div>
         </div>
     </div>
+
+    <button onclick="topFunction()" id="scroll-top-button" title="Go to top"><i class="bi bi-arrow-up"></i></button>
+
+    <script>
+    mybutton = document.getElementById("scroll-top-button");
+
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+
+    function topFunction() {
+      document.body.scrollTop = 0; // For Safari
+      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    }
+    </script>
 {% endblock %}
+
