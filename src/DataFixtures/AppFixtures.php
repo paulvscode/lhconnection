@@ -86,7 +86,7 @@ class AppFixtures extends Fixture
 
         // Responsible + Roles
 
-        $responsibleMembers = [
+        /*$responsibleMembers = [
             'peggy labat' => 'présidente',
             'lise-lotte kirkegaard dusbosc' => 'vice-présidente',
             'hannah gallais' => 'vice-présidente',
@@ -97,14 +97,27 @@ class AppFixtures extends Fixture
             'louise jeanne' => 'responsable partenaires',
             'marion hébert' => 'coordinatrice des événements',
             'marie amélie-laroze' => 'responsable communication'
+        ];*/
+
+        $aResponsibles = [
+            ['name' => 'peggy labat', 'role' => 'présidente', 'picture' => 'peggy.jpg'],
+            ['name' => 'lise-lotte kirkegaard dusbosc', 'role' => 'vice-présidente', 'picture' => 'lise.jpg'],
+            ['name' => 'hannah gallais', 'role' => 'vice-présidente', 'picture' => 'hannah.jpg'],
+            ['name' => 'alice dinh viet', 'role' => 'secrétaire', 'picture' => 'alice.jpg'],
+            ['name' => 'andré labat', 'role' => 'trésorier', 'picture' => 'andre.jpg'],
+            ['name' => 'paul barraud de lagerie', 'role' => 'responsable du site internet', 'picture' => 'paul.jpg'],
+            ['name' => 'tom smith', 'role' => 'coordinateur des projets uk', 'picture' => 'tom.jpg'],
+            ['name' => 'louise jeanne', 'role' => 'responsable partenaires', 'picture' => 'louise.jpg'],
+            ['name' => 'marion hébert', 'role' => 'coordinatrice des événements', 'picture' => 'marion.jpg'],
+            ['name' => 'marie amélie-laroze', 'role' => 'responsable communication', 'picture' => 'marieam.jpg'],
         ];
 
-        foreach ($responsibleMembers as $name => $role) {
+        foreach ($aResponsibles as $responsible) {
             $responsibleMember = new Responsible();
-            $responsibleMember->setName($name);
-            $responsibleMember->setImage("resp.jpg");
+            $responsibleMember->setName($responsible['name']);
+            $responsibleMember->setImage($responsible['picture']);
             $responsibleMember->setDescription("La future description");
-            $responsibleMember->setTitle($role);
+            $responsibleMember->setTitle($responsible['role']);
             $manager->persist($responsibleMember);
         }
 
@@ -115,9 +128,9 @@ class AppFixtures extends Fixture
             $club->setName('Let\'s swim');
             $club->setDescription('Nous nageons dans la mer chaque jour de l\'année');
             $club->setLongDescription('Une plus grande description que la description précédente à des fins de tests');
-            $club->setImage('https://i.imgur.com/guBBWW6.jpeg');
-            $club->setSlackLink('linktoslack.com');
+            $club->setImageName('picture.jpg');
             $club->setArchived(false);
+            $club->setImageSize('20');
             $manager->persist($club);
         }
 
