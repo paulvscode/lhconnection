@@ -98,6 +98,52 @@
         .form-styling {
             width: 60%;
         }
+
+        @media screen and (max-width: 971px) {
+            .admin-main-container {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .admin-side-panel-sub-container {
+                width: 40%;
+            }
+
+            .admin-full-container {
+                padding: 1rem;
+                box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+                width: 80%;
+                margin: 2rem 2rem 2rem 2rem;
+            }
+
+            .editing-container {
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap;
+                justify-content: space-evenly;
+                align-items: flex-start;
+                width: 100%;
+                margin: 0 auto;
+            }
+
+            .events-sub-edition, .projects-sub-edition, .clubs-sub-edition {
+                box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+                width: 100%;
+                height: auto;
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
+                flex-direction: column;
+                padding: 1rem;
+            }
+        }
+
+        @media all and (min-width: 0px) and (max-width: 970px) {
+            .admin-side-panel-sub-container {
+                width: 80%;
+            }
+        }
+
     </style>
 {% endblock %}
 
