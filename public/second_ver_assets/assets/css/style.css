@@ -2616,4 +2616,31 @@ section {
     text-align: center;
 }
 
+/* Banner */
+.banner-genially {
+    background-color: #fff;
+    color: #4154f1;
+    padding: 1rem;
+    border-radius: 10px;
+    position: absolute;
+    top: -400px;
+    border: 1px solid #4154f1;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    transition: .1s ease-in-out;
+    cursor: pointer;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.banner-genially:hover {
+    color: white;
+    background-color: #4154f1;
+    transition: .1s ease-in-out;
+}
+
+.specific-genially {
+    position: relative;
+}
+
 /* COMMENT */
