@@ -1,0 +1,169 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+          rel="stylesheet"/>
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous"/>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+
+    {# Favicons #}
+    <link href="{{ asset('second_ver_assets/assets/img/favilh.png') }}" rel="icon"/>
+    <link href="{{ asset('second_ver_assets/assets/img/favilh.png') }}" rel="apple-touch-icon"/>
+
+    {# Google Fonts #}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <style>
+        #scroll-top-button {
+            border-radius: 20px;
+            background-color: white;
+            position: fixed;
+            bottom: 15px;
+            right: 15px;
+            font-size: 1.3rem;
+            cursor: pointer;
+        }
+
+        #scroll-top-button:hover {
+            background-color: #d9d9d9;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Permanent Marker', cursive;
+        }
+
+        /* BG copyright: K.C.Ashish Kumar */
+        body {
+            background: radial-gradient(ellipse at center, #fffeea 0%, #fffeea 35%, #b7e8eb 100%);
+            overflow-x: hidden;
+        }
+        .ocean {
+            height: 1%;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            background: #015871;
+        }
+
+        .wave {
+            background: url(https://cdn.kcak11.com/codepen_assets/wave_animation/wave.svg) repeat-x;
+            position: absolute;
+            top: -198px;
+            width: 6400px;
+            height: 198px;
+            animation: wave 7s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+            transform: translate3d(0, 0, 0);
+        }
+
+        .wave:nth-of-type(2) {
+            top: -175px;
+            animation: wave 7s cubic-bezier(0.36, 0.45, 0.63, 0.53) -0.125s infinite, swell 7s ease -1.25s infinite;
+            opacity: 1;
+        }
+
+        @keyframes wave {
+            0% {
+                margin-left: 0;
+            }
+            100% {
+                margin-left: -1600px;
+            }
+        }
+        @keyframes swell {
+            0%,
+            100% {
+                transform: translate3d(0, -25px, 0);
+            }
+            50% {
+                transform: translate3d(0, 5px, 0);
+            }
+        }
+        .endWave{
+            display:none;
+        }
+
+        .container-challenge {
+            display: flex;
+            flex-direction: column;
+            width: 100vw;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        /* sub containers */
+        .sub-container-title-challenge {
+            background-color: white;
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+            width: 90%;
+            padding: 1rem;
+            margin: 1rem auto;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .sub-container-title-challenge > h1 {
+            text-align: center;
+        }
+
+        .sub-container-challenge {
+            background-color: white;
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+            width: 90%;
+            padding: 1rem;
+            margin: 1rem auto;
+            height: 500px;
+            border-radius: 10px;
+        }
+
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="container-challenge">
+        <div class="ocean">
+            <div class="wave"></div>
+            <div class="wave"></div>
+        </div>
+        <div class="sub-container-title-challenge">
+            <h1>Challenge Tampa - Le Havre | 1st edition</h1>
+        </div>
+        <div class="sub-container-challenge">
+            Explain the challenge
+        </div>
+        <div class="sub-container-challenge">
+            Join the challenge + link Genial.ly
+        </div>
+        <div class="sub-container-challenge">
+            Credits ?
+        </div>
+    </div>
+
+    <button onclick="topFunction()" id="scroll-top-button" title="Go to top"><i class="bi bi-arrow-up"></i></button>
+
+    <script>
+    mybutton = document.getElementById("scroll-top-button");
+
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+
+    function topFunction() {
+      document.body.scrollTop = 0; // For Safari
+      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    }
+    </script>
+{% endblock %}

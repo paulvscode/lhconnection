@@ -97,6 +97,11 @@ info_project:
     path: /user/project/{id}/info
     controller: App\Controller\User\UserMainDashboardController::viewProject
 
+#challengeLhTampa
+challenge_lhtampa:
+    path: /challenge-tampa-lh
+    controller: App\Controller\HomePageController::challengeLhTampa
+
 #logout
 logout:
     path: /logout

@@ -47,4 +47,8 @@ class HomePageController extends AbstractController
         return $this->render('confidentialite.html.twig');
     }
 
+    public function challengeLhTampa(): Response {
+        return $this->render('challenge/challenge.html.twig');
+    }
+
 }
