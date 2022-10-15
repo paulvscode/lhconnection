@@ -2704,5 +2704,23 @@ section {
     }
 }
 
+@media screen and (min-width: 1601px) {
+    .banner-genially {
+        background-color: #fff;
+        color: #012970;
+        padding: 1rem;
+        border-radius: 10px;
+        position: absolute;
+        top: -170px;
+        border: 1px solid #012970;
+        font-size: 16px;
+        font-weight: 700;
+        transition: .1s ease-in-out;
+        cursor: pointer;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
 
 /* COMMENT */
