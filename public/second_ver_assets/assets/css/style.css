@@ -2737,7 +2737,7 @@ section {
     margin: 0;
 }
 
-#pitch {
+#pitch, #concept, #join, #credit {
     scroll-margin-top: 84px;
 }
 
