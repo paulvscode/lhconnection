@@ -2816,6 +2816,10 @@ section {
     color: #012970;
 }
 
+#pitch > ul > li {
+    margin: .5rem 0;
+}
+
 .sub-container-challenge-formative {
     display: flex;
     flex-direction: row;
@@ -2888,6 +2892,7 @@ section {
 
 #network {
     flex-direction: row;
+    margin-bottom: 1rem;
 }
 
 #network > a {
