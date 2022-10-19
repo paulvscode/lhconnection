@@ -2783,6 +2783,10 @@ section {
     color: #012970;
 }
 
+.challenge-title > p {
+    margin-top: 5rem;
+}
+
 #concept {
     display: flex;
     flex-direction: row;
@@ -2889,4 +2893,169 @@ section {
 #network > a {
     margin-left: .5rem;
     right: .5rem;
+}
+
+
+@media (max-width: 575.98px) {
+    .challenge-title > h1 {
+        text-align: center;
+        width: 98%;
+    }
+    .challenge-title > p {
+        margin-top: 0;
+    }
+
+    .sub-container-challenge {
+        width: 90%;
+        margin: 0 auto;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #pitch > p {
+        text-align: center;
+    }
+
+    #concept {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+        margin: 2rem auto;
+        justify-content: center;
+        align-items: initial;
+    }
+
+    .formative-title {
+        text-align: center;
+        width: 98%;
+    }
+
+    .sub-container-challenge-formative {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: initial;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .sub-container-challenge-profit > h4 {
+        margin: 0;
+        margin-bottom: .5rem;
+    }
+    .sub-container-challenge-profit {
+        margin: 2rem;
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sub-container-challenge-future {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        align-items: center;
+    }
+    .sub-container-challenge-future > ul {
+        display: flex;
+        flex-direction: column;
+        align-items: baseline;
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .container-external-links {
+        padding: 1rem;
+    }
+
+}
+
+@media (max-width: 767.98px) {
+    .challenge-title > h1 {
+        text-align: center;
+        width: 98%;
+    }
+    .challenge-title > p {
+        margin-top: 0;
+    }
+
+    .sub-container-challenge {
+        width: 90%;
+        margin: 0 auto;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #pitch > p {
+        text-align: center;
+    }
+
+    #concept {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+        margin: 2rem auto;
+        justify-content: center;
+        align-items: initial;
+    }
+
+    .formative-title {
+        text-align: center;
+        width: 98%;
+    }
+
+    .sub-container-challenge-formative {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: initial;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .sub-container-challenge-profit > h4 {
+        margin: 0;
+        margin-bottom: .5rem;
+    }
+    .sub-container-challenge-profit {
+        margin: 2rem;
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sub-container-challenge-future {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        align-items: center;
+    }
+    .sub-container-challenge-future > ul {
+        display: flex;
+        flex-direction: column;
+        align-items: baseline;
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .container-external-links {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 991.98px) {
+
+}
+
+/*Large devices (desktops, less than 1200px)*/
+@media (max-width: 1199.98px) {
+
 }
