@@ -38,8 +38,6 @@ class HomePageController extends AbstractController
             'onlineEvents' => $onlineEvents,
             'archivedEvents' => $archivedEvents
         ]);
-
-//        return $this->render('wip.html.twig');
     }
 
     public function rgpd(): Response
@@ -47,8 +45,18 @@ class HomePageController extends AbstractController
         return $this->render('confidentialite.html.twig');
     }
 
-    public function challengeLhTampa(): Response {
-        return $this->render('challenge/challenge.html.twig');
+    public function challengeLhTampa(ManagerRegistry $doctrine, Request $request): Response
+    {
+        $locale = $request->getLocale();
+
+        $colorsClass = ['blue', 'orange', 'green', 'red', 'purple', 'pink'];
+
+        return $this->render('challenge/challenge.html.twig', [
+            'colors' => $colorsClass,
+            'locale' => $locale,
+        ]);
     }
 
 }
+
+

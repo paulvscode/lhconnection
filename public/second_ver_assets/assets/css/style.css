@@ -2723,4 +2723,170 @@ section {
     }
 }
 
-/* COMMENT */
+/* challenge */
+.container-challenge {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.sub-container-challenge-title {
+    padding: 0;
+    margin: 0;
+}
+
+#pitch {
+    scroll-margin-top: 84px;
+}
+
+#pitch > ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: first baseline;
+}
+
+.sub-container-challenge {
+    width: 90%;
+    margin: 0 auto;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sub-container-challenge > ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: first baseline;
+}
+
+.sub-container-challenge > h4 {
+    color: #012970;
+    font-weight: bold;
+}
+
+.challenge-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 4rem auto 2rem auto;
+    flex-direction: column;
+}
+
+.challenge-title > h3 {
+    color: #012970;
+}
+
+#concept {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 70%;
+    margin: 2rem auto;
+    justify-content: center;
+    align-items: initial;
+}
+
+#concept > .card {
+    margin: 1rem;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.card-title {
+    font-weight: bold;
+    color: #012970;
+}
+
+#pitch > h4 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+#pitch > h4 > span{
+    color: #012970;
+}
+
+.sub-container-challenge-formative {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: initial;
+    width: 70%;
+    flex-wrap: wrap;
+}
+
+.sub-container-challenge-formative > .card {
+    margin: 1rem;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.sub-container-challenge-formative > h6 {
+    font-weight: bold;
+    margin: 2rem;
+}
+
+.sub-container-challenge-formative > ul {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.sub-container-challenge-profit {
+    margin: 2rem;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sub-container-challenge-profit > h4 {
+    margin: 2rem;
+}
+
+.sub-container-challenge-future {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 70%;
+    align-items: center;
+}
+
+.sub-container-challenge-future > ul {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    width: 50%;
+    margin: 0 auto;
+}
+
+#credit {
+    margin: 4rem auto;
+    background-color: #F6F9FF;
+}
+
+#credit > p {
+    margin: 2rem;
+}
+
+.credit-teachers {
+    margin: 2rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+#network {
+    flex-direction: row;
+}
+
+#network > a {
+    margin-left: .5rem;
+    right: .5rem;
+}

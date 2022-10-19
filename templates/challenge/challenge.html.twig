@@ -1,298 +1,268 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>{% block title %}LH Connections{% endblock %}</title>
+    <meta content="" name="description"/>
+    <meta content="" name="keywords"/>
 
-{% block stylesheets %}
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-          rel="stylesheet"/>
+    {% block stylesheets %}
+        {# Favicons #}
+        <link href="{{ asset('second_ver_assets/assets/img/favilh.png') }}" rel="icon"/>
+        <link href="{{ asset('second_ver_assets/assets/img/favilh.png') }}" rel="apple-touch-icon"/>
 
-    <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-          crossorigin="anonymous"/>
+        {# Google Fonts #}
+        <link
+                href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+                rel="stylesheet"
+        />
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+        <!-- Vendor CSS Files -->
+        <link href="{{ asset('second_ver_assets/assets/vendor/aos/aos.css') }}" rel="stylesheet"/>
+        <link
+                href="{{ asset('second_ver_assets/assets/vendor/bootstrap/css/bootstrap-grid.min.css') }}"
+                rel="stylesheet"
+        />
 
-    {# Favicons #}
-    <link href="{{ asset('second_ver_assets/assets/img/favilh.png') }}" rel="icon"/>
-    <link href="{{ asset('second_ver_assets/assets/img/favilh.png') }}" rel="apple-touch-icon"/>
+        <link
+                href="{{ asset('second_ver_assets/assets/vendor/bootstrap-icons/bootstrap-icons.css') }}"
+                rel="stylesheet"
+        />
 
-    {# Google Fonts #}
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <style>
-        #scroll-top-button {
-            border-radius: 20px;
-            background-color: white;
-            position: fixed;
-            bottom: 15px;
-            right: 15px;
-            font-size: 1.3rem;
-            cursor: pointer;
-        }
+        <link
+                href="{{ asset('second_ver_assets/assets/vendor/glightbox/css/glightbox.min.css') }}"
+                rel="stylesheet"
+        />
+        <link href="{{ asset('second_ver_assets/assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet"/>
+        <link href="{{ asset('second_ver_assets/assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet"/>
 
-        #scroll-top-button:hover {
-            background-color: #d9d9d9;
-        }
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-        * {
-            box-sizing: border-box;
-        }
+        <!-- Template Main CSS File -->
+        <link href="{{ asset('second_ver_assets/assets/css/style.css') }}" rel="stylesheet"/>
 
-        /* BG copyright: K.C.Ashish Kumar */
-        body {
-            background: radial-gradient(ellipse at center, #fffeea 0%, #fffeea 35%, #b7e8eb 100%);
-            overflow-x: hidden;
-        }
-        .ocean {
-            height: 1%;
-            width: 100%;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            background: #015871;
-        }
-
-        .wave {
-            background: url(https://cdn.kcak11.com/codepen_assets/wave_animation/wave.svg) repeat-x;
-            position: absolute;
-            top: -198px;
-            width: 6400px;
-            height: 198px;
-            animation: wave 7s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
-            transform: translate3d(0, 0, 0);
-        }
-
-        .wave:nth-of-type(2) {
-            top: -175px;
-            animation: wave 7s cubic-bezier(0.36, 0.45, 0.63, 0.53) -0.125s infinite, swell 7s ease -1.25s infinite;
-            opacity: 1;
-        }
-
-        @keyframes wave {
-            0% {
-                margin-left: 0;
-            }
-            100% {
-                margin-left: -1600px;
-            }
-        }
-        @keyframes swell {
-            0%,
-            100% {
-                transform: translate3d(0, -25px, 0);
-            }
-            50% {
-                transform: translate3d(0, 5px, 0);
-            }
-        }
-        .endWave{
-            display:none;
-        }
-
-        .container-challenge {
-            display: flex;
-            flex-direction: column;
-            width: 100vw;
-            justify-content: center;
-            align-items: flex-start;
-        }
-
-        /* sub containers */
-        .sub-container-title-challenge {
-            background-color: white;
-            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-            width: 60%;
-            padding: 1rem;
-            margin: 1rem auto;
-            height: auto;
-            border-radius: 10px;
-        }
-
-        .sub-container-summary {
-            background-color: white;
-            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-            width: 60%;
-            padding: 1rem;
-            margin: 1rem auto;
-            height: auto;
-            border-radius: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .sub-container-summary > nav {
-            display: flex;
-            flex-direction: row;
-            list-style: none;
-            justify-content: center;
-            align-items: center;
-            margin-top: 0;
-        }
-
-        .sub-container-summary > nav > div {
-            margin: 1rem;
-            padding: .5rem;
-            width: 150px;
-            transition: .2s ease-in-out;
-            text-align: center;
-            border: 1px solid #e8e8e8;
-            text-transform: uppercase;
-            border-radius: 10px;
-        }
-
-        .sub-container-summary > nav > div:hover {
-            margin: 1rem;
-            padding: .5rem;
-            width: 150px;
-            cursor: pointer;
-            transition: .2s ease-in-out;
-            border: 1px solid black;
-            color: black;
-            background-color: #e8e8e8;
-        }
-
-        .sub-container-title-challenge > h1 {
-            text-align: center;
-        }
-
-        .sub-container-title-challenge > h2 {
-            text-align: center;
-            color: #525fff;
-        }
-
-        .sub-container-title-challenge > h3 {
-            text-align: center;
-            color: #f2c038;
-        }
-
-        .sub-container-challenge {
-            background-color: white;
-            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-            width: 60%;
-            padding: 1rem;
-            margin: 1rem auto;
-            height: auto;
-            border-radius: 10px;
-        }
-
-        .sub-container-challenge-spacer {
-            background-color: transparent;
-            width: 90%;
-            padding: 1rem;
-            margin: 1rem auto;
-            height: 200px;
-        }
-
-        @media screen and (max-width: 1280px)
-        {
-
-        }
-
-    </style>
-{% endblock %}
+    {% endblock %}
+</head>
 
 {% block body %}
-    <div class="container-challenge">
-        <div class="ocean">
-            <div class="wave"></div>
-            <div class="wave"></div>
-        </div>
-        <div class="sub-container-title-challenge">
-            <h3>OCTOBER 2022</h3>
-            <h1>LE HAVRE - TAMPA SCHOOL CHALLENGE</h1>
-            <h2>Connecting of schools between Le Havre, France and Tampa, USA</h2>
-        </div>
-        <div class="sub-container-summary">
-            <nav>
-                <div>Menu</div>
-                <div>Menu</div>
-                <div>Menu</div>
-                <div>Menu</div>
-            </nav>
-        </div>
-        <div class="sub-container-challenge">
-            <h4><i class="bi bi-globe"></i> Developing the international dimension of our schools</h4>
-            <p>Promoting intercultural understanding and building a community for English and
-                French learners living in Le Havre, FRANCE and Tampa, USA.</p>
-            <ul>
-                <li>To celebrate the 30 years of friendship between LH, France TAMPA, USA,
-                    members of LH Connections who teach in different schools have been
-                    preparing the first edition of “ LE HAVRE-TAMPA SCHOOL CHALLENGE” !</li>
-                <li>We, as EAL (English as an Additional Language) teachers, are fully aware
-                    the main practical objective of teaching a language is to enable learners to
-                    use it in real-life situations.</li>
-                <li>We think young people need critical thinking and intercultural skills</li>
-            </ul>
-                <p>Our project for schools is to offer a platform for people to communicate,
-                    collaborate, develop projects, share to feel part of our learning community !</p>
-                <p>During the visit of a French delegation in Tampa from October 24 th to October 27 th ,
-                    American students learning French will discover LE HAVRE through challenges
-                    proposed by local celebrities and people in charge of public buildings.</p>
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top">
+        <div
+                class="container-fluid container-xl d-flex align-items-center justify-content-between"
+        >
+            <a href="{{ path('homepage') }}" class="logo d-flex align-items-center">
+                <img src="{{ asset('second_ver_assets/assets/img/logolh.png') }}" alt=""/>
+            </a>
 
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li>
+                        <a class="nav-link scrollto active" href="#pitch">{{ 'lhconnection.challenge.idea' | trans }}</a>
+                    </li>
+                    <li>
+                        <a class="nav-link scrollto" href="#concept">{{ 'lhconnection.challenge.howitworks' | trans }}</a>
+                    </li>
+                    <li><a class="nav-link scrollto" href="#join">{{ 'lhconnection.challenge.join' | trans }}</a>
+                    </li>
+                    <li><a class="nav-link scrollto" href="#credit">{{ 'lhconnection.challenge.credits' | trans }}</a></li>
+                    </li>
+                    <li><a class="nav-link scrollto" href="{{ path('homepage') }}">Retour Sur Le Site</a></li>
+                    <li class="dropdown dropdown-list-language">
+                        <a href="#"
+                        ><span>{{ locale }}</span><i class="bi bi-chevron-down"></i
+                            ></a>
+                        <ul class="language-ul-home">
+                            {% set current_path = app.request.get('_route') %}
+                            <a href="{{ path(current_path, {'_locale': 'fr'}) }}">Français</a>
+                            <a href="{{ path(current_path, {'_locale': 'en'}) }}">English</a>
+                        </ul>
+                    </li>
+                    <li class="dropdown dropdown-language-home-mobile">
+                        <a href="#"
+                        ><span>{{ locale }}</span><i class="bi bi-chevron-down"></i
+                            ></a>
+                        <ul class="language-ul-home-mobile">
+                            {% set current_path = app.request.get('_route') %}
+                            <a href="{{ path(current_path, {'_locale': 'fr'}) }}">Français</a>
+                            <a href="{{ path(current_path, {'_locale': 'en'}) }}">English</a>
+                        </ul>
+                    </li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav>
+            <!-- .navbar -->
         </div>
-        <div class="sub-container-challenge">
-            <h4><i class="bi bi-question-circle"></i> Why?</h4>
-            <p>To celebrate the 30 years of friendship between Le Havre, France and Tampa, USA, Members of
-                LH Connections who teach in different schools have been preparing different activities to help
-                school students in both cities get to know each other better.</p>
-            <p>Tampa students will discover Le Havre through challenges proposed by local celebrities.</p>
-            <h4><i class="bi bi-hand-index"></i> How:</h4>
-            <p>Tampa students will receive a "discovery kit". The kit will include materials for these different
-                academic levels:</p>
+    </header>
+    <!-- End Header -->
+
+    <section class="container-challenge">
+        <div class="sub-container-challenge-title">
+            <div class="challenge-title">
+                <h1>LE HAVRE - TAMPA SCHOOL CHALLENGE</h1>
+                <h3>OCTOBER 2022</h3>
+                <p class="text text-success" style="margin-top: 2rem">The Challenge link will be available shortly!</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="container-challenge">
+        <div class="sub-container-challenge" id="pitch">
+            <h4><span>1</span> challenge, <span>3</span> goals :</h4>
             <ul>
-                <li>elementary / primary school</li>
-                <li>middle school</li>
-                <li>high school</li>
+                <li><span><i class="bi bi-plug"></i> CONNECTING</span> of schools between Le Havre, France and Tampa,
+                    USA
+                </li>
+                <li><span><i class="bi bi-bar-chart"></i> DEVELOPING</span> the international dimension of our schools
+                </li>
+                <li><span><i class="bi bi-volume-up"></i> PROMOTING</span> intercultural understanding and building a
+                    community for
+                    English and French learners living in Le Havre, FRANCE and Tampa, USA.
+                </li>
             </ul>
-            <p>Each kit will have instructions and game resources for the students.</p>
-            <p>As the students succeed each &quot;mission&quot;, they will post their photos or videos on our platform.</p>
-            <h4><i class="bi bi-clock"></i> When:</h4>
-            <p>the week of October 24– 28, 2022</p>
-            <p>This is the week, which coincides with the visit of a French delegation in Tampa to celebrate the 30
-                years of friendship that the two cities have shared.</p>
-            <p>The French representatives will be received in Tampa from Monday 24 th October to Friday 26th
-                October.</p>
-            <h4><i class="bi bi-pencil"></i> Materials and Manipulatives:</h4>
-            <p>The Tampa school challenge will include: texts, videos, audios and other materials for the students
-                to use to accomplish their missions.</p>
-            <h5>Formative goals and student objectives:
-                Cultural Objectives:</h5>
-            <ul>
-                <li>Learn about the geography of Le Havre, Normandy.</li>
-                <li>Find out about local history and important events in Le Havre.</li>
-                <li>Discover what local artists (present and past) have contributed to the history of art.</li>
-            </ul>
-            <h5>General Knowledge:</h5>
-            <p>By participating in the “Tampa Le Havre School Challenge”, students will better understand the
-                geography, history, culture, art and people of Le Havre.</p>
-            <h6>Academic Success:</h6>
-            <ul>
-                <li>The students will use different strategies and logic to understand the given materials within
-                    the game.</li>
-                <li>The students will be able to connect and assemble different points relating to Le Havre
-                    through different types of material and manipulatives.</li>
-                <li>The students will work together in groups.</li>
-                <li>The students will be able to collectively solve an enigma or problem.</li>
-            </ul>
-            <h6>Linguistic Objectives:</h6>
-            <p>Develop a richer foundation in French (for the American students); and vice-versa in English for the
-                French students. They will develop a richer vocabulary and grammar base in French as well as
-                self-confidence in the ability to use and understand a foreign language.</p>
-            <h6>Community objective:</h6>
-            <ul>
-                <li>Have students understand and think about the ‘bridges of friendship’ between Tampa and
-                    Le Havre.</li>
-                <li>The students will develop a better comprehension of what it takes to work together even
-                    though they are separated by an ocean.</li>
-            </ul>
-            <h6>Academic Skills Worked on:</h6>
-            <ul>
-                <li>Listening comprehension</li>
-                <li>Understanding a written text</li>
-                <li>Written expression</li>
-                <li>Speaking skills</li>
-            </ul>
-            <h5>What will the students get out of participating in the “Tampa – Le Havre Challenge”?</h5>
+            <p>Our project for schools is to offer a platform for people to communicate,
+                collaborate, develop projects, share to feel part of our learning community !</p>
+        </div>
+
+        <div class="sub-container-challenge" id="concept">
+
+            <div class="card" style="width: 24rem;">
+                <div class="card-body">
+                    <h5 class="card-title">What:</h5>
+                    <p class="card-text">Members of LH Connections who teach in different schools have been preparing
+                        different activities to help school students in both cities get to know each other
+                        better.</p>
+                    <p><strong>Tampa students will discover Le Havre through challenges
+                            proposed by local celebrities and people in charge of public buildings.</strong></p>
+                </div>
+            </div>
+
+            <div class="card" style="width: 24rem;">
+                <div class="card-body">
+                    <h5 class="card-title">When:</h5>
+                    <p>October 24– 28, 2022</p>
+                    <p><strong>This is the week, which coincides with the visit of a French delegation in
+                            Tampa to celebrate the 30 years of friendship that the two cities have shared.</strong></p>
+                </div>
+            </div>
+
+            <div class="card" style="width: 24rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Why?</h5>
+                    <p>We, as EAL (English as an Additional Language) teachers, are fully aware the
+                        main practical objective of teaching a language is to enable learners to use it in
+                        real-life situations.</p>
+                    <p><strong>We think young people need critical thinking and intercultural skills!</strong></p>
+                </div>
+            </div>
+
+            <div class="card" style="width: 24rem;">
+                <div class="card-body">
+                    <h5 class="card-title">How:</h5>
+                    <p>Tampa students will receive a "discovery kit". The kit will include materials for these different
+                        academic levels:</p>
+                    <div class="how-list">
+                        <div>elementary / primary school</div>
+                        <div>middle school</div>
+                        <div>high school</div>
+                    </div>
+                    <p>Each kit will have instructions and game resources for the students.</p>
+                    <p><strong>As the students succeed each &quot;mission&quot;, they will post their photos or videos
+                            on our platform.</strong></p>
+                </div>
+            </div>
+
+            <div class="card" style="width: 24rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Materials and Manipulatives:</h5>
+                    <div class="how-list">
+                        <div>elementary / primary school</div>
+                        <div>middle school</div>
+                        <div>high school</div>
+                    </div>
+                    <p>The Tampa school challenge will include: texts, videos, audios and other materials for the
+                        students
+                        to use to accomplish their missions.</p>
+                </div>
+            </div>
+        </div>
+
+        <h4>Formative goals and student objectives:</h4>
+
+        <div class="sub-container-challenge-formative">
+            <div class="card" style="width: 24rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Cultural Objectives:</h5>
+                    <ul>
+                        <li>Learn about the geography of Le Havre, Normandy.</li>
+                        <li>Find out about local history and important events in Le Havre.</li>
+                        <li>Discover what local artists (present and past) have contributed to the history
+                            of art.</li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="card" style="width: 24rem;">
+                <div class="card-body">
+                    <h5 class="card-title">General Knowledge:</h5>
+                    <p>By participating in the “Tampa Le Havre School Challenge”, students will better
+                        understand the geography, history, culture, art and people of Le Havre.</p>
+                </div>
+            </div>
+
+            <div class="card" style="width: 24rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Academic Success:</h5>
+                    <ul>
+                        <li>The students will use different strategies and logic to understand the given
+                            materials within the game.</li>
+                        <li>The students will be able to connect and assemble different points relating
+                            to Le Havre through different types of material and manipulatives.</li>
+                        <li>The students will work together in groups.</li>
+                        <li>The students will be able to collectively solve an enigma or problem.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card" style="width: 24rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Linguistic Objectives:</h5>
+                    <p>Develop a richer foundation in French (for the American students); and vice-versa
+                        in English for the French students. They will develop a richer vocabulary and
+                        grammar base in French as well as self-confidence in the ability to use and
+                        understand a foreign language.</p>
+                </div>
+            </div>
+
+            <div class="card" style="width: 24rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Community objective:</h5>
+                    <ul>
+                        <li>Have students understand and think about the ‘bridges of friendship’
+                            between Tampa and Le Havre.</li>
+                        <li>The students will develop a better comprehension of what it takes to work
+                            together even though they are separated by an ocean.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card" style="width: 24rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Academic Skills Worked on:</h5>
+                    <ul>
+                        <li>Listening comprehension</li>
+                        <li>Understanding a written text</li>
+                        <li>Written expression</li>
+                        <li>Speaking skills</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="sub-container-challenge-profit">
+            <h4>What will the students get out of participating in the “Tampa – Le Havre Challenge”?</h4>
             <ul>
                 <li>Cultural enrichment</li>
                 <li>Student motivation (group or individual) by working on fun assignments</li>
@@ -300,63 +270,60 @@
                 <li>A better understanding of another culture and foreign city</li>
                 <li>Develop a cohesion among student participants</li>
             </ul>
-            <h5>Future Goals:</h5>
+        </div>
+
+        <div class="sub-container-challenge-future">
+            <h4>Future Goals:</h4>
             <ul>
                 <li>By participating in this first school challenge, the hope is to continue a working cultural
-                    exchange between the citizens of Tampa and Le Havre.</li>
+                    exchange between the citizens of Tampa and Le Havre.
+                </li>
                 <li>This project will hopefully incite teachers in Tampa to want to share and make French
                     students discover the town of Tampa and the surrounding regions (possibly with a second
                     edition of this ‘ Tampa Le Havre Challenge’ for October 2023 when an American delegation
-                    will be welcomed in Le Havre.</li>
+                    will be welcomed in Le Havre.
+                </li>
             </ul>
         </div>
-        <div class="sub-container-challenge">
-            Here is how you join the challenge
-        </div>
-        <div class="sub-container-challenge">
-            We wish to express our deepest gratitude to the following for their support and
-            generosity. Learn about their service by visiting their website:
-            <ul>
-                <li><a href="https://bibliotheques.lehavre.fr/">Le réseau des bibliothèques de la ville du Havre </a></li>
-                <li><a href="http://graffitigre.com/">Le duo Graffitigre</a></li>
-                <li><a href="https://margauxbailleul.com/">Margaux Bailleul</a></li>
-                <li><a href="https://fr-fr.facebook.com/GGHB.gymlehavre/">Maé Baudry, membre du Groupement Gymnique</a></li>
-                <li><a href="http://www.muma-lehavre.fr/">Le Musée d’Art Moderne, André Malraux</a></li>
-                <li><a href="https://www.conservatoire-lehavre.fr/">Le conservatoire Arthur Honegger</a>,
-                    <a href="https://www.conservatoire-lehavre.fr/ressources/videotheque">sa vidéotèque</a></li>
-                <li><a href="https://www.lapetitepatissiere.fr/">La Petite Patissière</a></li>
-                <li><a href="https://loho.fr/">Le Local Shop</a></li>
-                <li><a href="https://www.davidkarsenty.com/">David Karsenty</a></li>
-                <li><a href="https://www.lehavre-etretat-tourisme.com/">L’office du tourisme du Havre</a></li>
-            </ul>
-            <p>We also wish to thank our awesome community and fantastic teachers: MERCI BEAUCOUP</p>
-        </div>
-        <div class="sub-container-challenge">
-            social networks links
-        </div>
-        <div class="sub-container-challenge-spacer">
 
+        <div class="sub-container-challenge" id="credit">
+            <p>We wish to express our deepest gratitude to the following for their support and
+                generosity. Learn about their service by visiting their website:</p>
+            <div class="container-external-links">
+                <div><a href="https://bibliotheques.lehavre.fr/">Le réseau des bibliothèques de la ville du Havre </a>
+                </div>
+                <div><a href="http://graffitigre.com/">Le duo Graffitigre</a></div>
+                <div><a href="https://margauxbailleul.com/">Margaux Bailleul</a></div>
+                <div><a href="https://fr-fr.facebook.com/GGHB.gymlehavre/">Maé Baudry, membre du Groupement Gymnique</a>
+                </div>
+                <div><a href="http://www.muma-lehavre.fr/">Le Musée d’Art Moderne, André Malraux</a></div>
+                <div><a href="https://www.conservatoire-lehavre.fr/">Le conservatoire Arthur Honegger</a>,
+                    <a href="https://www.conservatoire-lehavre.fr/ressources/videotheque">sa vidéotèque</a></div>
+                <div><a href="https://www.lapetitepatissiere.fr/">La Petite Patissière</a></div>
+                <div><a href="https://loho.fr/">Le Local Shop</a></div>
+                <div><a href="https://www.davidkarsenty.com/">David Karsenty</a></div>
+                <div><a href="https://www.lehavre-etretat-tourisme.com/">L’office du tourisme du Havre</a></div>
+            </div>
+            <div class="credit-teachers">We also wish to thank our awesome community and fantastic teachers: MERCI BEAUCOUP</div>
+        </div>
+        <div class="sub-container-challenge" id="network">
+            <a href="https://www.facebook.com/lhconnections"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com/lhconnections/"><i class="bi bi-instagram"></i></a>
         </div>
     </div>
 
     <button onclick="topFunction()" id="scroll-top-button" title="Go to top"><i class="bi bi-arrow-up"></i></button>
 
     <script>
-    mybutton = document.getElementById("scroll-top-button");
+    navBar = document.getElementById("header");
 
     window.onscroll = function() {scrollFunction()};
 
     function scrollFunction() {
       if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        mybutton.style.display = "block";
-      } else {
-        mybutton.style.display = "none";
+        navBar.style.backgroundColor = "white";
       }
-    }
-
-    function topFunction() {
-      document.body.scrollTop = 0; // For Safari
-      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-    }
+     };
     </script>
 {% endblock %}
+</html>

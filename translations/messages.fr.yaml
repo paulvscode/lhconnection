@@ -64,3 +64,9 @@ lhconnection:
     copyright:
         rights: Tous droits réservés
         privacy: Confidentialité
+
+    challenge:
+        idea: L'idée
+        howitworks: Fonctionnement
+        join: Rejoindre Le Challenge
+        credits: Remerciements
