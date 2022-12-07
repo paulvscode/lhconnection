@@ -2582,6 +2582,13 @@ section {
         display: flex;
         flex-direction: column;
     }
+
+    .subdiv-process-subscription {
+        display: flex;
+        flex-direction: column !important;
+        width: 80%;
+        margin: 0 auto 3rem auto;
+    }
 }
 
 .partners-container img {
