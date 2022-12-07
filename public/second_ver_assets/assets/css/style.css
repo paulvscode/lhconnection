@@ -49,6 +49,10 @@ section {
     padding-bottom: 40px;
 }
 
+.remove-spacer {
+    padding-bottom: 20px !important;
+}
+
 .section-header h2 {
     font-size: 13px;
     letter-spacing: 1px;
@@ -795,6 +799,8 @@ section {
     text-align: center;
     transition: 0.3s;
     border-radius: 5px;
+    display: flex;
+    flex-direction: column;
 }
 
 .services .service-box .icon {
@@ -811,6 +817,17 @@ section {
 .services .service-box h3 {
     color: #444444;
     font-weight: 700;
+}
+
+.services h3 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #4154f1;
+    text-transform: uppercase;
+    text-align: center;
+    background-color: #F6F9FF;
+    width: 80%;
+    margin: 0 auto;
 }
 
 .services .service-box .read-more {
@@ -842,7 +859,7 @@ section {
 }
 
 .services .service-box.blue:hover {
-    background: #2db6fa;
+    /*background: #2db6fa;*/
 }
 
 .services .service-box.orange {
@@ -859,7 +876,7 @@ section {
 }
 
 .services .service-box.orange:hover {
-    background: #f68c09;
+    /*background: #f68c09;*/
 }
 
 .services .service-box.green {
@@ -876,7 +893,7 @@ section {
 }
 
 .services .service-box.green:hover {
-    background: #08da4e;
+    /*background: #08da4e;*/
 }
 
 .services .service-box.red {
@@ -893,7 +910,7 @@ section {
 }
 
 .services .service-box.red:hover {
-    background: #e9222c;
+    /*background: #e9222c;*/
 }
 
 .services .service-box.purple {
@@ -910,7 +927,7 @@ section {
 }
 
 .services .service-box.purple:hover {
-    background: #b50edf;
+    /*background: #b50edf;*/
 }
 
 .services .service-box.pink {
@@ -927,17 +944,21 @@ section {
 }
 
 .services .service-box.pink:hover {
-    background: #f51f9c;
+    /*background: #f51f9c;*/
 }
 
 .services .service-box:hover h3,
 .services .service-box:hover p,
 .services .service-box:hover .read-more {
-    color: #fff;
+    /*color: #fff;*/
 }
 
 .services .service-box:hover .icon {
-    background: #fff;
+    /*background: #fff;*/
+}
+
+.services .service-box:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 /*--------------------------------------------------------------
@@ -2573,7 +2594,7 @@ section {
     list-style-type: square;
 }
 
-#surcharge-team-description {
+.surcharge-fontsize {
     font-size: 18px !important;
 }
 
@@ -3071,4 +3092,83 @@ section {
 /*Large devices (desktops, less than 1200px)*/
 @media (max-width: 1199.98px) {
 
+}
+
+/* Tags */
+ .tag-green {
+     position: fixed;
+     bottom: 10px;
+     right: 20px;
+     color: white;
+     padding: 0.2rem;
+     border-radius: 5px;
+     background-color: #28A745;
+ }
+
+ .tag-red {
+     position: fixed;
+     bottom: 10px;
+     right: 20px;
+     color: #DC3545;
+     padding: 0.2rem;
+     border-radius: 5px;
+     background-color: white;
+ }
+
+ /* subscription */
+.process-subscription > h4 {
+    text-align: center;
+}
+
+.subdiv-process-subscription {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    margin: 0 auto 3rem auto;
+}
+
+.sub-subdiv-process-subscription {
+    margin: 1rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    background-color: #FAFBFF;
+    border-radius: 5px;
+}
+
+.icon-subscription {
+    background-color: #D8DFFF;
+    width: 50px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: .3rem;
+    transition: .2s ease-in-out;
+}
+
+.icon-subscription:hover {
+    background-color: #c0cbfd;
+    width: 50px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: .3rem;
+    transition: .2s ease-in-out;
+}
+
+.label-subscription {
+    width: 72%;
+}
+
+/* Clubs */
+.club-container {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 80%;
 }

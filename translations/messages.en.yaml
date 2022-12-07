@@ -1,8 +1,8 @@
 lhconnection:
     homepage:
         title: Homepage
-        event: Events
-        project: Projects
+        event: News
+        project: Clubs
         team: Our team
         resources: Resources
         contact: Contact
@@ -25,19 +25,19 @@ lhconnection:
         first-title: Develop
         first: links and partnerships in the various fields.
         second-title: Welcome
-        second: Welcome and facilitate the integration of families who have lived abroad.
+        second:  and facilitate the integration of families who have lived abroad.
         third-title: Organize
-        third: Organize meetings between English speakers and Le Havre locals.
+        third:  meetings between English speakers and Le Havre locals.
         fourth-title: Raise
-        fourth: Raise awareness of English-speaking cultures to Le Havre locals.
+        fourth:  awareness of English-speaking cultures to Le Havre locals.
         fifth-title: Promote
-        fifth: Promote the city of Le Havre and its region internationally.
+        fifth:  the city of Le Havre and its region internationally.
     events:
-        title: Events
+        title: News
         description: What’s happening
     projects:
-        title: Projects
-        description: Upcoming projects
+        title: Clubs
+        description: What are our members up to?
         category-all: All
     team:
         title: LH Connections Founders
@@ -52,8 +52,13 @@ lhconnection:
         fees: Our membership fee is 20€ per year.
     membership:
         title: Become a member of LH Connections.
-        description: Download our membership application form.
+        description: Want to join?
         btn: Download
+    membershipprocess:
+        one: Download the subscription form below
+        two: Send it back to us, duly filled
+        three: Pay your subscription fee online
+        four: Welcome aboard!
     form:
         submit: Submit
     faq:

@@ -1,8 +1,8 @@
 lhconnection:
     homepage:
         title: Accueil
-        event: Événements
-        project: Projets
+        event: Actualités
+        project: Clubs
         team: Notre équipe
         resources: Ressources
         contact: Contact
@@ -12,8 +12,8 @@ lhconnection:
     hero:
         title: At the
         second-title: of sharing.
-        first: Pour les membres de LH Connections, tout est une question de partage. Notre association favorise et développe les liens entre les habitants des villes anglophones jumelées avec Le Havre
-        second: établissements scolaires, culture, événements sportifs ou encore activités professionnelles…
+        first: "Quoi de tel que de se sentir chez soi en arrivant dans un nouveau pays, dans une nouvelle ville ? C’est la raison d’être de LH Connections. Notre objectif : accueillir et faciliter l’intégration des étrangers au Havre à travers des clubs, des rencontres, des événements…"
+        second: "Rejoindre LH Connections, ce n’est pas seulement rejoindre une association : c’est rejoindre une communauté internationale et dynamique."
         third: Tous les liens sont permis !
         title-link: Nos objectifs
     president:
@@ -23,21 +23,21 @@ lhconnection:
     goals:
         title: Nos objectifs
         first-title: Développer
-        first: Développer les liens et les partenariats dans les différents domaines.
+        first:  les liens et les partenariats dans les différents domaines.
         second-title: Accueillir
-        second: Accueillir et faciliter l’intégration des familles ayant vécu à l’étranger.
+        second:  et faciliter l’intégration des familles ayant vécu à l’étranger.
         third-title: Organiser
-        third: Organiser des rencontres entre anglophones et havrais.
+        third:  des rencontres entre anglophones et havrais.
         fourth-title: Sensibiliser
-        fourth: Sensibiliser les havrais à la culture anglophone.
+        fourth:  les havrais à la culture anglophone.
         fifth-title: Valoriser
-        fifth: Valoriser la ville du Havre et sa région à l’échelle internationale.
+        fifth:  la ville du Havre et sa région à l’échelle internationale.
     events:
-        title: Événements
+        title: Actualités
         description: C’est ici que ça se passe
     projects:
-        title: Projets
-        description: Projets à venir
+        title: Clubs
+        description: Les membres de LH Connections se réunissent au sein de “clubs” qu’ils créent et animent selon leurs compétences et centres d’intérêts. L’idée ? Chacun est invité à rejoindre le/les club(s) de son choix, mais aussi à en proposer de nouveaux.
         category-all: Tout
     team:
         title: Ceux qui font LH Connections
@@ -52,8 +52,13 @@ lhconnection:
         fees: Nos frais d'adhésion sont de 20€ / an.
     membership:
         title: Rejoignez LH Connections.
-        description: Téléchargez notre formulaire d'inscription.
+        description: Envie de nous rejoindre ?
         btn: Téléchargement
+    membershipprocess:
+        one: Je télécharge le bulletin d'inscription ci-dessous
+        two: Je le renvoie, rempli et signé
+        three: Je règle ma cotisation via la plateforme de paiement en ligne
+        four: Bienvenue parmi nous !
     form:
         submit: Envoyer
     faq:

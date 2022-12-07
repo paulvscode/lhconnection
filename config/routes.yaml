@@ -40,27 +40,6 @@ unarchive_project:
     path: /admin/dashboard/project/{id}/unarchive
     controller: App\Controller\Admin\AdminMainDashboardController::projectUnarchived
 
-#admin events
-edit_event:
-    path: /admin/dashboard/event/{id}/edit
-    controller: App\Controller\Admin\AdminMainDashboardController::eventEdit
-
-new_event:
-    path: /admin/dashboard/event/create
-    controller: App\Controller\Admin\AdminMainDashboardController::eventNew
-
-delete_event:
-    path: /admin/dashboard/event/{id}/delete
-    controller: App\Controller\Admin\AdminMainDashboardController::eventDelete
-
-archive_event:
-    path: /admin/dashboard/event/{id}/archive
-    controller: App\Controller\Admin\AdminMainDashboardController::eventArchived
-
-unarchive_event:
-    path: /admin/dashboard/event/{id}/unarchive
-    controller: App\Controller\Admin\AdminMainDashboardController::eventUnarchived
-
 #admin clubs
 
 edit_club:

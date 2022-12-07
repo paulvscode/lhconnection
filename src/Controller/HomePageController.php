@@ -2,8 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Club;
+use App\Entity\News;
 use App\Entity\Project;
-use App\Entity\SocialEvent;
 use App\Entity\Responsible;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,27 +17,28 @@ class HomePageController extends AbstractController
     {
         $locale = $request->getLocale();
 
-        $colorsClass = ['blue', 'orange', 'green', 'red', 'purple', 'pink'];
-        $socialEvents = $doctrine->getRepository(SocialEvent::class)->findAll();
         $responsibles = $doctrine->getRepository(Responsible::class)->findAll();
         $projects = $doctrine->getRepository(Project::class)->findAll();
 
         $onlineProjects = $doctrine->getRepository(Project::class)->findBy(['archived' => false]);
         $archivedProjects = $doctrine->getRepository(Project::class)->findBy(['archived' => true]);
 
-        $onlineEvents = $doctrine->getRepository(SocialEvent::class)->findBy(['archived' => false]);
-        $archivedEvents = $doctrine->getRepository(SocialEvent::class)->findBy(['archived' => true]);
+        $onlineNews = $doctrine->getRepository(News::class)->findBy(['status' => false]);
+        $archivedNews = $doctrine->getRepository(News::class)->findBy(['status' => true]);
+
+        $onlineClubs = $doctrine->getRepository(Club::class)->findBy(['archived' => false]);
+        $archivedClubs = $doctrine->getRepository(Club::class)->findBy(['archived' => true]);
 
         return $this->render('base.html.twig', [
             'responsibles' => $responsibles,
-            'socialEvents' => $socialEvents,
-            'colors' => $colorsClass,
             'projects' => $projects,
             'locale' => $locale,
             'onlineProjects' => $onlineProjects,
             'archivedProjects' => $archivedProjects,
-            'onlineEvents' => $onlineEvents,
-            'archivedEvents' => $archivedEvents
+            'onlineNews' => $onlineNews,
+            'archivedNews' => $archivedNews,
+            'onlineClubs' => $onlineClubs,
+            'archivedClubs' => $archivedClubs
         ]);
     }
 

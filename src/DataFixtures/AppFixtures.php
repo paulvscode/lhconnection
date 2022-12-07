@@ -44,31 +44,6 @@ class AppFixtures extends Fixture
         $user->setPassword("$2y$10\$wSeE7WRqAKsPsF9/6i8DLOozHc1LUCHlyqYqT66ZZdH0xMu83JqWm");
         $manager->persist($user);
 
-        // Social events
-        $socialEvent = new SocialEvent();
-        $socialEvent->setTitle("Le Havre-Tampa School Challenge");
-        $socialEvent->setDescription("Dans le cadre de l’anniversaire des 30 ans du 
-        jumelage entre les villes du Havre et de
-        Tampa, différentes actions seront menées pour sensibiliser les jeunes français et
-        américains au jumelage.
-        ");
-        $socialEvent->setImage('https://picsum.photos/200');
-        $socialEvent->setIcon('14 Mars - 8 Septembre');
-        $socialEvent->setLink('https://www.facebook.com/');
-        $socialEvent->setArchived(false);
-        $manager->persist($socialEvent);
-
-        $socialEvent = new SocialEvent();
-        $socialEvent->setTitle("Soirée d’inauguration");
-        $socialEvent->setDescription("Le 11 mai, c’est la soirée d’inauguration de LH Connections. 
-        Un moment qui réunira plus de 200 personnes, des quatre coins du Havre, et plus encore !    
-        ");
-        $socialEvent->setImage('https://picsum.photos/200');
-        $socialEvent->setIcon('17-22 octobre 2022');
-        $socialEvent->setLink('https://www.facebook.com/events/512116053722896');
-        $socialEvent->setArchived(false);
-        $manager->persist($socialEvent);
-
         // projects
         $project = new Project();
         $project->setImageName('temporary.jpg');

@@ -30,6 +30,8 @@
                 rel="stylesheet"
         />
 
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+
         <link
                 href="{{ asset('second_ver_assets/assets/vendor/glightbox/css/glightbox.min.css') }}"
                 rel="stylesheet"
@@ -75,6 +77,7 @@
                         ><span>{{ 'lhconnection.homepage.resources' | trans }}</span> <i class="bi bi-chevron-down"></i
                             ></a>
                         <ul>
+                            <li><a href="{{ path('challenge_lhtampa') }}">Challenge LH - Tampa</a></li>
                             <li><a href="https://www.facebook.com/labellevieinnormandy">La belle vie in Normandy</a>
                             </li>
                             <li class="dropdown">
@@ -90,8 +93,6 @@
                             <li><a href="https://www.instagram.com/kvscope/">Instagram KvScope</a></li>
                             <li><a href="https://www.facebook.com/groups/2162504153831577">Le Havre English Speakers</a>
                             </li>
-                            <li><a class="nav-link scrollto"
-                                   href="{{ path('login') }}">{{ 'lhconnection.homepage.login' | trans }}</a></li>
                         </ul>
                     </li>
                     <li class="dropdown dropdown-list-language">
@@ -134,9 +135,6 @@
 
     <section id="hero" class="hero d-flex align-items-center">
         <div class="container">
-            <div class="row specific-genially">
-                <a class="banner-genially" href="{{ path('challenge_lhtampa') }}">En ce moment : Le Havre - Tampa School Challenge</a>
-            </div>
             <div class="row">
                 <div class="col-lg-6 d-flex flex-column justify-content-center">
                     <h1 data-aos="fade-up">{{ 'lhconnection.hero.title' | trans }}
@@ -149,7 +147,7 @@
                     </h1>
                     <h2 data-aos="fade-up" data-aos-delay="400">
                         <p class="text-intro">{{ 'lhconnection.hero.first' | trans }}
-                            : {{ 'lhconnection.hero.second' | trans }}
+                            {{ 'lhconnection.hero.second' | trans }}
                             <br>
                             <br>{{ 'lhconnection.hero.third' | trans }}
                         </p></h2>
@@ -214,10 +212,6 @@
                     >
                         <div class="content">
                             <h3>{{ 'lhconnection.goals.title' | trans }} : </h3>
-                            <!--                <h2>-->
-                            <!--                  Expedita voluptas omnis cupiditate totam eveniet nobis sint-->
-                            <!--                  iste. Dolores est repellat corrupti reprehenderit.-->
-                            <!--                </h2>-->
                             <p>
                             <ul class="ul-bullets-objectives">
                                 <li>
@@ -261,37 +255,27 @@
                     <p>{{ 'lhconnection.events.description' | trans }}</p>
                 </header>
 
-                <div class="row gy-4">
-
-                    {% set counter = 0 %}
-                    {% for socialEvent in onlineEvents %}
-                        {% if colors[loop.index0] is not defined %}
-                            {% set counter = 0 %}
-                        {% endif %}
-                        <div
-                                class="col-lg-4 col-md-6"
-                                data-aos="fade-up"
-                                data-aos-delay="200"
-                                style="margin-top: 5rem;"
-                        >
-                            <div class="calendar-event-date-display" style="margin-bottom: 1rem;"><i class="bi bi-calendar-event" style="margin-right: .5rem;"></i> {{ socialEvent.icon }}</div>
-                            <div class="service-box {{ colors[counter] }}">
-                                <h3>{{ socialEvent.title }}</h3>
-                                <p>
-                                    {{ socialEvent.description | raw }}
-                                </p>
-                                <a class="social-event-facebook-link" href="{{ socialEvent.link }}">See event on <i
-                                            class="bi bi-facebook"></i></a>
-                            </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 d-flex align-items-center justify-content-center">
+                            {% for news in onlineNews %}
+                                <div class="card" style="width: 18rem; margin: 1rem; box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; ">
+                                    <img src="https://www.lehavre.fr/sites/default/files/styles/content/public/thumbnails/image/tampa-skyline-jumelage.jpg?itok=2lMx0Iz2" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ news.title }}</h5>
+                                        <p class="card-text">{{ news.description }}</p>
+                                        <a href="#" class="btn btn-primary">{{ news.link }}</a>
+                                    </div>
+                                </div>
+                            {% endfor %}
                         </div>
-                        {% set counter = counter + 1 %}
-                    {% endfor %}
+                    </div>
                 </div>
             </div>
         </section>
         <!-- End Social Events Section -->
 
-        <!-- ======= Project Section ======= -->
+        {#<!-- ======= Project Section ======= -->
         <section id="portfolio" class="portfolio">
             <div class="container" data-aos="fade-up">
                 <header class="section-header">
@@ -299,16 +283,16 @@
                     <p>{{ 'lhconnection.projects.description' | trans }}</p>
                 </header>
 
-                {# <div class="row" data-aos="fade-up" data-aos-delay="100"> #}
-                {# <div class="col-lg-12 d-flex justify-content-center"> #}
-                {# <ul id="portfolio-flters"> #}
-                {# <li data-filter="*" class="filter-active">{{ 'lhconnection.projects.category-all' | trans }}</li> #}
-                {# <li data-filter=".filter-app">Le Havre</li> #}
-                {# <li data-filter=".filter-card">Tampa</li> #}
-                {# <li data-filter=".filter-web">Southampton</li> #}
-                {# </ul> #}
-                {# </div> #}
-                {# </div> #}
+                #}{# <div class="row" data-aos="fade-up" data-aos-delay="100"> #}{#
+                #}{# <div class="col-lg-12 d-flex justify-content-center"> #}{#
+                #}{# <ul id="portfolio-flters"> #}{#
+                #}{# <li data-filter="*" class="filter-active">{{ 'lhconnection.projects.category-all' | trans }}</li> #}{#
+                #}{# <li data-filter=".filter-app">Le Havre</li> #}{#
+                #}{# <li data-filter=".filter-card">Tampa</li> #}{#
+                #}{# <li data-filter=".filter-web">Southampton</li> #}{#
+                #}{# </ul> #}{#
+                #}{# </div> #}{#
+                #}{# </div> #}{#
 
                 <div
                         class="row gy-4 portfolio-container"
@@ -331,14 +315,36 @@
                 </div>
             </div>
         </section>
-        <!-- End Portfolio Section -->
+        <!-- End Portfolio Section -->#}
+
+        <!-- ======= Club Section ======= -->
+        <section id="portfolio" class="portfolio">
+            <div class="container" data-aos="fade-up">
+                <header class="section-header">
+                    <h2>{{ 'lhconnection.projects.title' | trans }}</h2>
+                    <p class="surcharge-fontsize">{{ 'lhconnection.projects.description' | trans }}</p>
+                </header>
+                <div class="club-container" style="justify-content: center;">
+                    {% for club in onlineClubs %}
+                        <div class="card" style="width: 18rem; margin: 1rem; box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;">
+                            <img src="{{ asset('second_ver_assets/assets/img/' ~ club.imageName) }}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ club.name }}</h5>
+                                <p class="card-text">{{ club.description }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        <!-- End Club Section -->
 
         <!-- ======= Team Section ======= -->
         <section id="team" class="team">
             <div class="container" data-aos="fade-up">
                 <header class="section-header">
                     <h2>{{ 'lhconnection.team.title' | trans }}</h2>
-                    <p id="surcharge-team-description">
+                    <p class="surcharge-fontsize">
                         {{ 'lhconnection.team.description' | trans }} :
                         {{ 'lhconnection.team.description-second' | trans }}
                     </p>
@@ -363,7 +369,7 @@
                                     <h4 class="text-capitalize">{{ responsible.name }}</h4>
                                     <span class="text-capitalize">{{ responsible.title }}</span>
                                     <p>
-                                        {#{{ responsible.description | raw }}#}
+                                        {# {{ responsible.description | raw }} #}
                                     </p>
                                 </div>
                             </div>
@@ -501,12 +507,34 @@
         <!-- ======= Membership Section ======= -->
         <section id="membership" class="contact">
             <div class="container" data-aos="fade-up">
-                <header class="section-header">
+                <header class="section-header remove-spacer">
                     <h2>{{ 'lhconnection.membership.title' | trans }}</h2>
                     <p>{{ 'lhconnection.membership.description' | trans }}</p>
                 </header>
+                <div class="process-subscription">
+                    <h4>Voici les différentes étapes:</h4>
+                    <div class="subdiv-process-subscription">
+                        <div class="sub-subdiv-process-subscription">
+                            <div class="icon-subscription">1</div>
+                            <div class="label-subscription">Téléchargez notre bulletin d'inscription ci-dessous</div>
+                        </div>
+                        <div class="sub-subdiv-process-subscription">
+                            <div class="icon-subscription">2</div>
+                            <div class="label-subscription">Renvoyez-nous le bulletin rempli et signé</div>
+                        </div>
+                        <div class="sub-subdiv-process-subscription">
+                            <div class="icon-subscription">3</div>
+                            <div class="label-subscription">Réglez votre cotisation via la plateforme de paiement en ligne</div>
+                        </div>
+                        <div class="sub-subdiv-process-subscription">
+                            <div class="icon-subscription">4</div>
+                            <div class="label-subscription">Bienvenue parmi nous !</div>
+                        </div>
+                    </div>
+                </div>
                 <div class="text-center">
-                    <a href="{{ asset('/second_ver_assets/assets/adhesion-lh.docx') }}" class="adhesion-button">{{ 'lhconnection.membership.btn' | trans }}</a>
+                    <a href="{{ asset('/second_ver_assets/assets/adhesion-lh.docx') }}"
+                       class="adhesion-button">{{ 'lhconnection.membership.btn' | trans }}</a>
                 </div>
             </div>
         </section>
@@ -704,12 +732,11 @@
                             {{ 'lhconnection.networks.description' | trans }} :
                         </p>
                         <div class="social-links mt-3 text-center">
-                            <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-                            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-                            <a href="#" class="instagram"
+                            <a href="https://www.facebook.com/lhconnections" class="facebook"><i class="bi bi-facebook"></i></a>
+                            <a href="https://www.instagram.com/lhconnections/" class="instagram"
                             ><i class="bi bi-instagram"></i
                                 ></a>
-                            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                            <a href="https://www.linkedin.com/company/lh-connections/" class="linkedin"><i class="bi bi-linkedin"></i></a>
                         </div>
                     </div>
                 </div>

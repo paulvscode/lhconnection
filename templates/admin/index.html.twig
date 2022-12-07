@@ -237,16 +237,6 @@
             <div class="admin-full-container">
                 <h3>Édition</h3>
                 <div class="editing-container">
-                    <div class="events-sub-edition">
-                        <h5>Events</h5>
-                        {% for onlineEvent in onlineEvents %}
-                            <div class="container-list-of-events">
-                                <div>{{ onlineEvent.title }}</div>
-                                <a href="{{ path('edit_event', { id: onlineEvent.id}) }}"><i class="bi bi-pencil-square"></i></a>
-                                <a onclick="return confirm('Are you sure to delete?')" style="color: red;" href="{{ path('delete_event', { id: onlineEvent.id}) }}"><i class="bi bi-x-square"></i></a>
-                            </div>
-                        {% endfor %}
-                    </div>
                     <div class="projects-sub-edition">
                         <h5>Projects</h5>
                         {% for onlineProject in onlineProjects %}
@@ -299,26 +289,22 @@
     </script>
     <script>
     let projectsC = '{{ countProjects }}';
-    let eventsC = '{{ countEvents }}';
     let clubsC = '{{ countClubs }}';
 
     const labels = [
         'Projets',
-        'Événements',
         'Clubs',
     ];
     const data = {
       labels: [
         'Projets',
-        'Événements',
         'Clubs'
       ],
       datasets: [{
         label: 'Lh Statistics',
-        data: [projectsC, eventsC, clubsC],
+        data: [projectsC, clubsC],
         backgroundColor: [
           '#28A745',
-          '#FFC107',
           '#17A2B8'
         ],
         hoverOffset: 4

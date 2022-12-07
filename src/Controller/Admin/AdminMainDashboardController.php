@@ -8,14 +8,12 @@ use App\Entity\Responsible;
 use App\Entity\SocialEvent;
 use App\Entity\User;
 use App\Form\ClubType;
-use App\Form\EventType;
 use App\Form\ProjectType;
 use App\Form\ResponsibleType;
 use App\Form\UserType;
 use App\Repository\ClubRepository;
 use App\Repository\ProjectRepository;
 use App\Repository\ResponsibleRepository;
-use App\Repository\SocialEventRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -26,7 +24,6 @@ class AdminMainDashboardController extends AbstractController
 {
     public function __construct(
         private ProjectRepository      $projectRepository,
-        private SocialEventRepository  $socialEventRepository,
         private UserRepository         $userRepository,
         private ResponsibleRepository $responsibleRepository,
         private ClubRepository $clubRepository,
@@ -42,13 +39,10 @@ class AdminMainDashboardController extends AbstractController
         $username = $user->getEmail();
 
         $archivedProjects = $this->projectRepository->findBy(['archived' => true]);
-        $archivedEvents = $this->socialEventRepository->findBy(['archived' => true]);
         $archivedClubs = $this->clubRepository->findBy(['archived' => true]);
         $onlineProjects = $this->projectRepository->findBy(['archived' => false]);
-        $onlineEvents = $this->socialEventRepository->findBy(['archived' => false]);
         $onlineClubs = $this->clubRepository->findBy(['archived' => false]);
 
-        $totalEvents = count($onlineEvents);
         $totalProjects = count($onlineProjects);
         $totalClubs = count($onlineClubs);
 
@@ -56,11 +50,8 @@ class AdminMainDashboardController extends AbstractController
             'username' => $username,
             'archivedProjects' => $archivedProjects,
             'archivedClubs' => $archivedClubs,
-            'archivedEvents' => $archivedEvents,
             'onlineProjects' => $onlineProjects,
-            'onlineEvents' => $onlineEvents,
             'onlineClubs' => $onlineClubs,
-            'countEvents' => $totalEvents,
             'countProjects' => $totalProjects,
             'countClubs' => $totalClubs
         ]);
@@ -134,78 +125,6 @@ class AdminMainDashboardController extends AbstractController
         $project->setArchived(false);
 
         $this->em->persist($project);
-        $this->em->flush();
-        return $this->redirectToRoute('admin_dashboard');
-    }
-
-    // events
-    public function eventEdit(Request $request, SocialEvent $event): Response
-    {
-        /** @var User $user */
-        $user = $this->getUser();
-        $username = $user->getEmail();
-
-        $form = $this->createForm(EventType::class, $event);
-
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->em->flush();
-            return $this->redirectToRoute('admin_dashboard');
-        }
-
-        return $this->render('admin/event.edit.html.twig', [
-            'event' => $event,
-            'form' => $form->createView(),
-            'username' => $username,
-        ]);
-    }
-
-    public function eventNew(Request $request)
-    {
-        /** @var User $user */
-        $user = $this->getUser();
-        $username = $user->getEmail();
-
-        $event = new SocialEvent();
-
-        $form = $this->createForm(EventType::class, $event);
-
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->em->persist($event);
-            $this->em->flush();
-            return $this->redirectToRoute('admin_dashboard');
-        }
-
-        return $this->render('admin/event.new.html.twig', [
-            'event' => $event,
-            'form' => $form->createView(),
-            'username' => $username,
-        ]);
-    }
-
-    public function eventDelete(SocialEvent $event)
-    {
-        $this->em->remove($event);
-        $this->em->flush();
-
-        return $this->redirectToRoute('admin_dashboard');
-    }
-
-    public function eventArchived(SocialEvent $event): Response
-    {
-        $event->setArchived(true);
-
-        $this->em->persist($event);
-        $this->em->flush();
-        return $this->redirectToRoute('admin_dashboard');
-    }
-
-    public function eventUnarchived(SocialEvent $event): Response
-    {
-        $event->setArchived(false);
-
-        $this->em->persist($event);
         $this->em->flush();
         return $this->redirectToRoute('admin_dashboard');
     }
