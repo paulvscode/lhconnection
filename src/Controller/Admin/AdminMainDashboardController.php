@@ -144,7 +144,7 @@ class AdminMainDashboardController extends AbstractController
             return $this->redirectToRoute('admin_dashboard');
         }
 
-        return $this->render(':admin:club.edit.html.twig', [
+        return $this->render('admin/club.edit.html.twig', [
             'club' => $club,
             'form' => $form->createView(),
             'username' => $username,
