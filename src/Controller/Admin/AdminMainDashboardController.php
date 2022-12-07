@@ -5,7 +5,6 @@ namespace App\Controller\Admin;
 use App\Entity\Club;
 use App\Entity\Project;
 use App\Entity\Responsible;
-use App\Entity\SocialEvent;
 use App\Entity\User;
 use App\Form\ClubType;
 use App\Form\ProjectType;
