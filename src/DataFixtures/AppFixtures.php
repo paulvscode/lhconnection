@@ -44,7 +44,7 @@ class AppFixtures extends Fixture
         $user->setPassword("$2y$10\$wSeE7WRqAKsPsF9/6i8DLOozHc1LUCHlyqYqT66ZZdH0xMu83JqWm");
         $manager->persist($user);
 
-        // projects
+       /* // projects
         $project = new Project();
         $project->setImageName('temporary.jpg');
         //$project->setResponsible(['Project responsible']);
@@ -57,7 +57,7 @@ class AppFixtures extends Fixture
         $project->setFilterSortTitle('filtre de classement');
         $project->setArchived(false);
         $project->setImageSize('20');
-        $manager->persist($project);
+        $manager->persist($project);*/
 
         // Responsible + Roles
 
@@ -98,7 +98,7 @@ class AppFixtures extends Fixture
 
         // clubs
 
-        for ($i = 1; $i < 5; $i++) {
+       /* for ($i = 1; $i < 5; $i++) {
             $club = new Club();
             $club->setName('Let\'s swim');
             $club->setDescription('Nous nageons dans la mer chaque jour de l\'année');
@@ -107,7 +107,7 @@ class AppFixtures extends Fixture
             $club->setArchived(false);
             $club->setImageSize('20');
             $manager->persist($club);
-        }
+        }*/
 
         // 6 Events
 //        for ($i = 0; $i < 6; $i++) {
