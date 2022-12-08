@@ -52,13 +52,13 @@ lhconnection:
         fees: Our membership fee is 20€ per year.
     membership:
         title: Become a member of LH Connections.
-        description: Want to join?
+        description: "Do you want to join us ? It is as easy as this:"
         btn: Download
     membershipprocess:
-        one: Download the subscription form below
-        two: Send it back to us, duly filled
-        three: Pay your subscription fee online
-        four: Welcome aboard!
+        one: I download the membership form below
+        two: I fill out and sign the form before sending it back to contact@lhconnections.com
+        three: I pay the annual membership dues online
+        four: It is our pleasure to welcome you amongst us!
     form:
         submit: Submit
     faq:
