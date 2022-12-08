@@ -3184,3 +3184,12 @@ section {
     flex-wrap: wrap;
     width: 80%;
 }
+
+.hover-special {
+    transition: .2s ease-in-out;
+}
+
+.hover-special:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transition: .2s ease-in-out;
+}

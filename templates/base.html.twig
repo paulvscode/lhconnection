@@ -321,7 +321,7 @@
                 <div class="club-container" style="justify-content: center;">
                     {% if app.request.getLocale() is same as('fr') %}
                         {% for club in onlineClubs %}
-                            <div class="card" style="width: 18rem; margin: 1rem; box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;">
+                            <div class="card hover-special" style="width: 18rem; margin: 1rem;">
                                 <img src="{{ asset('second_ver_assets/assets/img/' ~ club.imageName) }}" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ club.name }}</h5>
@@ -331,7 +331,7 @@
                         {% endfor %}
                     {% else %}
                         {% for club in onlineClubs %}
-                            <div class="card" style="width: 18rem; margin: 1rem; box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;">
+                            <div class="card hover-special" style="width: 18rem; margin: 1rem; box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;">
                                 <img src="{{ asset('second_ver_assets/assets/img/' ~ club.imageName) }}" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ club.name }}</h5>
