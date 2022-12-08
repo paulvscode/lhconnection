@@ -37,7 +37,7 @@ lhconnection:
         description: What’s happening
     projects:
         title: Clubs
-        description: What are our members up to?
+        description: LH Connections members meet within “Clubs” that they create and animate according to their interests and competencies. The idea? Everyone is invited to join the Clubs of their choice, but as well they can propose new ones.
         category-all: All
     team:
         title: LH Connections Founders
