@@ -2589,6 +2589,13 @@ section {
         width: 80%;
         margin: 0 auto 3rem auto;
     }
+
+    .news-container-resp {
+        display: flex;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
 }
 
 .partners-container img {
