@@ -251,7 +251,7 @@
 
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-12 d-flex align-items-center justify-content-center">
+                        <div class="col-lg-12 d-flex align-items-start justify-content-center">
                             {% for news in onlineNews %}
                                 <div class="card hover-special" style="width: 18rem; margin: 1rem;">
                                     <img src="{{ asset('second_ver_assets/assets/img/' ~ news.imageName) }}" class="card-img-top" alt="...">
@@ -540,7 +540,7 @@
                     </div>
                 </div>
                 <div class="text-center">
-                    <a href="{{ asset('/second_ver_assets/assets/adhesion-lh.docx') }}"
+                    <a target="_blank" href="{{ asset('/second_ver_assets/assets/adhesion-lh.docx') }}"
                        class="adhesion-button">{{ 'lhconnection.membership.btn' | trans }}</a>
                 </div>
             </div>

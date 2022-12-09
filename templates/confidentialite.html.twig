@@ -5,6 +5,10 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link
+            href="{{ asset('second_ver_assets/assets/vendor/bootstrap/css/bootstrap.min.css') }}"
+            rel="stylesheet"
+    />
     <title>Confidentialité</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;1,100;1,200&display=swap');
@@ -25,11 +29,45 @@
             text-align: center;
         }
 
+        .container-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container-btn > a {
+            width: 210px;
+            margin: 2rem;
+        }
+
+        @media only screen and (min-width: 320px) and (max-width: 767px) {
+            .container-btn {
+                display: flex;
+                margin: 1rem auto;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+            }
+
+            .container-btn > a {
+                width: 210px;
+                margin: .5rem;
+            }
+        }
+
     </style>
 </head>
 <body>
     <div class="container-confidentialite">
         <h1>POLITIQUE DE CONFIDENTIALITÉ</h1>
+
+        <div class="container-btn">
+            <a target="_blank" href="{{ asset('/second_ver_assets/assets/Reglement-intérieur-LH-CO.pdf') }}"
+               class="btn btn-outline-primary">Règlement intérieur</a>
+            <a target="_blank" href="{{ asset('/second_ver_assets/assets/Status-LH-CO.pdf') }}"
+               class="btn btn-outline-primary">Statuts de l'association</a>
+            <a class="btn btn-primary" href="{{ path('homepage') }}">Retour sur le site</a>
+        </div>
 
         <h2>GESTION DES DONNÉES PERSONNELLES ET POLITIQUE DE
             CONFIDENTIALITÉ</h2>
