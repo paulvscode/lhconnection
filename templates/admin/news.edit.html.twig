@@ -73,7 +73,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
         }
 
         .admin-full-container {
@@ -86,10 +85,9 @@
         .admin-full-container > h3 {
             text-align: center;
             font-size: 3rem;
-            margin-bottom: 2rem;
         }
 
-        .statistiques-container {
+        .news-container {
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
@@ -97,76 +95,8 @@
             align-items: flex-start;
         }
 
-        .editing-container {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: space-evenly;
-            align-items: flex-start;
-        }
-
-        .events-sub-edition, .news-sub-edition, .clubs-sub-edition {
-            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-            width: 25%;
-            height: auto;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            flex-direction: column;
-            padding: 1rem;
-        }
-
-        .events-sub-edition > h5 {
-            background-color: #2188381f;
-            padding: 1rem;
-            width: 100%;
-            text-align: center;
-        }
-
-        .news-sub-edition > h5 {
-            background-color: #2188381f;
-            padding: 1rem;
-            width: 100%;
-            text-align: center;
-        }
-
-        .clubs-sub-edition > h5  {
-            background-color: #2188381f;
-            padding: 1rem;
-            width: 100%;
-            text-align: center;
-        }
-
-        .container-list-of-events, .container-list-of-news, .container-list-of-clubs {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            padding: 1rem;
-            width: 100%;
-        }
-
-        .container-list-of-events > a {
-            margin-left: 1rem;
-        }
-
-        .container-list-of-news > a {
-            margin-left: 1rem;
-        }
-
-        .container-list-of-clubs > a {
-            margin-left: 1rem;
-        }
-
-        .container-list-of-events > div  {
-            margin-right: auto;
-        }
-
-        .container-list-of-news > div {
-            margin-right: auto;
-        }
-
-        .container-list-of-clubs > div {
-            margin-right: auto;
+        .form-styling {
+            width: 60%;
         }
 
         @media screen and (max-width: 971px) {
@@ -226,46 +156,20 @@
         </div>
         <div class="admin-content-container">
             <div class="admin-full-container">
-                <h3>Statistiques</h3>
-                <div class="statistiques-container">
-                    <div>
-                        <canvas id="myChart"></canvas>
-                    </div>
+                <h3>Éditer l'actualité'</h3>
+                <div class="news-container">
+                    {{ form_start(form, { 'attr' : { 'class': 'form-styling' } }) }}
+                    {{ form_widget(form) }}
+                    <button class="btn btn-primary">Modifier</button>
+                    <a class="btn btn-danger" href="{{ path('admin_dashboard') }}">Retour</a>
+                    {{ form_end(form) }}
                 </div>
-            </div>
 
-            <div class="admin-full-container">
-                <h3>Édition</h3>
-                <div class="editing-container">
-                    <div class="news-sub-edition">
-                        <h5>Projects</h5>
-                        {% for news in onlineNews %}
-                            <div class="container-list-of-news">
-                                <div>{{ news.title }}</div>
-                                <a href="{{ path('edit_news', { id: news.id}) }}"><i class="bi bi-pencil-square"></i></a>
-                                <a onclick="return confirm('Are you sure to delete?')" style="color: red;" href="{{ path('delete_news', { id: news.id}) }}"><i class="bi bi-x-square"></i></a>
-                            </div>
-                        {% endfor %}
-                    </div>
-                    <div class="clubs-sub-edition">
-                        <h5>Clubs</h5>
-                        {% for onlineClub in onlineClubs %}
-                            <div class="container-list-of-clubs">
-                                <div>{{ onlineClub.name }}</div>
-                                <a href="{{ path('edit_club', { id: onlineClub.id}) }}"><i class="bi bi-pencil-square"></i></a>
-                                <a onclick="return confirm('Are you sure to delete?')" style="color: red;" href="{{ path('delete_club', { id: onlineClub.id}) }}"><i class="bi bi-x-square"></i></a>
-                            </div>
-                        {% endfor %}
-                    </div>
-
-                </div>
             </div>
         </div>
     </div>
 
     <button onclick="topFunction()" id="scroll-top-button" title="Go to top"><i class="bi bi-arrow-up"></i></button>
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
     mybutton = document.getElementById("scroll-top-button");
@@ -284,44 +188,5 @@
       document.body.scrollTop = 0; // For Safari
       document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     }
-
-
-
-    </script>
-    <script>
-    let newssC = '{{ countNews }}';
-    let clubsC = '{{ countClubs }}';
-
-    const labels = [
-        'News',
-        'Clubs',
-    ];
-    const data = {
-      labels: [
-        'News',
-        'Clubs'
-      ],
-      datasets: [{
-        label: 'Lh Statistics',
-        data: [newssC, clubsC],
-        backgroundColor: [
-          '#28A745',
-          '#17A2B8'
-        ],
-        hoverOffset: 4
-      }]
-    };
-
-    const config = {
-        type: 'doughnut',
-        data: data,
-        options: {}
-    };
-
-    const myChart = new Chart(
-        document.getElementById('myChart'),
-        config
-    );
-
     </script>
 {% endblock %}

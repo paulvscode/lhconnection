@@ -54,6 +54,20 @@ delete_club:
     path: /admin/dashboard/club/{id}/delete
     controller: App\Controller\Admin\AdminMainDashboardController::clubDelete
 
+#admin news
+
+edit_news:
+    path: /admin/dashboard/news/{id}/edit
+    controller: App\Controller\Admin\AdminMainDashboardController::newsEdit
+
+new_news:
+    path: /admin/dashboard/news/create
+    controller: App\Controller\Admin\AdminMainDashboardController::newsNew
+
+delete_news:
+    path: /admin/dashboard/news/{id}/delete
+    controller: App\Controller\Admin\AdminMainDashboardController::newsDelete
+
 #user management
 manage_users:
     path: /admin/dashboard/users

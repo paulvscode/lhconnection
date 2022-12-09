@@ -3,15 +3,17 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Club;
+use App\Entity\News;
 use App\Entity\Project;
 use App\Entity\Responsible;
 use App\Entity\User;
 use App\Form\ClubType;
+use App\Form\NewsType;
 use App\Form\ProjectType;
 use App\Form\ResponsibleType;
 use App\Form\UserType;
 use App\Repository\ClubRepository;
-use App\Repository\ProjectRepository;
+use App\Repository\NewsRepository;
 use App\Repository\ResponsibleRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -22,7 +24,7 @@ use Symfony\Component\HttpFoundation\Response;
 class AdminMainDashboardController extends AbstractController
 {
     public function __construct(
-        private ProjectRepository      $projectRepository,
+        private NewsRepository      $newsRepository,
         private UserRepository         $userRepository,
         private ResponsibleRepository $responsibleRepository,
         private ClubRepository $clubRepository,
@@ -37,22 +39,20 @@ class AdminMainDashboardController extends AbstractController
         $user = $this->getUser();
         $username = $user->getEmail();
 
-        $archivedProjects = $this->projectRepository->findBy(['archived' => true]);
         $archivedClubs = $this->clubRepository->findBy(['archived' => true]);
-        $onlineProjects = $this->projectRepository->findBy(['archived' => false]);
+        $onlineNews = $this->newsRepository->findBy(['status' => false]);
         $onlineClubs = $this->clubRepository->findBy(['archived' => false]);
 
-        $totalProjects = count($onlineProjects);
         $totalClubs = count($onlineClubs);
+        $countNews = count($onlineNews);
 
         return $this->render('admin/index.html.twig', [
             'username' => $username,
-            'archivedProjects' => $archivedProjects,
             'archivedClubs' => $archivedClubs,
-            'onlineProjects' => $onlineProjects,
+            'onlineNews' => $onlineNews,
             'onlineClubs' => $onlineClubs,
-            'countProjects' => $totalProjects,
-            'countClubs' => $totalClubs
+            'countClubs' => $totalClubs,
+            'countNews' => $countNews
         ]);
     }
 
@@ -150,7 +150,7 @@ class AdminMainDashboardController extends AbstractController
         ]);
     }
 
-    public function clubNew(Request $request)
+    public function clubNew(Request $request): Response
     {
         /** @var User $user */
         $user = $this->getUser();
@@ -240,5 +240,59 @@ class AdminMainDashboardController extends AbstractController
             'form' => $form->createView(),
             'username' => $username
         ]);
+    }
+
+    // News
+    public function newsEdit(Request $request, News $news): Response
+    {
+        /** @var User $user */
+        $user = $this->getUser();
+        $username = $user->getEmail();
+
+        $form = $this->createForm(NewsType::class, $news);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->em->flush();
+            return $this->redirectToRoute('admin_dashboard');
+        }
+
+        return $this->render('admin/news.edit.html.twig', [
+            'news' => $news,
+            'form' => $form->createView(),
+            'username' => $username,
+        ]);
+    }
+
+    public function newsNew(Request $request): Response
+    {
+        /** @var User $user */
+        $user = $this->getUser();
+        $username = $user->getEmail();
+
+        $news = new News();
+
+        $form = $this->createForm(NewsType::class, $news);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->em->persist($news);
+            $this->em->flush();
+            return $this->redirectToRoute('admin_dashboard');
+        }
+
+        return $this->render('admin/news.new.html.twig', [
+            'news' => $news,
+            'form' => $form->createView(),
+            'username' => $username,
+        ]);
+    }
+
+    public function newsDelete(Club $news)
+    {
+        $this->em->remove($news);
+        $this->em->flush();
+
+        return $this->redirectToRoute('admin_dashboard');
     }
 }
