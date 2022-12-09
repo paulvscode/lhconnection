@@ -254,11 +254,11 @@
                         <div class="col-lg-12 d-flex align-items-center justify-content-center">
                             {% for news in onlineNews %}
                                 <div class="card" style="width: 18rem; margin: 1rem; box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; ">
-                                    <img src="https://www.lehavre.fr/sites/default/files/styles/content/public/thumbnails/image/tampa-skyline-jumelage.jpg?itok=2lMx0Iz2" class="card-img-top" alt="...">
+                                    <img src="{{ asset('second_ver_assets/assets/img/' ~ news.imageName) }}" class="card-img-top" alt="...">
                                     <div class="card-body">
                                         <h5 class="card-title">{{ news.title }}</h5>
                                         <p class="card-text">{{ news.description }}</p>
-                                        <a href="#" class="btn btn-primary">{{ news.link }}</a>
+                                        <a href="{{ news.link }}" class="btn btn-primary">En savoir plus</a>
                                     </div>
                                 </div>
                             {% endfor %}
