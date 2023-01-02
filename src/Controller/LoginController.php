@@ -28,8 +28,10 @@ class LoginController extends AbstractController
 
         if (in_array('ROLE_ADMIN', $user->getRoles())) {
             return $this->forward('App\Controller\Admin\AdminMainDashboardController::index');
-        }else {
-            if (in_array('ROLE_USER', $user->getRoles())) {
+        } elseif (in_array('ROLE_USER', $user->getRoles())) {
+                return $this->forward('App\Controller\User\UserMainDashboardController::index');
+        } else {
+            if (in_array('ROLE_CALENDAR', $user->getRoles()))  {
                 return $this->forward('App\Controller\User\UserMainDashboardController::index');
             }
         }

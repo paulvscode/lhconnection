@@ -95,6 +95,12 @@ challenge_lhtampa:
     path: /challenge-tampa-lh
     controller: App\Controller\HomePageController::challengeLhTampa
 
+#calendar displaying
+calendar:
+    path: /calendar
+    controller: App\Controller\HomePageController::calendar
+
+
 #logout
 logout:
     path: /logout

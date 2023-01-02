@@ -59,6 +59,13 @@ class HomePageController extends AbstractController
         ]);
     }
 
+
+    public function calendar(Request $request)
+    {
+        $locale = $request->getLocale();
+
+        return $this->render('calendar/calendar.html.twig');
+    }
 }
 
 

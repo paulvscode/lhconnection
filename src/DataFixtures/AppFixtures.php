@@ -37,6 +37,12 @@ class AppFixtures extends Fixture
         $user->setPassword("$2y$10\$HcTMdMNk6QW9OETk8QuklukiUpzjt.5P7pT565yqa.f7ze0xrIg3C");
         $manager->persist($user);
 
+        $user = new User();
+        $user->setEmail('calendar@lhconnections.com');
+        $user->setRoles(["ROLE_USER", "ROLE_CALENDAR"]);
+        $user->setPassword("$2y$13\$slgu05jUynRH81VLKdilZuVAdY2u.X2WudET7QWFcTBL33jRqfcqO");
+        $manager->persist($user);
+
         // Users not admin
         $user = new User();
         $user->setEmail('johndoe@john.fr');
@@ -97,6 +103,8 @@ class AppFixtures extends Fixture
         }
 
         // clubs
+
+
 
        /* for ($i = 1; $i < 5; $i++) {
             $club = new Club();
