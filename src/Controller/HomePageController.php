@@ -62,6 +62,10 @@ class HomePageController extends AbstractController
 
     public function calendar(Request $request)
     {
+        if ($this->isGranted('ROLE_CALENDAR') == false) {
+            $this->redirectToRoute('login');
+        }
+
         $locale = $request->getLocale();
 
         return $this->render('calendar/calendar.html.twig');
