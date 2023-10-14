@@ -53,7 +53,7 @@ lhconnection:
     membership:
         title: Become a member of LH Connections.
         description: "Do you want to join us ? It is as easy as this:"
-        btn: Download
+        btn: Subscription form
     membershipprocess:
         one: I download the membership form below
         two: I fill out and sign the form before sending it back to contact@lhconnections.com

@@ -53,7 +53,7 @@ lhconnection:
     membership:
         title: Rejoignez LH Connections.
         description: Envie de nous rejoindre ?
-        btn: Téléchargement
+        btn: Formulaire d'inscription
     membershipprocess:
         one: Je télécharge le bulletin d'inscription ci-dessous
         two: Je le renvoie, rempli et signé

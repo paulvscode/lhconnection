@@ -137,7 +137,25 @@
             text-align: center;
         }
 
-        .container-list-of-events, .container-list-of-news, .container-list-of-clubs {
+        .users-sub-edition {
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            width: 25%;
+            height: auto;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-direction: column;
+            padding: 1rem;
+        }
+
+        .users-sub-edition > h5 {
+            background-color: #2188381f;
+            padding: 1rem;
+            width: 100%;
+            text-align: center;
+        }
+
+        .container-list-of-events, .container-list-of-news, .container-list-of-clubs, .container-list-of-users {
             display: flex;
             flex-direction: row;
             flex-wrap: nowrap;
@@ -257,8 +275,17 @@
                             </div>
                         {% endfor %}
                     </div>
-
+                    <div class="users-sub-edition">
+                        <h5>Users</h5>
+                        {% for responsible in responsibles %}
+                            <div class="container-list-of-clubs">
+                                <div>{{ responsible.name }}</div>
+                                <a href="{{ path('edit_responsibles', { id: responsible.id}) }}"><i class="bi bi-pencil-square"></i></a>
+                            </div>
+                        {% endfor %}
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>

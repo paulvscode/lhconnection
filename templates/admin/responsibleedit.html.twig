@@ -160,15 +160,15 @@
 {% block body %}
     <div class="admin-main-container">
         <div class="admin-side-panel-container">
-            <div class="admin-side-panel-sub-container">
+           {# <div class="admin-side-panel-sub-container">
                 {% include 'admin/components/leftpane.html.twig' %}
-            </div>
+            </div>#}
         </div>
         <div class="admin-content-container">
             {{ form_start(form) }}
             {{ form_widget(form) }}
             <button onclick="return confirm('Attention, vérifiez bien les modifications avant de valider !')" class="btn btn-primary">Editer</button>
-            <a class="btn btn-danger" href="{{ path('manage_users') }}">Retour</a>
+            <a class="btn btn-danger" href="{{ path('admin_dashboard') }}">Retour</a>
             {{ form_end(form) }}
         </div>
     </div>

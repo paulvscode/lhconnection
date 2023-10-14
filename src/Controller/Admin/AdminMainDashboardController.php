@@ -42,6 +42,8 @@ class AdminMainDashboardController extends AbstractController
         $archivedClubs = $this->clubRepository->findBy(['archived' => true]);
         $onlineNews = $this->newsRepository->findBy(['status' => false]);
         $onlineClubs = $this->clubRepository->findBy(['archived' => false]);
+        $users = $this->userRepository->findAll();
+        $responsible = $this->responsibleRepository->findAll();
 
         $totalClubs = count($onlineClubs);
         $countNews = count($onlineNews);
@@ -52,7 +54,8 @@ class AdminMainDashboardController extends AbstractController
             'onlineNews' => $onlineNews,
             'onlineClubs' => $onlineClubs,
             'countClubs' => $totalClubs,
-            'countNews' => $countNews
+            'countNews' => $countNews,
+            'responsibles' => $responsible
         ]);
     }
 
